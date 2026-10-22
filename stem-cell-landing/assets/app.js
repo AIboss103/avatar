@@ -18,32 +18,32 @@
     en: {
       mo: "/ mo",
       countries: ["Mexico", "Cayman Islands", "Colombia", "Costa Rica", "Panama", "Other"],
-      roi: "≈ {x}× projected revenue vs. package fee + est. lead cost",
+      roi: "≈ {x}× return on fee + lead cost",
       copied: "Address copied",
-      copyFail: "Copy failed — select the address manually",
-      addrMissing: "Wallet address is shared after a quick KYC call. Use the form and we'll send it within 1 hour.",
-      addrNote: "Send only {coin} to this address. Amount: ${amount}.",
-      stripeMissing: "Secure Stripe invoice will be sent after a short call — taking you to the form.",
+      copyFail: "Copy failed",
+      addrMissing: "Address sent on request — use the form.",
+      addrNote: "Only {coin}. Amount: ${amount}.",
+      stripeMissing: "We'll send a Stripe invoice.",
       fRequired: "Please fill in all fields.",
       fEmail: "Please enter a valid email.",
       fSending: "Sending…",
-      fOk: "Thank you! A senior strategist will contact you within one business day.",
+      fOk: "Thanks! We'll reply within 1 business day.",
       fErr: "Something went wrong. Please try again",
       fErrMail: " or email us at "
     },
     es: {
       mo: "/ mes",
       countries: ["México", "Islas Caimán", "Colombia", "Costa Rica", "Panamá", "Otros"],
-      roi: "≈ {x}× ingresos proyectados frente a la tarifa del plan + costo estimado de leads",
+      roi: "≈ {x}× retorno sobre tarifa + leads",
       copied: "Dirección copiada",
-      copyFail: "No se pudo copiar — seleccione la dirección manualmente",
-      addrMissing: "La dirección de la billetera se comparte tras una breve llamada KYC. Use el formulario y se la enviaremos en 1 hora.",
-      addrNote: "Envíe solo {coin} a esta dirección. Monto: ${amount}.",
-      stripeMissing: "Le enviaremos una factura segura de Stripe tras una breve llamada — le llevamos al formulario.",
+      copyFail: "No se pudo copiar",
+      addrMissing: "Dirección enviada a pedido — use el formulario.",
+      addrNote: "Solo {coin}. Monto: ${amount}.",
+      stripeMissing: "Le enviaremos una factura de Stripe.",
       fRequired: "Por favor complete todos los campos.",
       fEmail: "Por favor ingrese un correo válido.",
       fSending: "Enviando…",
-      fOk: "¡Gracias! Un estratega senior le contactará en un día hábil.",
+      fOk: "¡Gracias! Respondemos en 1 día hábil.",
       fErr: "Algo salió mal. Inténtelo de nuevo",
       fErrMail: " o escríbanos a "
     }
@@ -165,14 +165,14 @@
         if (!e.isIntersecting) return;
         e.target.classList.add("in");
         $$("[data-count]", e.target).forEach(countUp);
-        if (e.target.id === "chart") animateBars();
+        if (e.target.id === "chart") animateFlow();
         io.unobserve(e.target);
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
     reveals.forEach(function (el) { io.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add("in"); });
-    setTimeout(animateBars, 0);
+    setTimeout(animateFlow, 0);
   }
 
   // Cursor-follow glow on problem cards
@@ -184,48 +184,93 @@
     });
   });
 
-  /* ---------------- Chart ---------------- */
+  /* ---------------- Flow chart ---------------- */
   var SCEN = {
     now:   [38, 22, 12, 9, 7, 12],
     after: [30, 17, 10, 7, 26, 10]
   };
+  var PA = 4;
   var scenario = "now";
-  var barsShown = false;
-  var chartEl = $("#chartBars");
+  var flowShown = false;
+  var flowSvg = $("#flowSvg");
+  var NS = "http://www.w3.org/2000/svg";
+  var flowCur = SCEN.now.map(function () { return 0; });
+  var flowEls = null, flowRaf = 0;
+  var FX0 = 40, FX1 = 360, FW = 560, K = 1.5, ROW0 = 30, ROWH = 56, MIDY = 170;
 
-  function renderChart() {
-    if (!chartEl) return;
-    var names = t("countries");
-    if (!chartEl.firstChild) {
-      var html = '<div class="bars">';
-      names.forEach(function (n, i) {
-        html += '<div class="bar' + (i === 4 ? " bar--panama" : "") + '"><span class="bar__label"></span>' +
-          '<div class="bar__track"><div class="bar__fill"></div></div><span class="bar__val">0%</span></div>';
-      });
-      chartEl.innerHTML = html + "</div>";
-    }
-    $$(".bar", chartEl).forEach(function (row, i) {
-      $(".bar__label", row).textContent = names[i];
-    });
-    if (barsShown) animateBars();
+  function svgEl(tag, attrs, parent) {
+    var el = document.createElementNS(NS, tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(el);
+    return el;
   }
 
-  function animateBars() {
-    barsShown = true;
-    var vals = SCEN[scenario];
-    var max = 40;
-    $$(".bar", chartEl).forEach(function (row, i) {
-      $(".bar__fill", row).style.width = (vals[i] / max) * 100 + "%";
-      var valEl = $(".bar__val", row);
-      var from = parseInt(valEl.textContent, 10) || 0, to = vals[i];
-      if (reduceMotion) { valEl.textContent = to + "%"; return; }
-      var start = performance.now();
-      (function step(now) {
-        var p = Math.min(1, (now - start) / 900);
-        valEl.textContent = Math.round(from + (to - from) * p) + "%";
-        if (p < 1) requestAnimationFrame(step);
-      })(start);
+  function buildFlow() {
+    flowEls = { paths: [], dashes: [], labels: [], vals: [] };
+    flowEls.src = svgEl("rect", { x: 22, width: 14, rx: 7, "class": "flow__src" }, flowSvg);
+    flowEls.srcText = svgEl("text", { x: 29, "text-anchor": "middle", "class": "flow__srcText" }, flowSvg);
+    flowEls.srcText.textContent = "US";
+    SCEN.now.forEach(function (_, i) {
+      var pa = i === PA ? " is-pa" : "";
+      flowEls.paths.push(svgEl("path", { "class": "flow__path" + pa }, flowSvg));
+      flowEls.dashes.push(svgEl("path", { "class": "flow__dash" + pa }, flowSvg));
+      var y = ROW0 + i * ROWH + 5;
+      flowEls.labels.push(svgEl("text", { y: y, "class": "flow__label" + pa }, flowSvg));
+      flowEls.vals.push(svgEl("text", { y: y, "text-anchor": "end", "class": "flow__val" + pa }, flowSvg));
     });
+  }
+
+  function drawFlow(vals) {
+    var total = vals.reduce(function (a, b) { return a + b; }, 0) * K;
+    var top = MIDY - total / 2;
+    flowEls.src.setAttribute("y", top - 4);
+    flowEls.src.setAttribute("height", Math.max(8, total + 8));
+    flowEls.srcText.setAttribute("y", top - 14);
+    var acc = top;
+    vals.forEach(function (v, i) {
+      var w = v * K, ys = acc + w / 2, ye = ROW0 + i * ROWH;
+      acc += w;
+      var d = "M" + FX0 + " " + ys + " C" + (FX0 + (FX1 - FX0) * 0.5) + " " + ys + " " + (FX0 + (FX1 - FX0) * 0.55) + " " + ye + " " + FX1 + " " + ye;
+      flowEls.paths[i].setAttribute("d", d);
+      flowEls.paths[i].setAttribute("stroke-width", Math.max(0.5, w));
+      flowEls.dashes[i].setAttribute("d", d);
+      flowEls.dashes[i].style.opacity = v > 0.5 ? 1 : 0;
+      flowEls.vals[i].textContent = Math.round(v) + "%";
+    });
+  }
+
+  // Wide screens get a wider viewBox so the diagram fills the card.
+  function layoutFlow() {
+    var wide = flowSvg.getBoundingClientRect().width > 720;
+    var nw = wide ? 960 : 560;
+    if (nw === FW && flowSvg.getAttribute("viewBox")) return;
+    FW = nw; FX1 = FW - (wide ? 260 : 200);
+    flowSvg.setAttribute("viewBox", "0 0 " + FW + " 340");
+    flowEls.labels.forEach(function (el) { el.setAttribute("x", FX1 + 16); });
+    flowEls.vals.forEach(function (el) { el.setAttribute("x", FW - 12); });
+    drawFlow(flowCur);
+  }
+
+  function renderChart() {
+    if (!flowSvg) return;
+    if (!flowEls) { buildFlow(); layoutFlow(); window.addEventListener("resize", layoutFlow); }
+    var names = t("countries");
+    flowEls.labels.forEach(function (el, i) { el.textContent = names[i]; });
+    if (flowShown) animateFlow();
+  }
+
+  function animateFlow() {
+    flowShown = true;
+    var from = flowCur.slice(), to = SCEN[scenario];
+    cancelAnimationFrame(flowRaf);
+    if (reduceMotion) { flowCur = to.slice(); drawFlow(flowCur); return; }
+    var start = performance.now();
+    (function step(now) {
+      var p = Math.min(1, (now - start) / 900), e = 1 - Math.pow(1 - p, 3);
+      flowCur = from.map(function (f, i) { return f + (to[i] - f) * e; });
+      drawFlow(flowCur);
+      if (p < 1) flowRaf = requestAnimationFrame(step);
+    })(start);
   }
 
   $$("[data-scenario]").forEach(function (b) {
@@ -236,8 +281,17 @@
         x.classList.toggle("is-active", on);
         x.setAttribute("aria-selected", on ? "true" : "false");
       });
-      animateBars();
+      animateFlow();
     });
+  });
+
+  // Calendar illustration in the neurology case: 2 months booked ahead.
+  $$(".cal").forEach(function (g) {
+    for (var r = 0; r < 4; r++) for (var c = 0; c < 7; c++) {
+      var i = r * 7 + c;
+      var cell = svgEl("rect", { x: 16 + c * 25, y: 4 + r * 21, width: 20, height: 16, rx: 4, "class": "cal-cell" + (i < 24 ? " on" : "") }, g);
+      cell.style.transitionDelay = (0.3 + i * 0.03) + "s";
+    }
   });
 
   /* ---------------- Calculator ---------------- */
@@ -267,9 +321,13 @@
 
     $("#rMonthly").textContent = "$" + fmt(revenue);
     $("#rYear").textContent = money(revenue * 12);
-    $("#rConsults").textContent = consults;
     $("#rLeads").textContent = leadsLo + "–" + leadsHi;
-    $("#rCpl").textContent = money(costLo) + "–" + money(costHi);
+    $("#rConsults").textContent = consults;
+    $("#rPatients").textContent = P;
+    var maxLeads = Math.ceil(Math.ceil(10 / CONSULT_TO_PATIENT) / LEAD_TO_CONSULT[0]);
+    $("#fLeads").style.width = (leadsHi / maxLeads) * 100 + "%";
+    $("#fConsults").style.width = (consults / maxLeads) * 100 + "%";
+    $("#fPatients").style.width = Math.max(2, (P / maxLeads) * 100) + "%";
     $("#rPlan").textContent = plan.name + " · $" + fmt(plan.price);
     $("#rRoi").textContent = t("roi").replace("{x}", roi.toFixed(1));
   }
@@ -510,9 +568,9 @@
       g.beginPath(); g.arc(r, r, r, 0, Math.PI * 2); g.fill();
       return c;
     }
-    var SPR_A = sprite("#3dfcc8", "rgba(34,228,255,0.35)", 64);
-    var SPR_B = sprite("#a99bff", "rgba(123,92,255,0.35)", 64);
-    var SPR_P = sprite("rgba(34,228,255,0.9)", "rgba(34,228,255,0.08)", 32);
+    var SPR_A = sprite("#5ef2c9", "rgba(94,242,201,0.3)", 64);
+    var SPR_B = sprite("#7aa8ff", "rgba(122,168,255,0.3)", 64);
+    var SPR_P = sprite("rgba(255,255,255,0.6)", "rgba(255,255,255,0.05)", 32);
 
     function resize() {
       var rect = canvas.getBoundingClientRect();
@@ -522,7 +580,7 @@
       canvas.width = Math.round(W * DPR);
       canvas.height = Math.round(H * DPR);
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      var count = mobile ? 26 : 60;
+      var count = mobile ? 14 : 30;
       particles = [];
       for (var i = 0; i < count; i++) {
         particles.push({ x: Math.random() * W, y: Math.random() * H, z: Math.random(), vy: 0.1 + Math.random() * 0.35, r: 6 + Math.random() * 18 });
@@ -572,9 +630,9 @@
         var A = pts[k * 2], B = pts[k * 2 + 1];
         var depth = 1 - ((A.z + B.z) / 2 + R) / (2 * R); // 1 = front
         var g = ctx.createLinearGradient(A.x, A.y, B.x, B.y);
-        g.addColorStop(0, "rgba(61,252,200," + (0.15 + depth * 0.55) + ")");
+        g.addColorStop(0, "rgba(94,242,201," + (0.15 + depth * 0.55) + ")");
         g.addColorStop(0.5, "rgba(255,255,255," + (0.05 + depth * 0.2) + ")");
-        g.addColorStop(1, "rgba(143,123,255," + (0.15 + depth * 0.55) + ")");
+        g.addColorStop(1, "rgba(122,168,255," + (0.15 + depth * 0.55) + ")");
         ctx.strokeStyle = g;
         ctx.lineWidth = 1.2 + depth * 2;
         ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke();
@@ -587,7 +645,7 @@
           var q = pts[k * 2 + s];
           if (k === 0) ctx.moveTo(q.x, q.y); else ctx.lineTo(q.x, q.y);
         }
-        ctx.strokeStyle = s ? "rgba(143,123,255,0.35)" : "rgba(34,228,255,0.35)";
+        ctx.strokeStyle = s ? "rgba(122,168,255,0.3)" : "rgba(94,242,201,0.3)";
         ctx.lineWidth = 2;
         ctx.stroke();
       }
