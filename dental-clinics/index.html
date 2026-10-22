@@ -653,6 +653,7 @@ footer{border-top:1px solid var(--line);padding:40px 0;color:var(--dim);font-siz
     <button class="pay-opt" data-pay="card"><span class="ic">💳</span><div><b data-i18n="pay.card">Card · Apple Pay · Google Pay</b><span data-i18n="pay.cardS">Secure checkout via Stripe</span></div></button>
     <button class="pay-opt" data-pay="crypto"><span class="ic">₿</span><div><b data-i18n="pay.crypto">Crypto</b><span data-i18n="pay.cryptoS">USDT, USDC, BTC, ETH</span></div></button>
     <button class="pay-opt" data-pay="call"><span class="ic">📅</span><div><b data-i18n="pay.call">Talk to us first</b><span data-i18n="pay.callS">Book a 30-min call, pay later</span></div></button>
+    <p class="modal-foot" id="payMsg" hidden style="color:var(--gold);font-size:13px"></p>
     <p class="modal-foot" data-i18n="pay.foot">Monthly service fee. Ad budget is billed separately. Cancel with 30 days' notice after the first 3 months.</p>
   </div>
 </div>
@@ -917,7 +918,7 @@ function openPay(id){
   payPkg = PKG.find(p=>p.id===id); const D=I18N[lang];
   $('#payTitle').textContent = `${D['pay.title']} ${payPkg.name}`;
   $('#paySub').textContent = `$${payPkg.price.toLocaleString('en-US')} ${D['pay.sub']} · ${payPkg.hours} ${D['pk.hours']}`;
-  $('#payModal').classList.add('open'); document.body.style.overflow='hidden';
+  $('#payMsg').hidden=true; $('#payModal').classList.add('open'); document.body.style.overflow='hidden';
 }
 function closePay(){ $('#payModal').classList.remove('open'); document.body.style.overflow=''; }
 $('#payModal').addEventListener('click',e=>{ if(e.target.id==='payModal'||e.target.closest('[data-close]')) closePay(); });
@@ -927,8 +928,9 @@ $$('.pay-opt').forEach(b=>b.addEventListener('click',()=>{
   if(k==='card') url = CONFIG.stripe[payPkg.id];
   if(k==='crypto') url = CONFIG.crypto;
   if(k==='call') url = CONFIG.booking;
-  if(url){ window.open(url,'_blank','noopener'); }
-  else { alert(I18N[lang]['pay.soon']); window.open(CONFIG.booking,'_blank','noopener'); }
+  const m=$('#payMsg');
+  if(!url){ m.textContent=I18N[lang]['pay.soon']; m.hidden=false; url=CONFIG.booking; }
+  const a=document.createElement('a'); a.href=url; a.target='_blank'; a.rel='noopener'; document.body.appendChild(a); a.click(); a.remove();
 }));
 
 $$('#segPkg button').forEach(b=>b.onclick=()=>{pkgSel=b.dataset.p;$$('#segPkg button').forEach(x=>x.classList.toggle('on',x===b));renderROI();});
