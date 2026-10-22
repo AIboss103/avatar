@@ -80,7 +80,7 @@ body.menu-open .mobile-menu{transform:none;opacity:1;pointer-events:auto}
 .hero{padding-top:calc(108px + env(safe-area-inset-top,0px));padding-bottom:70px;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 600px at 78% 30%,rgba(214,176,115,.13),transparent 60%),radial-gradient(700px 500px at 0% 100%,rgba(184,134,75,.08),transparent 60%);pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:40px;align-items:center;position:relative}
-.badge-row{display:inline-flex;align-items:center;gap:12px;padding:7px 18px 7px 8px;border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.03);font-size:13px;color:var(--muted);line-height:1.35}
+.badge-row{display:inline-flex;align-items:center;gap:12px;padding:6px 18px 6px 6px;border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.03);font-size:13px;color:var(--muted);line-height:1.35}
 .avs{display:flex;flex:none}
 .avs img{width:32px;height:32px;border-radius:50%;background:var(--surface2);border:2px solid var(--bg);margin-left:-10px;padding:3px}
 .avs img:first-child{margin-left:0}
@@ -371,7 +371,7 @@ footer{border-top:1px solid var(--line);padding-block:30px calc(30px + env(safe-
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="badge-row"><span class="avs"><img src="img/p1.webp" alt=""><img src="img/p2.webp" alt=""><img src="img/p3.webp" alt=""><img src="img/pa.webp" alt=""></span><span><span class="stars" aria-label="5 out of 5">★★★★★</span> <b data-i18n="hero.pillB">Trusted by premium developers</b><br><span data-i18n="hero.pill">Costa del Este · Santa María · Ocean Reef</span></span></div>
+      <div class="badge-row"><span class="avs"><img src="img/p1.webp" alt=""><img src="img/p2.webp" alt=""><img src="img/p3.webp" alt=""><img src="img/pa.webp" alt=""></span><span><span class="stars" aria-label="5 out of 5">★★★★★</span> <b data-i18n="hero.pillB">Trusted by premium developers</b></span></div>
       <h1 data-i18n-html="hero.title">We help Panamanian developers sell multi-million dollar inventory to US, Canadian &amp; European buyers <span class="gtxt">in 90 days.</span></h1>
       <p class="lead" data-i18n="hero.lead">Bypass local broker price wars.</p>
       <div class="hero-cta">
@@ -379,12 +379,11 @@ footer{border-top:1px solid var(--line);padding-block:30px calc(30px + env(safe-
         <a href="#packages" class="btn btn-line" data-i18n="cta.select">Select Package</a>
       </div>
       <div class="proof">
-        <div class="proof-quote"><img src="img/p4.webp" alt=""><div><span class="stars" aria-label="5 out of 5">★★★★★</span><p data-i18n="proof.q">"12 oceanfront units sold to US investors in six months, without a single local broker."</p><span data-i18n="proof.who">Commercial Director, oceanfront tower, Panama City</span></div></div>
         <div class="proof-stats">
-          <div><b>50+</b><span data-i18n="proof.s1">specialists</span></div>
-          <div><b>12</b><span data-i18n="proof.s2">units sold to US buyers in 6 months</span></div>
-          <div><b>−40%</b><span data-i18n="proof.s3">foreign buyer acquisition cost</span></div>
-          <div><b>100%</b><span data-i18n="proof.s4">pre-sale filled before construction</span></div>
+          <div><b>50+</b><span data-i18n="proof.s1">experts</span></div>
+          <div><b>12</b><span data-i18n="proof.s2">units in 6 mo</span></div>
+          <div><b>−40%</b><span data-i18n="proof.s3">cost per buyer</span></div>
+          <div><b>100%</b><span data-i18n="proof.s4">pre-sale sold</span></div>
         </div>
         <div class="proof-by"><span data-i18n="pw.t">Powered by</span><b>Triton.</b><b>Stive<i>.ai</i></b><b>iCoda<i>.io</i></b></div>
       </div>
@@ -408,7 +407,6 @@ footer{border-top:1px solid var(--line);padding-block:30px calc(30px + env(safe-
   <div class="wrap">
     <span class="kicker rv" data-i18n="prob.k">The Panama real estate problem</span>
     <h2 class="title rv" data-i18n-html="prob.t">Great towers. <span class="gold">Wrong buyers.</span></h2>
-    <p class="lead rv" data-i18n="prob.l">Most developers fight over the same local buyers while the international money never sees their projects.</p>
     <div class="prob-grid" id="probGrid"></div>
   </div>
 </section>
@@ -463,12 +461,10 @@ footer{border-top:1px solid var(--line);padding-block:30px calc(30px + env(safe-
   <div class="wrap">
     <span class="kicker rv" data-i18n="cs.k">Expertise &amp; cases</span>
     <h2 class="title rv" data-i18n-html="cs.t">Inventory we've <span class="gold">already moved</span></h2>
-    <p class="lead rv" data-i18n="cs.l">Five development projects, five different channels. Names under NDA.</p>
     <div class="cases" id="caseGrid"></div>
     <div class="card eco rv">
       <div>
         <h3 data-i18n-html="eco.t">A <span class="gold">50+ person</span> ecosystem behind your project</h3>
-        <p data-i18n="eco.p">Strategists, SEO and AI-search engineers, PR directors, performance marketers, copywriters, ORM leads, event and influencer managers.</p>
       </div>
       <div class="eco-logos">
         <a href="#" aria-label="Triton">Triton<i>.</i></a>
@@ -542,29 +538,29 @@ en:{
  "nav.problem":"Problem","nav.packages":"Packages","nav.calc":"Calculator","nav.cases":"Cases","nav.book":"Contact",
  "cta.book":"Book Strategy Call","cta.bookS":"Book a call","cta.select":"Select Package","cta.pk":"Packages",
  "hero.pillB":"Trusted by premium developers","hero.pill":"Costa del Este · Santa María · Ocean Reef",
- "hero.title":"We help Panamanian developers sell multi-million dollar inventory to US, Canadian &amp; European buyers <span class=\"gtxt\">in 90 days.</span>",
- "hero.lead":"Bypass local broker price wars. We build AI-powered international acquisition funnels, multi-lingual SEO and high-net-worth investor lead generation for luxury developments in Costa del Este, Santa María and Ocean Reef.",
+ "hero.title":"Sell your Panama inventory to US, Canadian &amp; European buyers <span class=\"gtxt\">in 90 days.</span>",
+ "hero.lead":"No broker price wars. International investors, AI funnels and SEO.",
  "proof.q":"\"12 oceanfront units sold to US investors in six months, without a single local broker.\"","proof.who":"Commercial Director, oceanfront tower, Panama City",
- "proof.s1":"specialists from top agencies","proof.s2":"units sold to US buyers in 6 months","proof.s3":"foreign buyer acquisition cost","proof.s4":"pre-sale filled before construction",
+ "proof.s1":"experts","proof.s2":"units in 6 mo","proof.s3":"cost per buyer","proof.s4":"pre-sale sold",
  "pw.t":"Powered by",
  "vis.sold":"inventory sold","vis.c1":"Buyer · Miami","vis.c1s":"$1.4M penthouse","vis.res":"Reserved","vis.c2":"Fly-in tour booked","vis.c2s":"Toronto → Costa del Este","vis.c3":"Qualified Investor Visa lead","vis.c3s":"Frankfurt · $850k budget",
- "prob.k":"The Panama real estate problem","prob.t":"Great towers. <span class=\"gold\">Wrong buyers.</span>","prob.l":"Most developers fight over the same local buyers while international money never sees their projects.",
- "pk.k":"Packages & pricing","pk.t":"One team. <span class=\"gold\">Three levels of scale.</span>","pk.l":"Monthly retainers for services. Start with one project and scale into a full international sales department.",
+ "prob.k":"The Panama real estate problem","prob.t":"Great towers. <span class=\"gold\">Wrong buyers.</span>",
+ "pk.k":"Packages & pricing","pk.t":"One team. <span class=\"gold\">Three levels of scale.</span>","pk.l":"Monthly retainer. Ad spend separate.",
  "pk.disc":"<b>Marketing ad spend is NOT included</b> and is paid separately based on campaign scale.",
  "pk.mo":"/ month","pk.hours":"hours / month","pk.people":"specialists","pk.inc":"What's included","pk.excl":"+ ad spend, paid separately","pk.popular":"Most popular","pk.team":"Team:",
- "calc.k":"Developer calculator","calc.t":"What it takes to sell <span class=\"gold\">your units</span>","calc.l":"Set your average unit price and monthly sales target. See the leads, budget and cost of sale compared with broker commissions.",
+ "calc.k":"Developer calculator","calc.t":"What it takes to sell <span class=\"gold\">your units</span>","calc.l":"Two sliders. Your numbers vs broker commission.",
  "calc.h":"Your project","calc.price":"Average unit price","calc.units":"Sales target per month","calc.u1":"1 unit","calc.u5":"5+ units",
  "calc.vol":"Sales volume per month","calc.leads":"Qualified investor leads needed","calc.leadsS":"per month","calc.ads":"Estimated ad spend","calc.plan":"Recommended plan","calc.save":"Saved vs 6% broker commission","calc.saveS":"per month",
  "calc.cmp":"Cost of sale, % of sales volume","calc.cmpUs":"With us (fee + ads)","calc.cmpBr":"Local brokers","calc.range":"range",
  "bm.1":"average cost of a qualified US investor lead","bm.2":"lead to unit reservation or fly-in tour","bm.3":"funnels, SEO and sales materials in both languages",
- "calc.as":"Estimates use our average metrics: leads from 5–8% conversion, ad spend at $130 average per lead. Illustrative, not a forecast.",
- "guar":"<b>Our guarantee.</b> We do not offer fake ROI promises. What we guarantee is 100% execution, rigorous performance control and world-class deliverable quality.",
- "cs.k":"Expertise & cases","cs.t":"Inventory we've <span class=\"gold\">already moved</span>","cs.l":"Five development projects, five different channels. Names under NDA.",
- "eco.t":"A <span class=\"gold\">50+ person</span> ecosystem behind your project","eco.p":"Strategists, SEO and AI-search engineers, PR directors, performance marketers, copywriters, ORM leads, event and influencer managers.",
+ "calc.as":"Estimate based on our averages. Not a forecast.",
+ "guar":"<b>No fake ROI promises.</b> We guarantee 100% execution and world-class quality.",
+ "cs.k":"Expertise & cases","cs.t":"Inventory we've <span class=\"gold\">already moved</span>",
+ "eco.t":"A <span class=\"gold\">50+ person</span> ecosystem behind your project",
  "bk.k":"Start","bk.t":"Book a strategy call or <span class=\"gold\">start today</span>","bk.fh":"Book a strategy call",
  "bk.name":"Full name","bk.company":"Company","bk.email":"Work email","bk.phone":"WhatsApp / phone","bk.project":"Project and location","bk.units":"Units to sell","bk.msg":"Anything we should know?","bk.send":"Request strategy call",
  "bk.ok":"Thank you. We'll contact you within one business day to schedule the call.","bk.preview":"This is a preview, so nothing was sent. On the live site this form delivers your request to our team.",
- "ck.h":"Or start right now","ck.p":"Pick a package and pay the first month online. We kick off within 48 hours.","ck.s":"Services only. Ad spend is billed separately.",
+ "ck.h":"Or start right now","ck.p":"Kick-off within 48 hours.","ck.s":"Services only. Ad spend is billed separately.",
  "pay.card":"Card · Apple Pay","pay.cardS":"Secure checkout via Stripe","pay.crypto":"Crypto · USDT","pay.cryptoS":"TRC-20 / ERC-20",
  "pay.soon":"Online checkout opens soon. Fill in the form and we'll send you a secure Stripe or USDT payment link.",
  "ft.t":"International buyer acquisition for Panama developers"
@@ -573,29 +569,29 @@ es:{
  "nav.problem":"Problema","nav.packages":"Paquetes","nav.calc":"Calculadora","nav.cases":"Casos","nav.book":"Contacto",
  "cta.book":"Agendar llamada estratégica","cta.bookS":"Agendar","cta.select":"Elegir paquete","cta.pk":"Paquetes",
  "hero.pillB":"La confianza de promotores premium","hero.pill":"Costa del Este · Santa María · Ocean Reef",
- "hero.title":"Ayudamos a promotores en Panamá a vender inventario multimillonario a compradores de EE. UU., Canadá y Europa <span class=\"gtxt\">en 90 días.</span>",
- "hero.lead":"Evite las guerras de precios de corredores locales. Construimos embudos internacionales con IA, SEO multilingüe y generación de inversionistas de alto patrimonio para proyectos de lujo.",
+ "hero.title":"Venda su inventario en Panamá a compradores de EE. UU., Canadá y Europa <span class=\"gtxt\">en 90 días.</span>",
+ "hero.lead":"Sin guerras de precios de corredores. Inversionistas internacionales, embudos con IA y SEO.",
  "proof.q":"\"12 unidades frente al mar vendidas a inversionistas de EE. UU. en seis meses, sin un solo corredor local.\"","proof.who":"Director Comercial, torre frente al mar, Ciudad de Panamá",
- "proof.s1":"especialistas de agencias top","proof.s2":"unidades vendidas a compradores de EE. UU. en 6 meses","proof.s3":"costo de adquisición de comprador extranjero","proof.s4":"preventa completada antes de construir",
+ "proof.s1":"expertos","proof.s2":"unidades en 6 meses","proof.s3":"costo por comprador","proof.s4":"preventa vendida",
  "pw.t":"Con la tecnología de",
  "vis.sold":"inventario vendido","vis.c1":"Comprador · Miami","vis.c1s":"Penthouse de $1.4M","vis.res":"Reservado","vis.c2":"Fly-in tour agendado","vis.c2s":"Toronto → Costa del Este","vis.c3":"Lead de Visa de Inversionista","vis.c3s":"Frankfurt · presupuesto $850k",
- "prob.k":"El problema inmobiliario en Panamá","prob.t":"Grandes torres. <span class=\"gold\">Compradores equivocados.</span>","prob.l":"La mayoría de promotores pelean por los mismos compradores locales mientras el dinero internacional nunca ve sus proyectos.",
- "pk.k":"Paquetes y precios","pk.t":"Un equipo. <span class=\"gold\">Tres niveles de escala.</span>","pk.l":"Cuotas mensuales por servicios. Empiece con un proyecto y escale a un departamento de ventas internacional completo.",
+ "prob.k":"El problema inmobiliario en Panamá","prob.t":"Grandes torres. <span class=\"gold\">Compradores equivocados.</span>",
+ "pk.k":"Paquetes y precios","pk.t":"Un equipo. <span class=\"gold\">Tres niveles de escala.</span>","pk.l":"Cuota mensual. Publicidad aparte.",
  "pk.disc":"<b>La inversión publicitaria NO está incluida</b> y se paga aparte según la escala de la campaña.",
  "pk.mo":"/ mes","pk.hours":"horas / mes","pk.people":"especialistas","pk.inc":"Qué incluye","pk.excl":"+ inversión publicitaria, aparte","pk.popular":"El más elegido","pk.team":"Equipo:",
- "calc.k":"Calculadora para promotores","calc.t":"Qué se necesita para vender <span class=\"gold\">sus unidades</span>","calc.l":"Defina el precio promedio por unidad y su meta mensual. Vea leads, presupuesto y costo de venta frente a las comisiones de corredores.",
+ "calc.k":"Calculadora para promotores","calc.t":"Qué se necesita para vender <span class=\"gold\">sus unidades</span>","calc.l":"Dos controles. Sus números vs. la comisión del corredor.",
  "calc.h":"Su proyecto","calc.price":"Precio promedio por unidad","calc.units":"Meta de ventas por mes","calc.u1":"1 unidad","calc.u5":"5+ unidades",
  "calc.vol":"Volumen de ventas por mes","calc.leads":"Leads de inversionistas calificados","calc.leadsS":"por mes","calc.ads":"Inversión publicitaria estimada","calc.plan":"Plan recomendado","calc.save":"Ahorro vs. 6% de comisión","calc.saveS":"por mes",
  "calc.cmp":"Costo de venta, % del volumen","calc.cmpUs":"Con nosotros (cuota + anuncios)","calc.cmpBr":"Corredores locales","calc.range":"rango",
  "bm.1":"costo promedio de un lead calificado de inversionista de EE. UU.","bm.2":"de lead a reserva de unidad o fly-in tour","bm.3":"embudos, SEO y materiales en ambos idiomas",
- "calc.as":"Estimaciones con nuestras métricas promedio: leads con 5–8% de conversión, $130 promedio por lead. Ilustrativo, no un pronóstico.",
- "guar":"<b>Nuestra garantía.</b> No ofrecemos promesas falsas de ROI. Garantizamos 100% de ejecución, control riguroso del rendimiento y entregables de calidad mundial.",
- "cs.k":"Experiencia y casos","cs.t":"Inventario que <span class=\"gold\">ya vendimos</span>","cs.l":"Cinco proyectos, cinco canales distintos. Nombres bajo NDA.",
- "eco.t":"Un ecosistema de <span class=\"gold\">+50 personas</span> detrás de su proyecto","eco.p":"Estrategas, ingenieros de SEO y búsqueda con IA, directores de PR, performance marketers, copywriters, líderes de ORM, gestores de eventos e influencers.",
+ "calc.as":"Estimación con nuestros promedios. No es un pronóstico.",
+ "guar":"<b>Sin promesas falsas de ROI.</b> Garantizamos 100% de ejecución y calidad mundial.",
+ "cs.k":"Experiencia y casos","cs.t":"Inventario que <span class=\"gold\">ya vendimos</span>",
+ "eco.t":"Un ecosistema de <span class=\"gold\">+50 personas</span> detrás de su proyecto",
  "bk.k":"Empezar","bk.t":"Agende una llamada o <span class=\"gold\">empiece hoy</span>","bk.fh":"Agendar llamada estratégica",
  "bk.name":"Nombre completo","bk.company":"Empresa","bk.email":"Email corporativo","bk.phone":"WhatsApp / teléfono","bk.project":"Proyecto y ubicación","bk.units":"Unidades a vender","bk.msg":"¿Algo que debamos saber?","bk.send":"Solicitar llamada",
  "bk.ok":"Gracias. Le contactaremos en un día hábil para agendar la llamada.","bk.preview":"Esto es una vista previa, no se envió nada. En el sitio publicado este formulario envía su solicitud a nuestro equipo.",
- "ck.h":"O empiece ahora mismo","ck.p":"Elija un paquete y pague el primer mes en línea. Arrancamos en 48 horas.","ck.s":"Solo servicios. La inversión publicitaria se factura aparte.",
+ "ck.h":"O empiece ahora mismo","ck.p":"Arrancamos en 48 horas.","ck.s":"Solo servicios. La inversión publicitaria se factura aparte.",
  "pay.card":"Tarjeta · Apple Pay","pay.cardS":"Pago seguro con Stripe","pay.crypto":"Cripto · USDT","pay.cryptoS":"TRC-20 / ERC-20",
  "pay.soon":"El pago en línea abre pronto. Complete el formulario y le enviaremos un enlace seguro de Stripe o USDT.",
  "ft.t":"Adquisición de compradores internacionales para promotores en Panamá"
@@ -605,9 +601,9 @@ const T=(en,es)=>({en,es});
 const STRIP=["Costa del Este","Santa María","Ocean Reef","Punta Pacífica","Casco Viejo","Avenida Balboa","Coronado","Qualified Investor Visa","Fly-in Tours","AI SEO"];
 
 const PROBS=[
- {i:"trending-down",n:"01",t:T("Hyper-saturated local market","Mercado local sobresaturado"),p:T("Developers fight a brutal war for the same local buyers through discounts and dumping. Margins shrink with every launch.","Los promotores pelean una guerra brutal por los mismos compradores locales con descuentos y dumping. Los márgenes se reducen en cada lanzamiento."),x:"bars"},
- {big:"5–8%",n:"02",t:T("Dependence on local brokers","Dependencia de corredores locales"),p:T("You pay 5–8% commission to agents who don't know how to sell to foreign investors and expats in the cold US and European market.","Paga 5–8% de comisión a agentes que no saben vender a inversionistas extranjeros y expats en el mercado frío de EE. UU. y Europa.")},
- {i:"eye-off",n:"03",t:T("The invisible inventory","El inventario invisible"),p:T("Americans looking for a Qualified Investor Visa and a home in Panama never find developer websites in search. They go to aggregators or to other countries.","Los estadounidenses que buscan la Visa de Inversionista Calificado y vivienda en Panamá no encuentran los sitios de los promotores. Se van a agregadores o a otros países."),x:"flags"}
+ {i:"trending-down",n:"01",t:T("Hyper-saturated local market","Mercado local sobresaturado"),p:T("Everyone fights for the same local buyers with discounts.","Todos pelean por los mismos compradores locales con descuentos."),x:"bars"},
+ {big:"5–8%",n:"02",t:T("Dependence on local brokers","Dependencia de corredores locales"),p:T("Paid to agents who can't sell to foreign investors.","Pagado a agentes que no venden a extranjeros.")},
+ {i:"eye-off",n:"03",t:T("The invisible inventory","El inventario invisible"),p:T("US investors never find your project. They buy elsewhere.","Los inversionistas de EE. UU. no encuentran su proyecto. Compran en otro lado."),x:"flags"}
 ];
 
 const PKG=[
@@ -661,11 +657,10 @@ function render(){
    </div>`).join('');
   $('#pkgGrid').innerHTML=PKG.map((p,k)=>`<div class="card pkg ${p.feat?'feat':''} rv d${k}">
      ${p.feat?`<span class="popular">${D['pk.popular']}</span>`:''}
-     <span class="step">${tr(p.step)}</span><h3>${p.name}</h3><p class="tag">${tr(p.tag)}</p>
+     <span class="step">${tr(p.step)}</span><h3>${p.name}</h3>
      <div class="price"><b>$${p.price.toLocaleString('en-US')}</b><span>${D['pk.mo']}</span></div>
      <div class="excl">${D['pk.excl']}</div>
      <div class="kpis"><div class="kpi"><b>${p.hours}</b><span>${D['pk.hours']}</span></div><div class="kpi"><b>${p.people}</b><span>${D['pk.people']}</span></div></div>
-     <p class="roles"><b>${D['pk.team']}</b> ${tr(p.roles)}</p>
      <div class="inc-h">${D['pk.inc']}</div>
      <ul>${p.plus?`<li class="plus">${svg('sparkles')}<span>${tr(p.plus)}</span></li>`:''}${p.inc.map(x=>`<li>${svg('check')}<span>${tr(x)}</span></li>`).join('')}</ul>
      <div class="pkg-cta"><a href="#book" class="btn ${p.feat?'btn-gold':'btn-line'} js-select" data-pkg="${p.id}">${lang==='es'?'Elegir '+p.name:'Select '+p.name}${svg('arrow-right')}</a>
@@ -674,7 +669,7 @@ function render(){
   $('#caseGrid').innerHTML=CASES.map((c,k)=>`<div class="card case rv d${k%3}">
      <div class="top"><span class="cic">${svg(c.i)}</span><span class="loc">${svg('map-pin')}${c.loc}</span></div>
      <div class="metric gtxt">${c.metric}</div><div class="ml">${tr(c.ml)}</div>
-     <h3>${tr(c.t)}</h3><p>${tr(c.p)}</p>
+     <h3>${tr(c.t)}</h3>
      <div class="chs">${c.ch.map(x=>`<span>${x}</span>`).join('')}</div></div>`).join('');
   $('#roles').innerHTML=ROLES.map(r=>`<span>${r}</span>`).join('');
   $$('.js-select').forEach(a=>a.onclick=()=>setCk(a.dataset.pkg));
