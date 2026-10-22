@@ -264,7 +264,7 @@ h1{font-size:clamp(34px,4.3vw,56px);font-weight:800;letter-spacing:-.035em;line-
 .roi-head .deco{display:flex;gap:6px}
 .roi-head .deco img{width:84px;animation:bob 5s ease-in-out infinite}
 .roi-head .deco img:nth-child(2){animation-delay:-1.5s}.roi-head .deco img:nth-child(3){animation-delay:-3s}
-.roi-ctrl{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-top:44px}
+.roi-ctrl{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:18px}
 .seg{display:inline-flex;padding:4px;border-radius:16px;background:rgba(255,255,255,.07);flex-wrap:wrap}
 .seg button{padding:11px 18px;border-radius:12px;font-family:var(--display);font-size:14.5px;font-weight:700;color:var(--onNavyMuted);transition:.2s}
 .seg button.on{background:#fff;color:var(--navy)}
@@ -292,24 +292,34 @@ h1{font-size:clamp(34px,4.3vw,56px);font-weight:800;letter-spacing:-.035em;line-
 .col i.ng{background:linear-gradient(180deg,#ff8fa3,#d6335a)}
 .col small{font-size:12.5px;color:var(--onNavyMuted);font-weight:600}
 .col em{font-style:normal;font-family:var(--display);font-size:14px;font-weight:800;font-variant-numeric:tabular-nums}
-.rt-wrap{overflow-x:auto;margin-top:22px;border-radius:24px;background:rgba(255,255,255,.04);-webkit-overflow-scrolling:touch}
-table.rt{width:100%;border-collapse:collapse;font-size:14.5px;min-width:600px}
-.rt th,.rt td{padding:14px 16px;text-align:center;font-variant-numeric:tabular-nums}
-.rt th{color:var(--onNavyMuted);font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
-.rt td{border-top:1px solid rgba(255,255,255,.07)}
-.rt td:first-child,.rt th:first-child{text-align:left}
-.rt td:first-child b{font-family:var(--display)}
-.rt td small{display:block;font-size:12px;font-weight:700}
-.rt td small.muted{color:var(--onNavyMuted);font-weight:500}
-.rt tr.sel td{background:rgba(47,91,255,.22)}
+.calc{display:grid;grid-template-columns:1fr 1.15fr;gap:20px;margin-top:44px}
+.calc-in{padding:28px;border-radius:24px;background:#fff;color:var(--ink);display:flex;flex-direction:column;gap:30px;justify-content:center}
+.calc-in h3{font-size:22px;font-weight:800}
+.field{display:flex;flex-direction:column;gap:12px}
+.fl{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-weight:600;font-size:15px;color:var(--ink2)}
+.fl b{font-family:var(--display);font-weight:800;font-size:26px;color:var(--blue);font-variant-numeric:tabular-nums;white-space:nowrap}
+.field input{width:100%;accent-color:var(--blue);height:24px}
+.hint{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}
+.hint span:nth-child(2){text-align:center}
+.calc-out{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.co{padding:18px 20px;border-radius:20px;background:rgba(255,255,255,.06);display:flex;flex-direction:column;gap:4px}
+.co span{font-size:13.5px;color:var(--onNavyMuted);font-weight:600}
+.co b{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.03em;color:#fff;font-variant-numeric:tabular-nums;line-height:1.15}
+.co small{font-size:12.5px;color:var(--onNavyMuted)}
+.co.big{grid-column:1/-1;background:var(--blue)}
+.co.big span{color:rgba(255,255,255,.8)}
+.co.big b{font-size:44px}
+.co.roi-co b.pos{color:#4ade9f}.co.roi-co b.neg{color:#ff8fa3}
+.sub-h{font-size:22px;font-weight:800;color:#fff;margin:48px 0 0}
+.bench{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}
+.bm{padding:20px;border-radius:20px;background:rgba(255,255,255,.06);display:flex;flex-direction:column;gap:6px}
+.bm img{width:34px}
+.bm b{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.03em;color:#fff;line-height:1.1}
+.bm span{font-size:13px;color:var(--onNavyMuted);font-weight:600;line-height:1.35}
+.guar{margin-top:28px;padding:20px 24px;border-radius:20px;border:1px solid rgba(255,255,255,.14);display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.guar b{font-family:var(--display);font-size:18px;font-weight:800;color:#fff}
+.guar span{color:var(--onNavyMuted);font-size:15px}
 .assume{font-size:12.5px;color:var(--onNavyMuted);margin-top:16px}
-.joke{margin-top:28px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;padding:28px;border-radius:28px;background:linear-gradient(120deg,#1b2b5e,#16244f)}
-.joke .imgs{display:flex}
-.joke .imgs img{width:70px}
-.joke .imgs img+img{margin-left:-18px}
-.joke h4{font-size:22px;font-weight:800;color:#fff;margin-bottom:6px}
-.joke p{color:var(--onNavyMuted);font-size:15px}
-.joke p.lol{color:#fff;margin-top:10px;font-weight:600}
 
 /* experience */
 .exp-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
@@ -415,6 +425,8 @@ footer{padding-block:34px calc(34px + env(safe-area-inset-bottom,0px));color:var
   .pkg.feat{order:-1}
   .sol-grid{grid-template-columns:1fr 1fr}
   .roi-main{grid-template-columns:1fr}
+  .calc{grid-template-columns:1fr}
+  .bench{grid-template-columns:repeat(3,1fr)}
   .exp-stats{grid-template-columns:1fr 1fr}
   .cases{grid-template-columns:1fr 1fr}
   .case,.case:nth-child(4),.case:nth-child(5){grid-column:span 1}
@@ -456,6 +468,14 @@ footer{padding-block:34px calc(34px + env(safe-area-inset-bottom,0px));color:var
   .roi-head{grid-template-columns:1fr}
   .roi-head .deco img{width:60px}
   .roi-ctrl{flex-direction:column;align-items:stretch}
+  .calc-in{padding:22px 18px}
+  .co{padding:16px}
+  .co b{font-size:24px}
+  .co.big b{font-size:36px}
+  .bench{grid-template-columns:1fr 1fr}
+  .bm:last-child{grid-column:1/-1}
+  .bm{padding:16px}
+  .sub-h{font-size:19px;margin-top:38px}
   .seg button{flex:1;padding:10px 8px;font-size:13.5px}
   .ticket input{flex:1;width:auto}
   .months{grid-template-columns:1fr}
@@ -463,7 +483,6 @@ footer{padding-block:34px calc(34px + env(safe-area-inset-bottom,0px));color:var
   .month .m,.month .rev,.month .roi{grid-column:1/-1}
   .month .pts{font-size:42px;margin:0}
   .month .roi{margin-top:6px}
-  .joke{grid-template-columns:1fr;padding:22px}
   .pkg{padding:28px 20px}
   .price b{font-size:46px}
   .es{padding:22px}
@@ -622,24 +641,37 @@ footer{padding-block:34px calc(34px + env(safe-area-inset-bottom,0px));color:var
       </div>
       <div class="deco" aria-hidden="true"><img src="img/coin.webp" alt=""><img src="img/chart.webp" alt=""><img src="img/rocket.webp" alt=""></div>
     </div>
+    <div class="calc">
+      <div class="calc-in">
+        <h3 data-i18n="calc.t">Your clinic, your numbers</h3>
+        <label class="field" for="ticket"><span class="fl"><span data-i18n="roi.ticket">Average treatment value</span><b id="ticketV">$3,500</b></span><input type="range" id="ticket" min="1000" max="15000" step="250" value="3500"><span class="hint"><span>$1k</span><span data-i18n="calc.th">veneers set ≈ $4–8k · All-on-4 ≈ $10–14k</span><span>$15k</span></span></label>
+        <label class="field" for="pts"><span class="fl"><span data-i18n="calc.pts">New international patients you want per month</span><b id="ptsV">8</b></span><input type="range" id="pts" min="1" max="40" step="1" value="8"><span class="hint"><span>1</span><span></span><span>40</span></span></label>
+      </div>
+      <div class="calc-out">
+        <div class="co big"><span data-i18n="calc.rev">Extra revenue / month</span><b id="oRev">$28,000</b></div>
+        <div class="co"><span data-i18n="calc.plan">Recommended plan</span><b id="oPlan">Standard</b><small id="oFee"></small></div>
+        <div class="co"><span data-i18n="calc.leads">Leads needed / month</span><b id="oLeads">127</b></div>
+        <div class="co"><span data-i18n="calc.ads">Est. ad budget / month</span><b id="oAds">$5,700</b></div>
+        <div class="co roi-co"><span data-i18n="calc.roi">ROI after our fee and ad budget</span><b id="oRoi" class="pos">+78%</b></div>
+      </div>
+    </div>
+
+    <h3 class="sub-h" data-i18n="bm.t">Our average results across clinics</h3>
+    <div class="bench" id="bench"></div>
+
+    <h3 class="sub-h" data-i18n="ramp.t">Expected ramp-up by plan</h3>
     <div class="roi-ctrl">
       <div class="seg" id="segPkg"><button data-p="starter">Starter</button><button data-p="standard" class="on">Standard</button><button data-p="full">Maximum</button></div>
       <div class="seg sc" id="segSc"><button data-s="worst" data-i18n="roi.worst">Worst</button><button data-s="avg" class="on" data-i18n="roi.avg">Average</button><button data-s="best" data-i18n="roi.best">Good</button></div>
-      <label class="ticket" for="ticket"><span data-i18n="roi.ticket">Avg. treatment value</span><input type="range" id="ticket" min="1500" max="12000" step="250" value="3500"><b id="ticketV">$3,500</b></label>
     </div>
     <div class="roi-main">
       <div class="months" id="months"></div>
       <div class="roi-chart"><h4 data-i18n="roi.chart">ROI on service fee, by month</h4><div class="cols" id="cols"></div></div>
     </div>
-    <div class="rt-wrap"><table class="rt" id="rtable"></table></div>
     <p class="assume" data-i18n="roi.assume">Illustrative model, not a forecast.</p>
-    <div class="joke">
-      <div class="imgs" aria-hidden="true"><img src="img/grin.webp" alt=""><img src="img/ring.webp" alt=""></div>
-      <div>
-        <h4 data-i18n="roi.dt">We don't guarantee ROI. We guarantee the work.</h4>
-        <p data-i18n="roi.dp"></p>
-        <p class="lol" data-i18n="roi.joke"></p>
-      </div>
+    <div class="guar">
+      <b data-i18n="roi.dt">We don't guarantee ROI. We guarantee the work.</b>
+      <span data-i18n="roi.joke">Just like a perfect smile doesn't guarantee you a husband or a wife.</span>
     </div>
   </div>
 </section>
@@ -755,6 +787,7 @@ const CONFIG = {
 
 const I18N = {
 en:{
+ "calc.t":"Your clinic, your numbers","calc.th":"veneers set ≈ $4–8k · All-on-4 ≈ $10–14k","calc.pts":"New international patients you want per month","calc.rev":"Extra revenue per month","calc.plan":"Recommended plan","calc.leads":"Leads needed per month","calc.ads":"Estimated ad budget per month","calc.roi":"ROI after our fee and ad budget","bm.t":"Our average results across clinics","ramp.t":"Expected ramp-up by plan",
  "nav.problem":"The problem","nav.packages":"Packages","nav.roi":"ROI","nav.cases":"Cases","nav.faq":"FAQ",
  "cta.book":"Book a call","cta.packages":"See packages","cta.packagesShort":"Packages","cta.buy":"Buy a package",
  "hero.pill":"Program built only for aesthetic dental clinics in Panama","hero.pillB":"Trusted by 30+ clinics",
@@ -773,13 +806,12 @@ en:{
  "pk.lead":"Each package is a monthly retainer for services. Within your plan's hours we cover any marketing service your clinic needs.",
  "pk.budget":"<b>Ad budget is not included.</b> Packages cover services only. Media spend (Google, Meta, TikTok, influencer fees, paid PR) is paid separately and agreed on the call based on your goals.",
  "roi.eyebrow":"Potential ROI","roi.title":"What 90 days <span style=\"color:#7fa0ff\">could</span> look like",
- "roi.lead":"Patients we expect to bring each month and the return on our service fee. Pick a plan, a scenario and your average treatment value.",
- "roi.worst":"Worst","roi.avg":"Average","roi.best":"Good","roi.ticket":"Avg. treatment value","roi.chart":"ROI on service fee, by month",
+ "roi.lead":"Enter your average treatment value and how many new patients you want. We show what it takes and what it returns.",
+ "roi.worst":"Worst","roi.avg":"Average","roi.best":"Good","roi.ticket":"Average treatment value","roi.chart":"ROI on service fee, by month",
  "roi.month":"Month","roi.patients":"new patients","roi.revenue":"Revenue","roi.plan":"Plan","roi.scenario":"Scenario",
- "roi.assume":"Illustrative model, not a forecast. ROI = (patients × avg. treatment value − monthly fee) ÷ monthly fee. Ad budget excluded. Results depend on pricing, capacity, reviews, response speed and ad spend.",
- "roi.dt":"We don't guarantee ROI. We guarantee the work.",
- "roi.dp":"Every hour, deliverable and campaign in your plan is executed to a senior standard, on time and fully reported. The patient makes the final decision. Our job is to make choosing you the obvious one.",
- "roi.joke":"After all, a beautiful smile doesn't guarantee you a wife or a husband either. It just improves the odds a lot. 😉",
+ "roi.assume":"Illustrative model based on our average funnel, not a forecast. Ramp-up ROI is on our service fee only.",
+ "roi.dt":"We don't guarantee ROI. We guarantee flawless work.",
+ "roi.joke":"Just like a perfect smile doesn't guarantee you a husband or a wife.",
  "ex.eyebrow":"Experience","ex.title":"We've done this <span class=\"hl\">before</span>",
  "ex.lead":"Medical tourism, aesthetic dentistry and premium healthcare across the Americas and Europe. A few highlights (client names under NDA):",
  "ex.s1":"specialists from top agencies","ex.s2":"years in performance marketing","ex.s3":"clinics and healthcare brands served","ex.s4":"countries we bring patients from",
@@ -796,6 +828,7 @@ en:{
  "pk.hours":"hours / month","pk.people":"specialists","pk.inc":"What's included","pk.buy":"Buy now","pk.book":"Book a call","pk.mo":"/ month","pk.excl":"+ ad budget, agreed separately","pk.popular":"Most popular"
 },
 es:{
+ "calc.t":"Su clínica, sus números","calc.th":"carillas ≈ $4–8k · All-on-4 ≈ $10–14k","calc.pts":"Pacientes internacionales nuevos que quiere por mes","calc.rev":"Ingresos extra por mes","calc.plan":"Plan recomendado","calc.leads":"Leads necesarios por mes","calc.ads":"Presupuesto publicitario estimado por mes","calc.roi":"ROI después de nuestra cuota y anuncios","bm.t":"Nuestros resultados promedio en clínicas","ramp.t":"Crecimiento esperado por plan",
  "nav.problem":"El problema","nav.packages":"Paquetes","nav.roi":"ROI","nav.cases":"Casos","nav.faq":"FAQ",
  "cta.book":"Agendar llamada","cta.packages":"Ver paquetes","cta.packagesShort":"Paquetes","cta.buy":"Comprar paquete",
  "hero.pill":"Programa hecho solo para clínicas dentales estéticas en Panamá","hero.pillB":"Con la confianza de +30 clínicas",
@@ -814,13 +847,12 @@ es:{
  "pk.lead":"Cada paquete es una cuota mensual por servicios. Dentro de las horas de su plan cubrimos cualquier servicio de marketing que su clínica necesite.",
  "pk.budget":"<b>El presupuesto publicitario no está incluido.</b> Los paquetes cubren solo servicios. La inversión en medios (Google, Meta, TikTok, influencers, PR pagado) se paga aparte y se acuerda en la llamada según sus objetivos.",
  "roi.eyebrow":"ROI potencial","roi.title":"Cómo <span style=\"color:#7fa0ff\">podrían</span> verse 90 días",
- "roi.lead":"Pacientes que esperamos traer cada mes y el retorno sobre nuestra cuota. Elija un plan, un escenario y su ticket promedio.",
+ "roi.lead":"Ingrese su ticket promedio y cuántos pacientes nuevos quiere. Le mostramos qué se necesita y cuánto retorna.",
  "roi.worst":"Peor","roi.avg":"Promedio","roi.best":"Bueno","roi.ticket":"Ticket promedio","roi.chart":"ROI sobre la cuota, por mes",
  "roi.month":"Mes","roi.patients":"pacientes nuevos","roi.revenue":"Ingresos","roi.plan":"Plan","roi.scenario":"Escenario",
- "roi.assume":"Modelo ilustrativo, no un pronóstico. ROI = (pacientes × ticket promedio − cuota mensual) ÷ cuota mensual. Sin presupuesto publicitario. Depende de precios, capacidad, reseñas, velocidad de respuesta e inversión en anuncios.",
- "roi.dt":"No garantizamos el ROI. Garantizamos el trabajo.",
- "roi.dp":"Cada hora, entregable y campaña de su plan se ejecuta con estándar senior, a tiempo y con reportes completos. La decisión final es del paciente. Nuestro trabajo es que elegirle a usted sea lo obvio.",
- "roi.joke":"Al fin y al cabo, una sonrisa bonita tampoco garantiza conseguir esposa o esposo. Solo mejora mucho las probabilidades. 😉",
+ "roi.assume":"Modelo ilustrativo basado en nuestro embudo promedio, no un pronóstico. El ROI por plan es solo sobre nuestra cuota.",
+ "roi.dt":"No garantizamos el ROI. Garantizamos un trabajo impecable.",
+ "roi.joke":"Igual que una sonrisa perfecta no garantiza conseguir esposo o esposa.",
  "ex.eyebrow":"Experiencia","ex.title":"Ya lo hemos <span class=\"hl\">hecho</span>",
  "ex.lead":"Turismo médico, odontología estética y salud premium en las Américas y Europa. Algunos ejemplos (nombres bajo NDA):",
  "ex.s1":"especialistas de agencias top","ex.s2":"años en marketing de performance","ex.s3":"clínicas y marcas de salud atendidas","ex.s4":"países de donde traemos pacientes",
@@ -922,6 +954,16 @@ const FAQ=[
  {q:T("Do you work with clinics outside Panama?","¿Trabajan con clínicas fuera de Panamá?"),a:T("This program is built for aesthetic dental clinics in Panama. For other markets, book a call and we'll tell you honestly whether we're a fit.","Este programa está hecho para clínicas de odontología estética en Panamá. Para otros mercados, agende una llamada y le diremos honestamente si encajamos.")}
 ];
 
+// Our average funnel benchmarks
+const BM={cpl:45,leadToConsult:.18,consultToPatient:.35};
+const BENCH=[
+ ["coin",T("$45","$45"),T("average cost per lead","costo promedio por lead")],
+ ["calendar",T("18%","18%"),T("of leads book a consultation","de leads agendan consulta")],
+ ["tooth",T("35%","35%"),T("of consultations become patients","de consultas se vuelven pacientes")],
+ ["speech",T("< 5 min","< 5 min"),T("first reply to a new lead","primera respuesta a un lead")],
+ ["rocket",T("4–6 weeks","4–6 semanas"),T("to the first international patients","a los primeros pacientes internacionales")]
+];
+
 /* ====== render ====== */
 let lang='en',pkgSel='standard',scSel='avg',ticket=3500;
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -973,12 +1015,21 @@ function renderROI(){
   const rs=pts.map(n=>roi(n,p.price)),mx=Math.max(100,...rs.map(Math.abs));
   $('#cols').innerHTML=rs.map((r,k)=>`<div class="col"><em class="${r>=0?'pos':'neg'}">${pct(r)}</em><i class="${r<0?'ng':''}" data-h="${Math.max(4,Math.abs(r)/mx*100)}"></i><small>${D['roi.month']} ${k+1}</small></div>`).join('');
   requestAnimationFrame(()=>requestAnimationFrame(()=>$$('#cols i').forEach(el=>el.style.height=el.dataset.h+'%')));
-  const sc=[['worst',D['roi.worst']],['avg',D['roi.avg']],['best',D['roi.best']]];
-  let h=`<thead><tr><th>${D['roi.plan']}</th><th>${D['roi.scenario']}</th><th>${D['roi.month']} 1</th><th>${D['roi.month']} 2</th><th>${D['roi.month']} 3</th></tr></thead><tbody>`;
-  PKG.forEach(pk=>sc.forEach(([k,l],j)=>{
-    h+=`<tr class="${pk.id===pkgSel&&k===scSel?'sel':''}"><td>${j===0?`<b>${pk.name}</b><small class="muted">$${pk.price.toLocaleString('en-US')} ${D['pk.mo']}</small>`:''}</td><td>${l}</td>${SCEN[pk.id][k].map(n=>{const r=roi(n,pk.price);return `<td>${n}<small class="${r>=0?'pos':'neg'}">${pct(r)}</small></td>`}).join('')}</tr>`;
-  }));
-  $('#rtable').innerHTML=h+'</tbody>';
+  renderCalc();
+}
+
+let want=8;
+function renderCalc(){
+  const D=I18N[lang],rate=BM.leadToConsult*BM.consultToPatient;
+  const leads=Math.ceil(want/rate),ads=Math.round(leads*BM.cpl/100)*100;
+  const plan=want<=4?PKG[0]:want<=10?PKG[1]:PKG[2];
+  const rev=want*ticket,cost=plan.price+ads,r=(rev-cost)/cost*100;
+  $('#ptsV').textContent=want; $('#ticketV').textContent=fmt$(ticket);
+  $('#oRev').textContent=fmt$(rev); $('#oPlan').textContent=plan.name;
+  $('#oFee').textContent=`$${plan.price.toLocaleString('en-US')} ${D['pk.mo']}`;
+  $('#oLeads').textContent=leads; $('#oAds').textContent=fmt$(ads);
+  const o=$('#oRoi'); o.textContent=pct(r); o.className=r>=0?'pos':'neg';
+  $('#bench').innerHTML=BENCH.map(([i,v,t])=>`<div class="bm">${img(i)}<b>${tr(v)}</b><span>${tr(t)}</span></div>`).join('');
 }
 
 function applyLang(l){
@@ -1011,7 +1062,8 @@ $$('.pay-opt').forEach(b=>b.addEventListener('click',()=>{
 }));
 $$('#segPkg button').forEach(b=>b.onclick=()=>{pkgSel=b.dataset.p;$$('#segPkg button').forEach(x=>x.classList.toggle('on',x===b));renderROI();});
 $$('#segSc button').forEach(b=>b.onclick=()=>{scSel=b.dataset.s;$$('#segSc button').forEach(x=>x.classList.toggle('on',x===b));renderROI();});
-$('#ticket').oninput=e=>{ticket=+e.target.value;$('#ticketV').textContent=fmt$(ticket);renderROI();};
+$('#ticket').oninput=e=>{ticket=+e.target.value;renderROI();};
+$('#pts').oninput=e=>{want=+e.target.value;renderCalc();};
 $$('.lang button').forEach(b=>b.onclick=()=>applyLang(b.dataset.lang));
 
 const hdr=$('#hdr'),mcta=$('#mcta');
