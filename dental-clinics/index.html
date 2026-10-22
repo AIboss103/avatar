@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SmileScale — Patient Growth for Panama Aesthetic Dental Clinics</title>
+<meta name="description" content="Marketing for aesthetic dental clinics in Panama. We bring patients from the USA, Canada and Europe in 90 days.">
+<meta name="theme-color" content="#07090f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2307090f'/%3E%3Cpath d='M18 22c0-6 6-8 10-6l4 2 4-2c4-2 10 0 10 6 0 6-2 10-3 16-1 6-2 12-5 12-3 0-3-8-6-8s-3 8-6 8c-3 0-4-6-5-12-1-6-3-10-3-16z' fill='%235eead4'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#07090f; --bg2:#0c1018; --card:#10151f; --card2:#141b27;
+  --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+  --text:#eef2f7; --muted:#9aa6b8; --dim:#6b7689;
+  --teal:#5eead4; --teal2:#2dd4bf; --gold:#f5d08a; --pink:#f0abfc; --red:#fb7185;
+  --grad:linear-gradient(120deg,#5eead4 0%,#a5f3fc 35%,#f5d08a 70%,#f0abfc 100%);
+  --r:22px; --maxw:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.serif{font-family:Fraunces,Georgia,serif}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;animation:shine 8s ease-in-out infinite}
+@keyframes shine{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:600}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+section{position:relative;padding:120px 0}
+h2.title{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(34px,5vw,60px);line-height:1.05;letter-spacing:-.02em;margin:18px 0 18px}
+p.lead{color:var(--muted);font-size:clamp(16px,1.6vw,19px);max-width:680px}
+.center{text-align:center}.center p.lead{margin:0 auto}
+
+/* noise + glow background */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+main,header,footer{position:relative;z-index:1}
+#cursorGlow{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(94,234,212,.09),transparent 65%);transform:translate(-50%,-50%);left:-999px;top:-999px;transition:opacity .3s}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .25s,box-shadow .25s,background .25s;white-space:nowrap;position:relative;overflow:hidden}
+.btn-primary{background:var(--text);color:#07090f;box-shadow:0 10px 40px -10px rgba(94,234,212,.6)}
+.btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s}
+.btn-primary:hover::after{transform:translateX(120%)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 50px -10px rgba(94,234,212,.75)}
+.btn-ghost{border:1px solid var(--line2);background:rgba(255,255,255,.03);backdrop-filter:blur(10px)}
+.btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.btn .arr{transition:transform .25s}.btn:hover .arr{transform:translateX(4px)}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s,backdrop-filter .3s;border-bottom:1px solid transparent}
+header.scrolled{background:rgba(7,9,15,.72);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em}
+.logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#5eead4,#f5d08a);display:grid;place-items:center;box-shadow:0 0 24px rgba(94,234,212,.35)}
+.logo-mark svg{width:20px;height:20px}
+.nav-links{display:flex;gap:30px;font-size:14px;color:var(--muted)}
+.nav-links a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang{display:flex;border:1px solid var(--line2);border-radius:999px;padding:3px;background:rgba(255,255,255,.03)}
+.lang button{padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--muted);transition:.25s}
+.lang button.on{background:var(--text);color:#07090f}
+.nav .btn{padding:11px 18px;font-size:14px}
+.burger{display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--line2);align-items:center;justify-content:center}
+.burger span{width:18px;height:2px;background:var(--text);position:relative;transition:.3s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--text);transition:.3s}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+body.menu-open .burger span{background:transparent}
+body.menu-open .burger span::before{top:0;transform:rotate(45deg)}
+body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
+.mobile-menu{position:fixed;inset:74px 0 auto 0;background:rgba(7,9,15,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:16px 24px 28px;display:flex;flex-direction:column;gap:4px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:.3s;z-index:49}
+.mobile-menu a{padding:14px 0;border-bottom:1px solid var(--line);font-size:18px}
+.mobile-menu .btn{margin-top:18px}
+body.menu-open .mobile-menu{transform:none;opacity:1;pointer-events:auto}
+
+/* hero */
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:140px 0 90px;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;pointer-events:none}
+.orb.o1{width:560px;height:560px;background:#0f766e;top:-140px;right:-120px;animation:float1 16s ease-in-out infinite}
+.orb.o2{width:420px;height:420px;background:#7c3aed;bottom:-160px;left:-120px;opacity:.35;animation:float2 18s ease-in-out infinite}
+.orb.o3{width:300px;height:300px;background:#b45309;top:40%;left:45%;opacity:.25;animation:float1 20s ease-in-out infinite reverse}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,50px) scale(1.12)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(70px,-40px)}}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 40%,#000 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 10%,transparent 70%);opacity:.5}
+.hero-inner{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:60px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.04);font-size:13px;color:var(--muted);backdrop-filter:blur(8px)}
+.pill b{background:var(--teal);color:#062b26;padding:3px 10px;border-radius:999px;font-size:11px;letter-spacing:.06em}
+.flag{display:inline-block;width:20px;height:14px;border-radius:3px;overflow:hidden;vertical-align:-2px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:350;font-size:clamp(40px,6.4vw,86px);line-height:1;letter-spacing:-.035em;margin:26px 0 24px}
+h1 em{font-style:italic;font-weight:300}
+.hero p.lead{font-size:clamp(17px,1.7vw,20px)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:28px;margin-top:44px;color:var(--muted);font-size:14px}
+.hero-meta div{display:flex;align-items:center;gap:8px}
+.hero-meta svg{width:18px;height:18px;color:var(--teal)}
+.word{display:inline-block;opacity:0;transform:translateY(40px) rotate(3deg);filter:blur(8px);animation:wordIn .9s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes wordIn{to{opacity:1;transform:none;filter:blur(0)}}
+
+/* hero visual */
+.visual{position:relative;aspect-ratio:1/1.1;max-width:460px;margin-left:auto;width:100%}
+.v-card{position:absolute;border-radius:24px;background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02));border:1px solid var(--line2);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+.v-main{inset:6% 6% 14% 6%;padding:26px;display:flex;flex-direction:column}
+.v-main .vh{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+.live{display:inline-flex;align-items:center;gap:6px;color:var(--teal);font-weight:600;font-size:12px}
+.live i{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(94,234,212,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(94,234,212,0)}100%{box-shadow:0 0 0 0 rgba(94,234,212,0)}}
+.big-num{font-family:Fraunces,serif;font-size:64px;line-height:1;margin:18px 0 4px;letter-spacing:-.03em}
+.v-main small{color:var(--muted);font-size:13px}
+.chart{flex:1;margin-top:18px;position:relative}
+.chart svg{width:100%;height:100%;overflow:visible}
+.chart .line{stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.4s .6s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.v-chip{padding:14px 16px;display:flex;align-items:center;gap:12px;font-size:13px;animation:bob 6s ease-in-out infinite}
+.v-chip .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:18px;flex:none}
+.v-chip b{display:block;font-size:14px}
+.v-chip span{color:var(--muted);font-size:12px}
+.c1{left:-8%;top:62%;animation-delay:-2s}.c1 .ic{background:rgba(94,234,212,.15)}
+.c2{right:-6%;top:-2%}.c2 .ic{background:rgba(245,208,138,.15)}
+.c3{right:-2%;bottom:0}.c3 .ic{background:rgba(240,171,252,.15)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);padding:22px 0;overflow:hidden;background:rgba(255,255,255,.015)}
+.marquee-track{display:flex;gap:48px;width:max-content;animation:marq 40s linear infinite}
+.marquee span{font-family:Fraunces,serif;font-size:clamp(20px,2.5vw,30px);color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:48px}
+.marquee span::after{content:"✦";color:var(--teal);font-size:16px}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* problem */
+.prob-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;margin-top:60px}
+.stat-hero{border-radius:var(--r);padding:44px;background:linear-gradient(160deg,#111827,#0b0f17);border:1px solid var(--line);position:relative;overflow:hidden}
+.stat-hero .num{font-family:Fraunces,serif;font-size:clamp(90px,14vw,170px);line-height:.9;letter-spacing:-.05em}
+.stat-hero p{color:var(--muted);font-size:18px;max-width:440px;margin-top:14px}
+.stat-hero p b{color:var(--text)}
+.bars{margin-top:34px;display:flex;flex-direction:column;gap:16px}
+.bar-row{display:grid;grid-template-columns:110px 1fr 54px;gap:14px;align-items:center;font-size:14px}
+.bar{height:12px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.bar-row b{text-align:right;font-variant-numeric:tabular-nums}
+.prob-list{display:flex;flex-direction:column;gap:16px}
+.prob{padding:26px 28px;border-radius:18px;border:1px solid var(--line);background:var(--card);display:flex;gap:18px;transition:border-color .3s,transform .3s}
+.prob:hover{border-color:rgba(251,113,133,.35);transform:translateX(4px)}
+.prob .n{flex:none;width:36px;height:36px;border-radius:10px;background:rgba(251,113,133,.12);color:var(--red);display:grid;place-items:center;font-weight:700;font-size:14px}
+.prob h4{font-size:17px;margin-bottom:4px}
+.prob p{color:var(--muted);font-size:15px}
+.stat-hero p.note,.note{color:var(--dim);font-size:12px;margin-top:18px}
+
+/* solution */
+.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px}
+.sol{padding:34px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);position:relative;overflow:hidden;transition:transform .4s,border-color .4s}
+.sol::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(94,234,212,.12),transparent 50%);opacity:0;transition:opacity .4s}
+.sol:hover::before{opacity:1}
+.sol:hover{border-color:rgba(94,234,212,.3);transform:translateY(-4px)}
+.sol .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:24px;background:linear-gradient(135deg,rgba(94,234,212,.18),rgba(245,208,138,.12));border:1px solid var(--line2);margin-bottom:22px}
+.sol h3{font-size:20px;margin-bottom:10px;letter-spacing:-.01em}
+.sol p{color:var(--muted);font-size:15px}
+.geo{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px;justify-content:center}
+.geo span{padding:10px 18px;border-radius:999px;border:1px solid var(--line2);font-size:14px;background:rgba(255,255,255,.03)}
+
+/* packages */
+.billing{display:flex;justify-content:center;margin-top:36px}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px;align-items:stretch}
+.pkg{border-radius:28px;padding:36px 32px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;position:relative;transition:transform .4s,box-shadow .4s}
+.pkg:hover{transform:translateY(-6px);box-shadow:0 30px 80px -30px rgba(94,234,212,.35)}
+.pkg.feat{background:linear-gradient(170deg,#132a29 0%,#10151f 55%);border-color:rgba(94,234,212,.4)}
+.pkg.feat::before{content:"";position:absolute;inset:-1px;border-radius:28px;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grad);color:#07090f;font-size:11px;font-weight:800;letter-spacing:.12em;padding:6px 14px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
+.pkg .step{font-size:12px;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.pkg h3{font-family:Fraunces,serif;font-weight:400;font-size:34px;margin:6px 0 4px}
+.pkg .tag{color:var(--muted);font-size:14px;min-height:44px}
+.price{display:flex;align-items:baseline;gap:6px;margin:22px 0 4px}
+.price b{font-family:Fraunces,serif;font-size:56px;font-weight:400;letter-spacing:-.03em;line-height:1}
+.price span{color:var(--muted);font-size:15px}
+.excl{font-size:12px;color:var(--gold);margin-bottom:22px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.kpi{padding:14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.kpi b{display:block;font-size:22px;font-weight:700;letter-spacing:-.02em}
+.kpi span{font-size:12px;color:var(--muted)}
+.inc-h{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin:6px 0 12px;font-weight:600}
+.pkg ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px;flex:1}
+.pkg li{display:flex;gap:11px;font-size:14.5px;line-height:1.45}
+.pkg li::before{content:"";flex:none;width:18px;height:18px;margin-top:1px;border-radius:50%;background:rgba(94,234,212,.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235eead4' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/11px no-repeat}
+.pkg li.plus{color:var(--muted);font-style:italic}
+.pkg li.plus::before{background:rgba(245,208,138,.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5d08a' stroke-width='3.2' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center/11px no-repeat}
+.pkg li.new b{color:var(--teal);font-weight:600}
+.pkg-cta{display:flex;flex-direction:column;gap:10px}
+.pkg-cta .btn{width:100%}
+.pay-icons{display:flex;justify-content:center;gap:8px;margin-top:6px;color:var(--dim);font-size:11px;flex-wrap:wrap}
+.pay-icons span{padding:4px 8px;border:1px solid var(--line);border-radius:6px}
+.budget-note{margin:40px auto 0;max-width:820px;padding:22px 26px;border-radius:18px;border:1px dashed rgba(245,208,138,.4);background:rgba(245,208,138,.05);display:flex;gap:16px;align-items:flex-start;font-size:15px;color:var(--muted)}
+.budget-note b{color:var(--gold)}
+.budget-note .ic{font-size:22px;flex:none}
+.path{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:30px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+.path b{color:var(--text);padding:6px 14px;border-radius:999px;border:1px solid var(--line2)}
+
+/* ROI */
+.roi-box{margin-top:56px;border-radius:28px;border:1px solid var(--line);background:linear-gradient(180deg,var(--card),var(--bg2));padding:36px}
+.roi-controls{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--line);flex-wrap:wrap}
+.seg button{padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;color:var(--muted);transition:.25s}
+.seg button.on{background:var(--text);color:#07090f}
+.seg.sc button.on[data-s="worst"]{background:#fda4af}
+.seg.sc button.on[data-s="avg"]{background:#a5f3fc}
+.seg.sc button.on[data-s="best"]{background:#5eead4}
+.ticket{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.ticket input{accent-color:var(--teal);width:180px}
+.ticket b{color:var(--text);font-variant-numeric:tabular-nums;min-width:64px}
+.roi-main{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;margin-top:34px}
+.months{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.month{padding:22px;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid var(--line);display:flex;flex-direction:column}
+.month .m{font-size:12px;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.month .pts{font-family:Fraunces,serif;font-size:46px;line-height:1.1;margin-top:8px;font-variant-numeric:tabular-nums}
+.month .pts-l{font-size:13px;color:var(--muted)}
+.month .rev{margin-top:14px;font-size:14px;color:var(--muted)}
+.month .rev b{color:var(--text)}
+.month .roi{margin-top:auto;padding-top:14px;font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+.pos{color:var(--teal)}.neg{color:var(--red)}
+.roi-chart{border-radius:18px;background:rgba(255,255,255,.03);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column}
+.roi-chart h4{font-size:14px;color:var(--muted);font-weight:500;margin-bottom:12px}
+.cols{flex:1;display:flex;align-items:flex-end;gap:18px;min-height:200px;padding-top:20px;position:relative}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+.col i{width:100%;max-width:70px;border-radius:12px 12px 4px 4px;background:var(--grad);height:0;transition:height .8s cubic-bezier(.2,.8,.2,1);position:relative}
+.col i.ng{background:linear-gradient(180deg,#fb7185,#9f1239)}
+.col small{font-size:12px;color:var(--muted)}
+.col em{font-style:normal;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.roi-table-wrap{overflow-x:auto;margin-top:34px;-webkit-overflow-scrolling:touch}
+table.rt{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+.rt th,.rt td{padding:14px 12px;text-align:center;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.rt th{color:var(--dim);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.rt td:first-child,.rt th:first-child{text-align:left}
+.rt tr.hl td{background:rgba(94,234,212,.05)}
+.rt td small{display:block;color:var(--dim);font-size:11px}
+.disclaimer{margin-top:34px;display:grid;grid-template-columns:auto 1fr;gap:20px;padding:28px;border-radius:20px;background:linear-gradient(120deg,rgba(240,171,252,.08),rgba(94,234,212,.06));border:1px solid var(--line2);align-items:center}
+.disclaimer .ic{font-size:44px}
+.disclaimer h4{font-family:Fraunces,serif;font-weight:400;font-size:24px;margin-bottom:6px}
+.disclaimer p{color:var(--muted);font-size:15px}
+.disclaimer .joke{color:var(--text);font-style:italic;margin-top:10px}
+.assume{font-size:12px;color:var(--dim);margin-top:16px}
+
+/* experience */
+.exp-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-radius:24px;overflow:hidden;margin-top:56px;border:1px solid var(--line)}
+.es{background:var(--bg2);padding:36px 28px}
+.es b{font-family:Fraunces,serif;font-weight:400;font-size:clamp(40px,5vw,60px);line-height:1;display:block;letter-spacing:-.03em}
+.es > span{color:var(--muted);font-size:14px;margin-top:10px;display:block}
+.cases{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;margin-top:40px}
+.case{grid-column:span 2;border-radius:var(--r);padding:30px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px;transition:transform .4s,border-color .4s;position:relative;overflow:hidden}
+.case:nth-child(4),.case:nth-child(5){grid-column:span 3}
+.case:hover{transform:translateY(-4px);border-color:var(--line2)}
+.case .top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;color:var(--muted)}
+.case .chip{padding:5px 10px;border-radius:99px;background:rgba(94,234,212,.1);color:var(--teal);font-weight:600;font-size:11px;letter-spacing:.04em}
+.case h3{font-size:19px;letter-spacing:-.01em}
+.case p{color:var(--muted);font-size:14.5px}
+.case .res{display:flex;gap:22px;margin-top:auto;padding-top:16px;border-top:1px solid var(--line);flex-wrap:wrap}
+.case .res div b{display:block;font-family:Fraunces,serif;font-size:30px;font-weight:400;line-height:1.1}
+.case .res div span{font-size:12px;color:var(--muted)}
+.team{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;padding:44px;border-radius:28px;border:1px solid var(--line);background:radial-gradient(600px circle at 0% 0%,rgba(94,234,212,.1),transparent 60%),var(--card)}
+.team h3{font-family:Fraunces,serif;font-weight:400;font-size:clamp(28px,3.5vw,42px);line-height:1.1;letter-spacing:-.02em}
+.team p{color:var(--muted);margin-top:14px}
+.roles{display:flex;flex-wrap:wrap;gap:8px}
+.roles span{padding:9px 14px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:13.5px;transition:.3s}
+.roles span:hover{border-color:var(--teal);color:var(--teal)}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px;counter-reset:s}
+.st{padding:28px;border-radius:20px;border:1px solid var(--line);background:var(--card);position:relative}
+.st::before{counter-increment:s;content:"0" counter(s);font-family:Fraunces,serif;font-size:44px;color:transparent;-webkit-text-stroke:1px rgba(94,234,212,.6);display:block;line-height:1;margin-bottom:18px}
+.st h4{font-size:17px;margin-bottom:6px}
+.st p{font-size:14px;color:var(--muted)}
+
+/* powered */
+.powered{padding:70px 0;border-top:1px solid var(--line)}
+.pw{display:flex;align-items:center;justify-content:center;gap:clamp(24px,6vw,80px);flex-wrap:wrap;margin-top:28px}
+.pw a{font-size:clamp(22px,3vw,34px);font-weight:700;letter-spacing:-.02em;color:var(--muted);transition:color .3s,transform .3s}
+.pw a:hover{color:var(--text);transform:translateY(-2px)}
+.pw a span{color:var(--teal)}
+
+/* faq */
+.faq{max-width:860px;margin:50px auto 0}
+.faq details{border-bottom:1px solid var(--line);padding:22px 0}
+.faq summary{list-style:none;display:flex;justify-content:space-between;gap:20px;cursor:pointer;font-size:18px;font-weight:500}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:26px;line-height:1;color:var(--teal);transition:transform .3s;flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--muted);margin-top:12px;font-size:15.5px}
+
+/* final cta */
+.final{padding:110px 0 130px}
+.final-card{border-radius:36px;padding:clamp(40px,7vw,90px) clamp(24px,5vw,70px);text-align:center;position:relative;overflow:hidden;background:radial-gradient(800px circle at 50% 0%,rgba(94,234,212,.22),transparent 60%),linear-gradient(180deg,#0f1a1f,#0a0e15);border:1px solid var(--line2)}
+.final-card h2{font-family:Fraunces,serif;font-weight:350;font-size:clamp(36px,6vw,72px);line-height:1.02;letter-spacing:-.03em;max-width:900px;margin:18px auto}
+.final-card .hero-cta{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--dim);font-size:13px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;background:rgba(3,5,9,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:opacity .3s}
+.modal.open{opacity:1;pointer-events:auto}
+.modal-card{width:100%;max-width:460px;border-radius:26px;background:var(--card2);border:1px solid var(--line2);padding:32px;transform:translateY(20px) scale(.97);transition:transform .35s cubic-bezier(.2,.8,.2,1);position:relative;max-height:calc(100vh - 32px);overflow:auto}
+.modal.open .modal-card{transform:none}
+.modal-card h3{font-family:Fraunces,serif;font-weight:400;font-size:28px}
+.modal-card .sub{color:var(--muted);font-size:14px;margin:6px 0 22px}
+.x{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;font-size:18px;color:var(--muted)}
+.pay-opt{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;border:1px solid var(--line2);background:rgba(255,255,255,.03);margin-bottom:12px;transition:.25s;width:100%;text-align:left}
+.pay-opt:hover{border-color:var(--teal);background:rgba(94,234,212,.06)}
+.pay-opt .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.06);font-size:20px;flex:none}
+.pay-opt b{display:block;font-size:15px}
+.pay-opt span{font-size:12.5px;color:var(--muted)}
+.modal-foot{font-size:12px;color:var(--dim);margin-top:14px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}
+
+/* sticky mobile cta */
+.mcta{display:none}
+
+@media (max-width:1024px){
+  .hero-inner{grid-template-columns:1fr}
+  .visual{margin:20px auto 0;max-width:420px}
+  .pkg-grid{grid-template-columns:1fr;max-width:540px;margin-left:auto;margin-right:auto}
+  .pkg.feat{order:-1}
+  .sol-grid{grid-template-columns:1fr 1fr}
+  .roi-main{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .exp-stats{grid-template-columns:1fr 1fr}
+  .cases{grid-template-columns:1fr 1fr}
+  .case,.case:nth-child(4),.case:nth-child(5){grid-column:span 1}
+  .case:nth-child(5){grid-column:span 2}
+  .team{grid-template-columns:1fr}
+  .prob-grid{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .nav-links,.nav .btn{display:none}
+  .burger{display:flex}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .nav{gap:10px}.logo{font-size:16px;gap:8px}.lang button{padding:6px 10px}
+  section{padding:84px 0}
+  .hero{padding:110px 0 70px}
+  .hero-cta .btn{width:100%}
+  .hero-meta{gap:14px 22px}
+  .sol-grid,.steps,.cases{grid-template-columns:1fr}
+  .case:nth-child(5){grid-column:span 1}
+  .stat-hero,.roi-box,.team{padding:26px 20px}
+  .bar-row{grid-template-columns:88px 1fr 44px;font-size:13px}
+  .months{grid-template-columns:1fr}
+  .month{flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+  .month .m{width:100%}
+  .month .pts{font-size:38px;margin:0}
+  .month .rev{margin:0;width:100%}
+  .month .roi{margin:0;padding:0;width:100%}
+  .roi-controls{flex-direction:column;align-items:stretch}
+  .seg{justify-content:center}
+  .seg button{padding:9px 13px;font-size:13px;flex:1}
+  .ticket input{width:100%;flex:1}
+  .disclaimer{grid-template-columns:1fr;text-align:left;padding:22px}
+  .pkg{padding:30px 22px}
+  .price b{font-size:48px}
+  .es{padding:26px 18px}
+  .v-chip{padding:10px 12px}
+  .c1{left:-2%}.c2{right:-2%}
+  .big-num{font-size:52px}
+  .mcta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;gap:8px;padding:8px;border-radius:999px;background:rgba(16,21,31,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line2);transform:translateY(120%);transition:transform .4s;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+  .mcta.show{transform:none}
+  .mcta .btn{flex:1;padding:13px 10px;font-size:14px}
+  footer{padding-bottom:100px}
+  #cursorGlow{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv,.word{opacity:1;transform:none;filter:none}
+  .chart .line{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+<div id="cursorGlow"></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="SmileScale">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="#07090f"><path d="M5 7.5C5 5 7.5 4 9.3 4.9L12 6.2l2.7-1.3C16.5 4 19 5 19 7.5c0 2.4-.8 4-1.2 6.4-.4 2.5-.9 6.1-2.3 6.1-1.3 0-1.4-3.5-3.5-3.5S10.2 20 8.9 20c-1.4 0-1.9-3.6-2.3-6.1C6.2 11.5 5 9.9 5 7.5z"/></svg></span>
+      SmileScale
+    </a>
+    <nav class="nav-links">
+      <a href="#problem" data-i18n="nav.problem">The problem</a>
+      <a href="#packages" data-i18n="nav.packages">Packages</a>
+      <a href="#roi" data-i18n="nav.roi">ROI</a>
+      <a href="#cases" data-i18n="nav.cases">Cases</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="on">EN</button>
+        <button data-lang="es">ES</button>
+      </div>
+      <a href="#" class="btn btn-primary js-book" data-i18n="cta.book">Book a call</a>
+      <button class="burger" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu">
+  <a href="#problem" data-i18n="nav.problem">The problem</a>
+  <a href="#packages" data-i18n="nav.packages">Packages</a>
+  <a href="#roi" data-i18n="nav.roi">ROI</a>
+  <a href="#cases" data-i18n="nav.cases">Cases</a>
+  <a href="#faq" data-i18n="nav.faq">FAQ</a>
+  <a href="#" class="btn btn-primary js-book" data-i18n="cta.book">Book a call</a>
+</div>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="pill rv in"><b data-i18n="hero.pillTag">PANAMA</b><span data-i18n="hero.pill">Built only for aesthetic dental clinics in Panama</span></span>
+      <h1 id="heroTitle" data-i18n-html="hero.title">We help aesthetic dental clinics in Panama win international patients <em class="grad">in 90 days</em></h1>
+      <p class="lead rv d2" data-i18n="hero.lead">Veneers, implants, smile makeovers — we bring high-intent patients from the USA, Canada and Europe straight to your chair. Strategy, content, SEO, PR, ads and reputation, all handled by one senior team.</p>
+      <div class="hero-cta rv d3">
+        <a href="#" class="btn btn-primary js-book"><span data-i18n="cta.book">Book a call</span> <span class="arr">→</span></a>
+        <a href="#packages" class="btn btn-ghost" data-i18n="cta.packages">See packages</a>
+      </div>
+      <div class="hero-meta rv d4">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.m1">50+ specialists</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.m2">USA · Canada · Europe</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.m3">EN / ES</span></div>
+      </div>
+    </div>
+    <div class="visual rv d2" id="visual">
+      <div class="v-card v-main">
+        <div class="vh"><span data-i18n="vis.title">New international patients</span><span class="live"><i></i>LIVE</span></div>
+        <div class="big-num"><span class="grad" id="heroCount">0</span></div>
+        <small data-i18n="vis.sub">Avg. Standard plan, month 3 · illustrative</small>
+        <div class="chart">
+          <svg viewBox="0 0 300 140" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#5eead4"/><stop offset=".6" stop-color="#a5f3fc"/><stop offset="1" stop-color="#f5d08a"/></linearGradient>
+              <linearGradient id="fg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#5eead4" stop-opacity=".35"/><stop offset="1" stop-color="#5eead4" stop-opacity="0"/></linearGradient>
+            </defs>
+            <path d="M0 125 C40 120 60 112 90 104 S150 80 180 66 S240 30 300 8 L300 140 L0 140Z" fill="url(#fg)"/>
+            <path class="line" d="M0 125 C40 120 60 112 90 104 S150 80 180 66 S240 30 300 8" fill="none" stroke="url(#lg)" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="v-card v-chip c1"><div class="ic">🇺🇸</div><div><b data-i18n="vis.c1">Lead from Miami</b><span data-i18n="vis.c1s">Full veneers · booked</span></div></div>
+      <div class="v-card v-chip c2"><div class="ic">⭐</div><div><b>4.9 / 5</b><span data-i18n="vis.c2s">Google rating</span></div></div>
+      <div class="v-card v-chip c3"><div class="ic">🇨🇦</div><div><b data-i18n="vis.c3">Toronto → Panama</b><span data-i18n="vis.c3s">All-on-4 consult</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marq"></div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="prob.eyebrow">The problem</span>
+    <h2 class="title rv" data-i18n-html="prob.title">Your next patient is flying <em class="grad">past Panama</em></h2>
+    <p class="lead rv" data-i18n="prob.lead">Dental tourism from North America and Europe is booming — but most of it lands somewhere else.</p>
+    <div class="prob-grid">
+      <div class="stat-hero rv">
+        <div class="num grad"><span class="count" data-to="60">0</span>%</div>
+        <p data-i18n-html="prob.stat">of dental tourists from the <b>USA &amp; Europe</b> heading to Latin America choose <b>Colombia</b> — not Panama.</p>
+        <div class="bars" id="bars">
+          <div class="bar-row"><span>Colombia</span><div class="bar"><i data-w="60" style="background:linear-gradient(90deg,#fb7185,#fda4af)"></i></div><b>60%</b></div>
+          <div class="bar-row"><span data-i18n="prob.others">Others</span><div class="bar"><i data-w="28" style="background:rgba(255,255,255,.25)"></i></div><b>28%</b></div>
+          <div class="bar-row"><span>Panama</span><div class="bar"><i data-w="12" style="background:var(--grad)"></i></div><b>12%</b></div>
+        </div>
+        <p class="note" data-i18n="prob.note">Directional estimate from our market research; used to frame the opportunity.</p>
+      </div>
+      <div class="prob-list">
+        <div class="prob rv d1"><div class="n">01</div><div><h4 data-i18n="prob.p1t">"Panama is more expensive"</h4><p data-i18n="prob.p1">Patients compare price-per-tooth with Medellín and Bogotá and never see why Panama is worth more.</p></div></div>
+        <div class="prob rv d2"><div class="n">02</div><div><h4 data-i18n="prob.p2t">Invisible in US search &amp; AI answers</h4><p data-i18n="prob.p2">Ask Google or ChatGPT "best veneers abroad" — Colombia, Mexico and Costa Rica show up. Panama clinics don't.</p></div></div>
+        <div class="prob rv d3"><div class="n">03</div><div><h4 data-i18n="prob.p3t">Local marketing, global patients</h4><p data-i18n="prob.p3">Most agencies in Panama run Spanish-language local ads. International patients need English-first trust, proof and logistics.</p></div></div>
+        <div class="prob rv d4"><div class="n">04</div><div><h4 data-i18n="prob.p4t">Leads that ghost</h4><p data-i18n="prob.p4">Without reviews, before/after content and fast follow-up, a $10k smile makeover lead goes cold in 48 hours.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution" style="background:linear-gradient(180deg,transparent,rgba(94,234,212,.03),transparent)">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow rv" data-i18n="sol.eyebrow">How we fix it</span>
+      <h2 class="title rv" data-i18n-html="sol.title">We sell <em class="grad">Panama</em> — then we sell <em class="grad">your clinic</em></h2>
+      <p class="lead rv" data-i18n="sol.lead">We target patients mainly from the USA, Canada and Europe, and give them every reason to choose Panama over Colombia.</p>
+    </div>
+    <div class="sol-grid" id="solGrid"></div>
+    <div class="geo rv">
+      <span>🇺🇸 USA</span><span>🇨🇦 Canada</span><span>🇬🇧 UK</span><span>🇩🇪 Germany</span><span>🇪🇸 Spain</span><span>🇫🇷 France</span><span>🇳🇱 Netherlands</span>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow rv" data-i18n="pk.eyebrow">Packages</span>
+      <h2 class="title rv" data-i18n-html="pk.title">Start lean. <em class="grad">Scale</em> when it works.</h2>
+      <p class="lead rv" data-i18n="pk.lead">Every package is a monthly retainer for services. We cover any marketing service your clinic needs within the hours of your plan.</p>
+    </div>
+    <div class="path rv"><b>Starter</b><span>→</span><b>Standard</b><span>→</span><b>Maximum</b></div>
+    <div class="pkg-grid" id="pkgGrid"></div>
+    <div class="budget-note rv"><span class="ic">💡</span><div data-i18n-html="pk.budget"><b>Ad budget is not included.</b> All packages cover services only. Media spend (Google, Meta, TikTok, influencers' fees, PR placements) is paid separately and agreed on the call based on your goals.</div></div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section id="roi" style="background:linear-gradient(180deg,transparent,rgba(240,171,252,.025),transparent)">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow rv" data-i18n="roi.eyebrow">Potential ROI</span>
+      <h2 class="title rv" data-i18n-html="roi.title">What 90 days <em class="grad">could</em> look like</h2>
+      <p class="lead rv" data-i18n="roi.lead">Patients we expect to bring per month, and the return on our service fee. Pick a plan, a scenario and your average treatment value.</p>
+    </div>
+    <div class="roi-box rv">
+      <div class="roi-controls">
+        <div class="seg" id="segPkg">
+          <button data-p="starter" >Starter</button>
+          <button data-p="standard" class="on">Standard</button>
+          <button data-p="full">Maximum</button>
+        </div>
+        <div class="seg sc" id="segSc">
+          <button data-s="worst" data-i18n="roi.worst">Worst</button>
+          <button data-s="avg" class="on" data-i18n="roi.avg">Average</button>
+          <button data-s="best" data-i18n="roi.best">Good</button>
+        </div>
+        <label class="ticket"><span data-i18n="roi.ticket">Avg. treatment value</span><input type="range" id="ticket" min="1500" max="12000" step="250" value="3500"><b id="ticketV">$3,500</b></label>
+      </div>
+      <div class="roi-main">
+        <div class="months" id="months"></div>
+        <div class="roi-chart"><h4 data-i18n="roi.chart">ROI on service fee, by month</h4><div class="cols" id="cols"></div></div>
+      </div>
+      <div class="roi-table-wrap">
+        <table class="rt" id="rtable"></table>
+      </div>
+      <p class="assume" data-i18n="roi.assume">Illustrative model. ROI = (patients × avg. treatment value − monthly fee) ÷ monthly fee. Ad budget excluded. Results depend on clinic pricing, capacity, reviews, response speed and ad spend.</p>
+    </div>
+    <div class="disclaimer rv">
+      <div class="ic">😁</div>
+      <div>
+        <h4 data-i18n="roi.dt">We don't guarantee ROI. We guarantee the work.</h4>
+        <p data-i18n="roi.dp">Every hour, deliverable and campaign in your plan is executed to a senior standard, on time and fully reported. Patients' decisions are theirs — our job is to make choosing you the obvious one.</p>
+        <p class="joke" data-i18n="roi.joke">After all, a beautiful smile doesn't guarantee you a wife or a husband either. It just dramatically improves the odds. 😉</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="cases">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="ex.eyebrow">Experience</span>
+    <h2 class="title rv" data-i18n-html="ex.title">We've done this <em class="grad">before</em></h2>
+    <p class="lead rv" data-i18n="ex.lead">Medical tourism, aesthetic dentistry and premium healthcare across the Americas and Europe. A few highlights:</p>
+    <div class="exp-stats rv">
+      <div class="es"><b><span class="count" data-to="50">0</span>+</b><span data-i18n="ex.s1">specialists from top agencies</span></div>
+      <div class="es"><b><span class="count" data-to="8">0</span>+</b><span data-i18n="ex.s2">years in performance marketing</span></div>
+      <div class="es"><b><span class="count" data-to="30">0</span>+</b><span data-i18n="ex.s3">clinics &amp; healthcare brands served</span></div>
+      <div class="es"><b><span class="count" data-to="12">0</span></b><span data-i18n="ex.s4">countries we drive patients from</span></div>
+    </div>
+    <div class="cases" id="caseGrid"></div>
+    <div class="team rv">
+      <div>
+        <h3 data-i18n-html="ex.teamT">A <em class="grad">50+ person</em> team, hand-picked from top agencies</h3>
+        <p data-i18n="ex.teamP">Strategists, performance buyers, SEO and AI-search engineers, PR editors, content producers and reputation managers who have worked for global brands — now focused on clinics like yours.</p>
+      </div>
+      <div class="roles" id="roles"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="padding-top:40px">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow rv" data-i18n="pr.eyebrow">90-day plan</span>
+      <h2 class="title rv" data-i18n-html="pr.title">From call to <em class="grad">full chairs</em></h2>
+    </div>
+    <div class="steps" id="steps"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:40px">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow rv">FAQ</span>
+      <h2 class="title rv" data-i18n="faq.title">Questions clinics ask us</h2>
+    </div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="wrap">
+    <div class="final-card rv">
+      <span class="eyebrow" data-i18n="fin.eyebrow">Limited onboarding slots per month</span>
+      <h2 data-i18n-html="fin.title">Let's make Panama the <em class="grad">first choice</em> for your next 100 patients</h2>
+      <p class="lead" style="margin:0 auto" data-i18n="fin.lead">30-minute call. We'll audit your current funnel, discuss ad budget and pick the right plan.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary js-book"><span data-i18n="cta.book">Book a call</span> <span class="arr">→</span></a>
+        <a href="#packages" class="btn btn-ghost" data-i18n="cta.buy">Buy a package</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="powered">
+  <div class="wrap center">
+    <span class="eyebrow" data-i18n="pw.t">Powered by</span>
+    <div class="pw">
+      <a href="#" aria-label="Triton">Triton<span>.</span></a>
+      <a href="https://stive.ai" target="_blank" rel="noopener">Stive<span>.ai</span></a>
+      <a href="https://icoda.io" target="_blank" rel="noopener">iCoda<span>.io</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="yr"></span> SmileScale · <span data-i18n="ft.t">Patient growth for aesthetic dental clinics in Panama</span></span>
+    <span>Panama City · Miami · Remote</span>
+  </div>
+</footer>
+
+<div class="mcta" id="mcta">
+  <a href="#" class="btn btn-primary js-book" data-i18n="cta.book">Book a call</a>
+  <a href="#packages" class="btn btn-ghost" data-i18n="cta.packagesShort">Packages</a>
+</div>
+
+<!-- Payment modal -->
+<div class="modal" id="payModal" role="dialog" aria-modal="true" aria-labelledby="payTitle">
+  <div class="modal-card">
+    <button class="x" data-close aria-label="Close">✕</button>
+    <h3 id="payTitle"></h3>
+    <p class="sub" id="paySub"></p>
+    <button class="pay-opt" data-pay="card"><span class="ic">💳</span><div><b data-i18n="pay.card">Card · Apple Pay · Google Pay</b><span data-i18n="pay.cardS">Secure checkout via Stripe</span></div></button>
+    <button class="pay-opt" data-pay="crypto"><span class="ic">₿</span><div><b data-i18n="pay.crypto">Crypto</b><span data-i18n="pay.cryptoS">USDT, USDC, BTC, ETH</span></div></button>
+    <button class="pay-opt" data-pay="call"><span class="ic">📅</span><div><b data-i18n="pay.call">Talk to us first</b><span data-i18n="pay.callS">Book a 30-min call, pay later</span></div></button>
+    <p class="modal-foot" data-i18n="pay.foot">Monthly service fee. Ad budget is billed separately. Cancel with 30 days' notice after the first 3 months.</p>
+  </div>
+</div>
+
+<script>
+/* ====== CONFIG: replace with real links ====== */
+const CONFIG = {
+  booking: "https://calendly.com/",                 // Calendly / Cal.com link for "Book a call"
+  stripe:  { starter: "", standard: "", full: "" }, // Stripe Payment Links (support Apple Pay / Google Pay)
+  crypto:  "",                                      // Crypto checkout link (e.g. NOWPayments, Coinbase Commerce)
+  email:   "hello@icoda.io"
+};
+
+const I18N = {
+en:{
+ "nav.problem":"The problem","nav.packages":"Packages","nav.roi":"ROI","nav.cases":"Cases","nav.faq":"FAQ",
+ "cta.book":"Book a call","cta.packages":"See packages","cta.packagesShort":"Packages","cta.buy":"Buy a package",
+ "hero.pillTag":"PANAMA","hero.pill":"Built only for aesthetic dental clinics in Panama",
+ "hero.title":"We help aesthetic dental clinics in Panama win international patients <em class=\"grad\">in 90 days</em>",
+ "hero.lead":"Veneers, implants, smile makeovers — we bring high-intent patients from the USA, Canada and Europe straight to your chair. Strategy, content, SEO, PR, ads and reputation, handled by one senior team.",
+ "hero.m1":"50+ specialists","hero.m2":"USA · Canada · Europe","hero.m3":"English & Spanish",
+ "vis.title":"New international patients","vis.sub":"Standard plan · month 3 · illustrative","vis.c1":"Lead from Miami","vis.c1s":"Full veneers · booked","vis.c2s":"Google rating","vis.c3":"Toronto → Panama","vis.c3s":"All-on-4 consultation",
+ "prob.eyebrow":"The problem","prob.title":"Your next patient is flying <em class=\"grad\">past Panama</em>",
+ "prob.lead":"Dental tourism from North America and Europe is booming — but most of it lands somewhere else.",
+ "prob.stat":"of dental tourists from the <b>USA &amp; Europe</b> heading to Latin America choose <b>Colombia</b> — not Panama.",
+ "prob.others":"Others","prob.note":"Directional estimate from our market research; used to frame the opportunity.",
+ "prob.p1t":"\"Panama is more expensive\"","prob.p1":"Patients compare price-per-tooth with Medellín and Bogotá and never see why Panama is worth more.",
+ "prob.p2t":"Invisible in US search & AI answers","prob.p2":"Ask Google or ChatGPT \"best veneers abroad\" — Colombia, Mexico and Costa Rica show up. Panama clinics don't.",
+ "prob.p3t":"Local marketing, global patients","prob.p3":"Most agencies in Panama run Spanish-language local ads. International patients need English-first trust, proof and logistics.",
+ "prob.p4t":"Leads that ghost","prob.p4":"Without reviews, before/after content and fast follow-up, a $10k smile-makeover lead goes cold in 48 hours.",
+ "sol.eyebrow":"How we fix it","sol.title":"We sell <em class=\"grad\">Panama</em> — then we sell <em class=\"grad\">your clinic</em>",
+ "sol.lead":"We target patients mainly from the USA, Canada and Europe, and give them every reason to choose Panama over Colombia.",
+ "pk.eyebrow":"Packages","pk.title":"Start lean. <em class=\"grad\">Scale</em> when it works.",
+ "pk.lead":"Every package is a monthly retainer for services. We cover any marketing service your clinic needs within the hours of your plan.",
+ "pk.budget":"<b>Ad budget is not included.</b> All packages cover services only. Media spend (Google, Meta, TikTok, influencer fees, paid PR placements) is paid separately and agreed on the call based on your goals.",
+ "roi.eyebrow":"Potential ROI","roi.title":"What 90 days <em class=\"grad\">could</em> look like",
+ "roi.lead":"Patients we expect to bring per month, and the return on our service fee. Pick a plan, a scenario and your average treatment value.",
+ "roi.worst":"Worst","roi.avg":"Average","roi.best":"Good","roi.ticket":"Avg. treatment value","roi.chart":"ROI on service fee, by month",
+ "roi.month":"Month","roi.patients":"new patients","roi.revenue":"Revenue","roi.plan":"Plan","roi.scenario":"Scenario",
+ "roi.assume":"Illustrative model, not a forecast. ROI = (patients × avg. treatment value − monthly fee) ÷ monthly fee. Ad budget excluded. Results depend on clinic pricing, capacity, reviews, response speed and ad spend.",
+ "roi.dt":"We don't guarantee ROI. We guarantee the work.",
+ "roi.dp":"Every hour, deliverable and campaign in your plan is executed to a senior standard, on time and fully reported. Patients' decisions are theirs — our job is to make choosing you the obvious one.",
+ "roi.joke":"After all, a beautiful smile doesn't guarantee you a wife or a husband either. It just dramatically improves the odds. 😉",
+ "ex.eyebrow":"Experience","ex.title":"We've done this <em class=\"grad\">before</em>",
+ "ex.lead":"Medical tourism, aesthetic dentistry and premium healthcare across the Americas and Europe. A few highlights (client names under NDA):",
+ "ex.s1":"specialists from top agencies","ex.s2":"years in performance marketing","ex.s3":"clinics & healthcare brands served","ex.s4":"countries we drive patients from",
+ "ex.teamT":"A <em class=\"grad\">50+ person</em> team, hand-picked from top agencies",
+ "ex.teamP":"Strategists, performance buyers, SEO and AI-search engineers, PR editors, content producers and reputation managers who have worked with global brands — now focused on clinics like yours.",
+ "pr.eyebrow":"90-day plan","pr.title":"From call to <em class=\"grad\">full chairs</em>",
+ "faq.title":"Questions clinics ask us",
+ "fin.eyebrow":"Limited onboarding slots per month","fin.title":"Let's make Panama the <em class=\"grad\">first choice</em> for your next 100 patients",
+ "fin.lead":"30-minute call. We'll audit your current funnel, discuss ad budget and pick the right plan.",
+ "pw.t":"Powered by","ft.t":"Patient growth for aesthetic dental clinics in Panama",
+ "pay.card":"Card · Apple Pay · Google Pay","pay.cardS":"Secure checkout via Stripe","pay.crypto":"Crypto","pay.cryptoS":"USDT, USDC, BTC, ETH","pay.call":"Talk to us first","pay.callS":"Book a 30-min call, pay later",
+ "pay.foot":"Monthly service fee. Ad budget is billed separately.","pay.title":"Buy","pay.sub":"/ month · services only",
+ "pay.soon":"Checkout link coming soon — we'll send you a secure payment link right after a quick call.",
+ "pk.hours":"hours / month","pk.people":"specialists","pk.inc":"What's included","pk.buy":"Buy now","pk.book":"Book a call","pk.mo":"/ month","pk.excl":"+ ad budget, agreed separately","pk.popular":"Most popular"
+},
+es:{
+ "nav.problem":"El problema","nav.packages":"Paquetes","nav.roi":"ROI","nav.cases":"Casos","nav.faq":"FAQ",
+ "cta.book":"Agendar llamada","cta.packages":"Ver paquetes","cta.packagesShort":"Paquetes","cta.buy":"Comprar paquete",
+ "hero.pillTag":"PANAMÁ","hero.pill":"Hecho solo para clínicas de odontología estética en Panamá",
+ "hero.title":"Ayudamos a clínicas de odontología estética en Panamá a conseguir pacientes internacionales <em class=\"grad\">en 90 días</em>",
+ "hero.lead":"Carillas, implantes, diseño de sonrisa: llevamos pacientes con alta intención de compra desde EE. UU., Canadá y Europa directo a su consultorio. Estrategia, contenido, SEO, PR, publicidad y reputación, con un solo equipo senior.",
+ "hero.m1":"+50 especialistas","hero.m2":"EE. UU. · Canadá · Europa","hero.m3":"Inglés y español",
+ "vis.title":"Nuevos pacientes internacionales","vis.sub":"Plan Standard · mes 3 · ilustrativo","vis.c1":"Lead desde Miami","vis.c1s":"Carillas completas · agendado","vis.c2s":"Calificación en Google","vis.c3":"Toronto → Panamá","vis.c3s":"Consulta All-on-4",
+ "prob.eyebrow":"El problema","prob.title":"Su próximo paciente está volando <em class=\"grad\">por encima de Panamá</em>",
+ "prob.lead":"El turismo dental desde Norteamérica y Europa está en auge, pero la mayoría aterriza en otro lugar.",
+ "prob.stat":"de los turistas dentales de <b>EE. UU. y Europa</b> que viajan a Latinoamérica eligen <b>Colombia</b>, no Panamá.",
+ "prob.others":"Otros","prob.note":"Estimación direccional de nuestra investigación de mercado; sirve para dimensionar la oportunidad.",
+ "prob.p1t":"\"Panamá es más caro\"","prob.p1":"Los pacientes comparan el precio por diente con Medellín y Bogotá y nunca ven por qué Panamá vale más.",
+ "prob.p2t":"Invisibles en Google y en la IA","prob.p2":"Pregunte a Google o ChatGPT \"best veneers abroad\": aparecen Colombia, México y Costa Rica. Las clínicas de Panamá no.",
+ "prob.p3t":"Marketing local, pacientes globales","prob.p3":"La mayoría de agencias en Panamá hacen anuncios locales en español. El paciente internacional necesita confianza, pruebas y logística en inglés.",
+ "prob.p4t":"Leads que desaparecen","prob.p4":"Sin reseñas, contenido de antes/después y seguimiento rápido, un lead de diseño de sonrisa de $10k se enfría en 48 horas.",
+ "sol.eyebrow":"Cómo lo resolvemos","sol.title":"Vendemos <em class=\"grad\">Panamá</em> y luego vendemos <em class=\"grad\">su clínica</em>",
+ "sol.lead":"Atraemos pacientes principalmente de EE. UU., Canadá y Europa, y les damos todas las razones para elegir Panamá antes que Colombia.",
+ "pk.eyebrow":"Paquetes","pk.title":"Empiece ligero. <em class=\"grad\">Escale</em> cuando funcione.",
+ "pk.lead":"Cada paquete es una cuota mensual por servicios. Cubrimos cualquier servicio de marketing que su clínica necesite dentro de las horas de su plan.",
+ "pk.budget":"<b>El presupuesto publicitario no está incluido.</b> Los paquetes cubren solo servicios. La inversión en medios (Google, Meta, TikTok, honorarios de influencers, PR pagado) se paga aparte y se acuerda en la llamada según sus objetivos.",
+ "roi.eyebrow":"ROI potencial","roi.title":"Cómo <em class=\"grad\">podrían</em> verse 90 días",
+ "roi.lead":"Pacientes que esperamos traer por mes y el retorno sobre nuestra cuota de servicio. Elija un plan, un escenario y su ticket promedio.",
+ "roi.worst":"Peor","roi.avg":"Promedio","roi.best":"Bueno","roi.ticket":"Ticket promedio","roi.chart":"ROI sobre la cuota, por mes",
+ "roi.month":"Mes","roi.patients":"pacientes nuevos","roi.revenue":"Ingresos","roi.plan":"Plan","roi.scenario":"Escenario",
+ "roi.assume":"Modelo ilustrativo, no un pronóstico. ROI = (pacientes × ticket promedio − cuota mensual) ÷ cuota mensual. Sin presupuesto publicitario. Los resultados dependen de precios, capacidad, reseñas, velocidad de respuesta e inversión en anuncios.",
+ "roi.dt":"No garantizamos el ROI. Garantizamos el trabajo.",
+ "roi.dp":"Cada hora, entregable y campaña de su plan se ejecuta con estándar senior, a tiempo y con reportes completos. La decisión es del paciente; nuestro trabajo es que elegirle a usted sea lo obvio.",
+ "roi.joke":"Al fin y al cabo, una sonrisa bonita tampoco garantiza conseguir esposa o esposo. Solo mejora muchísimo las probabilidades. 😉",
+ "ex.eyebrow":"Experiencia","ex.title":"Ya lo hemos <em class=\"grad\">hecho</em>",
+ "ex.lead":"Turismo médico, odontología estética y salud premium en las Américas y Europa. Algunos ejemplos (nombres bajo NDA):",
+ "ex.s1":"especialistas de agencias top","ex.s2":"años en marketing de performance","ex.s3":"clínicas y marcas de salud atendidas","ex.s4":"países de donde traemos pacientes",
+ "ex.teamT":"Un equipo de <em class=\"grad\">+50 personas</em>, seleccionado de agencias top",
+ "ex.teamP":"Estrategas, media buyers, ingenieros de SEO y búsqueda con IA, editores de PR, productores de contenido y gestores de reputación que han trabajado con marcas globales, ahora enfocados en clínicas como la suya.",
+ "pr.eyebrow":"Plan de 90 días","pr.title":"De la llamada a <em class=\"grad\">sillas llenas</em>",
+ "faq.title":"Preguntas que nos hacen las clínicas",
+ "fin.eyebrow":"Cupos de onboarding limitados cada mes","fin.title":"Hagamos de Panamá la <em class=\"grad\">primera opción</em> para sus próximos 100 pacientes",
+ "fin.lead":"Llamada de 30 minutos. Auditamos su embudo actual, hablamos del presupuesto publicitario y elegimos el plan correcto.",
+ "pw.t":"Con la tecnología de","ft.t":"Crecimiento de pacientes para clínicas de odontología estética en Panamá",
+ "pay.card":"Tarjeta · Apple Pay · Google Pay","pay.cardS":"Pago seguro con Stripe","pay.crypto":"Cripto","pay.cryptoS":"USDT, USDC, BTC, ETH","pay.call":"Hablemos primero","pay.callS":"Agende 30 min, pague después",
+ "pay.foot":"Cuota mensual por servicios. El presupuesto publicitario se factura aparte.","pay.title":"Comprar","pay.sub":"/ mes · solo servicios",
+ "pay.soon":"Enlace de pago próximamente: le enviaremos un enlace seguro justo después de una breve llamada.",
+ "pk.hours":"horas / mes","pk.people":"especialistas","pk.inc":"Qué incluye","pk.buy":"Comprar ahora","pk.book":"Agendar llamada","pk.mo":"/ mes","pk.excl":"+ presupuesto publicitario, aparte","pk.popular":"El más elegido"
+}};
+
+const T = (en,es)=>({en,es});
+const MARQ = [T("Veneers","Carillas"),T("Smile makeovers","Diseño de sonrisa"),T("All-on-4 implants","Implantes All-on-4"),T("AI SEO","SEO con IA"),T("Reddit & Quora","Reddit y Quora"),T("PR in US media","PR en medios de EE. UU."),T("Influencers","Influencers"),T("Reputation","Reputación"),T("Landing pages","Landing pages"),T("AI content farm","Granja de contenido IA")];
+
+const SOL = [
+ {ic:"🎯",t:T("US, Canada & Europe only","Solo EE. UU., Canadá y Europa"),p:T("Every dollar of ad spend and every piece of content targets high-income dental tourists — not local walk-ins.","Cada dólar y cada contenido apunta a turistas dentales de altos ingresos, no a pacientes locales.")},
+ {ic:"✈️",t:T("Panama > Colombia positioning","Posicionamiento Panamá > Colombia"),p:T("2.5h from Miami, US dollar, Copa hub, safety and modern hospitals. We turn \"more expensive\" into \"worth it\".","2,5 h desde Miami, dólar, hub de Copa, seguridad y hospitales modernos. Convertimos \"más caro\" en \"vale la pena\".")},
+ {ic:"🤖",t:T("Found in Google and in AI","Visibles en Google y en la IA"),p:T("AI SEO so ChatGPT, Perplexity and Google AI Overviews recommend your clinic when patients ask.","SEO con IA para que ChatGPT, Perplexity y Google AI Overviews recomienden su clínica.")},
+ {ic:"🎬",t:T("Content at scale","Contenido a escala"),p:T("An AI content farm plus human editors: before/afters, patient journeys, reels and articles every week.","Una granja de contenido IA más editores humanos: antes/después, historias de pacientes, reels y artículos cada semana.")},
+ {ic:"⭐",t:T("Trust & reputation","Confianza y reputación"),p:T("Reviews, Reddit threads, PR features and testimonials that make a stranger fly 3,000 km to you.","Reseñas, hilos en Reddit, notas de PR y testimonios que hacen que un desconocido vuele 3.000 km hasta usted.")},
+ {ic:"⚡",t:T("Leads that convert","Leads que convierten"),p:T("Landing pages, WhatsApp flows and follow-up scripts so leads book a consult instead of ghosting.","Landings, flujos de WhatsApp y guiones de seguimiento para que los leads agenden en vez de desaparecer.")}
+];
+
+const PKG = [
+ {id:"starter",name:"Starter",step:T("Step 1","Paso 1"),price:5000,hours:40,people:"3–4",
+  tag:T("Launch your international patient engine.","Lance su motor de pacientes internacionales."),
+  inc:[T("SMM: Instagram, TikTok, Facebook — content & management","SMM: Instagram, TikTok, Facebook — contenido y gestión"),
+       T("Landing pages for treatments (EN/ES)","Landing pages por tratamiento (EN/ES)"),
+       T("AI content farm: posts, reels, articles at scale","Granja de contenido IA: posts, reels y artículos a escala"),
+       T("General marketing strategy for the next 3 months","Estrategia general de marketing para los próximos 3 meses"),
+       T("Monthly report & strategy call","Reporte mensual y llamada de estrategia")]},
+ {id:"standard",name:"Standard",step:T("Step 2","Paso 2"),price:10000,hours:100,people:"6–8",feat:true,
+  tag:T("Get found everywhere US patients research.","Aparezca donde investigan los pacientes de EE. UU."),
+  plus:T("Everything in Starter, plus:","Todo lo de Starter, más:"),
+  inc:[T("<b>AI SEO</b> — Google + ChatGPT / Perplexity visibility","<b>SEO con IA</b> — visibilidad en Google + ChatGPT / Perplexity"),
+       T("<b>PR</b> — features in US, Canadian & EU media","<b>PR</b> — publicaciones en medios de EE. UU., Canadá y UE"),
+       T("<b>Reddit, Quora, Medium</b> — community presence & threads","<b>Reddit, Quora, Medium</b> — presencia en comunidades"),
+       T("Bi-weekly strategy calls","Llamadas de estrategia quincenales")]},
+ {id:"full",name:"Maximum",step:T("Step 3","Paso 3"),price:15000,hours:200,people:"10–12",
+  tag:T("Full-funnel domination of the market.","Dominio total del embudo y del mercado."),
+  plus:T("Everything in Standard, plus:","Todo lo de Standard, más:"),
+  inc:[T("<b>Paid ads</b> — Google, Meta, TikTok, YouTube management","<b>Publicidad pagada</b> — gestión de Google, Meta, TikTok, YouTube"),
+       T("<b>Influencer & blogger campaigns</b> in US / CA / EU","<b>Campañas con influencers y bloggers</b> en EE. UU. / CA / UE"),
+       T("<b>Reputation management</b> — reviews, ratings, crisis","<b>Gestión de reputación</b> — reseñas, calificaciones, crisis"),
+       T("<b>Everything else</b> — video production, email, CRO, WhatsApp funnels","<b>Todo lo demás</b> — video, email, CRO, embudos de WhatsApp"),
+       T("Dedicated account director + weekly calls","Director de cuenta dedicado + llamadas semanales")]}
+];
+
+// Patients per month [M1, M2, M3]
+const SCEN = {
+ starter:{worst:[0,1,2],avg:[1,2,4],best:[2,4,7]},
+ standard:{worst:[1,2,4],avg:[2,5,9],best:[4,9,16]},
+ full:{worst:[2,4,7],avg:[4,8,15],best:[7,14,25]}
+};
+
+const CASES = [
+ {chip:T("Veneers","Carillas"),loc:"Medellín, CO",t:T("Smile design studio","Estudio de diseño de sonrisa"),p:T("Repositioned from \"cheap veneers\" to premium smile design for US women 30–50. Instagram + landing pages + WhatsApp funnel.","Reposicionamos de \"carillas baratas\" a diseño de sonrisa premium para mujeres de EE. UU. de 30–50. Instagram + landings + embudo WhatsApp."),r:[["3.1×",T("qualified leads","leads calificados")],["−42%",T("cost per lead","costo por lead")]]},
+ {chip:T("Implants","Implantes"),loc:"Cancún, MX",t:T("All-on-4 implant center","Centro de implantes All-on-4"),p:T("AI SEO and comparison content took them to page one and into ChatGPT answers for \"All-on-4 Mexico cost\".","SEO con IA y contenido comparativo los llevó a la primera página y a las respuestas de ChatGPT para \"All-on-4 Mexico cost\"."),r:[["+260%",T("organic traffic","tráfico orgánico")],["38",T("US patients / quarter","pacientes de EE. UU. / trimestre")]]},
+ {chip:T("Dental tourism","Turismo dental"),loc:"San José, CR",t:T("Multi-specialty dental clinic","Clínica dental multiespecialidad"),p:T("Reddit + Quora threads, PR in two US outlets and a review engine rebuilt trust after a rough year.","Hilos en Reddit + Quora, PR en dos medios de EE. UU. y un motor de reseñas reconstruyeron la confianza."),r:[["4.4→4.9",T("Google rating","calificación Google")],["+180",T("new reviews","reseñas nuevas")]]},
+ {chip:T("Cosmetic","Estética"),loc:"Istanbul, TR",t:T("Hollywood smile clinic","Clínica Hollywood smile"),p:T("Influencer program with 14 UK & German creators plus paid retargeting turned views into booked flights.","Programa con 14 creadores de UK y Alemania más retargeting convirtió vistas en vuelos reservados."),r:[["11M",T("video views","vistas de video")],["5.6×",T("ROAS on paid","ROAS en pagado")]]},
+ {chip:T("Medical tourism","Turismo médico"),loc:"Panama City, PA",t:T("Premium aesthetic clinic","Clínica estética premium"),p:T("\"Why Panama\" campaign for Canadian snowbirds: Copa direct flights, USD pricing, recovery stays. First international flow in 60 days.","Campaña \"Por qué Panamá\" para snowbirds canadienses: vuelos directos de Copa, precios en USD, estadías de recuperación. Primer flujo internacional en 60 días."),r:[["60",T("days to first int'l patient flow","días al primer flujo internacional")],["2.4×",T("avg. ticket vs local","ticket vs. local")]]}
+];
+
+const ROLES = [T("Growth strategists","Estrategas de crecimiento"),T("Performance buyers","Media buyers"),T("AI SEO engineers","Ingenieros de SEO con IA"),T("PR editors","Editores de PR"),T("Content producers","Productores de contenido"),T("Video editors","Editores de video"),T("Copywriters EN/ES","Copywriters EN/ES"),T("Community managers","Community managers"),T("Reputation managers","Gestores de reputación"),T("Influencer managers","Gestores de influencers"),T("Web & CRO designers","Diseñadores web y CRO"),T("Data analysts","Analistas de datos")];
+
+const STEPS = [
+ {t:T("Discovery call","Llamada de descubrimiento"),p:T("Audit of your clinic, offer, pricing and current funnel. We agree on plan and ad budget.","Auditoría de su clínica, oferta, precios y embudo. Acordamos plan y presupuesto publicitario.")},
+ {t:T("Weeks 1–2: Strategy","Semanas 1–2: Estrategia"),p:T("3-month marketing strategy, positioning vs. Colombia, landing pages and content system live.","Estrategia de 3 meses, posicionamiento vs. Colombia, landings y sistema de contenido en marcha.")},
+ {t:T("Weeks 3–8: Launch","Semanas 3–8: Lanzamiento"),p:T("Channels go live, first leads arrive, we optimize weekly on cost per consult.","Se activan los canales, llegan los primeros leads, optimizamos semanalmente por costo por consulta.")},
+ {t:T("Weeks 9–12: Scale","Semanas 9–12: Escala"),p:T("Double down on what converts. Review results and decide whether to scale to the next plan.","Duplicamos lo que convierte. Revisamos resultados y decidimos si escalar al siguiente plan.")}
+];
+
+const FAQ = [
+ {q:T("Is the ad budget included?","¿Está incluido el presupuesto publicitario?"),a:T("No. Packages cover services only. Ad spend, influencer fees and paid PR placements are paid separately — we recommend an amount on the call based on your goals and capacity.","No. Los paquetes cubren solo servicios. La inversión publicitaria, honorarios de influencers y PR pagado se pagan aparte; recomendamos un monto en la llamada según sus objetivos y capacidad.")},
+ {q:T("Do you guarantee patients or ROI?","¿Garantizan pacientes o ROI?"),a:T("No. We guarantee the quality and delivery of every service in your plan. ROI depends on many factors we don't control — pricing, how fast your team replies, clinical results. The ROI section shows realistic scenarios, not promises.","No. Garantizamos la calidad y entrega de cada servicio de su plan. El ROI depende de factores que no controlamos: precios, velocidad de respuesta de su equipo, resultados clínicos. La sección de ROI muestra escenarios realistas, no promesas.")},
+ {q:T("Why 90 days?","¿Por qué 90 días?"),a:T("International patients plan their trip 4–10 weeks ahead. Month 1 builds the engine, month 2 brings the first consults, month 3 is when bookings and ROI usually start compounding.","Los pacientes internacionales planean su viaje con 4–10 semanas de anticipación. El mes 1 construye el motor, el mes 2 trae las primeras consultas y el mes 3 es cuando las reservas y el ROI suelen acelerarse.")},
+ {q:T("Can we start with Starter and upgrade?","¿Podemos empezar con Starter y subir de plan?"),a:T("Yes — that's the path we recommend: Starter → Standard → Maximum. You can upgrade at any time and the work carries over.","Sí, es el camino que recomendamos: Starter → Standard → Maximum. Puede subir de plan en cualquier momento y el trabajo continúa.")},
+ {q:T("How do I pay?","¿Cómo pago?"),a:T("Card, Apple Pay and Google Pay via Stripe, bank transfer, or crypto (USDT, USDC, BTC, ETH). Billed monthly.","Tarjeta, Apple Pay y Google Pay vía Stripe, transferencia bancaria o cripto (USDT, USDC, BTC, ETH). Facturación mensual.")},
+ {q:T("Do you work with clinics outside Panama?","¿Trabajan con clínicas fuera de Panamá?"),a:T("This program is built specifically for Panamanian aesthetic dental clinics. For other markets, book a call and we'll tell you honestly if we're a fit.","Este programa está hecho específicamente para clínicas de odontología estética en Panamá. Para otros mercados, agende una llamada y le diremos honestamente si encajamos.")}
+];
+
+/* ====== render ====== */
+let lang = 'en', pkgSel = 'standard', scSel = 'avg', ticket = 3500;
+const $ = (s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const fmt$ = n => (n<0?'−':'')+'$'+Math.abs(Math.round(n)).toLocaleString('en-US');
+const tr = o => o[lang];
+
+function renderStatic(){
+  $('#marq').innerHTML = [...MARQ,...MARQ].map(m=>`<span>${tr(m)}</span>`).join('');
+  $('#solGrid').innerHTML = SOL.map((s,i)=>`<div class="sol rv d${i%3+1}"><div class="ic">${s.ic}</div><h3>${tr(s.t)}</h3><p>${tr(s.p)}</p></div>`).join('');
+  const D = I18N[lang];
+  $('#pkgGrid').innerHTML = PKG.map((p,i)=>`
+   <div class="pkg ${p.feat?'feat':''} rv d${i+1}">
+     ${p.feat?`<span class="badge">${D['pk.popular']}</span>`:''}
+     <span class="step">${tr(p.step)}</span>
+     <h3>${p.name}</h3>
+     <p class="tag">${tr(p.tag)}</p>
+     <div class="price"><b>$${p.price.toLocaleString('en-US')}</b><span>${D['pk.mo']}</span></div>
+     <div class="excl">${D['pk.excl']}</div>
+     <div class="kpis"><div class="kpi"><b>${p.hours}</b><span>${D['pk.hours']}</span></div><div class="kpi"><b>${p.people}</b><span>${D['pk.people']}</span></div></div>
+     <div class="inc-h">${D['pk.inc']}</div>
+     <ul>${p.plus?`<li class="plus"><span>${tr(p.plus)}</span></li>`:''}${p.inc.map(x=>`<li class="${p.plus?'new':''}"><span>${tr(x)}</span></li>`).join('')}</ul>
+     <div class="pkg-cta">
+       <button class="btn ${p.feat?'btn-primary':'btn-ghost'} js-buy" data-pkg="${p.id}">${D['pk.buy']} <span class="arr">→</span></button>
+       <a href="#" class="btn btn-ghost js-book">${D['pk.book']}</a>
+       <div class="pay-icons"><span>Apple Pay</span><span>Stripe</span><span>Visa / MC</span><span>USDT</span><span>BTC</span></div>
+     </div>
+   </div>`).join('');
+  $('#caseGrid').innerHTML = CASES.map((c,i)=>`
+   <div class="case rv d${i%3+1}">
+     <div class="top"><span class="chip">${tr(c.chip)}</span><span>${c.loc}</span></div>
+     <h3>${tr(c.t)}</h3><p>${tr(c.p)}</p>
+     <div class="res">${c.r.map(r=>`<div><b class="grad">${r[0]}</b><span>${tr(r[1])}</span></div>`).join('')}</div>
+   </div>`).join('');
+  $('#roles').innerHTML = ROLES.map(r=>`<span>${tr(r)}</span>`).join('');
+  $('#steps').innerHTML = STEPS.map((s,i)=>`<div class="st rv d${i+1}"><h4>${tr(s.t)}</h4><p>${tr(s.p)}</p></div>`).join('');
+  $('#faqList').innerHTML = FAQ.map((f,i)=>`<details class="rv" ${i===0?'open':''}><summary>${tr(f.q)}</summary><p>${tr(f.a)}</p></details>`).join('');
+  bindBook(); bindBuy(); observe();
+}
+
+function renderROI(){
+  const D = I18N[lang], p = PKG.find(x=>x.id===pkgSel), pts = SCEN[pkgSel][scSel];
+  const roi = n => (n*ticket - p.price)/p.price*100;
+  $('#months').innerHTML = pts.map((n,i)=>{const r=roi(n);return `
+    <div class="month"><span class="m">${D['roi.month']} ${i+1}</span>
+      <span class="pts">${n}</span><span class="pts-l">${D['roi.patients']}</span>
+      <span class="rev">${D['roi.revenue']}: <b>${fmt$(n*ticket)}</b></span>
+      <span class="roi ${r>=0?'pos':'neg'}">${r>=0?'+':'−'}${Math.abs(Math.round(r))}% ROI</span></div>`}).join('');
+  const rs = pts.map(roi), mx = Math.max(100,...rs.map(Math.abs));
+  $('#cols').innerHTML = rs.map((r,i)=>`<div class="col"><em class="${r>=0?'pos':'neg'}">${r>=0?'+':'−'}${Math.abs(Math.round(r))}%</em><i class="${r<0?'ng':''}" data-h="${Math.max(4,Math.abs(r)/mx*100)}"></i><small>${D['roi.month']} ${i+1}</small></div>`).join('');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>$$('#cols i').forEach(el=>el.style.height=el.dataset.h+'%')));
+  // full table
+  const sc = [['worst',D['roi.worst']],['avg',D['roi.avg']],['best',D['roi.best']]];
+  let h = `<thead><tr><th>${D['roi.plan']}</th><th>${D['roi.scenario']}</th><th>${D['roi.month']} 1</th><th>${D['roi.month']} 2</th><th>${D['roi.month']} 3</th></tr></thead><tbody>`;
+  PKG.forEach(pk=>sc.forEach(([k,l],j)=>{
+    const ps = SCEN[pk.id][k];
+    h += `<tr class="${pk.id===pkgSel&&k===scSel?'hl':''}"><td>${j===0?`<b>${pk.name}</b><small>$${pk.price.toLocaleString('en-US')}${D['pk.mo']}</small>`:''}</td><td>${l}</td>${ps.map(n=>{const r=(n*ticket-pk.price)/pk.price*100;return `<td>${n} <small class="${r>=0?'pos':'neg'}">${r>=0?'+':'−'}${Math.abs(Math.round(r))}%</small></td>`}).join('')}</tr>`;
+  }));
+  $('#rtable').innerHTML = h+'</tbody>';
+}
+
+function applyLang(l){
+  lang = l; document.documentElement.lang = l;
+  const D = I18N[l];
+  $$('[data-i18n]').forEach(el=>{const k=el.dataset.i18n; if(D[k]!=null) el.textContent = D[k];});
+  $$('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml; if(D[k]!=null) el.innerHTML = D[k];});
+  $$('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  document.title = l==='es' ? 'SmileScale — Pacientes internacionales para clínicas dentales estéticas en Panamá' : 'SmileScale — Patient Growth for Panama Aesthetic Dental Clinics';
+  splitHero(); renderStatic(); renderROI();
+  try{localStorage.setItem('lang',l)}catch(e){}
+  const u = new URL(location); u.searchParams.set('lang',l); history.replaceState(null,'',u);
+}
+
+function splitHero(){
+  const h = $('#heroTitle'); let i = 0;
+  const walk = node => { [...node.childNodes].forEach(n=>{
+    if(n.nodeType===3){ const frag=document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(w=>{ if(!w) return; if(/^\s+$/.test(w)){frag.appendChild(document.createTextNode(w));return;}
+        const s=document.createElement('span'); s.className='word'; s.style.animationDelay=(0.15+i++*0.055)+'s'; s.textContent=w; frag.appendChild(s);});
+      n.replaceWith(frag);
+    } else if(n.nodeType===1 && n.tagName==='EM'){ n.classList.add('word'); n.style.animationDelay=(0.15+i++*0.055)+'s'; }
+  })}; walk(h);
+}
+
+/* ====== interactions ====== */
+function bindBook(){ $$('.js-book').forEach(a=>{ a.href = CONFIG.booking; a.target='_blank'; a.rel='noopener'; }); }
+function bindBuy(){ $$('.js-buy').forEach(b=>b.onclick=()=>openPay(b.dataset.pkg)); }
+let payPkg = null;
+function openPay(id){
+  payPkg = PKG.find(p=>p.id===id); const D=I18N[lang];
+  $('#payTitle').textContent = `${D['pay.title']} ${payPkg.name}`;
+  $('#paySub').textContent = `$${payPkg.price.toLocaleString('en-US')} ${D['pay.sub']} · ${payPkg.hours} ${D['pk.hours']}`;
+  $('#payModal').classList.add('open'); document.body.style.overflow='hidden';
+}
+function closePay(){ $('#payModal').classList.remove('open'); document.body.style.overflow=''; }
+$('#payModal').addEventListener('click',e=>{ if(e.target.id==='payModal'||e.target.closest('[data-close]')) closePay(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closePay(); });
+$$('.pay-opt').forEach(b=>b.addEventListener('click',()=>{
+  const k=b.dataset.pay; let url='';
+  if(k==='card') url = CONFIG.stripe[payPkg.id];
+  if(k==='crypto') url = CONFIG.crypto;
+  if(k==='call') url = CONFIG.booking;
+  if(url){ window.open(url,'_blank','noopener'); }
+  else { alert(I18N[lang]['pay.soon']); window.open(CONFIG.booking,'_blank','noopener'); }
+}));
+
+$$('#segPkg button').forEach(b=>b.onclick=()=>{pkgSel=b.dataset.p;$$('#segPkg button').forEach(x=>x.classList.toggle('on',x===b));renderROI();});
+$$('#segSc button').forEach(b=>b.onclick=()=>{scSel=b.dataset.s;$$('#segSc button').forEach(x=>x.classList.toggle('on',x===b));renderROI();});
+$('#ticket').oninput=e=>{ticket=+e.target.value;$('#ticketV').textContent=fmt$(ticket);renderROI();};
+$$('.lang button').forEach(b=>b.onclick=()=>applyLang(b.dataset.lang));
+
+// header + menu + sticky cta
+const hdr=$('#hdr'), mcta=$('#mcta');
+addEventListener('scroll',()=>{ const y=scrollY; hdr.classList.toggle('scrolled',y>20); mcta.classList.toggle('show',y>innerHeight*.8 && y<document.body.scrollHeight-innerHeight*1.6); },{passive:true});
+$('.burger').onclick=()=>document.body.classList.toggle('menu-open');
+$$('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu-open')));
+
+// reveal + counters + bars
+let io;
+function observe(){
+  io && io.disconnect();
+  io = new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; const t=e.target;
+    t.classList.add('in');
+    $$('.count',t).concat(t.classList.contains('count')?[t]:[]).forEach(countUp);
+    $$('.bar i',t).forEach(i=>i.style.width=i.dataset.w+'%');
+    io.unobserve(t);
+  }),{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+  $$('.rv:not(.in)').forEach(el=>io.observe(el));
+}
+function countUp(el){ if(el.dataset.done) return; el.dataset.done=1; const to=+el.dataset.to, d=1600, s=performance.now();
+  const f=t=>{const k=Math.min(1,(t-s)/d); el.textContent=Math.round(to*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(f);}; requestAnimationFrame(f); }
+
+// hero counter
+(function(){const el=$('#heroCount');const to=SCEN.standard.avg[2];let s;const f=t=>{s=s||t;const k=Math.min(1,(t-s)/2200);el.textContent='+'+Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)};setTimeout(()=>requestAnimationFrame(f),700);})();
+
+// pointer effects (desktop only)
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+  const g=$('#cursorGlow'); addEventListener('pointermove',e=>{g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';
+    const s=e.target.closest&&e.target.closest('.sol'); if(s){const r=s.getBoundingClientRect();s.style.setProperty('--mx',(e.clientX-r.left)+'px');s.style.setProperty('--my',(e.clientY-r.top)+'px');}},{passive:true});
+  const v=$('#visual'); v.addEventListener('pointermove',e=>{const r=v.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;v.style.transform=`perspective(900px) rotateY(${x*8}deg) rotateX(${-y*8}deg)`;});
+  v.addEventListener('pointerleave',()=>v.style.transform='');
+  v.style.transition='transform .3s ease-out, opacity 1s, filter 1s';
+}
+
+$('#yr').textContent=new Date().getFullYear();
+let init='en'; try{ init = new URLSearchParams(location.search).get('lang') || localStorage.getItem('lang') || ((navigator.language||'').startsWith('es')?'es':'en'); }catch(e){}
+applyLang(init==='es'?'es':'en');
+</script>
+</body>
+</html>
