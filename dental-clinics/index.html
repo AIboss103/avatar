@@ -86,21 +86,41 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 body.menu-open .mobile-menu{transform:none;opacity:1;pointer-events:auto}
 
 /* hero */
-.hero{padding-top:calc(130px + env(safe-area-inset-top,0px));padding-bottom:80px;position:relative;overflow:hidden}
+.hero{padding-top:calc(108px + env(safe-area-inset-top,0px));padding-bottom:70px;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;width:900px;height:900px;right:-300px;top:-380px;border-radius:50%;background:radial-gradient(circle,rgba(47,91,255,.16),transparent 62%);pointer-events:none}
 .hero::after{content:"";position:absolute;width:700px;height:700px;left:-320px;bottom:-360px;border-radius:50%;background:radial-gradient(circle,rgba(22,199,154,.14),transparent 62%);pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;position:relative;z-index:1}
-.badge-row{display:inline-flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;border-radius:999px;background:var(--surface);box-shadow:var(--shadow);font-weight:600;font-size:14px;color:var(--ink2)}
-.badge-row img{width:30px;height:30px;border-radius:50%;background:var(--surface2);padding:3px}
-h1{font-size:clamp(38px,5.4vw,70px);font-weight:800;letter-spacing:-.035em;line-height:1.03;margin:24px 0 22px;position:relative;z-index:0}
+.badge-row{display:inline-flex;align-items:center;gap:12px;padding:7px 18px 7px 8px;border-radius:999px;background:var(--surface);box-shadow:var(--shadow);border:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.35}
+.badge-row .avs{flex:none}
+.badge-row .avs img{width:34px;height:34px;border-width:2px;border-color:var(--surface);background:var(--surface2);margin-left:-10px;padding:3px}
+.badge-row .avs img:first-child{margin-left:0}
+.badge-row b{font-family:var(--display);color:var(--ink);font-size:14px}
+.br-txt .stars{font-size:12px;letter-spacing:1px}
+h1{font-size:clamp(34px,4.3vw,56px);font-weight:800;letter-spacing:-.035em;line-height:1.03;margin:20px 0 18px;position:relative;z-index:0}
 .hero .lead{font-size:clamp(17px,1.6vw,19.5px);color:var(--ink2)}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
 .trust{display:flex;align-items:center;gap:14px;margin-top:36px;flex-wrap:wrap}
 .avs{display:flex}
 .avs img{width:46px;height:46px;border-radius:50%;background:var(--surface);border:3px solid var(--bg);margin-left:-12px;padding:4px}
 .avs img:first-child{margin-left:0}
 .trust p{font-size:14px;color:var(--muted);line-height:1.4}
 .trust p b{color:var(--ink);font-family:var(--display)}
+
+/* proof of trust */
+.proof{margin-top:28px;display:flex;flex-direction:column;gap:12px;max-width:600px}
+.proof-quote{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:20px;padding:14px 18px 14px 14px}
+.proof-quote .qa{width:48px;height:48px;border-radius:14px;background:var(--peach);padding:5px;flex:none}
+.stars{color:#f5a524;letter-spacing:2px;font-size:14px;line-height:1}
+.proof-quote p{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.45;margin-top:5px}
+.proof-quote span{font-size:12.5px;color:var(--muted)}
+.proof-stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:20px}
+.proof-stats div{padding:12px 14px;display:flex;flex-direction:column}
+.proof-stats div+div{border-left:1px solid var(--line)}
+.proof-stats b{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.03em;line-height:1.1;color:var(--blue)}
+.proof-stats span{font-size:12.5px;color:var(--muted);font-weight:600;line-height:1.3}
+.proof-by{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);font-weight:600;padding-left:4px}
+.proof-by b{font-family:var(--display);font-weight:800;font-size:16px;color:var(--ink);letter-spacing:-.02em}
+.proof-by i{font-style:normal;color:var(--blue)}
 
 /* hero scene */
 .scene{position:relative;aspect-ratio:1/1;width:100%;max-width:560px;margin-left:auto}
@@ -412,7 +432,13 @@ footer{padding-block:34px calc(34px + env(safe-area-inset-bottom,0px));color:var
   section{padding-block:76px}
   .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
   .hero{padding-top:calc(104px + env(safe-area-inset-top,0px));padding-bottom:50px}
-  .hero-cta .btn{width:100%}
+  .hero-cta{flex-wrap:nowrap}.hero-cta .btn{flex:1;padding:15px 12px}
+  .badge-row{border-radius:22px;padding:8px 14px 8px 8px}
+  .badge-row .avs img{width:30px;height:30px}
+  h1{font-size:clamp(31px,8.6vw,40px);margin:16px 0 14px}
+  .proof-stats{grid-template-columns:repeat(2,1fr)}
+  .proof-stats div:nth-child(3){border-left:0}
+  .proof-stats div:nth-child(n+3){border-top:1px solid var(--line)}
   .chip{padding:9px 12px 9px 9px;font-size:11.5px;gap:9px;border-radius:16px}
   .chip img{width:32px;height:32px;border-radius:11px}
   .chip b{font-size:12.5px}
@@ -489,16 +515,29 @@ footer{padding-block:34px calc(34px + env(safe-area-inset-bottom,0px));color:var
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="badge-row"><img src="img/pa.webp" alt=""><span data-i18n="hero.pill">Built only for aesthetic dental clinics in Panama</span></span>
+      <div class="badge-row"><span class="avs"><img src="img/p1.webp" alt=""><img src="img/dentist_w.webp" alt=""><img src="img/p2.webp" alt=""><img src="img/pa.webp" alt=""></span><span class="br-txt"><span class="stars" aria-label="5 out of 5">★★★★★</span> <b data-i18n="hero.pillB">Trusted by 30+ clinics</b><br><span data-i18n="hero.pill">Program built only for aesthetic dental clinics in Panama</span></span></div>
       <h1 data-i18n-html="hero.title">We help aesthetic dental clinics in Panama attract international patients <span class="mark">in 90 days</span></h1>
       <p class="lead" data-i18n="hero.lead">Veneers, implants, smile makeovers. We bring high-intent patients from the USA, Canada and Europe straight to your chair.</p>
       <div class="hero-cta">
         <a href="#" class="btn btn-primary js-book"><span data-i18n="cta.book">Book a call</span><span class="arr">→</span></a>
         <a href="#packages" class="btn btn-light" data-i18n="cta.packages">See packages</a>
       </div>
-      <div class="trust">
-        <div class="avs"><img src="img/p1.webp" alt=""><img src="img/p2.webp" alt=""><img src="img/p3.webp" alt=""><img src="img/p5.webp" alt=""><img src="img/p4.webp" alt=""></div>
-        <p data-i18n-html="hero.trust"><b>50+ specialists</b><br>from top agencies, working in EN &amp; ES</p>
+      <div class="proof">
+        <div class="proof-quote">
+          <img class="qa" src="img/dentist_w.webp" alt="">
+          <div>
+            <div class="stars" aria-label="5 out of 5">★★★★★</div>
+            <p data-i18n="proof.q">"In two months we went from zero to a steady flow of US and Canadian patients."</p>
+            <span data-i18n="proof.who">Clinic owner, Panama City</span>
+          </div>
+        </div>
+        <div class="proof-stats">
+          <div><b>50+</b><span data-i18n="proof.s1">specialists</span></div>
+          <div><b>30+</b><span data-i18n="proof.s2">clinics served</span></div>
+          <div><b>8+</b><span data-i18n="proof.s3">years</span></div>
+          <div><b>12</b><span data-i18n="proof.s4">countries</span></div>
+        </div>
+        <div class="proof-by"><span data-i18n="pw.t">Powered by</span><b>Triton.</b><b>Stive<i>.ai</i></b><b>iCoda<i>.io</i></b></div>
       </div>
     </div>
     <div class="scene" aria-hidden="true">
@@ -718,10 +757,10 @@ const I18N = {
 en:{
  "nav.problem":"The problem","nav.packages":"Packages","nav.roi":"ROI","nav.cases":"Cases","nav.faq":"FAQ",
  "cta.book":"Book a call","cta.packages":"See packages","cta.packagesShort":"Packages","cta.buy":"Buy a package",
- "hero.pill":"Built only for aesthetic dental clinics in Panama",
+ "hero.pill":"Program built only for aesthetic dental clinics in Panama","hero.pillB":"Trusted by 30+ clinics",
  "hero.title":"We help aesthetic dental clinics in Panama attract international patients <span class=\"mark\">in 90 days</span>",
- "hero.lead":"Veneers, implants, smile makeovers. We bring high-intent patients from the USA, Canada and Europe straight to your chair: strategy, content, SEO, PR, ads and reputation, run by one senior team.",
- "hero.trust":"<b>50+ specialists</b><br>from top agencies, working in EN &amp; ES",
+ "hero.lead":"Veneers, implants, smile makeovers. We bring high-intent patients from the USA, Canada and Europe straight to your chair.",
+ "proof.q":"\"In two months we went from zero to a steady flow of US and Canadian patients.\"","proof.who":"Clinic owner, Panama City","proof.s1":"specialists from top agencies","proof.s2":"clinics served","proof.s3":"years in marketing","proof.s4":"patient countries",
  "vis.c1":"New patient · Miami","vis.c1s":"Full set of veneers","vis.booked":"Booked ✓","vis.c2s":"Google rating","vis.c3":"Dr. Ana · Panama City","vis.c3s":"+9 int'l patients this month","vis.c4":"Toronto → PTY","vis.c4s":"All-on-4 consult",
  "prob.eyebrow":"The problem","prob.title":"Your next patient is flying <span class=\"hl\">past Panama</span>",
  "prob.lead":"Dental tourism from North America and Europe is booming, but most of it lands somewhere else.",
@@ -759,10 +798,10 @@ en:{
 es:{
  "nav.problem":"El problema","nav.packages":"Paquetes","nav.roi":"ROI","nav.cases":"Casos","nav.faq":"FAQ",
  "cta.book":"Agendar llamada","cta.packages":"Ver paquetes","cta.packagesShort":"Paquetes","cta.buy":"Comprar paquete",
- "hero.pill":"Hecho solo para clínicas de odontología estética en Panamá",
+ "hero.pill":"Programa hecho solo para clínicas dentales estéticas en Panamá","hero.pillB":"Con la confianza de +30 clínicas",
  "hero.title":"Ayudamos a clínicas de odontología estética en Panamá a atraer pacientes internacionales <span class=\"mark\">en 90 días</span>",
- "hero.lead":"Carillas, implantes, diseño de sonrisa. Llevamos pacientes con alta intención desde EE. UU., Canadá y Europa directo a su consultorio: estrategia, contenido, SEO, PR, publicidad y reputación, con un solo equipo senior.",
- "hero.trust":"<b>+50 especialistas</b><br>de agencias top, en inglés y español",
+ "hero.lead":"Carillas, implantes, diseño de sonrisa. Llevamos pacientes con alta intención desde EE. UU., Canadá y Europa directo a su consultorio.",
+ "proof.q":"\"En dos meses pasamos de cero a un flujo constante de pacientes de EE. UU. y Canadá.\"","proof.who":"Dueña de clínica, Ciudad de Panamá","proof.s1":"especialistas de agencias top","proof.s2":"clínicas atendidas","proof.s3":"años en marketing","proof.s4":"países de pacientes",
  "vis.c1":"Paciente nuevo · Miami","vis.c1s":"Carillas completas","vis.booked":"Agendado ✓","vis.c2s":"Calificación en Google","vis.c3":"Dra. Ana · Ciudad de Panamá","vis.c3s":"+9 pacientes internacionales este mes","vis.c4":"Toronto → PTY","vis.c4s":"Consulta All-on-4",
  "prob.eyebrow":"El problema","prob.title":"Su próximo paciente está volando <span class=\"hl\">de largo sobre Panamá</span>",
  "prob.lead":"El turismo dental desde Norteamérica y Europa está en auge, pero la mayoría aterriza en otro lugar.",
