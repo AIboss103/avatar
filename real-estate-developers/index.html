@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Skyline Growth Panama</title>
-<meta name="description" content="We help Panama developers sell apartments to buyers from the US, Canada and Europe in 90 days.">
+<meta name="description" content="We help Panama developers sell apartments to crypto and US buyers in 90 days. Verified $300k+ buyers, USDT payment to bank.">
 <meta name="theme-color" content="#0a0b0d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -337,6 +337,75 @@ footer{border-top:1px solid var(--line);padding-block:30px calc(30px + env(safe-
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .rv:not(.in){transform:none;opacity:1}
 }
+
+/* v2 additions */
+@media (min-width:1061px){.pkg-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.price{flex-wrap:wrap}
+.pkg h3 .promo{margin-left:10px}
+.proof-stats b{font-size:20px}
+.founder{display:grid;grid-template-columns:380px 1fr;gap:20px;margin-top:48px}
+.f-card{padding:30px;display:flex;flex-direction:column;gap:18px;background:radial-gradient(500px circle at 0% 0%,rgba(214,176,115,.14),transparent 60%),var(--surface)}
+.f-photo{width:120px;height:120px;border-radius:28px;display:grid;place-items:center;background:linear-gradient(140deg,#2a2113,#13161a);border:1px solid var(--goldLine);font-family:var(--display);font-weight:800;font-size:42px;letter-spacing:-.03em;color:var(--gold);overflow:hidden}
+.f-photo img{width:100%;height:100%;object-fit:cover}
+.f-card h3{font-size:28px}
+.f-role{color:var(--gold);font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-top:-10px}
+.f-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.f-list li{display:flex;gap:12px;font-size:15px;color:#e6dccb;line-height:1.45}
+.f-list .ic{width:20px;height:20px;color:var(--gold);margin-top:1px}
+.f-side{display:grid;grid-template-rows:auto 1fr;gap:20px}
+.f-big{padding:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.f-big div{display:flex;flex-direction:column;gap:4px}
+.f-big b{font-family:var(--display);font-weight:800;font-size:clamp(34px,4vw,46px);letter-spacing:-.04em;line-height:1}
+.f-big span{font-size:13.5px;color:var(--muted)}
+.f-team{padding:30px;display:flex;flex-direction:column;gap:16px;justify-content:center}
+.f-team h4{font-size:19px}
+.f-team p{color:var(--muted);font-size:14.5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;padding:9px 13px;border-radius:10px;border:1px solid var(--line2);color:#e6dccb}
+.chips .ic{width:16px;height:16px;color:var(--gold)}
+
+.old{font-family:var(--display);font-size:18px;color:var(--dim);text-decoration:line-through;margin-right:6px}
+.promo{display:inline-block;margin-left:8px;font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--green);color:#0b1a12;padding:4px 8px;border-radius:6px;vertical-align:middle}
+.price-sub{font-size:13px;color:var(--gold2);margin-bottom:20px}
+.goal{display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:14px;background:var(--goldSoft);border:1px solid var(--goldLine);margin-bottom:22px}
+.goal .ic{width:22px;height:22px;color:var(--gold)}
+.goal b{font-family:var(--display);font-size:18px;display:block;line-height:1.2}
+.goal span{font-size:12.5px;color:var(--muted)}
+.terms{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-bottom:18px}
+.terms b{color:var(--text)}
+
+.cmp{margin-top:48px;display:grid;grid-template-columns:1.1fr 1fr 1fr 1.25fr;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.cmp > div{padding:18px 20px;border-top:1px solid var(--line);font-size:15px;display:flex;align-items:center;gap:10px}
+.cmp > .h{border-top:0;font-family:var(--display);font-weight:700;font-size:14px;color:var(--muted);padding-block:20px}
+.cmp > .f{font-weight:600;color:var(--text)}
+.cmp > .o{color:var(--muted)}
+.cmp > .o .ic{color:var(--red);width:18px;height:18px}
+.cmp > .u{background:linear-gradient(90deg,rgba(214,176,115,.14),rgba(214,176,115,.06));color:var(--text);font-weight:600}
+.cmp > .u .ic{color:var(--gold);width:18px;height:18px}
+.cmp > .h.u{color:var(--gold);font-size:16px}
+.cmp-m{display:none}
+
+
+@media (max-width:1060px){
+  .founder{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .cmp{display:none}
+  .cmp-m{display:flex;flex-direction:column;gap:12px;margin-top:36px}
+  .cm{padding:18px}
+  .cm h4{font-size:16px;margin-bottom:10px}
+  .cm div{display:grid;grid-template-columns:120px 1fr;gap:10px;font-size:14px;padding:8px 0;border-top:1px solid var(--line)}
+  .cm div span:first-child{color:var(--dim);font-size:12.5px}
+  .cm div.us{color:var(--gold);font-weight:600}
+  .cm div.us span:first-child{color:var(--gold)}
+}
+@media (max-width:640px){
+  .f-card,.f-big,.f-team{padding:22px 18px}
+  .f-big{grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .f-big b{font-size:28px}
+  .f-big span{font-size:12px}
+  .form{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -346,56 +415,56 @@ footer{border-top:1px solid var(--line);padding-block:30px calc(30px + env(safe-
   <div class="wrap nav">
     <a href="#top" class="logo"><svg viewBox="0 0 32 32" fill="none" stroke="#d6b073" stroke-width="1.8"><path d="M5 28V15h6v13M13 28V4h7v24M22 28V11h6v17M3 28h26"/></svg>Skyline<small>Growth</small></a>
     <nav class="nav-links">
-      <a href="#problem" data-i18n="nav.problem">Problem</a>
-      <a href="#packages" data-i18n="nav.packages">Packages</a>
+      <a href="#team" data-i18n="nav.team">Team</a>
+      <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+      <a href="#compare" data-i18n="nav.compare">Why us</a>
       <a href="#calculator" data-i18n="nav.calc">Calculator</a>
-      <a href="#cases" data-i18n="nav.cases">Cases</a>
       <a href="#book" data-i18n="nav.book">Contact</a>
     </nav>
     <div class="nav-right">
       <div class="lang" role="group" aria-label="Language"><button data-lang="en" class="on">EN</button><button data-lang="es">ES</button></div>
-      <a href="#book" class="btn btn-gold" data-i18n="cta.book">Book Strategy Call</a>
+      <a href="#book" class="btn btn-gold" data-i18n="cta.book">Book a Call</a>
       <button class="burger" aria-label="Menu"><span></span></button>
     </div>
   </div>
 </header>
 <div class="mobile-menu">
-  <a href="#problem" data-i18n="nav.problem">Problem</a>
-  <a href="#packages" data-i18n="nav.packages">Packages</a>
+  <a href="#team" data-i18n="nav.team">Team</a>
+  <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+  <a href="#compare" data-i18n="nav.compare">Why us</a>
   <a href="#calculator" data-i18n="nav.calc">Calculator</a>
-  <a href="#cases" data-i18n="nav.cases">Cases</a>
-  <a href="#book" class="btn btn-gold" data-i18n="cta.book">Book Strategy Call</a>
+  <a href="#book" class="btn btn-gold" data-i18n="cta.book">Book a Call</a>
 </div>
 
 <main id="top">
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="badge-row"><span class="avs"><img src="img/p1.webp" alt=""><img src="img/p2.webp" alt=""><img src="img/p3.webp" alt=""><img src="img/pa.webp" alt=""></span><span><span class="stars" aria-label="5 out of 5">★★★★★</span> <b data-i18n="hero.pillB">Trusted by premium developers</b></span></div>
-      <h1 data-i18n-html="hero.title">We help Panamanian developers sell multi-million dollar inventory to US, Canadian &amp; European buyers <span class="gtxt">in 90 days.</span></h1>
-      <p class="lead" data-i18n="hero.lead">Bypass local broker price wars.</p>
+      <div class="badge-row"><span class="avs"><img src="img/p1.webp" alt=""><img src="img/p2.webp" alt=""><img src="img/p3.webp" alt=""><img src="img/pa.webp" alt=""></span><span><span class="stars" aria-label="5 out of 5">★★★★★</span> <b data-i18n="hero.tag">Trusted by Top Panama Developers</b></span></div>
+      <h1 data-i18n-html="hero.title">We help Panama developers sell apartments to crypto &amp; US buyers <span class="gtxt">in 90 days.</span></h1>
+      <p class="lead" data-i18n="hero.lead">Get verified buyers with $300,000+ for the Panama Investor Visa. Direct USDT / crypto payment to bank.</p>
       <div class="hero-cta">
-        <a href="#book" class="btn btn-gold"><span data-i18n="cta.book">Book Strategy Call</span><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
-        <a href="#packages" class="btn btn-line" data-i18n="cta.select">Select Package</a>
+        <a href="#book" class="btn btn-gold"><span data-i18n="cta.book">Book a Call</span><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
+        <a href="#pricing" class="btn btn-line" data-i18n="cta.pricing">See Pricing</a>
       </div>
       <div class="proof">
         <div class="proof-stats">
-          <div><b>50+</b><span data-i18n="proof.s1">experts</span></div>
-          <div><b>12</b><span data-i18n="proof.s2">units in 6 mo</span></div>
-          <div><b>−40%</b><span data-i18n="proof.s3">cost per buyer</span></div>
-          <div><b>100%</b><span data-i18n="proof.s4">pre-sale sold</span></div>
+          <div><b>50+</b><span data-i18n="st.1">team experts</span></div>
+          <div><b>12</b><span data-i18n="st.2">apartments sold in 6 months</span></div>
+          <div><b data-i18n="st.3v">30 days</b><span data-i18n="st.3">to Panama permanent residency</span></div>
+          <div><b>100%</b><span data-i18n="st.4">legal crypto payment via TowerBank &amp; escrow</span></div>
         </div>
-        <div class="proof-by"><span data-i18n="pw.t">Powered by</span><b>Triton.</b><b>Stive<i>.ai</i></b><b>iCoda<i>.io</i></b></div>
+        <div class="proof-by"><span data-i18n="pw.t">Partners</span><b>Triton.</b><b>Stive<i>.ai</i></b><b>iCoda<i>.io</i></b></div>
       </div>
     </div>
     <div class="scene" id="scene" aria-hidden="true">
       <div class="frame"><span class="corner c-tl"></span><span class="corner c-br"></span></div>
       <canvas id="city"></canvas>
-      <svg class="fallback" viewBox="0 0 600 612" fill="none" stroke="#d6b073" stroke-opacity=".7" stroke-width="1.4"><path d="M40 520h520M80 520V330h60v190M150 520V230h70v290M232 520V140l40-30 40 30v380M324 520V260h56v260M392 520V200h64v320M468 520V310h52v210"/><path d="M232 180h80M232 220h80M232 260h80M232 300h80M232 340h80M232 380h80M232 420h80M232 460h80" stroke-opacity=".25"/></svg>
-      <div class="sold"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="19" stroke="rgba(255,255,255,.1)" stroke-width="4" fill="none"/><circle cx="23" cy="23" r="19" stroke="#d6b073" stroke-width="4" fill="none" stroke-dasharray="119.4" stroke-dashoffset="26" stroke-linecap="round" transform="rotate(-90 23 23)"/></svg><div><b>78%</b><span data-i18n="vis.sold">inventory sold</span></div></div>
-      <div class="chip ch1"><img src="img/us.webp" alt=""><div><b data-i18n="vis.c1">Buyer · Miami</b><span data-i18n="vis.c1s">$1.4M penthouse</span><br><span class="tag" data-i18n="vis.res">Reserved</span></div></div>
-      <div class="chip ch2"><img src="img/ca.webp" alt=""><div><b data-i18n="vis.c2">Fly-in tour booked</b><span data-i18n="vis.c2s">Toronto → Costa del Este</span></div></div>
-      <div class="chip ch3"><img src="img/de.webp" alt=""><div><b data-i18n="vis.c3">Qualified Investor Visa lead</b><span data-i18n="vis.c3s">Frankfurt · $850k budget</span></div></div>
+      <svg class="fallback" viewBox="0 0 600 612" fill="none" stroke="#d6b073" stroke-opacity=".7" stroke-width="1.4"><path d="M40 520h520M80 520V330h60v190M150 520V230h70v290M232 520V140l40-30 40 30v380M324 520V260h56v260M392 520V200h64v320M468 520V310h52v210"/></svg>
+      <div class="sold"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="19" stroke="rgba(255,255,255,.1)" stroke-width="4" fill="none"/><circle cx="23" cy="23" r="19" stroke="#d6b073" stroke-width="4" fill="none" stroke-dasharray="119.4" stroke-dashoffset="26" stroke-linecap="round" transform="rotate(-90 23 23)"/></svg><div><b>78%</b><span data-i18n="vis.sold">of the building sold</span></div></div>
+      <div class="chip ch1"><img src="img/us.webp" alt=""><div><b data-i18n="vis.c1">Buyer · Miami</b><span data-i18n="vis.c1s">$650k apartment</span><br><span class="tag" data-i18n="vis.c1t">Paid in USDT</span></div></div>
+      <div class="chip ch2"><img src="img/ch.webp" alt=""><div><b data-i18n="vis.c2">Viewing trip booked</b><span data-i18n="vis.c2s">Zurich → Panama City</span></div></div>
+      <div class="chip ch3"><img src="img/pa.webp" alt=""><div><b data-i18n="vis.c3">Investor Visa buyer</b><span data-i18n="vis.c3s">$300k+ verified</span></div></div>
       <span class="coord">8.98° N · 79.52° W</span>
     </div>
   </div>
@@ -403,107 +472,113 @@ footer{border-top:1px solid var(--line);padding-block:30px calc(30px + env(safe-
 
 <div class="strip" aria-hidden="true"><div class="strip-track" id="strip"></div></div>
 
-<section id="problem">
+<section id="team">
   <div class="wrap">
-    <span class="kicker rv" data-i18n="prob.k">The Panama real estate problem</span>
-    <h2 class="title rv" data-i18n-html="prob.t">Great towers. <span class="gold">Wrong buyers.</span></h2>
-    <div class="prob-grid" id="probGrid"></div>
+    <span class="kicker rv" data-i18n="tm.k">Team</span>
+    <h2 class="title rv" data-i18n-html="tm.t">Leadership <span class="gold">on the ground</span></h2>
+    <p class="lead rv" data-i18n="tm.l">Based in Panama City. Native to Web3 and high-ticket sales.</p>
+    <div class="founder">
+      <div class="card f-card rv">
+        <div class="f-photo" id="fPhoto">AV</div>
+        <div><h3>Artem Voinov</h3></div>
+        <span class="f-role" data-i18n="tm.role">Founder &amp; CEO</span>
+        <ul class="f-list">
+          <li><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="m9 12 2 2 4-4" /></svg><span data-i18n="tm.b1">Ex-iCoda growth lead and crypto specialist</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /> <circle cx="12" cy="10" r="3" /></svg><span data-i18n="tm.b2">Lives and works in Panama City</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg><span data-i18n="tm.b3">Direct access to 2,000+ crypto founders and whales ready to buy property for Panama residency</span></li>
+        </ul>
+      </div>
+      <div class="f-side">
+        <div class="card f-big rv d1">
+          <div><b class="gtxt">2,000+</b><span data-i18n="tm.n1">crypto founders in our network</span></div>
+          <div><b class="gtxt">50+</b><span data-i18n="tm.n2">vetted specialists</span></div>
+          <div><b class="gtxt">PTY</b><span data-i18n="tm.n3">we live in Panama City</span></div>
+        </div>
+        <div class="card f-team rv d2">
+          <h4 data-i18n="tm.th">The execution team</h4>
+          <div class="chips" id="teamChips"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="packages" style="padding-top:20px">
+<section id="pricing" style="padding-top:20px">
   <div class="wrap">
     <div class="center">
-      <span class="kicker rv" data-i18n="pk.k">Packages &amp; pricing</span>
-      <h2 class="title rv" data-i18n-html="pk.t">One team. <span class="gold">Three levels of scale.</span></h2>
-      <p class="lead rv" data-i18n="pk.l">Monthly retainers for services. Start with one project and scale into a full international sales department.</p>
+      <span class="kicker rv" data-i18n="pk.k">Pricing</span>
+      <h2 class="title rv" data-i18n-html="pk.t">Three <span class="gold">simple plans</span></h2>
+      <p class="lead rv" data-i18n="pk.l">Monthly working hours + a commission on sales. You pay the ad budget directly.</p>
     </div>
     <div class="pkg-grid" id="pkgGrid"></div>
-    <div class="disc rv"><svg class="ic" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /> <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" /> <path d="M12 18V6" /></svg><div data-i18n-html="pk.disc"><b>Marketing ad spend is NOT included</b> and is paid separately based on campaign scale.</div></div>
+  </div>
+</section>
+
+<section id="compare" style="padding-top:20px">
+  <div class="wrap">
+    <span class="kicker rv" data-i18n="cmp.k">Why us</span>
+    <h2 class="title rv" data-i18n-html="cmp.t">Us vs <span class="gold">the others</span></h2>
+    <div class="cmp rv" id="cmp"></div>
+    <div class="cmp-m" id="cmpM"></div>
+  </div>
+</section>
+
+<section id="cases" style="padding-top:20px">
+  <div class="wrap">
+    <span class="kicker rv" data-i18n="cs.k">Results</span>
+    <h2 class="title rv" data-i18n-html="cs.t">Projects we've <span class="gold">already sold</span></h2>
+    <div class="cases" id="caseGrid"></div>
   </div>
 </section>
 
 <section id="calculator" class="calc-band">
   <div class="wrap">
-    <span class="kicker rv" data-i18n="calc.k">Developer calculator</span>
-    <h2 class="title rv" data-i18n-html="calc.t">What it takes to sell <span class="gold">your apartments</span></h2>
-    <p class="lead rv" data-i18n="calc.l">Set your average unit price and monthly sales target. See the leads, budget and cost of sale compared with broker commissions.</p>
+    <span class="kicker rv" data-i18n="calc.k">Calculator</span>
+    <h2 class="title rv" data-i18n-html="calc.t">What you save <span class="gold">vs brokers</span></h2>
     <div class="calc">
       <div class="card calc-in">
         <h3 data-i18n="calc.h">Your project</h3>
-        <label class="field" for="price"><span class="fl"><span data-i18n="calc.price">Average unit price</span><b id="priceV">$650,000</b></span><input type="range" id="price" min="300000" max="2000000" step="25000" value="650000"><span class="hint"><span>$300k</span><span>$2M+</span></span></label>
-        <label class="field" for="units"><span class="fl"><span data-i18n="calc.units">Sales target per month</span><b id="unitsV">2</b></span><input type="range" id="units" min="1" max="5" step="1" value="2"><span class="hint"><span data-i18n="calc.u1">1 unit</span><span data-i18n="calc.u5">5+ units</span></span></label>
+        <label class="field" for="price"><span class="fl"><span data-i18n="calc.price">Average apartment price</span><b id="priceV">$650,000</b></span><input type="range" id="price" min="300000" max="2000000" step="25000" value="650000"><span class="hint"><span>$300k</span><span>$2M+</span></span></label>
+        <label class="field" for="units"><span class="fl"><span data-i18n="calc.units">Apartments to sell per month</span><b id="unitsV">2</b></span><input type="range" id="units" min="1" max="5" step="1" value="2"><span class="hint"><span>1</span><span>5+</span></span></label>
       </div>
       <div class="calc-out">
-        <div class="co big"><span data-i18n="calc.vol">Sales volume per month</span><b class="gtxt" id="oVol">$1,300,000</b></div>
-        <div class="co"><span data-i18n="calc.leads">Qualified investor leads needed</span><b id="oLeads">25–40</b><small data-i18n="calc.leadsS">per month</small></div>
-        <div class="co"><span data-i18n="calc.ads">Estimated ad spend</span><b id="oAds">$4,200</b><small id="oAdsR"></small></div>
-        <div class="co"><span data-i18n="calc.plan">Recommended plan</span><b id="oPlan">Standard</b><small id="oFee"></small></div>
-        <div class="co save"><span data-i18n="calc.save">Saved vs 6% broker commission</span><b id="oSave">$54,000</b><small data-i18n="calc.saveS">per month</small></div>
+        <div class="co big"><span data-i18n="calc.vol">Your sales per month</span><b class="gtxt" id="oVol">$1,300,000</b></div>
+        <div class="co save"><span data-i18n="calc.save">You save vs a 6% broker fee</span><b id="oSave">$0</b><small data-i18n="calc.saveS">per month</small></div>
+        <div class="co"><span data-i18n="calc.plan">Recommended plan</span><b id="oPlan">Growth</b><small id="oFee"></small></div>
         <div class="cmpbar">
-          <h4 data-i18n="calc.cmp">Cost of sale, % of sales volume</h4>
-          <div class="cb"><span data-i18n="calc.cmpUs">With us (fee + ads)</span><span class="t"><i id="barUs" style="background:var(--gold)"></i></span><b id="pctUs">1.9%</b></div>
+          <h4 data-i18n="calc.cmp">What each sale costs you</h4>
+          <div class="cb"><span data-i18n="calc.cmpUs">With us</span><span class="t"><i id="barUs" style="background:var(--gold)"></i></span><b id="pctUs">2.8%</b></div>
           <div class="cb"><span data-i18n="calc.cmpBr">Local brokers</span><span class="t"><i style="width:100%;background:var(--red)"></i></span><b>5–8%</b></div>
         </div>
       </div>
     </div>
-    <div class="bench">
-      <div class="card bm rv"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /></svg><div><b>$80 – $180</b><span data-i18n="bm.1">average cost of a qualified US investor lead</span></div></div>
-      <div class="card bm rv d1"><svg class="ic" viewBox="0 0 24 24"><path d="M2 22h20" /> <path d="M3.77 10.77 2 9l2-4.5 1.1.55c.55.28.9.84.9 1.45s.35 1.17.9 1.45L8 8.5l3-6 1.05.53a2 2 0 0 1 1.09 1.52l.72 5.4a2 2 0 0 0 1.09 1.52l4.4 2.2c.42.22.78.55 1.01.96l.6 1.03c.49.88-.06 1.98-1.06 2.1l-1.18.15c-.47.06-.95-.02-1.37-.24L4.29 11.15a2 2 0 0 1-.52-.38Z" /></svg><div><b>5 – 8%</b><span data-i18n="bm.2">lead to unit reservation or fly-in tour</span></div></div>
-      <div class="card bm rv d2"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /> <path d="M2 12h20" /></svg><div><b>EN / ES</b><span data-i18n="bm.3">funnels, SEO and sales materials in both languages</span></div></div>
-    </div>
-    <p class="assume" data-i18n="calc.as">Estimates use our average metrics: leads from 5–8% conversion, ad spend at $130 average per lead. Not a forecast.</p>
-    <div class="guar"><svg class="ic" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /></svg><p data-i18n-html="guar">We do not offer fake ROI promises.</p></div>
+    <p class="assume" data-i18n="calc.as">With us = monthly fee + ad budget + 2% on sales. Rough estimate.</p>
+    <div class="guar"><svg class="ic" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /></svg><p data-i18n-html="guar">We don't promise sales we can't control.</p></div>
   </div>
 </section>
 
-<section id="cases">
+<section id="book">
   <div class="wrap">
-    <span class="kicker rv" data-i18n="cs.k">Expertise &amp; cases</span>
-    <h2 class="title rv" data-i18n-html="cs.t">Inventory we've <span class="gold">already moved</span></h2>
-    <div class="cases" id="caseGrid"></div>
-    <div class="card eco rv">
-      <div>
-        <h3 data-i18n-html="eco.t">A <span class="gold">50+ person</span> ecosystem behind your project</h3>
-      </div>
-      <div class="eco-logos">
-        <a href="#" aria-label="Triton">Triton<i>.</i></a>
-        <a href="https://stive.ai" target="_blank" rel="noopener">Stive<i>.ai</i></a>
-        <a href="https://icoda.io" target="_blank" rel="noopener">iCoda<i>.io</i></a>
-      </div>
-      <div class="eco-roles" id="roles"></div>
-    </div>
-  </div>
-</section>
-
-<section id="book" class="calc-band">
-  <div class="wrap">
-    <span class="kicker rv" data-i18n="bk.k">Start</span>
-    <h2 class="title rv" data-i18n-html="bk.t">Book a strategy call or <span class="gold">start today</span></h2>
+    <span class="kicker rv" data-i18n="bk.k">Contact</span>
+    <h2 class="title rv" data-i18n-html="bk.t">Book a call <span class="gold">with Artem</span></h2>
     <div class="book-grid">
       <form class="card form rv" id="form" name="developer-call" method="POST" data-netlify="true" netlify-honeypot="hp">
         <input type="hidden" name="form-name" value="developer-call">
         <p hidden><label>Leave empty <input name="hp"></label></p>
-        <h3 data-i18n="bk.fh">Book a strategy call</h3>
-        <label><span data-i18n="bk.name">Full name</span><input name="name" id="f-name" required autocomplete="name"></label>
-        <label><span data-i18n="bk.company">Company</span><input name="company" id="f-company" required autocomplete="organization"></label>
+        <label><span data-i18n="bk.name">Your name</span><input name="name" id="f-name" required autocomplete="name"></label>
+        <label><span data-i18n="bk.company">Company / building name</span><input name="company" id="f-company" required></label>
+        <label><span data-i18n="bk.phone">WhatsApp number</span><input type="tel" name="whatsapp" id="f-phone" required autocomplete="tel"></label>
         <label><span data-i18n="bk.email">Work email</span><input type="email" name="email" id="f-email" required autocomplete="email"></label>
-        <label><span data-i18n="bk.phone">WhatsApp / phone</span><input type="tel" name="phone" id="f-phone" autocomplete="tel"></label>
-        <label><span data-i18n="bk.project">Project and location</span><input name="project" id="f-project" placeholder="Costa del Este tower"></label>
-        <label><span data-i18n="bk.units">Units to sell</span><select name="units" id="f-units"><option>1–20</option><option>20–50</option><option>50–150</option><option>150+</option></select></label>
-        <label class="full"><span data-i18n="bk.msg">Anything we should know?</span><textarea name="message" id="f-msg"></textarea></label>
-        <button class="btn btn-gold" type="submit"><span data-i18n="bk.send">Request strategy call</span><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></button>
+        <button class="btn btn-gold" type="submit"><span data-i18n="bk.send">Book a Call</span><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></button>
         <p class="form-ok" id="formOk" hidden></p>
       </form>
       <div class="card checkout rv d1">
-        <h3 data-i18n="ck.h">Or start right now</h3>
-        <p data-i18n="ck.p">Pick a package and pay the first month online. We kick off within 48 hours.</p>
-        <div class="seg" id="ckSeg"><button data-p="starter">Starter</button><button data-p="standard" class="on">Standard</button><button data-p="full">Maximum</button></div>
-        <div class="co-price"><b id="ckPrice">$20,000</b><span data-i18n="pk.mo">/ month</span></div>
+        <h3 data-i18n="ck.h">Or start now</h3>
+        <div class="seg" id="ckSeg"><button data-p="starter">Starter</button><button data-p="growth" class="on">Growth</button></div>
+        <div class="co-price"><b id="ckPrice">$6,500</b><span data-i18n="pk.mo">/ month</span></div>
         <button class="pay-opt" data-pay="card"><span class="pi"><svg class="ic" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2" /> <line x1="2" x2="22" y1="10" y2="10" /></svg></span><div><b data-i18n="pay.card">Card · Apple Pay</b><span data-i18n="pay.cardS">Secure checkout via Stripe</span></div></button>
-        <button class="pay-opt" data-pay="crypto"><span class="pi"><svg class="ic" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" /> <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" /></svg></span><div><b data-i18n="pay.crypto">Crypto · USDT</b><span data-i18n="pay.cryptoS">TRC-20 / ERC-20</span></div></button>
+        <button class="pay-opt" data-pay="crypto"><span class="pi"><svg class="ic" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" /> <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" /></svg></span><div><b data-i18n="pay.crypto">Crypto · USDT</b><span data-i18n="pay.cryptoS">Pay with USDT</span></div></button>
         <p class="pay-msg" id="payMsg" hidden></p>
-        <p class="small" data-i18n="ck.s">Services only. Ad spend is billed separately.</p>
       </div>
     </div>
   </div>
@@ -512,188 +587,183 @@ footer{border-top:1px solid var(--line);padding-block:30px calc(30px + env(safe-
 
 <footer>
   <div class="wrap foot">
-    <span>© <span id="yr"></span> Skyline Growth · <span data-i18n="ft.t">International buyer acquisition for Panama developers</span> · Powered by Triton, Stive.ai, iCoda.io</span>
-    <span>Panama City · Miami · Remote</span>
+    <span>© <span id="yr"></span> Skyline Growth · <span data-i18n="ft.t">Crypto and US buyers for Panama developers</span> · Triton, Stive.ai, iCoda.io</span>
+    <span>Panama City</span>
   </div>
 </footer>
 
 <div class="mcta" id="mcta">
-  <a href="#book" class="btn btn-gold" data-i18n="cta.bookS">Book a call</a>
-  <a href="#packages" class="btn btn-line" data-i18n="cta.pk">Packages</a>
+  <a href="#book" class="btn btn-gold" data-i18n="cta.book">Book a Call</a>
+  <a href="#pricing" class="btn btn-line" data-i18n="cta.pricing">See Pricing</a>
 </div>
 
 <script src="vendor/three.min.js"></script>
 <script>
 /* ====== CONFIG: replace with real links ====== */
 const CONFIG={
-  booking:"",                                           // optional Calendly link; empty = use the form on the page
-  stripe:{starter:"",standard:"",full:""},              // Stripe Payment Links (Apple Pay enabled)
-  crypto:""                                             // USDT checkout link
+  stripe:{starter:"",growth:""},   // Stripe Payment Links (Apple Pay enabled)
+  crypto:"",                       // USDT checkout link
+  founderPhoto:""                  // e.g. "img/artem.jpg"
 };
-const ICONS={"building-2":"<path d=\"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z\" /> <path d=\"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\" /> <path d=\"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2\" /> <path d=\"M10 6h4\" /> <path d=\"M10 10h4\" /> <path d=\"M10 14h4\" /> <path d=\"M10 18h4\" />","building":"<rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\" ry=\"2\" /> <path d=\"M9 22v-4h6v4\" /> <path d=\"M8 6h.01\" /> <path d=\"M16 6h.01\" /> <path d=\"M12 6h.01\" /> <path d=\"M12 10h.01\" /> <path d=\"M12 14h.01\" /> <path d=\"M16 10h.01\" /> <path d=\"M16 14h.01\" /> <path d=\"M8 10h.01\" /> <path d=\"M8 14h.01\" />","landmark":"<line x1=\"3\" x2=\"21\" y1=\"22\" y2=\"22\" /> <line x1=\"6\" x2=\"6\" y1=\"18\" y2=\"11\" /> <line x1=\"10\" x2=\"10\" y1=\"18\" y2=\"11\" /> <line x1=\"14\" x2=\"14\" y1=\"18\" y2=\"11\" /> <line x1=\"18\" x2=\"18\" y1=\"18\" y2=\"11\" /> <polygon points=\"12 2 20 7 4 7\" />","plane":"<path d=\"M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z\" />","plane-landing":"<path d=\"M2 22h20\" /> <path d=\"M3.77 10.77 2 9l2-4.5 1.1.55c.55.28.9.84.9 1.45s.35 1.17.9 1.45L8 8.5l3-6 1.05.53a2 2 0 0 1 1.09 1.52l.72 5.4a2 2 0 0 0 1.09 1.52l4.4 2.2c.42.22.78.55 1.01.96l.6 1.03c.49.88-.06 1.98-1.06 2.1l-1.18.15c-.47.06-.95-.02-1.37-.24L4.29 11.15a2 2 0 0 1-.52-.38Z\" />","search":"<circle cx=\"11\" cy=\"11\" r=\"8\" /> <path d=\"m21 21-4.3-4.3\" />","trending-down":"<polyline points=\"22 17 13.5 8.5 8.5 13.5 2 7\" /> <polyline points=\"16 17 22 17 22 11\" />","trending-up":"<polyline points=\"22 7 13.5 15.5 8.5 10.5 2 17\" /> <polyline points=\"16 7 22 7 22 13\" />","users":"<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\" /> <circle cx=\"9\" cy=\"7\" r=\"4\" /> <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\" /> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\" />","handshake":"<path d=\"m11 17 2 2a1 1 0 1 0 3-3\" /> <path d=\"m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4\" /> <path d=\"m21 3 1 11h-2\" /> <path d=\"M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3\" /> <path d=\"M3 4h8\" />","globe":"<circle cx=\"12\" cy=\"12\" r=\"10\" /> <path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\" /> <path d=\"M2 12h20\" />","map-pin":"<path d=\"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z\" /> <circle cx=\"12\" cy=\"10\" r=\"3\" />","key-round":"<path d=\"M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z\" /> <circle cx=\"16.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\" />","mail":"<rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\" /> <path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\" />","megaphone":"<path d=\"m3 11 18-5v12L3 14v-3z\" /> <path d=\"M11.6 16.8a3 3 0 1 1-5.8-1.6\" />","shield-check":"<path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\" /> <path d=\"m9 12 2 2 4-4\" />","star":"<polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\" />","sparkles":"<path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\" /> <path d=\"M20 3v4\" /> <path d=\"M22 5h-4\" /> <path d=\"M4 17v2\" /> <path d=\"M5 18H3\" />","bot":"<path d=\"M12 8V4H8\" /> <rect width=\"16\" height=\"12\" x=\"4\" y=\"8\" rx=\"2\" /> <path d=\"M2 14h2\" /> <path d=\"M20 14h2\" /> <path d=\"M15 13v2\" /> <path d=\"M9 13v2\" />","calendar-check":"<path d=\"M8 2v4\" /> <path d=\"M16 2v4\" /> <rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\" /> <path d=\"M3 10h18\" /> <path d=\"m9 16 2 2 4-4\" />","crown":"<path d=\"M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z\" /> <path d=\"M5 21h14\" />","gem":"<path d=\"M6 3h12l4 6-10 13L2 9Z\" /> <path d=\"M11 3 8 9l4 13 4-13-3-6\" /> <path d=\"M2 9h20\" />","check":"<path d=\"M20 6 9 17l-5-5\" />","arrow-right":"<path d=\"M5 12h14\" /> <path d=\"m12 5 7 7-7 7\" />","wallet":"<path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\" /> <path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\" />","bitcoin":"<path d=\"M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727\" />","credit-card":"<rect width=\"20\" height=\"14\" x=\"2\" y=\"5\" rx=\"2\" /> <line x1=\"2\" x2=\"22\" y1=\"10\" y2=\"10\" />","phone":"<path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\" />","file-text":"<path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\" /> <path d=\"M14 2v4a2 2 0 0 0 2 2h4\" /> <path d=\"M10 9H8\" /> <path d=\"M16 13H8\" /> <path d=\"M16 17H8\" />","video":"<path d=\"m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5\" /> <rect x=\"2\" y=\"6\" width=\"14\" height=\"12\" rx=\"2\" />","newspaper":"<path d=\"M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2\" /> <path d=\"M18 14h-8\" /> <path d=\"M15 18h-5\" /> <path d=\"M10 6h8v4h-8V6Z\" />","target":"<circle cx=\"12\" cy=\"12\" r=\"10\" /> <circle cx=\"12\" cy=\"12\" r=\"6\" /> <circle cx=\"12\" cy=\"12\" r=\"2\" />","rocket":"<path d=\"M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z\" /> <path d=\"m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z\" /> <path d=\"M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0\" /> <path d=\"M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5\" />","trophy":"<path d=\"M6 9H4.5a2.5 2.5 0 0 1 0-5H6\" /> <path d=\"M18 9h1.5a2.5 2.5 0 0 0 0-5H18\" /> <path d=\"M4 22h16\" /> <path d=\"M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22\" /> <path d=\"M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22\" /> <path d=\"M18 2H6v7a6 6 0 0 0 12 0V2Z\" />","briefcase":"<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\" /> <rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\" />","percent":"<line x1=\"19\" x2=\"5\" y1=\"5\" y2=\"19\" /> <circle cx=\"6.5\" cy=\"6.5\" r=\"2.5\" /> <circle cx=\"17.5\" cy=\"17.5\" r=\"2.5\" />","clock":"<circle cx=\"12\" cy=\"12\" r=\"10\" /> <polyline points=\"12 6 12 12 16 14\" />","eye-off":"<path d=\"M9.88 9.88a3 3 0 1 0 4.24 4.24\" /> <path d=\"M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68\" /> <path d=\"M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61\" /> <line x1=\"2\" x2=\"22\" y1=\"2\" y2=\"22\" />","badge-dollar-sign":"<path d=\"M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z\" /> <path d=\"M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8\" /> <path d=\"M12 18V6\" />","flag-triangle-right":"<path d=\"M7 22V2l10 5-10 5\" />","tag":"<path d=\"M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z\" /> <circle cx=\"7.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\" />","hotel":"<path d=\"M10 22v-6.57\" /> <path d=\"M12 11h.01\" /> <path d=\"M12 7h.01\" /> <path d=\"M14 15.43V22\" /> <path d=\"M15 16a5 5 0 0 0-6 0\" /> <path d=\"M16 11h.01\" /> <path d=\"M16 7h.01\" /> <path d=\"M8 11h.01\" /> <path d=\"M8 7h.01\" /> <rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"2\" />","castle":"<path d=\"M22 20v-9H2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2Z\" /> <path d=\"M18 11V4H6v7\" /> <path d=\"M15 22v-4a3 3 0 0 0-3-3a3 3 0 0 0-3 3v4\" /> <path d=\"M22 11V9\" /> <path d=\"M2 11V9\" /> <path d=\"M6 4V2\" /> <path d=\"M18 4V2\" /> <path d=\"M10 4V2\" /> <path d=\"M14 4V2\" />","waves":"<path d=\"M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" /> <path d=\"M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" /> <path d=\"M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" />","chart":"<path d=\"M3 3v18h18\" /> <path d=\"m19 9-5 5-4-4-3 3\" />","palm":"<path d=\"M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4\" /> <path d=\"M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3\" /> <path d=\"M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35\" /> <path d=\"M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14\" />"};
+const ICONS={"building-2":"<path d=\"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z\" /> <path d=\"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\" /> <path d=\"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2\" /> <path d=\"M10 6h4\" /> <path d=\"M10 10h4\" /> <path d=\"M10 14h4\" /> <path d=\"M10 18h4\" />","building":"<rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\" ry=\"2\" /> <path d=\"M9 22v-4h6v4\" /> <path d=\"M8 6h.01\" /> <path d=\"M16 6h.01\" /> <path d=\"M12 6h.01\" /> <path d=\"M12 10h.01\" /> <path d=\"M12 14h.01\" /> <path d=\"M16 10h.01\" /> <path d=\"M16 14h.01\" /> <path d=\"M8 10h.01\" /> <path d=\"M8 14h.01\" />","landmark":"<line x1=\"3\" x2=\"21\" y1=\"22\" y2=\"22\" /> <line x1=\"6\" x2=\"6\" y1=\"18\" y2=\"11\" /> <line x1=\"10\" x2=\"10\" y1=\"18\" y2=\"11\" /> <line x1=\"14\" x2=\"14\" y1=\"18\" y2=\"11\" /> <line x1=\"18\" x2=\"18\" y1=\"18\" y2=\"11\" /> <polygon points=\"12 2 20 7 4 7\" />","plane":"<path d=\"M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z\" />","plane-landing":"<path d=\"M2 22h20\" /> <path d=\"M3.77 10.77 2 9l2-4.5 1.1.55c.55.28.9.84.9 1.45s.35 1.17.9 1.45L8 8.5l3-6 1.05.53a2 2 0 0 1 1.09 1.52l.72 5.4a2 2 0 0 0 1.09 1.52l4.4 2.2c.42.22.78.55 1.01.96l.6 1.03c.49.88-.06 1.98-1.06 2.1l-1.18.15c-.47.06-.95-.02-1.37-.24L4.29 11.15a2 2 0 0 1-.52-.38Z\" />","search":"<circle cx=\"11\" cy=\"11\" r=\"8\" /> <path d=\"m21 21-4.3-4.3\" />","trending-down":"<polyline points=\"22 17 13.5 8.5 8.5 13.5 2 7\" /> <polyline points=\"16 17 22 17 22 11\" />","trending-up":"<polyline points=\"22 7 13.5 15.5 8.5 10.5 2 17\" /> <polyline points=\"16 7 22 7 22 13\" />","users":"<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\" /> <circle cx=\"9\" cy=\"7\" r=\"4\" /> <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\" /> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\" />","handshake":"<path d=\"m11 17 2 2a1 1 0 1 0 3-3\" /> <path d=\"m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4\" /> <path d=\"m21 3 1 11h-2\" /> <path d=\"M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3\" /> <path d=\"M3 4h8\" />","globe":"<circle cx=\"12\" cy=\"12\" r=\"10\" /> <path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\" /> <path d=\"M2 12h20\" />","map-pin":"<path d=\"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z\" /> <circle cx=\"12\" cy=\"10\" r=\"3\" />","key-round":"<path d=\"M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z\" /> <circle cx=\"16.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\" />","mail":"<rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\" /> <path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\" />","megaphone":"<path d=\"m3 11 18-5v12L3 14v-3z\" /> <path d=\"M11.6 16.8a3 3 0 1 1-5.8-1.6\" />","shield-check":"<path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\" /> <path d=\"m9 12 2 2 4-4\" />","star":"<polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\" />","sparkles":"<path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\" /> <path d=\"M20 3v4\" /> <path d=\"M22 5h-4\" /> <path d=\"M4 17v2\" /> <path d=\"M5 18H3\" />","bot":"<path d=\"M12 8V4H8\" /> <rect width=\"16\" height=\"12\" x=\"4\" y=\"8\" rx=\"2\" /> <path d=\"M2 14h2\" /> <path d=\"M20 14h2\" /> <path d=\"M15 13v2\" /> <path d=\"M9 13v2\" />","calendar-check":"<path d=\"M8 2v4\" /> <path d=\"M16 2v4\" /> <rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\" /> <path d=\"M3 10h18\" /> <path d=\"m9 16 2 2 4-4\" />","crown":"<path d=\"M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z\" /> <path d=\"M5 21h14\" />","gem":"<path d=\"M6 3h12l4 6-10 13L2 9Z\" /> <path d=\"M11 3 8 9l4 13 4-13-3-6\" /> <path d=\"M2 9h20\" />","check":"<path d=\"M20 6 9 17l-5-5\" />","arrow-right":"<path d=\"M5 12h14\" /> <path d=\"m12 5 7 7-7 7\" />","wallet":"<path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\" /> <path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\" />","bitcoin":"<path d=\"M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727\" />","credit-card":"<rect width=\"20\" height=\"14\" x=\"2\" y=\"5\" rx=\"2\" /> <line x1=\"2\" x2=\"22\" y1=\"10\" y2=\"10\" />","phone":"<path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\" />","file-text":"<path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\" /> <path d=\"M14 2v4a2 2 0 0 0 2 2h4\" /> <path d=\"M10 9H8\" /> <path d=\"M16 13H8\" /> <path d=\"M16 17H8\" />","video":"<path d=\"m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5\" /> <rect x=\"2\" y=\"6\" width=\"14\" height=\"12\" rx=\"2\" />","newspaper":"<path d=\"M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2\" /> <path d=\"M18 14h-8\" /> <path d=\"M15 18h-5\" /> <path d=\"M10 6h8v4h-8V6Z\" />","target":"<circle cx=\"12\" cy=\"12\" r=\"10\" /> <circle cx=\"12\" cy=\"12\" r=\"6\" /> <circle cx=\"12\" cy=\"12\" r=\"2\" />","rocket":"<path d=\"M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z\" /> <path d=\"m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z\" /> <path d=\"M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0\" /> <path d=\"M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5\" />","trophy":"<path d=\"M6 9H4.5a2.5 2.5 0 0 1 0-5H6\" /> <path d=\"M18 9h1.5a2.5 2.5 0 0 0 0-5H18\" /> <path d=\"M4 22h16\" /> <path d=\"M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22\" /> <path d=\"M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22\" /> <path d=\"M18 2H6v7a6 6 0 0 0 12 0V2Z\" />","briefcase":"<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\" /> <rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\" />","percent":"<line x1=\"19\" x2=\"5\" y1=\"5\" y2=\"19\" /> <circle cx=\"6.5\" cy=\"6.5\" r=\"2.5\" /> <circle cx=\"17.5\" cy=\"17.5\" r=\"2.5\" />","clock":"<circle cx=\"12\" cy=\"12\" r=\"10\" /> <polyline points=\"12 6 12 12 16 14\" />","eye-off":"<path d=\"M9.88 9.88a3 3 0 1 0 4.24 4.24\" /> <path d=\"M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68\" /> <path d=\"M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61\" /> <line x1=\"2\" x2=\"22\" y1=\"2\" y2=\"22\" />","badge-dollar-sign":"<path d=\"M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z\" /> <path d=\"M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8\" /> <path d=\"M12 18V6\" />","flag-triangle-right":"<path d=\"M7 22V2l10 5-10 5\" />","tag":"<path d=\"M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z\" /> <circle cx=\"7.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\" />","hotel":"<path d=\"M10 22v-6.57\" /> <path d=\"M12 11h.01\" /> <path d=\"M12 7h.01\" /> <path d=\"M14 15.43V22\" /> <path d=\"M15 16a5 5 0 0 0-6 0\" /> <path d=\"M16 11h.01\" /> <path d=\"M16 7h.01\" /> <path d=\"M8 11h.01\" /> <path d=\"M8 7h.01\" /> <rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"2\" />","castle":"<path d=\"M22 20v-9H2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2Z\" /> <path d=\"M18 11V4H6v7\" /> <path d=\"M15 22v-4a3 3 0 0 0-3-3a3 3 0 0 0-3 3v4\" /> <path d=\"M22 11V9\" /> <path d=\"M2 11V9\" /> <path d=\"M6 4V2\" /> <path d=\"M18 4V2\" /> <path d=\"M10 4V2\" /> <path d=\"M14 4V2\" />","waves":"<path d=\"M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" /> <path d=\"M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" /> <path d=\"M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\" />","chart":"<path d=\"M3 3v18h18\" /> <path d=\"m19 9-5 5-4-4-3 3\" />","palm":"<path d=\"M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4\" /> <path d=\"M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3\" /> <path d=\"M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35\" /> <path d=\"M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14\" />","x":"<path d=\"M18 6 6 18\" /> <path d=\"m6 6 12 12\" />","circle-check":"<circle cx=\"12\" cy=\"12\" r=\"10\" /> <path d=\"m9 12 2 2 4-4\" />","user-round":"<circle cx=\"12\" cy=\"8\" r=\"5\" /> <path d=\"M20 21a8 8 0 0 0-16 0\" />","send":"<path d=\"m22 2-7 20-4-9-9-4Z\" /> <path d=\"M22 2 11 13\" />","map":"<path d=\"M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z\" /> <path d=\"M15 5.764v15\" /> <path d=\"M9 3.236v15\" />"};
 const svg=(n,c='ic')=>`<svg class="${c}" viewBox="0 0 24 24">${ICONS[n]||''}</svg>`;
 
 const I18N={
 en:{
- "nav.problem":"Problem","nav.packages":"Packages","nav.calc":"Calculator","nav.cases":"Cases","nav.book":"Contact",
- "cta.book":"Book Strategy Call","cta.bookS":"Book a call","cta.select":"Select Package","cta.pk":"Packages",
- "hero.pillB":"Trusted by premium developers","hero.pill":"Costa del Este · Santa María · Ocean Reef",
- "hero.title":"Sell your Panama apartments to US, Canadian &amp; European buyers <span class=\"gtxt\">in 90 days.</span>",
- "hero.lead":"We find foreign buyers for you. No brokers, no discounts.",
- "proof.q":"\"12 oceanfront units sold to US investors in six months, without a single local broker.\"","proof.who":"Commercial Director, oceanfront tower, Panama City",
- "proof.s1":"people on the team","proof.s2":"apartments sold in 6 months","proof.s3":"cost per buyer","proof.s4":"sold before construction",
- "pw.t":"Powered by",
- "vis.sold":"of the building sold","vis.c1":"Buyer · Miami","vis.c1s":"$1.4M penthouse","vis.res":"Reserved","vis.c2":"Viewing trip booked","vis.c2s":"Toronto → Costa del Este","vis.c3":"New buyer request","vis.c3s":"Frankfurt · $850k budget",
- "prob.k":"The Panama real estate problem","prob.t":"Great towers. <span class=\"gold\">Wrong buyers.</span>",
- "pk.k":"Packages & pricing","pk.t":"Three packages. <span class=\"gold\">Pick your pace.</span>","pk.l":"Monthly price. Advertising budget is extra.",
- "pk.disc":"<b>Advertising budget is not included.</b> You pay it separately.",
- "pk.mo":"/ month","pk.hours":"hours / month","pk.people":"specialists","pk.inc":"What's included","pk.excl":"+ advertising budget","pk.popular":"Most popular","pk.team":"Team:",
- "calc.k":"Calculator","calc.t":"What it takes to sell <span class=\"gold\">your apartments</span>","calc.l":"Move the sliders and compare with what you pay brokers.",
- "calc.h":"Your project","calc.price":"Average apartment price","calc.units":"Apartments to sell per month","calc.u1":"1","calc.u5":"5+",
- "calc.vol":"Your sales per month","calc.leads":"Interested buyers needed","calc.leadsS":"per month","calc.ads":"Advertising budget","calc.plan":"Recommended plan","calc.save":"You save vs a 6% broker fee","calc.saveS":"per month",
- "calc.cmp":"What each sale costs you","calc.cmpUs":"With us","calc.cmpBr":"Local brokers","calc.range":"range",
- "bm.1":"to find one interested buyer from the US","bm.2":"of interested buyers reserve or visit","bm.3":"everything done in English and Spanish",
- "calc.as":"Rough estimate based on our past projects.",
- "guar":"<b>We don't promise sales we can't control.</b> We promise to do every task on time and do it well.",
+ "nav.team":"Team","nav.pricing":"Pricing","nav.compare":"Why us","nav.calc":"Calculator","nav.book":"Contact",
+ "cta.book":"Book a Call","cta.pricing":"See Pricing",
+ "hero.tag":"Trusted by Top Panama Developers",
+ "hero.title":"We help Panama developers sell apartments to crypto &amp; US buyers <span class=\"gtxt\">in 90 days.</span>",
+ "hero.lead":"Get verified buyers with $300,000+ for the Panama Investor Visa. Direct USDT / crypto payment to bank.",
+ "st.1":"team experts","st.2":"apartments sold in 6 months","st.3v":"30 days","st.3":"to Panama permanent residency","st.4":"legal crypto payment via TowerBank & escrow",
+ "pw.t":"Partners",
+ "vis.sold":"of the building sold","vis.c1":"Buyer · Miami","vis.c1s":"$650k apartment","vis.c1t":"Paid in USDT","vis.c2":"Viewing trip booked","vis.c2s":"Zurich → Panama City","vis.c3":"Investor Visa buyer","vis.c3s":"$300k+ verified",
+ "tm.k":"Team","tm.t":"Leadership <span class=\"gold\">on the ground</span>","tm.l":"Based in Panama City. Native to Web3 and high-ticket sales.",
+ "tm.role":"Founder & CEO","tm.b1":"Ex-iCoda growth lead and crypto specialist","tm.b2":"Lives and works in Panama City","tm.b3":"Direct access to 2,000+ crypto founders and whales ready to buy property for Panama residency",
+ "tm.n1":"crypto founders in our network","tm.n2":"vetted specialists","tm.n3":"we live in Panama City","tm.th":"Backed by 50+ vetted specialists",
+ "pk.k":"Pricing","pk.t":"Three <span class=\"gold\">simple plans</span>","pk.l":"Monthly working hours + a commission on sales. You pay the ad budget directly.",
+ "pk.mo":"/ month","pk.popular":"Most popular","pk.promo":"Promo","pk.get":"What you get","pk.terms":"Terms","pk.goal":"Goal",
+ "cmp.k":"Why us","cmp.t":"Us vs <span class=\"gold\">the others</span>",
+ "cmp.h0":"","cmp.h1":"Local Panama brokers","cmp.h2":"Big remote agencies","cmp.h3":"Skyline Growth",
  "cs.k":"Results","cs.t":"Projects we've <span class=\"gold\">already sold</span>",
- "eco.t":"A <span class=\"gold\">50+ person</span> team behind your project",
- "bk.k":"Start","bk.t":"Book a strategy call or <span class=\"gold\">start today</span>","bk.fh":"Book a strategy call",
- "bk.name":"Full name","bk.company":"Company","bk.email":"Work email","bk.phone":"WhatsApp / phone","bk.project":"Project and location","bk.units":"Units to sell","bk.msg":"Anything we should know?","bk.send":"Request strategy call",
- "bk.ok":"Thank you. We'll contact you within one business day to schedule the call.","bk.preview":"This is a preview, so nothing was sent. On the live site this form delivers your request to our team.",
- "ck.h":"Or start right now","ck.p":"We start within 48 hours.","ck.s":"Advertising budget is paid separately.",
- "pay.card":"Card · Apple Pay","pay.cardS":"Secure checkout via Stripe","pay.crypto":"Crypto · USDT","pay.cryptoS":"Pay with USDT",
- "pay.soon":"Online checkout opens soon. Fill in the form and we'll send you a secure Stripe or USDT payment link.",
- "ft.t":"Foreign buyers for Panama developers"
+ "calc.k":"Calculator","calc.t":"What you save <span class=\"gold\">vs brokers</span>","calc.h":"Your project","calc.price":"Average apartment price","calc.units":"Apartments to sell per month",
+ "calc.vol":"Your sales per month","calc.save":"You save vs a 6% broker fee","calc.saveS":"per month","calc.plan":"Recommended plan",
+ "calc.cmp":"What each sale costs you","calc.cmpUs":"With us","calc.cmpBr":"Local brokers",
+ "calc.as":"With us = monthly fee + ad budget + 2% on sales. Rough estimate based on our past projects.",
+ "guar":"<b>We don't promise sales we can't control.</b> We promise to do every task on time and do it well.",
+ "bk.k":"Contact","bk.t":"Book a call <span class=\"gold\">with Artem</span>","bk.name":"Your name","bk.company":"Company / building name","bk.phone":"WhatsApp number","bk.email":"Work email","bk.send":"Book a Call",
+ "bk.ok":"Thank you. Artem will message you on WhatsApp within one business day.","bk.preview":"This is a preview, so nothing was sent. On the live site this form sends your request to our team.",
+ "ck.h":"Or start now","pay.card":"Card · Apple Pay","pay.cardS":"Secure checkout via Stripe","pay.crypto":"Crypto · USDT","pay.cryptoS":"Pay with USDT",
+ "pay.soon":"Online payment opens soon. Fill in the form and we'll send you a secure payment link.",
+ "ft.t":"Crypto and US buyers for Panama developers"
 },
 es:{
- "nav.problem":"Problema","nav.packages":"Paquetes","nav.calc":"Calculadora","nav.cases":"Casos","nav.book":"Contacto",
- "cta.book":"Agendar llamada estratégica","cta.bookS":"Agendar","cta.select":"Elegir paquete","cta.pk":"Paquetes",
- "hero.pillB":"La confianza de promotores premium","hero.pill":"Costa del Este · Santa María · Ocean Reef",
- "hero.title":"Venda sus apartamentos en Panamá a compradores de EE. UU., Canadá y Europa <span class=\"gtxt\">en 90 días.</span>",
- "hero.lead":"Le traemos compradores extranjeros. Sin corredores, sin descuentos.",
- "proof.q":"\"12 unidades frente al mar vendidas a inversionistas de EE. UU. en seis meses, sin un solo corredor local.\"","proof.who":"Director Comercial, torre frente al mar, Ciudad de Panamá",
- "proof.s1":"personas en el equipo","proof.s2":"apartamentos vendidos en 6 meses","proof.s3":"costo por comprador","proof.s4":"vendido antes de construir",
- "pw.t":"Con la tecnología de",
- "vis.sold":"del edificio vendido","vis.c1":"Comprador · Miami","vis.c1s":"Penthouse de $1.4M","vis.res":"Reservado","vis.c2":"Visita al proyecto agendada","vis.c2s":"Toronto → Costa del Este","vis.c3":"Nuevo comprador interesado","vis.c3s":"Frankfurt · presupuesto $850k",
- "prob.k":"El problema inmobiliario en Panamá","prob.t":"Grandes torres. <span class=\"gold\">Compradores equivocados.</span>",
- "pk.k":"Paquetes y precios","pk.t":"Tres paquetes. <span class=\"gold\">Elija su ritmo.</span>","pk.l":"Precio mensual. El presupuesto de publicidad es aparte.",
- "pk.disc":"<b>El presupuesto de publicidad no está incluido.</b> Se paga aparte.",
- "pk.mo":"/ mes","pk.hours":"horas / mes","pk.people":"especialistas","pk.inc":"Qué incluye","pk.excl":"+ presupuesto de publicidad","pk.popular":"El más elegido","pk.team":"Equipo:",
- "calc.k":"Calculadora","calc.t":"Qué se necesita para vender <span class=\"gold\">sus apartamentos</span>","calc.l":"Mueva los controles y compare con lo que paga a corredores.",
- "calc.h":"Su proyecto","calc.price":"Precio promedio del apartamento","calc.units":"Apartamentos a vender por mes","calc.u1":"1","calc.u5":"5+",
- "calc.vol":"Sus ventas por mes","calc.leads":"Compradores interesados necesarios","calc.leadsS":"por mes","calc.ads":"Presupuesto de publicidad","calc.plan":"Plan recomendado","calc.save":"Ahorra vs. 6% de comisión","calc.saveS":"por mes",
- "calc.cmp":"Lo que le cuesta cada venta","calc.cmpUs":"Con nosotros","calc.cmpBr":"Corredores locales","calc.range":"rango",
- "bm.1":"para encontrar un comprador interesado de EE. UU.","bm.2":"de los interesados reservan o visitan","bm.3":"todo en inglés y español",
- "calc.as":"Estimación aproximada basada en proyectos anteriores.",
- "guar":"<b>No prometemos ventas que no controlamos.</b> Prometemos hacer cada tarea a tiempo y bien.",
+ "nav.team":"Equipo","nav.pricing":"Precios","nav.compare":"Por qué nosotros","nav.calc":"Calculadora","nav.book":"Contacto",
+ "cta.book":"Agendar llamada","cta.pricing":"Ver precios",
+ "hero.tag":"La confianza de los mejores promotores de Panamá",
+ "hero.title":"Ayudamos a promotores en Panamá a vender apartamentos a compradores crypto y de EE.UU. <span class=\"gtxt\">en 90 días.</span>",
+ "hero.lead":"Compradores verificados con $300,000+ para la Visa de Inversionista de Panamá. Pago directo en USDT / crypto al banco.",
+ "st.1":"expertos en el equipo","st.2":"apartamentos vendidos en 6 meses","st.3v":"30 días","st.3":"a la residencia permanente en Panamá","st.4":"pago crypto legal vía TowerBank y escrow",
+ "pw.t":"Socios",
+ "vis.sold":"del edificio vendido","vis.c1":"Comprador · Miami","vis.c1s":"Apartamento de $650k","vis.c1t":"Pagado en USDT","vis.c2":"Visita agendada","vis.c2s":"Zúrich → Ciudad de Panamá","vis.c3":"Comprador con Visa de Inversionista","vis.c3s":"$300k+ verificado",
+ "tm.k":"Equipo","tm.t":"Liderazgo <span class=\"gold\">en Panamá</span>","tm.l":"Con base en Ciudad de Panamá. Expertos en Web3 y ventas de alto valor.",
+ "tm.role":"Fundador y CEO","tm.b1":"Ex growth lead de iCoda y especialista en crypto","tm.b2":"Vive y trabaja en Ciudad de Panamá","tm.b3":"Acceso directo a 2,000+ fundadores crypto e inversionistas grandes listos para comprar propiedad para residencia en Panamá",
+ "tm.n1":"fundadores crypto en nuestra red","tm.n2":"especialistas verificados","tm.n3":"vivimos en Ciudad de Panamá","tm.th":"Respaldado por 50+ especialistas verificados",
+ "pk.k":"Precios","pk.t":"Tres <span class=\"gold\">planes simples</span>","pk.l":"Horas de trabajo mensuales + comisión por venta. El presupuesto de anuncios lo paga usted directamente.",
+ "pk.mo":"/ mes","pk.popular":"El más elegido","pk.promo":"Promo","pk.get":"Qué incluye","pk.terms":"Condiciones","pk.goal":"Meta",
+ "cmp.k":"Por qué nosotros","cmp.t":"Nosotros vs <span class=\"gold\">los demás</span>",
+ "cmp.h0":"","cmp.h1":"Corredores locales","cmp.h2":"Agencias remotas grandes","cmp.h3":"Skyline Growth",
  "cs.k":"Resultados","cs.t":"Proyectos que <span class=\"gold\">ya vendimos</span>",
- "eco.t":"Un equipo de <span class=\"gold\">+50 personas</span> detrás de su proyecto",
- "bk.k":"Empezar","bk.t":"Agende una llamada o <span class=\"gold\">empiece hoy</span>","bk.fh":"Agendar llamada estratégica",
- "bk.name":"Nombre completo","bk.company":"Empresa","bk.email":"Email corporativo","bk.phone":"WhatsApp / teléfono","bk.project":"Proyecto y ubicación","bk.units":"Unidades a vender","bk.msg":"¿Algo que debamos saber?","bk.send":"Solicitar llamada",
- "bk.ok":"Gracias. Le contactaremos en un día hábil para agendar la llamada.","bk.preview":"Esto es una vista previa, no se envió nada. En el sitio publicado este formulario envía su solicitud a nuestro equipo.",
- "ck.h":"O empiece ahora mismo","ck.p":"Arrancamos en 48 horas.","ck.s":"El presupuesto de publicidad se paga aparte.",
- "pay.card":"Tarjeta · Apple Pay","pay.cardS":"Pago seguro con Stripe","pay.crypto":"Cripto · USDT","pay.cryptoS":"Pay with USDT",
- "pay.soon":"El pago en línea abre pronto. Complete el formulario y le enviaremos un enlace seguro de Stripe o USDT.",
- "ft.t":"Compradores extranjeros para promotores en Panamá"
+ "calc.k":"Calculadora","calc.t":"Cuánto ahorra <span class=\"gold\">vs corredores</span>","calc.h":"Su proyecto","calc.price":"Precio promedio del apartamento","calc.units":"Apartamentos a vender por mes",
+ "calc.vol":"Sus ventas por mes","calc.save":"Ahorra vs 6% de comisión","calc.saveS":"por mes","calc.plan":"Plan recomendado",
+ "calc.cmp":"Lo que le cuesta cada venta","calc.cmpUs":"Con nosotros","calc.cmpBr":"Corredores locales",
+ "calc.as":"Con nosotros = cuota mensual + anuncios + 2% por venta. Estimación aproximada.",
+ "guar":"<b>No prometemos ventas que no controlamos.</b> Prometemos hacer cada tarea a tiempo y bien.",
+ "bk.k":"Contacto","bk.t":"Agende una llamada <span class=\"gold\">con Artem</span>","bk.name":"Su nombre","bk.company":"Empresa / nombre del edificio","bk.phone":"Número de WhatsApp","bk.email":"Email de trabajo","bk.send":"Agendar llamada",
+ "bk.ok":"Gracias. Artem le escribirá por WhatsApp en un día hábil.","bk.preview":"Esto es una vista previa, no se envió nada. En el sitio publicado este formulario envía su solicitud a nuestro equipo.",
+ "ck.h":"O empiece ahora","pay.card":"Tarjeta · Apple Pay","pay.cardS":"Pago seguro con Stripe","pay.crypto":"Crypto · USDT","pay.cryptoS":"Pague con USDT",
+ "pay.soon":"El pago en línea abre pronto. Complete el formulario y le enviaremos un enlace de pago seguro.",
+ "ft.t":"Compradores crypto y de EE.UU. para promotores en Panamá"
 }};
 
 const T=(en,es)=>({en,es});
-const STRIP=["Costa del Este","Santa María","Ocean Reef","Punta Pacífica","Casco Viejo","Avenida Balboa","Coronado","Boquete"];
-
-const PROBS=[
- {i:"trending-down",n:"01",t:T("Too many sellers, too few buyers","Muchos vendedores, pocos compradores"),p:T("Everyone fights for the same local buyers with discounts.","Todos pelean por los mismos compradores locales con descuentos."),x:"bars"},
- {big:"5–8%",n:"02",t:T("Brokers take a big cut","Los corredores se llevan mucho"),p:T("And they rarely bring foreign buyers.","Y casi nunca traen compradores extranjeros.")},
- {i:"eye-off",n:"03",t:T("Buyers can't find you","Los compradores no le encuentran"),p:T("US investors never find your project. They buy elsewhere.","Los inversionistas de EE. UU. no encuentran su proyecto. Compran en otro lado."),x:"flags"}
-];
+const STRIP=["Costa del Este","Santa María","Ocean Reef","Punta Pacífica","Casco Viejo","Avenida Balboa","USDT","Investor Visa"];
+const TEAM=[["target",T("Ads experts","Expertos en anuncios")],["sparkles",T("Designers","Diseñadores")],["file-text",T("Coders","Programadores")],["key-round",T("Panama City concierge","Concierge en Ciudad de Panamá")],["users",T("Project managers","Project managers")]];
 
 const PKG=[
- {id:"starter",name:"Starter",step:T("Level 1","Nivel 1"),price:10000,hours:"40+",people:"3–4",
-  inc:[T("Sales plan for the next 3 months","Plan de ventas para los próximos 3 meses"),
-       T("A website page for your project that sells","Una página web de su proyecto que vende"),
-       T("Lots of posts, videos and 3D tours made with AI","Muchos posts, videos y recorridos 3D hechos con IA"),
-       T("Instagram, LinkedIn and YouTube for the project","Instagram, LinkedIn y YouTube del proyecto")]},
- {id:"standard",name:"Standard",step:T("Level 2","Nivel 2"),price:20000,hours:"100+",people:"6–8",feat:true,
-  plus:T("Everything in Starter, plus:","Todo lo de Starter, más:"),
-  inc:[T("<b>Top of Google</b> when people search to buy in Panama","<b>Primeros en Google</b> cuando buscan comprar en Panamá"),
-       T("<b>Articles in the press</b> like Forbes and Bloomberg, plus forums","<b>Artículos en la prensa</b> como Forbes y Bloomberg, y foros"),
-       T("<b>Emails that warm up buyers</b> until they fly in to visit","<b>Emails que preparan al comprador</b> hasta que viene a visitar")]},
- {id:"full",name:"Maximum",step:T("Level 3","Nivel 3"),price:30000,hours:"200+",people:"10+",
-  plus:T("Everything in Standard, plus:","Todo lo de Standard, más:"),
-  inc:[T("<b>Ads on Google, Instagram and Facebook</b> aimed at wealthy buyers","<b>Anuncios en Google, Instagram y Facebook</b> para compradores con dinero"),
-       T("<b>Your reputation online</b>: reviews and what people say about you","<b>Su reputación en internet</b>: reseñas y lo que se dice de usted"),
-       T("<b>Bloggers and events</b> to present your project to buyers","<b>Bloggers y eventos</b> para presentar su proyecto")]}
+ {id:"starter",name:"Starter",step:T("Plan 1","Plan 1"),old:5000,price:3000,
+  team:[T("20 strategy & management hours / month","20 horas de estrategia y gestión / mes"),T("1 dedicated project manager","1 project manager dedicado")],
+  inc:[T("1 clean landing page for your building (English)","1 landing page para su edificio (inglés)"),
+       T("Direct messages to 1,000 verified crypto founders","Mensajes directos a 1,000 fundadores crypto verificados"),
+       T("Safe setup to accept USDT / crypto into your bank","Configuración segura para recibir USDT / crypto en su banco")],
+  goal:T("3–5 buyer meetings or tours / month","3–5 reuniones o visitas / mes"),
+  terms:T("$3,000/mo + tools cost + <b>2% on closed sales</b>","$3,000/mes + herramientas + <b>2% por venta cerrada</b>"),
+  cta:T("Select Starter","Elegir Starter"),href:"#book"},
+ {id:"growth",name:"Growth",step:T("Plan 2","Plan 2"),price:6500,feat:true,
+  team:[T("40 strategy & management hours / month","40 horas de estrategia y gestión / mes"),T("Full squad: ad buyer, PM, designer","Equipo completo: anuncios, PM, diseñador")],
+  inc:[T("Direct outreach + targeted ads (Meta / Google)","Mensajes directos + anuncios (Meta / Google)"),
+       T("2,500+ rich buyers contacted every month","2,500+ compradores con dinero contactados cada mes"),
+       T("VIP 3-day tour for buyers flying to Panama","Tour VIP de 3 días para compradores que vuelan a Panamá")],
+  goal:T("8–12 buyer meetings / month","8–12 reuniones / mes"),
+  terms:T("$6,500/mo + ad spend + <b>2% on closed sales</b>","$6,500/mes + anuncios + <b>2% por venta cerrada</b>"),
+  cta:T("Select Growth","Elegir Growth"),href:"#book"},
+ {id:"desk",name:"Full Sales Desk",step:T("Plan 3","Plan 3"),price:12000,custom:true,
+  team:[T("Unlimited hours","Horas ilimitadas"),T("Full dedicated department","Departamento completo dedicado")],
+  inc:[T("All your buildings and penthouses covered","Todos sus edificios y penthouses"),
+       T("VIP service: airport pickup, yachts, private tours","Servicio VIP: aeropuerto, yates, tours privados"),
+       T("Full legal and bank support from start to finish","Apoyo legal y bancario de principio a fin")],
+  terms:T("$12,000/mo + <b>custom % on sales</b>","$12,000/mes + <b>% por venta a medida</b>"),
+  cta:T("Talk to Founder","Hablar con el fundador"),href:"#book"}
+];
+
+const CMP=[
+ [T("In Panama?","¿En Panamá?"),T("Yes","Sí"),T("No, remote","No, remoto"),T("Yes, we live in Panama City","Sí, vivimos en Ciudad de Panamá"),[1,0]],
+ [T("Crypto knowledge","Conocimiento crypto"),T("None, cash and banks only","Ninguno, solo efectivo y bancos"),T("Basic theory","Teoría básica"),T("Expert: ex-iCoda, USDT, escrow","Expertos: ex-iCoda, USDT, escrow"),[0,0]],
+ [T("Who they bring","A quién traen"),T("Local Panama buyers","Compradores locales"),T("Random tourists","Turistas al azar"),T("Rich Web3 founders with $300k+ cash","Fundadores Web3 con $300k+ en efectivo"),[0,0]],
+ [T("Price","Precio"),T("5% to 8% commission","5% a 8% de comisión"),T("$10k/mo, no care about sales","$10k/mes, sin interés en ventas"),T("Fair monthly fee + 2% on real sales","Cuota justa + 2% por venta real"),[0,0]]
 ];
 
 const CASES=[
- {i:"building-2",loc:"Panama City",metric:"12",ml:T("units sold to US investors in 6 months","unidades vendidas a inversionistas de EE. UU. en 6 meses"),t:T("Oceanfront luxury tower","Torre de lujo frente al mar"),ch:["Google","Press"]},
+ {i:"building-2",loc:"Panama City",metric:"12",ml:T("apartments sold to US buyers in 6 months","apartamentos vendidos a compradores de EE.UU. en 6 meses"),t:T("Oceanfront luxury tower","Torre de lujo frente al mar"),ch:["Google","Press"]},
  {i:"flag-triangle-right",loc:"Santa María",metric:"−40%",ml:T("cost to find each foreign buyer","costo por cada comprador extranjero"),t:T("Gated golf community","Comunidad de golf privada"),ch:["Ads","Email"]},
  {i:"waves",loc:"Pacific coast",metric:"100%",ml:T("sold before construction started","vendido antes de construir"),t:T("Eco-resort villas","Villas eco-resort"),ch:["Bloggers","Videos"]},
  {i:"briefcase",loc:"Panama City",metric:"4",ml:T("big international companies moved in","grandes empresas internacionales"),t:T("Office building","Edificio de oficinas"),ch:["LinkedIn","Google"]},
  {i:"landmark",loc:"Casco Viejo",metric:"90",ml:T("days to sell out to European investors","días para vender todo a inversionistas europeos"),t:T("Boutique project in Casco Viejo","Proyecto boutique en Casco Viejo"),ch:["Reddit","Forums"]}
 ];
-const ROLES=["Strategy","Google","Press","Ads","Writers EN/ES","3D & video","Reputation","Events","Bloggers","Analytics"];
 
 let lang='en';
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const tr=o=>o[lang];
 const fmt$=n=>'$'+Math.round(n).toLocaleString('en-US');
-const short$=n=>n>=1e6?'$'+(n/1e6).toFixed(n%1e6?2:0).replace(/\.?0+$/,'')+'M':'$'+Math.round(n/1000)+'k';
 
 function render(){
   const D=I18N[lang];
   $('#strip').innerHTML=[...STRIP,...STRIP].map(s=>`<span>${s}</span>`).join('');
-  $('#probGrid').innerHTML=PROBS.map((p,k)=>`<div class="card prob rv d${k}">
-     <span class="n">${p.n}</span>
-     ${p.big?`<div class="big">${p.big}</div>`:`<div class="bic">${svg(p.i)}</div>`}
-     <h3>${tr(p.t)}</h3><p>${tr(p.p)}</p>
-     ${p.x==='bars'?`<div class="bars">${[90,82,70,64,52,45,38,30,24].map(h=>`<i style="height:${h}%"></i>`).join('')}</div>`:''}
-     ${p.x==='flags'?`<div class="flags"><img src="img/us.webp" alt=""> → <img src="img/cr.webp" alt=""><img src="img/do.webp" alt=""><span>${lang==='es'?'Costa Rica, Rep. Dominicana':'Costa Rica, Dominican Republic'}</span></div>`:''}
-   </div>`).join('');
+  $('#teamChips').innerHTML=TEAM.map(([i,t])=>`<span>${svg(i)}${tr(t)}</span>`).join('');
   $('#pkgGrid').innerHTML=PKG.map((p,k)=>`<div class="card pkg ${p.feat?'feat':''} rv d${k}">
      ${p.feat?`<span class="popular">${D['pk.popular']}</span>`:''}
-     <span class="step">${tr(p.step)}</span><h3>${p.name}</h3>
-     <div class="price"><b>$${p.price.toLocaleString('en-US')}</b><span>${D['pk.mo']}</span></div>
-     <div class="excl">${D['pk.excl']}</div>
-     <div class="kpis"><div class="kpi"><b>${p.hours}</b><span>${D['pk.hours']}</span></div><div class="kpi"><b>${p.people}</b><span>${D['pk.people']}</span></div></div>
-     <div class="inc-h">${D['pk.inc']}</div>
-     <ul>${p.plus?`<li class="plus">${svg('sparkles')}<span>${tr(p.plus)}</span></li>`:''}${p.inc.map(x=>`<li>${svg('check')}<span>${tr(x)}</span></li>`).join('')}</ul>
-     <div class="pkg-cta"><a href="#book" class="btn ${p.feat?'btn-gold':'btn-line'} js-select" data-pkg="${p.id}">${lang==='es'?'Elegir '+p.name:'Select '+p.name}${svg('arrow-right')}</a>
-     <div class="pays"><span>Stripe</span><span>Apple Pay</span><span>USDT</span></div></div>
+     <span class="step">${tr(p.step)}</span><h3>${p.name}${p.old?`<span class="promo">${D['pk.promo']}</span>`:''}</h3>
+     <div class="price">${p.old?`<span class="old">$${p.old.toLocaleString('en-US')}</span>`:''}<b>$${p.price.toLocaleString('en-US')}</b><span>${D['pk.mo']}${p.custom?' +%':''}</span></div>
+     <div class="price-sub">${tr(p.terms)}</div>
+     <ul>${p.team.map(x=>`<li>${svg('users')}<span>${tr(x)}</span></li>`).join('')}</ul>
+     <div class="inc-h">${D['pk.get']}</div>
+     <ul>${p.inc.map(x=>`<li>${svg('check')}<span>${tr(x)}</span></li>`).join('')}</ul>
+     ${p.goal?`<div class="goal">${svg('target')}<div><b>${tr(p.goal)}</b><span>${D['pk.goal']}</span></div></div>`:''}
+     <div class="pkg-cta"><a href="${p.href}" class="btn ${p.feat?'btn-gold':'btn-line'} js-select" data-pkg="${p.id}">${tr(p.cta)}${svg('arrow-right')}</a></div>
    </div>`).join('');
+  const ok=svg('circle-check'),no=svg('x');
+  $('#cmp').innerHTML=['h0','h1','h2','h3'].map((h,k)=>`<div class="h ${k===3?'u':''}">${D['cmp.'+h]}</div>`).join('')+
+    CMP.map(r=>`<div class="f">${tr(r[0])}</div><div class="o">${r[4][0]?'':no}${tr(r[1])}</div><div class="o">${r[4][1]?'':no}${tr(r[2])}</div><div class="u">${ok}${tr(r[3])}</div>`).join('');
+  $('#cmpM').innerHTML=CMP.map(r=>`<div class="card cm"><h4>${tr(r[0])}</h4><div><span>${D['cmp.h1']}</span><span>${tr(r[1])}</span></div><div><span>${D['cmp.h2']}</span><span>${tr(r[2])}</span></div><div class="us"><span>${D['cmp.h3']}</span><span>${tr(r[3])}</span></div></div>`).join('');
   $('#caseGrid').innerHTML=CASES.map((c,k)=>`<div class="card case rv d${k%3}">
      <div class="top"><span class="cic">${svg(c.i)}</span><span class="loc">${svg('map-pin')}${c.loc}</span></div>
-     <div class="metric gtxt">${c.metric}</div><div class="ml">${tr(c.ml)}</div>
-     <h3>${tr(c.t)}</h3>
+     <div class="metric gtxt">${c.metric}</div><div class="ml">${tr(c.ml)}</div><h3>${tr(c.t)}</h3>
      <div class="chs">${c.ch.map(x=>`<span>${x}</span>`).join('')}</div></div>`).join('');
-  $('#roles').innerHTML=ROLES.map(r=>`<span>${r}</span>`).join('');
-  $$('.js-select').forEach(a=>a.onclick=()=>setCk(a.dataset.pkg));
+  $$('.js-select').forEach(a=>a.onclick=()=>{if(a.dataset.pkg!=='desk')setCk(a.dataset.pkg);});
   calc(); setCk(ckPkg); observe();
 }
 
-/* calculator */
-const CPL=130,CONV_LO=.05,CONV_HI=.08,CONV_MID=.065,BROKER=.06;
+/* calculator: fee + ads + 2% success fee vs 6% broker */
+const CPL=130,CONV=.065,BROKER=.06,SUCCESS=.02;
 function fillRange(el){el.style.setProperty('--p',((el.value-el.min)/(el.max-el.min)*100)+'%');}
 function calc(){
   const D=I18N[lang],price=+$('#price').value,u=+$('#units').value;
   fillRange($('#price'));fillRange($('#units'));
   $('#priceV').textContent=price>=2000000?'$2M+':fmt$(price);
   $('#unitsV').textContent=u>=5?'5+':u;
-  const vol=price*u,lLo=Math.ceil(u/CONV_HI),lHi=Math.ceil(u/CONV_LO),lMid=Math.ceil(u/CONV_MID);
-  const ads=Math.round(lMid*CPL/100)*100,adsLo=lLo*80,adsHi=lHi*180;
-  const plan=u<=1?PKG[0]:u<=3?PKG[1]:PKG[2],cost=plan.price+ads,pctUs=cost/vol*100;
+  const vol=price*u,plan=u<=1?PKG[0]:u<=3?PKG[1]:PKG[2];
+  const ads=plan.id==='starter'?0:Math.round(Math.ceil(u/CONV)*CPL/100)*100;
+  const cost=plan.price+ads+vol*SUCCESS,pct=cost/vol*100;
   $('#oVol').textContent=fmt$(vol);
-  $('#oLeads').textContent=`${lLo}–${lHi}`;
-  $('#oAds').textContent='≈ '+fmt$(ads);
-  $('#oAdsR').textContent=`${D['calc.range']} ${short$(adsLo)}–${short$(adsHi)}`;
-  $('#oPlan').textContent=plan.name;$('#oFee').textContent=`$${plan.price.toLocaleString('en-US')} ${D['pk.mo']}`;
+  $('#oPlan').textContent=plan.name;$('#oFee').textContent=`$${plan.price.toLocaleString('en-US')} ${D['pk.mo']} + 2%`;
   $('#oSave').textContent=fmt$(Math.max(0,vol*BROKER-cost));
-  $('#pctUs').textContent=pctUs.toFixed(1)+'%';
-  $('#barUs').style.width=Math.min(100,pctUs/8*100)+'%';
+  $('#pctUs').textContent=pct.toFixed(1)+'%';
+  $('#barUs').style.width=Math.min(100,pct/8*100)+'%';
 }
 $('#price').oninput=calc;$('#units').oninput=calc;
 
 /* checkout */
-let ckPkg='standard';
+let ckPkg='growth';
 function setCk(id){ckPkg=id;const p=PKG.find(x=>x.id===id);$('#ckPrice').textContent='$'+p.price.toLocaleString('en-US');$$('#ckSeg button').forEach(b=>b.classList.toggle('on',b.dataset.p===id));$('#payMsg').hidden=true;}
 $$('#ckSeg button').forEach(b=>b.onclick=()=>setCk(b.dataset.p));
 function go(url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();}
@@ -703,12 +773,12 @@ $$('.pay-opt').forEach(b=>b.onclick=()=>{const url=b.dataset.pay==='card'?CONFIG
 /* form: Netlify Forms on the live site, inline notice elsewhere */
 $('#form').addEventListener('submit',e=>{
   e.preventDefault();const f=e.target,ok=$('#formOk');
-  const live=/netlify\.app$/.test(location.hostname)||f.dataset.live==='1';
-  if(!live){ok.textContent=I18N[lang]['bk.preview'];ok.hidden=false;return;}
+  if(!/netlify\.app$/.test(location.hostname)&&f.dataset.live!=='1'){ok.textContent=I18N[lang]['bk.preview'];ok.hidden=false;return;}
   fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
     .then(()=>{ok.textContent=I18N[lang]['bk.ok'];ok.hidden=false;f.reset();})
     .catch(()=>{ok.textContent=I18N[lang]['pay.soon'];ok.hidden=false;});
 });
+if(CONFIG.founderPhoto)$('#fPhoto').innerHTML=`<img src="${CONFIG.founderPhoto}" alt="Artem Voinov">`;
 
 function applyLang(l){
   lang=l;document.documentElement.lang=l;const D=I18N[l];
@@ -796,6 +866,7 @@ setTimeout(()=>$$('.rv:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top
   }
   requestAnimationFrame(frame);
 })();
+
 
 $('#yr').textContent=new Date().getFullYear();
 let init='en';try{init=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')||((navigator.language||'').startsWith('es')?'es':'en');}catch(e){}
