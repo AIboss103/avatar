@@ -6,6 +6,11 @@
 <title>Skyline Growth Panama</title>
 <meta name="description" content="We help Panama developers sell apartments to crypto and US buyers in 90 days. Verified $300k+ buyers, USDT payment to bank.">
 <meta name="theme-color" content="#0a0b0d">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Skyline Growth: sell Panama apartments to crypto &amp; US buyers in 90 days">
+<meta property="og:description" content="Verified $300k+ buyers for the Panama Investor Visa. USDT payment to bank. No hidden margin.">
+<meta property="og:image" content="og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -334,6 +339,16 @@ footer{border-top:1px solid var(--line);padding-block:30px calc(30px + env(safe-
 }
 
 /* v2 additions */
+
+.founder>*,.f-side>*,.calc>*,.book-grid>*{min-width:0}
+.f-big{grid-template-columns:repeat(3,minmax(0,1fr))}
+.f-card h3{overflow-wrap:anywhere}
+@media (pointer:coarse){.lang button{min-height:38px;min-width:38px}input[type=range]{height:40px}}
+@media (max-width:360px){.f-big b{font-size:24px}.f-photo{width:120px;height:120px}}
+.logo{min-height:44px}
+@media (max-width:400px){.founder .f-big{grid-template-columns:1fr;gap:12px}.founder .f-big div{flex-direction:row;align-items:baseline;gap:12px}.founder .f-big b{font-size:28px;min-width:96px}}
+.pkg-grid>*{min-width:0}
+@media (max-width:360px){.pkg .price b{font-size:38px}.pkg h3{font-size:26px}}
 @media (max-width:420px){.logo small{display:none}.nav-right{gap:6px}.lang button{padding:6px 8px}.hero-cta{flex-wrap:wrap}.hero-cta .btn{flex:1 1 100%}}
 @media (min-width:1061px){.pkg-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .price{flex-wrap:wrap}
@@ -411,6 +426,11 @@ footer{border-top:1px solid var(--line);padding-block:30px calc(30px + env(safe-
   .f-big span{font-size:12px}
   .form{grid-template-columns:1fr}
 }
+/* QA fixes */
+section[id]{scroll-margin-top:80px}
+@media (max-width:900px){.cmp{display:none}.cmp-m{display:flex;flex-direction:column;gap:12px;margin-top:36px}.cm{padding:18px}.cm h4{font-size:16px;margin-bottom:10px}.cm div{display:grid;grid-template-columns:140px 1fr;gap:10px;font-size:14px;padding:8px 0;border-top:1px solid var(--line)}.cm div span:first-child{color:var(--dim);font-size:12.5px}.cm div.us{color:var(--gold);font-weight:600}.cm div.us span:first-child{color:var(--gold)}}
+@media (max-width:640px){.mcta .btn{min-width:0;white-space:normal;text-align:center;line-height:1.2;padding:12px 8px;font-size:14px}}
+@media (max-width:380px){.pkg .old{flex-basis:100%;margin:0 0 -6px}}
 </style>
 </head>
 <body>
@@ -672,7 +692,7 @@ es:{
  "pay.soon":"El pago en línea abre pronto. Complete el formulario y le enviaremos un enlace de pago seguro.",
  "ft.t":"Compradores crypto y de EE.UU. para promotores en Panamá"
 },
-ru:{"nav.team": "Команда", "nav.pricing": "Цены", "nav.compare": "Почему мы", "nav.calc": "Калькулятор", "nav.book": "Контакты", "cta.book": "Записаться на звонок", "cta.pricing": "Смотреть цены", "hero.tag": "Нам доверяют лучшие застройщики Панамы", "hero.title": "Продаём квартиры застройщиков Панамы крипто-покупателям и клиентам из США <span class=\"gtxt\">за 90 дней.</span>", "hero.lead": "Проверенные покупатели с $300 000+ под инвесторскую визу Панамы. Оплата в USDT / крипте напрямую на банковский счёт.", "st.1": "экспертов в команде", "st.2": "квартир продано за 6 месяцев", "st.3v": "30 дней", "st.3": "до ПМЖ в Панаме", "st.4": "легальная оплата криптой через TowerBank и эскроу", "pw.t": "Партнёры", "vis.sold": "здания продано", "vis.c1": "Покупатель · Майами", "vis.c1s": "Квартира за $650k", "vis.c1t": "Оплата в USDT", "vis.c2": "Показ забронирован", "vis.c2s": "Цюрих → Панама-Сити", "vis.c3": "Покупатель под визу", "vis.c3s": "$300k+ подтверждено", "tm.k": "Команда", "tm.t": "Руководство <span class=\"gold\">прямо в Панаме</span>", "tm.l": "Живём в Панама-Сити. Свои в Web3 и дорогих продажах.", "tm.role": "Основатель и CEO", "tm.b1": "CBDO в ICODA.io и Stive.ai", "tm.b4": "Telegram-блог на 7 000+ профессионалов", "tm.b2": "Живёт и работает в Панама-Сити", "tm.b3": "Прямой доступ к 2 000+ крипто-фаундерам и китам, готовым купить недвижимость ради резидентства в Панаме", "tm.n1": "крипто-фаундеров в нашей сети", "tm.n2": "проверенных специалистов", "tm.n3": "профессионалов читают Telegram Артёма", "tm.th": "За нами 50+ проверенных специалистов", "nm.t": "Без скрытой маржи. Все подрядчики напрямую.", "nm.p": "Другие агентства прячут наценку на рекламу, дизайнеров и разработчиков. Мы даём вам каждого подрядчика напрямую, и вы экономите десятки тысяч долларов.", "pk.k": "Цены", "pk.t": "Три <span class=\"gold\">простых плана</span>", "pk.l": "Ежемесячная оплата часов + комиссия с продаж. Рекламный бюджет вы платите напрямую.", "pk.mo": "/ мес", "pk.popular": "Популярный", "pk.promo": "Акция", "pk.get": "Что входит", "pk.terms": "Условия", "pk.goal": "Цель", "cmp.k": "Почему мы", "cmp.t": "Мы и <span class=\"gold\">другие</span>", "cmp.h0": "", "cmp.h1": "Местные брокеры", "cmp.h2": "Большие удалённые агентства", "cmp.h3": "Skyline Growth", "cs.k": "Результаты", "cs.t": "Проекты, которые мы <span class=\"gold\">уже продали</span>", "calc.k": "Калькулятор", "calc.t": "Сколько вы сэкономите <span class=\"gold\">по сравнению с брокерами</span>", "calc.h": "Ваш проект", "calc.price": "Средняя цена квартиры", "calc.units": "Квартир продать в месяц", "calc.vol": "Ваши продажи в месяц", "calc.save": "Экономия против комиссии брокера 6%", "calc.saveS": "в месяц", "calc.plan": "Рекомендуемый план", "calc.cmp": "Сколько стоит вам каждая продажа", "calc.cmpUs": "С нами", "calc.cmpBr": "Местные брокеры", "calc.as": "С нами = ежемесячная оплата + реклама + 2% с продаж. Примерная оценка по прошлым проектам.", "bk.k": "Контакты", "bk.t": "Созвон <span class=\"gold\">с Артёмом</span>", "bk.name": "Ваше имя", "bk.company": "Компания / название здания", "bk.phone": "Номер WhatsApp", "bk.email": "Рабочий email", "bk.send": "Записаться на звонок", "bk.ok": "Спасибо. Артём напишет вам в WhatsApp в течение рабочего дня.", "bk.preview": "Это превью, поэтому ничего не отправлено. На опубликованном сайте форма отправит заявку нашей команде.", "ck.h": "Или начните сейчас", "pay.card": "Карта · Apple Pay", "pay.cardS": "Безопасная оплата через Stripe", "pay.crypto": "Крипта · USDT", "pay.cryptoS": "Оплата в USDT", "pay.soon": "Онлайн-оплата скоро откроется. Заполните форму, и мы пришлём безопасную ссылку на оплату.", "ft.t": "Крипто-покупатели и клиенты из США для застройщиков Панамы"}};
+ru:{"nav.team": "Команда", "nav.pricing": "Цены", "nav.compare": "Почему мы", "nav.calc": "Калькулятор", "nav.book": "Контакты", "cta.book": "Записаться на звонок", "cta.pricing": "Смотреть цены", "hero.tag": "Нам доверяют лучшие застройщики Панамы", "hero.title": "Продаём квартиры застройщиков Панамы крипто-покупателям и клиентам из США <span class=\"gtxt\">за 90 дней.</span>", "hero.lead": "Проверенные покупатели с $300,000+ под инвесторскую визу Панамы. Оплата в USDT / крипте напрямую на банковский счёт.", "st.1": "экспертов в команде", "st.2": "квартир продано за 6 месяцев", "st.3v": "30 дней", "st.3": "до ПМЖ в Панаме", "st.4": "легальная оплата криптой через TowerBank и эскроу", "pw.t": "Партнёры", "vis.sold": "здания продано", "vis.c1": "Покупатель · Майами", "vis.c1s": "Квартира за $650k", "vis.c1t": "Оплата в USDT", "vis.c2": "Показ забронирован", "vis.c2s": "Цюрих → Панама-Сити", "vis.c3": "Покупатель под визу", "vis.c3s": "$300k+ подтверждено", "tm.k": "Команда", "tm.t": "Руководство <span class=\"gold\">прямо в Панаме</span>", "tm.l": "Живём в Панама-Сити. Свои в Web3 и дорогих продажах.", "tm.role": "Основатель и CEO", "tm.b1": "CBDO в ICODA.io и Stive.ai", "tm.b4": "Telegram-блог на 7,000+ профессионалов", "tm.b2": "Живёт и работает в Панама-Сити", "tm.b3": "Прямой доступ к 2,000+ крипто-фаундерам и китам, готовым купить недвижимость ради резидентства в Панаме", "tm.n1": "крипто-фаундеров в нашей сети", "tm.n2": "проверенных специалистов", "tm.n3": "профессионалов читают Telegram Артёма", "tm.th": "За нами 50+ проверенных специалистов", "nm.t": "Без скрытой маржи. Все подрядчики напрямую.", "nm.p": "Другие агентства прячут наценку на рекламу, дизайнеров и разработчиков. Мы даём вам каждого подрядчика напрямую, и вы экономите десятки тысяч долларов.", "pk.k": "Цены", "pk.t": "Три <span class=\"gold\">простых плана</span>", "pk.l": "Ежемесячная оплата часов + комиссия с продаж. Рекламный бюджет вы платите напрямую.", "pk.mo": "/ мес", "pk.popular": "Популярный", "pk.promo": "Акция", "pk.get": "Что входит", "pk.terms": "Условия", "pk.goal": "Цель", "cmp.k": "Почему мы", "cmp.t": "Мы и <span class=\"gold\">другие</span>", "cmp.h0": "", "cmp.h1": "Местные брокеры", "cmp.h2": "Большие удалённые агентства", "cmp.h3": "Skyline Growth", "cs.k": "Результаты", "cs.t": "Проекты, которые мы <span class=\"gold\">уже продали</span>", "calc.k": "Калькулятор", "calc.t": "Сколько вы сэкономите <span class=\"gold\">по сравнению с брокерами</span>", "calc.h": "Ваш проект", "calc.price": "Средняя цена квартиры", "calc.units": "Квартир продать в месяц", "calc.vol": "Ваши продажи в месяц", "calc.save": "Экономия против комиссии брокера 6%", "calc.saveS": "в месяц", "calc.plan": "Рекомендуемый план", "calc.cmp": "Сколько стоит вам каждая продажа", "calc.cmpUs": "С нами", "calc.cmpBr": "Местные брокеры", "calc.as": "С нами = ежемесячная оплата + реклама + 2% с продаж. Примерная оценка по прошлым проектам.", "bk.k": "Контакты", "bk.t": "Созвон <span class=\"gold\">с Артёмом</span>", "bk.name": "Ваше имя", "bk.company": "Компания / название здания", "bk.phone": "Номер WhatsApp", "bk.email": "Рабочий email", "bk.send": "Записаться на звонок", "bk.ok": "Спасибо. Артём напишет вам в WhatsApp в течение рабочего дня.", "bk.preview": "Это превью, поэтому ничего не отправлено. На опубликованном сайте форма отправит заявку нашей команде.", "ck.h": "Или начните сейчас", "pay.card": "Карта · Apple Pay", "pay.cardS": "Безопасная оплата через Stripe", "pay.crypto": "Крипта · USDT", "pay.cryptoS": "Оплата в USDT", "pay.soon": "Онлайн-оплата скоро откроется. Заполните форму, и мы пришлём безопасную ссылку на оплату.", "ft.t": "Крипто-покупатели и клиенты из США для застройщиков Панамы"}};
 
 const T=(en,es,ru)=>({en,es,ru});
 const STRIP=["Costa del Este","Santa María","Ocean Reef","Punta Pacífica","Casco Viejo","Avenida Balboa","USDT","Investor Visa"];
@@ -682,25 +702,25 @@ const PKG=[
  {id:"starter",name:"Starter",step:T("Plan 1","Plan 1","План 1"),old:5000,price:3000,
   team:[T("20 strategy & management hours / month","20 horas de estrategia y gestión / mes","20 часов стратегии и управления в месяц"),T("1 dedicated project manager","1 project manager dedicado","1 персональный проджект-менеджер")],
   inc:[T("1 clean landing page for your building (English)","1 landing page para su edificio (inglés)","1 лендинг для вашего здания (на английском)"),
-       T("Direct messages to 1,000 verified crypto founders","Mensajes directos a 1,000 fundadores crypto verificados","Личные сообщения 1 000 проверенным крипто-фаундерам"),
+       T("Direct messages to 1,000 verified crypto founders","Mensajes directos a 1,000 fundadores crypto verificados","Личные сообщения 1,000 проверенным крипто-фаундерам"),
        T("Safe setup to accept USDT / crypto into your bank","Configuración segura para recibir USDT / crypto en su banco","Безопасный приём USDT / крипты на ваш банковский счёт")],
   goal:T("3–5 buyer meetings or tours / month","3–5 reuniones o visitas / mes","3–5 встреч или показов в месяц"),
-  terms:T("$3,000/mo + tools cost + <b>2% on closed sales</b>","$3,000/mes + herramientas + <b>2% por venta cerrada</b>","$3 000/мес + сервисы + <b>2% с закрытых сделок</b>"),
+  terms:T("$3,000/mo + tools cost + <b>2% on closed sales</b>","$3,000/mes + herramientas + <b>2% por venta cerrada</b>","$3,000/мес + сервисы + <b>2% с закрытых сделок</b>"),
   cta:T("Select Starter","Elegir Starter","Выбрать Starter"),href:"#book"},
  {id:"growth",name:"Growth",step:T("Plan 2","Plan 2","План 2"),price:6500,feat:true,
   team:[T("40 strategy & management hours / month","40 horas de estrategia y gestión / mes","40 часов стратегии и управления в месяц"),T("Full squad: ad buyer, PM, designer","Equipo completo: anuncios, PM, diseñador","Команда: таргетолог, PM, дизайнер")],
   inc:[T("Direct outreach + targeted ads (Meta / Google)","Mensajes directos + anuncios (Meta / Google)","Личные сообщения + реклама (Meta / Google)"),
-       T("2,500+ rich buyers contacted every month","2,500+ compradores con dinero contactados cada mes","2 500+ состоятельных покупателей в месяц"),
+       T("2,500+ rich buyers contacted every month","2,500+ compradores con dinero contactados cada mes","2,500+ состоятельных покупателей в месяц"),
        T("VIP 3-day tour for buyers flying to Panama","Tour VIP de 3 días para compradores que vuelan a Panamá","VIP-тур на 3 дня для покупателей, которые летят в Панаму")],
   goal:T("8–12 buyer meetings / month","8–12 reuniones / mes","8–12 встреч с покупателями в месяц"),
-  terms:T("$6,500/mo + ad spend + <b>2% on closed sales</b>","$6,500/mes + anuncios + <b>2% por venta cerrada</b>","$6 500/мес + реклама + <b>2% с закрытых сделок</b>"),
+  terms:T("$6,500/mo + ad spend + <b>2% on closed sales</b>","$6,500/mes + anuncios + <b>2% por venta cerrada</b>","$6,500/мес + реклама + <b>2% с закрытых сделок</b>"),
   cta:T("Select Growth","Elegir Growth","Выбрать Growth"),href:"#book"},
  {id:"desk",name:"Full Sales Desk",step:T("Plan 3","Plan 3","План 3"),price:12000,custom:true,
   team:[T("Unlimited hours","Horas ilimitadas","Без ограничения часов"),T("Full dedicated department","Departamento completo dedicado","Целый отдел только под вас")],
   inc:[T("All your buildings and penthouses covered","Todos sus edificios y penthouses","Все ваши здания и пентхаусы"),
        T("VIP service: airport pickup, yachts, private tours","Servicio VIP: aeropuerto, yates, tours privados","VIP-сервис: встреча в аэропорту, яхты, частные туры"),
        T("Full legal and bank support from start to finish","Apoyo legal y bancario de principio a fin","Юридическое и банковское сопровождение от начала до конца")],
-  terms:T("$12,000/mo + <b>custom % on sales</b>","$12,000/mes + <b>% por venta a medida</b>","$12 000/мес + <b>% с продаж по договорённости</b>"),
+  terms:T("$12,000/mo + <b>custom % on sales</b>","$12,000/mes + <b>% por venta a medida</b>","$12,000/мес + <b>% с продаж по договорённости</b>"),
   cta:T("Talk to Founder","Hablar con el fundador","Поговорить с основателем"),href:"#book"}
 ];
 
@@ -713,11 +733,11 @@ const CMP=[
 ];
 
 const CASES=[
- {i:"building-2",loc:"Panama City",metric:"12",ml:T("apartments sold to US buyers in 6 months","apartamentos vendidos a compradores de EE.UU. en 6 meses","квартир продано покупателям из США за 6 месяцев"),t:T("Oceanfront luxury tower","Torre de lujo frente al mar","Элитная башня у океана"),ch:["Google","Press"]},
- {i:"flag-triangle-right",loc:"Santa María",metric:"−40%",ml:T("cost to find each foreign buyer","costo por cada comprador extranjero","стоимость каждого иностранного покупателя"),t:T("Gated golf community","Comunidad de golf privada","Закрытый гольф-посёлок"),ch:["Ads","Email"]},
- {i:"waves",loc:"Pacific coast",metric:"100%",ml:T("sold before construction started","vendido antes de construir","продано до начала стройки"),t:T("Eco-resort villas","Villas eco-resort","Виллы эко-курорта"),ch:["Bloggers","Videos"]},
- {i:"briefcase",loc:"Panama City",metric:"4",ml:T("big international companies moved in","grandes empresas internacionales","крупные международные компании заехали"),t:T("Office building","Edificio de oficinas","Офисное здание"),ch:["LinkedIn","Google"]},
- {i:"landmark",loc:"Casco Viejo",metric:"90",ml:T("days to sell out to European investors","días para vender todo a inversionistas europeos","дней, чтобы продать всё инвесторам из Европы"),t:T("Boutique project in Casco Viejo","Proyecto boutique en Casco Viejo","Бутик-проект в Каско Вьехо"),ch:["Reddit","Forums"]}
+ {i:"building-2",loc:T("Panama City","Ciudad de Panamá","Панама-Сити"),metric:"12",ml:T("apartments sold to US buyers in 6 months","apartamentos vendidos a compradores de EE.UU. en 6 meses","квартир продано покупателям из США за 6 месяцев"),t:T("Oceanfront luxury tower","Torre de lujo frente al mar","Элитная башня у океана"),ch:[T("Google","Google","Google"),T("Press","Prensa","Пресса")]},
+ {i:"flag-triangle-right",loc:T("Santa María","Santa María","Санта-Мария"),metric:"−40%",ml:T("cost to find each foreign buyer","costo por cada comprador extranjero","стоимость каждого иностранного покупателя"),t:T("Gated golf community","Comunidad de golf privada","Закрытый гольф-посёлок"),ch:[T("Ads","Anuncios","Реклама"),T("Email","Email","Email")]},
+ {i:"waves",loc:T("Pacific coast","Costa del Pacífico","Тихоокеанское побережье"),metric:"100%",ml:T("sold before construction started","vendido antes de construir","продано до начала стройки"),t:T("Eco-resort villas","Villas eco-resort","Виллы эко-курорта"),ch:[T("Bloggers","Bloggers","Блогеры"),T("Videos","Videos","Видео")]},
+ {i:"briefcase",loc:T("Panama City","Ciudad de Panamá","Панама-Сити"),metric:"4",ml:T("big international companies moved in","grandes empresas internacionales","крупные международные компании заехали"),t:T("Office building","Edificio de oficinas","Офисное здание"),ch:[T("LinkedIn","LinkedIn","LinkedIn"),T("Google","Google","Google")]},
+ {i:"landmark",loc:T("Casco Viejo","Casco Viejo","Каско Вьехо"),metric:"90",ml:T("days to sell out to European investors","días para vender todo a inversionistas europeos","дней, чтобы продать всё инвесторам из Европы"),t:T("Boutique project in Casco Viejo","Proyecto boutique en Casco Viejo","Бутик-проект в Каско Вьехо"),ch:[T("Reddit","Reddit","Reddit"),T("Forums","Foros","Форумы")]}
 ];
 
 let lang='en';
@@ -745,9 +765,9 @@ function render(){
     CMP.map(r=>`<div class="f">${tr(r[0])}</div><div class="o">${r[4][0]?'':no}${tr(r[1])}</div><div class="o">${r[4][1]?'':no}${tr(r[2])}</div><div class="u">${ok}${tr(r[3])}</div>`).join('');
   $('#cmpM').innerHTML=CMP.map(r=>`<div class="card cm"><h4>${tr(r[0])}</h4><div><span>${D['cmp.h1']}</span><span>${tr(r[1])}</span></div><div><span>${D['cmp.h2']}</span><span>${tr(r[2])}</span></div><div class="us"><span>${D['cmp.h3']}</span><span>${tr(r[3])}</span></div></div>`).join('');
   $('#caseGrid').innerHTML=CASES.map((c,k)=>`<div class="card case rv d${k%3}">
-     <div class="top"><span class="cic">${svg(c.i)}</span><span class="loc">${svg('map-pin')}${c.loc}</span></div>
+     <div class="top"><span class="cic">${svg(c.i)}</span><span class="loc">${svg('map-pin')}${tr(c.loc)}</span></div>
      <div class="metric gtxt">${c.metric}</div><div class="ml">${tr(c.ml)}</div><h3>${tr(c.t)}</h3>
-     <div class="chs">${c.ch.map(x=>`<span>${x}</span>`).join('')}</div></div>`).join('');
+     <div class="chs">${c.ch.map(x=>`<span>${tr(x)}</span>`).join('')}</div></div>`).join('');
   $$('.js-select').forEach(a=>a.onclick=()=>{if(a.dataset.pkg!=='desk')setCk(a.dataset.pkg);});
   calc(); setCk(ckPkg); observe();
 }
@@ -819,7 +839,7 @@ setTimeout(()=>$$('.rv:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top
   if(!gl){box.classList.add('nogl');return;}
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
-  R.setPixelRatio(Math.min(devicePixelRatio,2));
+  const small=innerWidth<700;R.setPixelRatio(Math.min(devicePixelRatio,small?1.5:2));
   const S=new THREE.Scene();S.fog=new THREE.Fog(0x0a0b0d,26,60);
   const C=new THREE.PerspectiveCamera(34,1,.1,200);
   const city=new THREE.Group();S.add(city);
@@ -850,7 +870,7 @@ setTimeout(()=>$$('.rv:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top
   const grid=new THREE.GridHelper(40,40,GOLD,GOLD);grid.material.transparent=true;grid.material.opacity=.07;city.add(grid);
   const water=new THREE.Mesh(new THREE.PlaneGeometry(40,14),new THREE.MeshBasicMaterial({color:0xd6b073,transparent:true,opacity:.03}));water.rotation.x=-Math.PI/2;water.position.set(0,.01,10);city.add(water);
   // gold dust
-  const N=260,pp=new Float32Array(N*3);for(let i=0;i<N;i++){pp[i*3]=(Math.random()-.5)*22;pp[i*3+1]=Math.random()*12;pp[i*3+2]=(Math.random()-.5)*22;}
+  const N=small?120:260,pp=new Float32Array(N*3);for(let i=0;i<N;i++){pp[i*3]=(Math.random()-.5)*22;pp[i*3+1]=Math.random()*12;pp[i*3+2]=(Math.random()-.5)*22;}
   const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pp,3));
   const dust=new THREE.Points(pg,new THREE.PointsMaterial({color:GOLD,size:.05,transparent:true,opacity:.6}));S.add(dust);
   // beacon on the hero tower
@@ -864,6 +884,7 @@ setTimeout(()=>$$('.rv:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top
   size();addEventListener('resize',size);
   if(matchMedia('(hover:hover)').matches)box.addEventListener('pointermove',e=>{const r=box.getBoundingClientRect();mx=(e.clientX-r.left)/r.width-.5;my=(e.clientY-r.top)/r.height-.5;});
   new IntersectionObserver(es=>{vis=es[0].isIntersecting;}).observe(box);
+  document.addEventListener('visibilitychange',()=>{vis=!document.hidden&&box.getBoundingClientRect().bottom>0;});
   function frame(t){
     requestAnimationFrame(frame);if(!vis)return;
     const s=(t-t0)/1000;
