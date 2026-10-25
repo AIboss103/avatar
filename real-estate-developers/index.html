@@ -426,6 +426,44 @@ footer{border-top:1px solid var(--line);padding-block:30px calc(30px + env(safe-
   .f-big span{font-size:12px}
   .form{grid-template-columns:1fr}
 }
+
+/* pricing v3 */
+.pkg .sub{font-size:13px;color:var(--muted);margin-top:-2px}
+.pkg .blk{font-family:var(--display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:4px 0 12px}
+.pkg .hours{display:flex;align-items:baseline;gap:8px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line);margin-bottom:10px}
+.pkg .hours b{font-family:var(--display);font-size:26px;font-weight:800;letter-spacing:-.03em}
+.pkg .hours span{font-size:13px;color:var(--muted)}
+.pkg .fee li .ic{color:var(--green)}
+.pkg .adnote{font-size:12.5px;color:var(--dim);margin:-10px 0 18px}
+.pkg .goal.guar2{background:rgba(127,216,166,.08);border-color:rgba(127,216,166,.35)}
+.pkg .goal.guar2 .ic{color:var(--green)}
+.pkg-cta{display:grid;grid-template-columns:1fr;gap:10px}
+.pkg-cta .btn{width:100%}
+.btn-ghost{border:1px solid var(--line2);color:var(--muted);padding:16px 18px}
+.btn-ghost:hover{color:var(--text);border-color:var(--goldLine)}
+.fees{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.fee-card{padding:30px;display:flex;flex-direction:column;gap:16px}
+.fee-card h3{font-size:22px}
+.fee-list{list-style:none;counter-reset:f;display:flex;flex-direction:column;gap:16px}
+.fee-list li{counter-increment:f;display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start}
+.fee-list li::before{content:counter(f);width:36px;height:36px;border-radius:10px;border:1px solid var(--goldLine);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:var(--gold)}
+.fee-list b{display:block;font-family:var(--display);font-size:16px;margin-bottom:2px}
+.fee-list span{color:var(--muted);font-size:14.5px}
+.fee-list em{font-style:normal;color:var(--gold);font-weight:700}
+.lm{position:fixed;inset:0;z-index:100;background:rgba(5,6,8,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;justify-content:flex-end}
+.lm[hidden]{display:none}
+.lm-panel{width:min(460px,100%);height:100%;overflow:auto;background:var(--surface);border-left:1px solid var(--line2);padding:calc(28px + env(safe-area-inset-top,0px)) 28px calc(28px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px;animation:slideIn .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes slideIn{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+.lm-x{align-self:flex-end;width:44px;height:44px;border-radius:12px;border:1px solid var(--line2);display:grid;place-items:center;color:var(--muted)}
+.lm-x .ic{width:20px;height:20px}
+.lm-panel h3{font-size:28px}
+.lm-price{color:var(--gold);font-family:var(--display);font-weight:700}
+.lm-panel h4{font-size:15px;color:var(--muted);font-family:var(--body);font-weight:600;margin-top:10px}
+.lm-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.lm-list li{display:flex;gap:10px;font-size:15px;color:#e6dccb;line-height:1.45}
+.lm-list .ic{width:18px;height:18px;color:var(--gold);margin-top:2px}
+.lm-panel .btn{margin-top:auto}
+@media (max-width:760px){.fees{grid-template-columns:1fr}.fee-card{padding:22px 18px}}
 /* QA fixes */
 section[id]{scroll-margin-top:80px}
 @media (max-width:900px){.cmp{display:none}.cmp-m{display:flex;flex-direction:column;gap:12px;margin-top:36px}.cm{padding:18px}.cm h4{font-size:16px;margin-bottom:10px}.cm div{display:grid;grid-template-columns:140px 1fr;gap:10px;font-size:14px;padding:8px 0;border-top:1px solid var(--line)}.cm div span:first-child{color:var(--dim);font-size:12.5px}.cm div.us{color:var(--gold);font-weight:600}.cm div.us span:first-child{color:var(--gold)}}
@@ -539,6 +577,17 @@ section[id]{scroll-margin-top:80px}
       <p class="lead rv" data-i18n="pk.l">Monthly working hours + a commission on sales. You pay the ad budget directly.</p>
     </div>
     <div class="pkg-grid" id="pkgGrid"></div>
+    <div class="fees">
+      <div class="card fee-card rv">
+        <span class="kicker" data-i18n="fe.k1">Flexible service model</span>
+        <h3 data-i18n="fe.t1">One bank of hours. Use it on any service.</h3>
+        <div class="chips" id="svcChips"></div>
+      </div>
+      <div class="card fee-card rv d1">
+        <span class="kicker" data-i18n="fe.k2">Clear fee structure</span>
+        <ol class="fee-list" id="feeList"></ol>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -619,6 +668,20 @@ section[id]{scroll-margin-top:80px}
   </div>
 </footer>
 
+<div class="lm" id="lm" role="dialog" aria-modal="true" aria-labelledby="lmTitle" hidden>
+  <div class="lm-panel">
+    <button class="lm-x" id="lmX" aria-label="Close"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></svg></button>
+    <span class="kicker" id="lmKicker"></span>
+    <h3 id="lmTitle"></h3>
+    <p class="lm-price" id="lmPrice"></p>
+    <h4 data-i18n="lm.s">Any hour can be used for</h4>
+    <ul class="lm-list" id="lmSvc"></ul>
+    <h4 data-i18n="lm.b">Transparent billing</h4>
+    <ul class="lm-list" id="lmBill"></ul>
+    <a href="#book" class="btn btn-gold" id="lmCta"></a>
+  </div>
+</div>
+
 <div class="mcta" id="mcta">
   <a href="#book" class="btn btn-gold" data-i18n="cta.book">Book a Call</a>
   <a href="#pricing" class="btn btn-line" data-i18n="cta.pricing">See Pricing</a>
@@ -637,6 +700,17 @@ const svg=(n,c='ic')=>`<svg class="${c}" viewBox="0 0 24 24">${ICONS[n]||''}</sv
 
 const I18N={
 en:{
+ "lm.b":"Transparent billing",
+ "lm.s":"Any hour can be used for",
+ "fe.k2":"Clear fee structure",
+ "fe.t1":"One bank of hours. Use it on any service.",
+ "fe.k1":"Flexible service model",
+ "pk.more":"Learn more",
+ "pk.ad":"Ad budget billed separately, directly to platforms.",
+ "pk.guar":"Guarantee",
+ "pk.success":"Success fees",
+ "pk.focus":"Recommended focus",
+ "pk.hrs":"team hours / month",
  "nav.team":"Team","nav.pricing":"Pricing","nav.compare":"Why us","nav.calc":"Calculator","nav.book":"Contact",
  "cta.book":"Book a Call","cta.pricing":"See Pricing",
  "hero.tag":"Trusted by Top Panama Developers",
@@ -648,7 +722,7 @@ en:{
  "tm.k":"Team","tm.t":"Leadership <span class=\"gold\">on the ground</span>","tm.l":"Based in Panama City. Native to Web3 and high-ticket sales.",
  "tm.role":"Founder & CEO","tm.b1":"CBDO at ICODA.io and Stive.ai","tm.b4":"Telegram blog with 7,000+ professionals","tm.b2":"Lives and works in Panama City","tm.b3":"Direct access to 2,000+ crypto founders and whales ready to buy property for Panama residency",
  "tm.n1":"crypto founders in our network","tm.n2":"vetted specialists","tm.n3":"professionals read Artem's Telegram","nm.t":"No hidden margin. You get every contractor directly.","nm.p":"Other agencies hide their markup on ads, designers and developers. We connect you to each contractor directly, so you save tens of thousands of dollars.","tm.th":"Backed by 50+ vetted specialists",
- "pk.k":"Pricing","pk.t":"Three <span class=\"gold\">simple plans</span>","pk.l":"Monthly working hours + a commission on sales. You pay the ad budget directly.",
+ "pk.k":"Pricing","pk.t":"Three <span class=\"gold\">simple plans</span>","pk.l":"Fixed monthly hours for any service + direct ad budget + success alignment.",
  "pk.mo":"/ month","pk.popular":"Most popular","pk.promo":"Promo","pk.get":"What you get","pk.terms":"Terms","pk.goal":"Goal",
  "cmp.k":"Why us","cmp.t":"Us vs <span class=\"gold\">the others</span>",
  "cmp.h0":"","cmp.h1":"Local Panama brokers","cmp.h2":"Big remote agencies","cmp.h3":"Skyline Growth",
@@ -665,6 +739,17 @@ en:{
  "ft.t":"Crypto and US buyers for Panama developers"
 },
 es:{
+ "lm.b":"Facturación transparente",
+ "lm.s":"Cada hora se puede usar para",
+ "fe.k2":"Estructura de pagos clara",
+ "fe.t1":"Una bolsa de horas. Úsela en cualquier servicio.",
+ "fe.k1":"Modelo de servicio flexible",
+ "pk.more":"Ver más",
+ "pk.ad":"El presupuesto de anuncios se paga aparte, directo a las plataformas.",
+ "pk.guar":"Garantía",
+ "pk.success":"Pago por resultado",
+ "pk.focus":"Enfoque recomendado",
+ "pk.hrs":"horas de equipo / mes",
  "nav.team":"Equipo","nav.pricing":"Precios","nav.compare":"Por qué nosotros","nav.calc":"Calculadora","nav.book":"Contacto",
  "cta.book":"Agendar llamada","cta.pricing":"Ver precios",
  "hero.tag":"La confianza de los mejores promotores de Panamá",
@@ -676,7 +761,7 @@ es:{
  "tm.k":"Equipo","tm.t":"Liderazgo <span class=\"gold\">en Panamá</span>","tm.l":"Con base en Ciudad de Panamá. Expertos en Web3 y ventas de alto valor.",
  "tm.role":"Fundador y CEO","tm.b1":"CBDO en ICODA.io y Stive.ai","tm.b4":"Blog en Telegram con 7,000+ profesionales","tm.b2":"Vive y trabaja en Ciudad de Panamá","tm.b3":"Acceso directo a 2,000+ fundadores crypto e inversionistas grandes listos para comprar propiedad para residencia en Panamá",
  "tm.n1":"fundadores crypto en nuestra red","tm.n2":"especialistas verificados","tm.n3":"profesionales leen el Telegram de Artem","nm.t":"Sin margen oculto. Trabaja con cada proveedor directamente.","nm.p":"Otras agencias esconden su margen en anuncios, diseñadores y programadores. Nosotros le conectamos con cada proveedor directamente y ahorra decenas de miles de dólares.","tm.th":"Respaldado por 50+ especialistas verificados",
- "pk.k":"Precios","pk.t":"Tres <span class=\"gold\">planes simples</span>","pk.l":"Horas de trabajo mensuales + comisión por venta. El presupuesto de anuncios lo paga usted directamente.",
+ "pk.k":"Precios","pk.t":"Tres <span class=\"gold\">planes simples</span>","pk.l":"Horas mensuales fijas para cualquier servicio + presupuesto de anuncios directo + pago por resultado.",
  "pk.mo":"/ mes","pk.popular":"El más elegido","pk.promo":"Promo","pk.get":"Qué incluye","pk.terms":"Condiciones","pk.goal":"Meta",
  "cmp.k":"Por qué nosotros","cmp.t":"Nosotros vs <span class=\"gold\">los demás</span>",
  "cmp.h0":"","cmp.h1":"Corredores locales","cmp.h2":"Agencias remotas grandes","cmp.h3":"Skyline Growth",
@@ -692,36 +777,49 @@ es:{
  "pay.soon":"El pago en línea abre pronto. Complete el formulario y le enviaremos un enlace de pago seguro.",
  "ft.t":"Compradores crypto y de EE.UU. para promotores en Panamá"
 },
-ru:{"nav.team": "Команда", "nav.pricing": "Цены", "nav.compare": "Почему мы", "nav.calc": "Калькулятор", "nav.book": "Контакты", "cta.book": "Записаться на звонок", "cta.pricing": "Смотреть цены", "hero.tag": "Нам доверяют лучшие застройщики Панамы", "hero.title": "Продаём квартиры застройщиков Панамы крипто-покупателям и клиентам из США <span class=\"gtxt\">за 90 дней.</span>", "hero.lead": "Проверенные покупатели с $300,000+ под инвесторскую визу Панамы. Оплата в USDT / крипте напрямую на банковский счёт.", "st.1": "экспертов в команде", "st.2": "квартир продано за 6 месяцев", "st.3v": "30 дней", "st.3": "до ПМЖ в Панаме", "st.4": "легальная оплата криптой через TowerBank и эскроу", "pw.t": "Партнёры", "vis.sold": "здания продано", "vis.c1": "Покупатель · Майами", "vis.c1s": "Квартира за $650k", "vis.c1t": "Оплата в USDT", "vis.c2": "Показ забронирован", "vis.c2s": "Цюрих → Панама-Сити", "vis.c3": "Покупатель под визу", "vis.c3s": "$300k+ подтверждено", "tm.k": "Команда", "tm.t": "Руководство <span class=\"gold\">прямо в Панаме</span>", "tm.l": "Живём в Панама-Сити. Свои в Web3 и дорогих продажах.", "tm.role": "Основатель и CEO", "tm.b1": "CBDO в ICODA.io и Stive.ai", "tm.b4": "Telegram-блог на 7,000+ профессионалов", "tm.b2": "Живёт и работает в Панама-Сити", "tm.b3": "Прямой доступ к 2,000+ крипто-фаундерам и китам, готовым купить недвижимость ради резидентства в Панаме", "tm.n1": "крипто-фаундеров в нашей сети", "tm.n2": "проверенных специалистов", "tm.n3": "профессионалов читают Telegram Артёма", "tm.th": "За нами 50+ проверенных специалистов", "nm.t": "Без скрытой маржи. Все подрядчики напрямую.", "nm.p": "Другие агентства прячут наценку на рекламу, дизайнеров и разработчиков. Мы даём вам каждого подрядчика напрямую, и вы экономите десятки тысяч долларов.", "pk.k": "Цены", "pk.t": "Три <span class=\"gold\">простых плана</span>", "pk.l": "Ежемесячная оплата часов + комиссия с продаж. Рекламный бюджет вы платите напрямую.", "pk.mo": "/ мес", "pk.popular": "Популярный", "pk.promo": "Акция", "pk.get": "Что входит", "pk.terms": "Условия", "pk.goal": "Цель", "cmp.k": "Почему мы", "cmp.t": "Мы и <span class=\"gold\">другие</span>", "cmp.h0": "", "cmp.h1": "Местные брокеры", "cmp.h2": "Большие удалённые агентства", "cmp.h3": "Skyline Growth", "cs.k": "Результаты", "cs.t": "Проекты, которые мы <span class=\"gold\">уже продали</span>", "calc.k": "Калькулятор", "calc.t": "Сколько вы сэкономите <span class=\"gold\">по сравнению с брокерами</span>", "calc.h": "Ваш проект", "calc.price": "Средняя цена квартиры", "calc.units": "Квартир продать в месяц", "calc.vol": "Ваши продажи в месяц", "calc.save": "Экономия против комиссии брокера 6%", "calc.saveS": "в месяц", "calc.plan": "Рекомендуемый план", "calc.cmp": "Сколько стоит вам каждая продажа", "calc.cmpUs": "С нами", "calc.cmpBr": "Местные брокеры", "calc.as": "С нами = ежемесячная оплата + реклама + 2% с продаж. Примерная оценка по прошлым проектам.", "bk.k": "Контакты", "bk.t": "Созвон <span class=\"gold\">с Артёмом</span>", "bk.name": "Ваше имя", "bk.company": "Компания / название здания", "bk.phone": "Номер WhatsApp", "bk.email": "Рабочий email", "bk.send": "Записаться на звонок", "bk.ok": "Спасибо. Артём напишет вам в WhatsApp в течение рабочего дня.", "bk.preview": "Это превью, поэтому ничего не отправлено. На опубликованном сайте форма отправит заявку нашей команде.", "ck.h": "Или начните сейчас", "pay.card": "Карта · Apple Pay", "pay.cardS": "Безопасная оплата через Stripe", "pay.crypto": "Крипта · USDT", "pay.cryptoS": "Оплата в USDT", "pay.soon": "Онлайн-оплата скоро откроется. Заполните форму, и мы пришлём безопасную ссылку на оплату.", "ft.t": "Крипто-покупатели и клиенты из США для застройщиков Панамы"}};
+ru:{"lm.b": "Прозрачная оплата", "lm.s": "Любой час можно потратить на", "fe.k2": "Понятная структура оплаты", "fe.t1": "Один банк часов. Тратьте на любые услуги.", "fe.k1": "Гибкая модель услуг", "pk.more": "Подробнее", "pk.ad": "Рекламный бюджет оплачивается отдельно, напрямую площадкам.", "pk.guar": "Гарантия", "pk.success": "Оплата за результат", "pk.focus": "Рекомендуемый фокус", "pk.hrs": "часов команды в месяц", "nav.team": "Команда", "nav.pricing": "Цены", "nav.compare": "Почему мы", "nav.calc": "Калькулятор", "nav.book": "Контакты", "cta.book": "Записаться на звонок", "cta.pricing": "Смотреть цены", "hero.tag": "Нам доверяют лучшие застройщики Панамы", "hero.title": "Продаём квартиры застройщиков Панамы крипто-покупателям и клиентам из США <span class=\"gtxt\">за 90 дней.</span>", "hero.lead": "Проверенные покупатели с $300,000+ под инвесторскую визу Панамы. Оплата в USDT / крипте напрямую на банковский счёт.", "st.1": "экспертов в команде", "st.2": "квартир продано за 6 месяцев", "st.3v": "30 дней", "st.3": "до ПМЖ в Панаме", "st.4": "легальная оплата криптой через TowerBank и эскроу", "pw.t": "Партнёры", "vis.sold": "здания продано", "vis.c1": "Покупатель · Майами", "vis.c1s": "Квартира за $650k", "vis.c1t": "Оплата в USDT", "vis.c2": "Показ забронирован", "vis.c2s": "Цюрих → Панама-Сити", "vis.c3": "Покупатель под визу", "vis.c3s": "$300k+ подтверждено", "tm.k": "Команда", "tm.t": "Руководство <span class=\"gold\">прямо в Панаме</span>", "tm.l": "Живём в Панама-Сити. Свои в Web3 и дорогих продажах.", "tm.role": "Основатель и CEO", "tm.b1": "CBDO в ICODA.io и Stive.ai", "tm.b4": "Telegram-блог на 7,000+ профессионалов", "tm.b2": "Живёт и работает в Панама-Сити", "tm.b3": "Прямой доступ к 2,000+ крипто-фаундерам и китам, готовым купить недвижимость ради резидентства в Панаме", "tm.n1": "крипто-фаундеров в нашей сети", "tm.n2": "проверенных специалистов", "tm.n3": "профессионалов читают Telegram Артёма", "tm.th": "За нами 50+ проверенных специалистов", "nm.t": "Без скрытой маржи. Все подрядчики напрямую.", "nm.p": "Другие агентства прячут наценку на рекламу, дизайнеров и разработчиков. Мы даём вам каждого подрядчика напрямую, и вы экономите десятки тысяч долларов.", "pk.k": "Цены", "pk.t": "Три <span class=\"gold\">простых плана</span>", "pk.l": "Фиксированные часы в месяц на любые услуги + рекламный бюджет напрямую + оплата за результат.", "pk.mo": "/ мес", "pk.popular": "Популярный", "pk.promo": "Акция", "pk.get": "Что входит", "pk.terms": "Условия", "pk.goal": "Цель", "cmp.k": "Почему мы", "cmp.t": "Мы и <span class=\"gold\">другие</span>", "cmp.h0": "", "cmp.h1": "Местные брокеры", "cmp.h2": "Большие удалённые агентства", "cmp.h3": "Skyline Growth", "cs.k": "Результаты", "cs.t": "Проекты, которые мы <span class=\"gold\">уже продали</span>", "calc.k": "Калькулятор", "calc.t": "Сколько вы сэкономите <span class=\"gold\">по сравнению с брокерами</span>", "calc.h": "Ваш проект", "calc.price": "Средняя цена квартиры", "calc.units": "Квартир продать в месяц", "calc.vol": "Ваши продажи в месяц", "calc.save": "Экономия против комиссии брокера 6%", "calc.saveS": "в месяц", "calc.plan": "Рекомендуемый план", "calc.cmp": "Сколько стоит вам каждая продажа", "calc.cmpUs": "С нами", "calc.cmpBr": "Местные брокеры", "calc.as": "С нами = ежемесячная оплата + реклама + 2% с продаж. Примерная оценка по прошлым проектам.", "bk.k": "Контакты", "bk.t": "Созвон <span class=\"gold\">с Артёмом</span>", "bk.name": "Ваше имя", "bk.company": "Компания / название здания", "bk.phone": "Номер WhatsApp", "bk.email": "Рабочий email", "bk.send": "Записаться на звонок", "bk.ok": "Спасибо. Артём напишет вам в WhatsApp в течение рабочего дня.", "bk.preview": "Это превью, поэтому ничего не отправлено. На опубликованном сайте форма отправит заявку нашей команде.", "ck.h": "Или начните сейчас", "pay.card": "Карта · Apple Pay", "pay.cardS": "Безопасная оплата через Stripe", "pay.crypto": "Крипта · USDT", "pay.cryptoS": "Оплата в USDT", "pay.soon": "Онлайн-оплата скоро откроется. Заполните форму, и мы пришлём безопасную ссылку на оплату.", "ft.t": "Крипто-покупатели и клиенты из США для застройщиков Панамы"}};
 
 const T=(en,es,ru)=>({en,es,ru});
 const STRIP=["Costa del Este","Santa María","Ocean Reef","Punta Pacífica","Casco Viejo","Avenida Balboa","USDT","Investor Visa"];
 const TEAM=[["target",T("Ads experts","Expertos en anuncios","Специалисты по рекламе")],["sparkles",T("Designers","Diseñadores","Дизайнеры")],["file-text",T("Coders","Programadores","Разработчики")],["key-round",T("Panama City concierge","Concierge en Ciudad de Panamá","Консьерж в Панаме")],["users",T("Project managers","Project managers","Проджект-менеджеры")]];
 
 const PKG=[
- {id:"starter",name:"Starter",step:T("Plan 1","Plan 1","План 1"),old:5000,price:3000,
-  team:[T("20 strategy & management hours / month","20 horas de estrategia y gestión / mes","20 часов стратегии и управления в месяц"),T("1 dedicated project manager","1 project manager dedicado","1 персональный проджект-менеджер")],
-  inc:[T("1 clean landing page for your building (English)","1 landing page para su edificio (inglés)","1 лендинг для вашего здания (на английском)"),
-       T("Direct messages to 1,000 verified crypto founders","Mensajes directos a 1,000 fundadores crypto verificados","Личные сообщения 1,000 проверенным крипто-фаундерам"),
-       T("Safe setup to accept USDT / crypto into your bank","Configuración segura para recibir USDT / crypto en su banco","Безопасный приём USDT / крипты на ваш банковский счёт")],
-  goal:T("3–5 buyer meetings or tours / month","3–5 reuniones o visitas / mes","3–5 встреч или показов в месяц"),
-  terms:T("$3,000/mo + tools cost + <b>2% on closed sales</b>","$3,000/mes + herramientas + <b>2% por venta cerrada</b>","$3,000/мес + сервисы + <b>2% с закрытых сделок</b>"),
-  cta:T("Select Starter","Elegir Starter","Выбрать Starter"),href:"#book"},
- {id:"growth",name:"Growth",step:T("Plan 2","Plan 2","План 2"),price:6500,feat:true,
-  team:[T("40 strategy & management hours / month","40 horas de estrategia y gestión / mes","40 часов стратегии и управления в месяц"),T("Full squad: ad buyer, PM, designer","Equipo completo: anuncios, PM, diseñador","Команда: таргетолог, PM, дизайнер")],
-  inc:[T("Direct outreach + targeted ads (Meta / Google)","Mensajes directos + anuncios (Meta / Google)","Личные сообщения + реклама (Meta / Google)"),
-       T("2,500+ rich buyers contacted every month","2,500+ compradores con dinero contactados cada mes","2,500+ состоятельных покупателей в месяц"),
-       T("VIP 3-day tour for buyers flying to Panama","Tour VIP de 3 días para compradores que vuelan a Panamá","VIP-тур на 3 дня для покупателей, которые летят в Панаму")],
-  goal:T("8–12 buyer meetings / month","8–12 reuniones / mes","8–12 встреч с покупателями в месяц"),
-  terms:T("$6,500/mo + ad spend + <b>2% on closed sales</b>","$6,500/mes + anuncios + <b>2% por venta cerrada</b>","$6,500/мес + реклама + <b>2% с закрытых сделок</b>"),
-  cta:T("Select Growth","Elegir Growth","Выбрать Growth"),href:"#book"},
- {id:"desk",name:"Full Sales Desk",step:T("Plan 3","Plan 3","План 3"),price:12000,custom:true,
-  team:[T("Unlimited hours","Horas ilimitadas","Без ограничения часов"),T("Full dedicated department","Departamento completo dedicado","Целый отдел только под вас")],
-  inc:[T("All your buildings and penthouses covered","Todos sus edificios y penthouses","Все ваши здания и пентхаусы"),
-       T("VIP service: airport pickup, yachts, private tours","Servicio VIP: aeropuerto, yates, tours privados","VIP-сервис: встреча в аэропорту, яхты, частные туры"),
-       T("Full legal and bank support from start to finish","Apoyo legal y bancario de principio a fin","Юридическое и банковское сопровождение от начала до конца")],
-  terms:T("$12,000/mo + <b>custom % on sales</b>","$12,000/mes + <b>% por venta a medida</b>","$12,000/мес + <b>% с продаж по договорённости</b>"),
-  cta:T("Talk to Founder","Hablar con el fundador","Поговорить с основателем"),href:"#book"}
+ {id:"starter",name:"Starter",step:T("Plan 1","Plan 1","План 1"),sub:T("Validation sprint","Sprint de validación","Проверочный спринт"),old:5000,price:3000,hours:30,
+  cap:[T("1 dedicated project manager included","1 project manager dedicado incluido","1 персональный проджект-менеджер")],
+  focus:[T("1 clean landing page for your building","1 landing page para su edificio","1 лендинг для вашего здания"),
+         T("Direct AI messages to 1,000 verified crypto founders","Mensajes con IA a 1,000 fundadores crypto verificados","AI-сообщения 1,000 проверенным крипто-фаундерам"),
+         T("1 paid ad channel: Telegram Ads or Meta Ads","1 canal de anuncios: Telegram Ads o Meta Ads","1 рекламный канал: Telegram Ads или Meta Ads"),
+         T("Legal setup to accept USDT / crypto directly to your bank","Configuración legal para recibir USDT / crypto en su banco","Легальная настройка приёма USDT / крипты на ваш банк")],
+  fees:[T("2% on completed apartment sales ($300k+ units)","2% por venta de apartamento cerrada (unidades $300k+)","2% с проданных квартир (от $300k)"),
+        T("30% of net profit from paid VIP fly-in tours ($10k packages)","30% de la ganancia neta de tours VIP pagados (paquetes $10k)","30% чистой прибыли с платных VIP-туров (пакеты $10k)")],
+  goal:T("3–5 verified buyer meetings in 45 days, or 1 extra month free","3–5 reuniones verificadas en 45 días, o 1 mes extra gratis","3–5 встреч с проверенными покупателями за 45 дней, или +1 месяц бесплатно"),goalType:"guar",
+  cta:T("Select Starter","Elegir Starter","Выбрать Starter")},
+ {id:"growth",name:"Growth",step:T("Plan 2","Plan 2","План 2"),sub:T("Omnichannel scale","Escala omnicanal","Масштаб во всех каналах"),price:6500,hours:65,feat:true,
+  cap:[T("Dedicated PM + full campaign team","PM dedicado + equipo completo de campañas","Персональный PM + вся команда кампаний"),T("Hours flexible across all channels","Horas flexibles en todos los canales","Часы гибко на любые каналы")],
+  focus:[T("Direct outreach to 2,500+ rich buyers every month","Contacto directo con 2,500+ compradores con dinero al mes","Прямой охват 2,500+ состоятельных покупателей в месяц"),
+         T("Multi-channel ads: Telegram Ads + Meta + Google Search","Anuncios multicanal: Telegram Ads + Meta + Google Search","Реклама в нескольких каналах: Telegram Ads + Meta + Google Search"),
+         T("Founder content machine and crypto PR placements","Máquina de contenido del fundador y PR crypto","Контент-машина основателя и крипто-PR"),
+         T("VIP 3-day fly-in tour funnel for buyers flying to Panama","Embudo de tour VIP de 3 días para compradores que vuelan a Panamá","Воронка VIP-тура на 3 дня для покупателей, летящих в Панаму")],
+  fees:[T("2% on completed apartment sales","2% por venta de apartamento cerrada","2% с проданных квартир"),
+        T("30% of net profit from paid VIP fly-in tours","30% de la ganancia neta de tours VIP pagados","30% чистой прибыли с платных VIP-туров")],
+  goal:T("8–12 verified buyer meetings per quarter","8–12 reuniones verificadas por trimestre","8–12 встреч с проверенными покупателями за квартал"),goalType:"goal",
+  cta:T("Select Growth","Elegir Growth","Выбрать Growth")},
+ {id:"enterprise",name:"Enterprise",step:T("Plan 3","Plan 3","План 3"),sub:T("Full sales desk","Departamento de ventas completo","Полный отдел продаж"),price:12000,hours:120,
+  cap:[T("Full outsourced international department","Departamento internacional completo externalizado","Целый международный отдел на аутсорсе"),T("Priority execution and unlimited strategy syncs","Ejecución prioritaria y reuniones de estrategia ilimitadas","Приоритетное выполнение и созвоны по стратегии без лимита")],
+  focus:[T("Full coverage for all your buildings and penthouses","Cobertura total de todos sus edificios y penthouses","Все ваши здания и пентхаусы"),
+         T("Complete mix: AI outreach, ads, SEO, influencers / KOLs, PR and video","Mix completo: outreach con IA, anuncios, SEO, influencers / KOLs, PR y video","Полный набор: AI-рассылки, реклама, SEO, блогеры / KOL, PR и видео"),
+         T("Full legal, banking (TowerBank) and escrow onboarding","Onboarding legal, bancario (TowerBank) y escrow completo","Полное юридическое, банковское (TowerBank) и эскроу-сопровождение"),
+         T("VIP concierge on the ground: yachts, helicopters, private site visits","Concierge VIP en Panamá: yates, helicópteros, visitas privadas","VIP-консьерж на месте: яхты, вертолёты, частные показы")],
+  fees:[T("Custom % on completed sales","% a medida por venta cerrada","% с продаж по договорённости"),
+        T("30% of net profit from VIP tours","30% de la ganancia neta de tours VIP","30% чистой прибыли с VIP-туров")],
+  cta:T("Talk to Founder","Hablar con el fundador","Поговорить с основателем")}
+];
+const SVC=[["send",T("AI cold outreach & scraping","Outreach en frío con IA y scraping","AI-рассылки и сбор баз")],["megaphone",T("Telegram Ads & crypto channel placements","Telegram Ads y canales crypto","Telegram Ads и размещения в крипто-каналах")],["search",T("Meta & Google Search Ads","Anuncios en Meta y Google Search","Реклама Meta и Google Search")],["video",T("Content machine & founder branding","Máquina de contenido y marca del fundador","Контент-машина и личный бренд основателя")],["newspaper",T("Web3 PR & media publications","PR Web3 y publicaciones en medios","Web3-PR и публикации в СМИ")],["file-text",T("High-converting Webflow / landing pages","Webflow / landing pages de alta conversión","Конверсионные сайты и лендинги на Webflow")]];
+const BILL=[T("Real-time task and hour tracking dashboard","Panel en tiempo real de tareas y horas","Дашборд задач и часов в реальном времени"),T("Ad spend paid directly by your corporate card, 0% agency markup","Publicidad pagada directo con su tarjeta corporativa, 0% de margen","Реклама оплачивается напрямую вашей корпоративной картой, 0% наценки"),T("Unused monthly hours do not roll over, so your team stays dedicated","Las horas no usadas no se acumulan, así el equipo sigue dedicado","Неиспользованные часы не переносятся, чтобы команда оставалась закреплённой за вами")];
+const FEES=[
+ [T("Monthly retainer","Cuota mensual","Ежемесячная оплата"),T("Covers core strategy hours, a dedicated PM and the execution team.","Cubre las horas de estrategia, un PM dedicado y el equipo de ejecución.","Покрывает часы стратегии, персонального PM и команду исполнителей.")],
+ [T("Direct ad spend","Publicidad directa","Рекламный бюджет напрямую"),T("100% paid by you directly to ad platforms. No hidden agency markup.","100% pagado por usted a las plataformas. Sin margen oculto.","100% платите вы напрямую рекламным площадкам. Без скрытой наценки.")],
+ [T("Success alignment","Pago por resultado","Оплата за результат"),T("<em>2%</em> on closed property purchases ($300k+ Qualified Investor Visa units) and <em>30%</em> of net margin on paid VIP investor fly-in tours ($10k packages).","<em>2%</em> por compra cerrada (unidades $300k+ para Visa de Inversionista) y <em>30%</em> del margen neto de tours VIP pagados (paquetes $10k).","<em>2%</em> с закрытых покупок (квартиры от $300k под инвесторскую визу) и <em>30%</em> чистой маржи с платных VIP-туров для инвесторов (пакеты $10k).")]
 ];
 
 const CMP=[
@@ -751,15 +849,21 @@ function render(){
   $('#teamChips').innerHTML=TEAM.map(([i,t])=>`<span>${svg(i)}${tr(t)}</span>`).join('');
   $('#pkgGrid').innerHTML=PKG.map((p,k)=>`<div class="card pkg ${p.feat?'feat':''} rv d${k}">
      ${p.feat?`<span class="popular">${D['pk.popular']}</span>`:''}
-     <span class="step">${tr(p.step)}</span><h3>${p.name}${p.old?`<span class="promo">${D['pk.promo']}</span>`:''}</h3>
-     <div class="price">${p.old?`<span class="old">$${p.old.toLocaleString('en-US')}</span>`:''}<b>$${p.price.toLocaleString('en-US')}</b><span>${D['pk.mo']}${p.custom?' +%':''}</span></div>
-     <div class="price-sub">${tr(p.terms)}</div>
-     <ul>${p.team.map(x=>`<li>${svg('users')}<span>${tr(x)}</span></li>`).join('')}</ul>
-     <div class="inc-h">${D['pk.get']}</div>
-     <ul>${p.inc.map(x=>`<li>${svg('check')}<span>${tr(x)}</span></li>`).join('')}</ul>
-     ${p.goal?`<div class="goal">${svg('target')}<div><b>${tr(p.goal)}</b><span>${D['pk.goal']}</span></div></div>`:''}
-     <div class="pkg-cta"><a href="${p.href}" class="btn ${p.feat?'btn-gold':'btn-line'} js-select" data-pkg="${p.id}">${tr(p.cta)}${svg('arrow-right')}</a></div>
+     <span class="step">${tr(p.step)}</span><h3>${p.name}${p.old?`<span class="promo">${D['pk.promo']}</span>`:''}</h3><p class="sub">${tr(p.sub)}</p>
+     <div class="price">${p.old?`<span class="old">$${p.old.toLocaleString('en-US')}</span>`:''}<b>$${p.price.toLocaleString('en-US')}</b><span>${D['pk.mo']}</span></div>
+     <div class="hours"><b>${p.hours}</b><span>${D['pk.hrs']}</span></div>
+     <ul>${p.cap.map(x=>`<li>${svg('users')}<span>${tr(x)}</span></li>`).join('')}</ul>
+     <div class="blk">${D['pk.focus']}</div>
+     <ul>${p.focus.map(x=>`<li>${svg('check')}<span>${tr(x)}</span></li>`).join('')}</ul>
+     <div class="blk">${D['pk.success']}</div>
+     <ul class="fee">${p.fees.map(x=>`<li>${svg('percent')}<span>${tr(x)}</span></li>`).join('')}</ul>
+     ${p.goal?`<div class="goal ${p.goalType==='guar'?'guar2':''}">${svg(p.goalType==='guar'?'shield-check':'target')}<div><b>${tr(p.goal)}</b><span>${D[p.goalType==='guar'?'pk.guar':'pk.goal']}</span></div></div>`:''}
+     <p class="adnote">${D['pk.ad']}</p>
+     <div class="pkg-cta"><a href="#book" class="btn ${p.feat?'btn-gold':'btn-line'} js-select" data-pkg="${p.id}">${tr(p.cta)}${svg('arrow-right')}</a><button class="btn btn-ghost js-lm" data-pkg="${p.id}">${D['pk.more']}</button></div>
    </div>`).join('');
+  $('#svcChips').innerHTML=SVC.map(([i,t])=>`<span>${svg(i)}${tr(t)}</span>`).join('');
+  $('#feeList').innerHTML=FEES.map(([t,d])=>`<li><div><b>${tr(t)}</b><span>${tr(d)}</span></div></li>`).join('');
+  $$('.js-lm').forEach(b=>b.onclick=()=>openLM(b.dataset.pkg));
   const ok=svg('circle-check'),no=svg('x');
   $('#cmp').innerHTML=['h0','h1','h2','h3'].map((h,k)=>`<div class="h ${k===3?'u':''}">${D['cmp.'+h]}</div>`).join('')+
     CMP.map(r=>`<div class="f">${tr(r[0])}</div><div class="o">${r[4][0]?'':no}${tr(r[1])}</div><div class="o">${r[4][1]?'':no}${tr(r[2])}</div><div class="u">${ok}${tr(r[3])}</div>`).join('');
@@ -768,7 +872,7 @@ function render(){
      <div class="top"><span class="cic">${svg(c.i)}</span><span class="loc">${svg('map-pin')}${tr(c.loc)}</span></div>
      <div class="metric gtxt">${c.metric}</div><div class="ml">${tr(c.ml)}</div><h3>${tr(c.t)}</h3>
      <div class="chs">${c.ch.map(x=>`<span>${tr(x)}</span>`).join('')}</div></div>`).join('');
-  $$('.js-select').forEach(a=>a.onclick=()=>{if(a.dataset.pkg!=='desk')setCk(a.dataset.pkg);});
+  $$('.js-select').forEach(a=>a.onclick=()=>{if(a.dataset.pkg!=='enterprise')setCk(a.dataset.pkg);});
   calc(); setCk(ckPkg); observe();
 }
 
@@ -781,15 +885,30 @@ function calc(){
   $('#priceV').textContent=price>=2000000?'$2M+':fmt$(price);
   $('#unitsV').textContent=u>=5?'5+':u;
   const vol=price*u,plan=u<=1?PKG[0]:u<=3?PKG[1]:PKG[2];
-  const ads=plan.id==='starter'?0:Math.round(Math.ceil(u/CONV)*CPL/100)*100;
+  const ads=Math.round(Math.ceil(u/CONV)*CPL/100)*100;
   const cost=plan.price+ads+vol*SUCCESS,pct=cost/vol*100;
   $('#oVol').textContent=fmt$(vol);
-  $('#oPlan').textContent=plan.name;$('#oFee').textContent=`$${plan.price.toLocaleString('en-US')} ${D['pk.mo']} + 2%`;
+  $('#oPlan').textContent=plan.name;$('#oFee').textContent=`$${plan.price.toLocaleString('en-US')} ${D['pk.mo']} + ${plan.id==='enterprise'?'%':'2%'}`;
   $('#oSave').textContent=fmt$(Math.max(0,vol*BROKER-cost));
   $('#pctUs').textContent=pct.toFixed(1)+'%';
   $('#barUs').style.width=Math.min(100,pct/8*100)+'%';
 }
 $('#price').oninput=calc;$('#units').oninput=calc;
+
+/* learn-more slide-over */
+let lmLast=null;
+function openLM(id){
+  const D=I18N[lang],p=PKG.find(x=>x.id===id);lmLast=document.activeElement;
+  $('#lmKicker').textContent=tr(p.step)+' · '+tr(p.sub);$('#lmTitle').textContent=p.name;
+  $('#lmPrice').textContent=`$${p.price.toLocaleString('en-US')} ${D['pk.mo']} · ${p.hours} ${D['pk.hrs']}`;
+  $('#lmSvc').innerHTML=SVC.map(([i,t])=>`<li>${svg(i)}<span>${tr(t)}</span></li>`).join('');
+  $('#lmBill').innerHTML=BILL.map(t=>`<li>${svg('check')}<span>${tr(t)}</span></li>`).join('');
+  $('#lmCta').textContent=tr(p.cta);$('#lmCta').onclick=()=>{closeLM();if(id!=='enterprise')setCk(id);};
+  $('#lm').hidden=false;document.body.style.overflow='hidden';$('#lmX').focus();
+}
+function closeLM(){$('#lm').hidden=true;document.body.style.overflow='';lmLast&&lmLast.focus&&lmLast.focus();}
+$('#lmX').onclick=closeLM;$('#lm').addEventListener('click',e=>{if(e.target.id==='lm')closeLM();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#lm').hidden)closeLM();});
 
 /* checkout */
 let ckPkg='growth';
