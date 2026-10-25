@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://restate.deals/sitemap.xml
