@@ -14,11 +14,15 @@
 <meta property="og:url" content="https://whalehome.io/">
 <meta name="twitter:image" content="https://whalehome.io/og.jpg">
 <link rel="canonical" href="https://whalehome.io/">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="alternate" hreflang="en" href="https://whalehome.io/en/">
+<link rel="alternate" hreflang="es" href="https://whalehome.io/es/">
+<link rel="alternate" hreflang="ru" href="https://whalehome.io/ru/">
+<link rel="alternate" hreflang="x-default" href="https://whalehome.io/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#1D4DFF">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Onest:wght@400;500;600&display=swap">
@@ -76,8 +80,8 @@ section{padding-block:96px}
 .menu a{color:var(--muted)}
 .menu a:hover{color:var(--blue)}
 .langs{display:flex;background:var(--bg2);border-radius:999px;padding:4px;gap:2px}
-.langs button{font:700 12px/1 var(--display);padding:8px 10px;border-radius:999px;color:var(--muted)}
-.langs button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(10,22,64,.1)}
+.langs a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font:700 12px/1 var(--display);padding:8px 10px;border-radius:999px;color:var(--muted)}
+.langs a.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(10,22,64,.1)}
 .nav .btn{height:44px;padding:0 20px;font-size:15px}
 .burger{display:none;width:44px;height:44px;border-radius:12px;background:var(--bg2);align-items:center;justify-content:center}
 .burger svg{width:22px;height:22px}
@@ -442,7 +446,7 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
 }
 @media (max-width:560px){
   .hero{padding-top:32px}
-  .langs button{padding:8px 8px}
+  .langs a{padding:8px 8px}
   .nav .wrap{gap:10px}
   .logo{font-size:19px}
   .logo svg{width:30px;height:30px}
@@ -486,7 +490,7 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
 }
 @media (max-width:360px){
   .mbar svg{display:none}
-  .langs button{padding:7px 6px;font-size:11px}
+  .langs a{padding:7px 6px;font-size:11px}
   .logo span{display:none}
 }
 @media (prefers-reduced-motion:reduce){
@@ -512,7 +516,7 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
       <a href="#faq" data-i="nav.faq">FAQ</a>
     </nav>
     <div class="langs" role="group" aria-label="Language">
-      <button data-l="en">EN</button><button data-l="es">ES</button><button data-l="ru">RU</button>
+      <a href="/en/" hreflang="en" data-l="en">EN</a><a href="/es/" hreflang="es" data-l="es">ES</a><a href="/ru/" hreflang="ru" data-l="ru">RU</a>
     </div>
     <a href="#quiz" class="btn btn-blue" data-i="cta.pick">Find my home</a>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -541,7 +545,7 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
         <a href="#" class="btn btn-ghost js-cal" target="_blank" rel="noopener" data-i="cta.call">Book a free call</a>
       </div>
       <div class="trust">
-        <div class="avs"><img src="img/p1.webp" alt=""><img src="img/p2.webp" alt=""><img src="img/p3.webp" alt=""><img src="img/p4.webp" alt=""></div>
+        <div class="avs"><img src="/img/p1.webp" alt=""><img src="/img/p2.webp" alt=""><img src="/img/p3.webp" alt=""><img src="/img/p4.webp" alt=""></div>
         <div><span class="stars" aria-label="5 out of 5">★★★★★</span> <strong data-i="hero.trust">Trusted by 300+ crypto founders</strong><small data-i="hero.trust2">and traders who already bought in Panama</small></div>
       </div>
       <div class="who" id="who"></div>
@@ -592,17 +596,17 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
         </g>
         <circle cx="300" cy="300" r="280" fill="none" stroke="#C9D6FF" stroke-width="2" stroke-dasharray="4 10"/>
       </svg>
-      <img class="heli" src="img/e/heli.webp" alt="">
-      <img class="fl" src="img/e/sun.webp" alt="" style="width:18%;top:6%;right:8%">
-      <img class="fl d2" src="img/e/palm.webp" alt="" style="width:26%;bottom:4%;left:-2%">
-      <img class="fl d1" src="img/e/island.webp" alt="" style="width:20%;bottom:2%;right:4%">
+      <img class="heli" src="/img/e/heli.webp" alt="">
+      <img class="fl" src="/img/e/sun.webp" alt="" style="width:18%;top:6%;right:8%">
+      <img class="fl d2" src="/img/e/palm.webp" alt="" style="width:26%;bottom:4%;left:-2%">
+      <img class="fl d1" src="/img/e/island.webp" alt="" style="width:20%;bottom:2%;right:4%">
       <span class="coin fl" id="c1" style="top:24%;left:2%"></span>
       <span class="coin fl d1" id="c2" style="top:3%;left:30%"></span>
       <span class="coin fl d2" id="c3" style="top:36%;right:0%"></span>
       <span class="coin fl d3" id="c4" style="top:58%;left:-3%;width:10%"></span>
       <span class="coin fl" id="c5" style="top:62%;right:-2%;width:10%"></span>
-      <div class="card-f fl d3" style="left:4%;bottom:26%"><img src="img/e/check.webp" alt=""><div><b class="tabnum">1,250,000 USDT</b><small><span class="ok" data-i="art.paid">Paid</span> · Punta Pacífica</small></div></div>
-      <div class="card-f fl d1" style="right:2%;top:16%"><img src="img/e/passport.webp" alt=""><div><b data-i="art.res">Residency approved</b><small data-i="art.res2">Panama · Qualified Investor</small></div></div>
+      <div class="card-f fl d3" style="left:4%;bottom:26%"><img src="/img/e/check.webp" alt=""><div><b class="tabnum">1,250,000 USDT</b><small><span class="ok" data-i="art.paid">Paid</span> · Punta Pacífica</small></div></div>
+      <div class="card-f fl d1" style="right:2%;top:16%"><img src="/img/e/passport.webp" alt=""><div><b data-i="art.res">Residency approved</b><small data-i="art.res2">Panama · Qualified Investor</small></div></div>
     </div>
   </div>
 
@@ -633,7 +637,7 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
         <span class="eyebrow" data-i="cm.eb">Community</span>
         <h2 style="margin-top:14px" data-i="cm.h">Your people already live here</h2>
         <p data-i="cm.p">Panama City has a big crypto, trading and iGaming crowd. I live here and bring you in from day one.</p>
-        <div class="emos"><img src="img/e/handshake.webp" alt=""><img src="img/e/champagne.webp" alt=""><img src="img/e/laptop.webp" alt=""><img src="img/e/party.webp" alt=""></div>
+        <div class="emos"><img src="/img/e/handshake.webp" alt=""><img src="/img/e/champagne.webp" alt=""><img src="/img/e/laptop.webp" alt=""><img src="/img/e/party.webp" alt=""></div>
         <a class="btn" href="https://t.me/artofwar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.4-1.8.9l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.2-8.3c.4-.4-.1-.6-.6-.2L6.1 13.2 1.2 11.7c-1.1-.3-1.1-1.1.2-1.6L20.5 2.8c.9-.3 1.7.2 1.4 1.5Z"/></svg><span data-i="cm.btn">Join my Telegram</span></a>
       </div>
       <div class="comm-list" id="comml"></div>
@@ -664,7 +668,7 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
     <div class="head"><div><span class="eyebrow" data-i="how.eb">How it works</span><h2 class="h2" data-i="how.h">From wallet to keys in 5 steps</h2></div><p class="lead" data-i="how.lead">Usually 4 to 8 weeks. You can do most of it online.</p></div>
     <div class="steps" id="steps"></div>
     <div class="legal">
-      <img class="emo" src="img/e/scroll.webp" alt="">
+      <img class="emo" src="/img/e/scroll.webp" alt="">
       <div>
         <h3 data-i="lg.h">100% official. Every step on paper.</h3>
         <ul id="legal"></ul>
@@ -711,9 +715,9 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
   <div class="wrap">
     <div class="ceo">
       <div class="ceo-photo">
-        <div class="ph"><img src="img/artem.webp" alt="Artem Voinov"></div>
-        <div class="tagf"><img src="img/e/palm.webp" alt=""><span data-i="ceo.tag1">I live in Panama City</span></div>
-        <div class="tagf tagf2"><img src="img/e/coin.webp" alt=""><span data-i="ceo.tag2">From crypto since 2017</span></div>
+        <div class="ph"><img src="/img/artem.webp" alt="Artem Voinov"></div>
+        <div class="tagf"><img src="/img/e/palm.webp" alt=""><span data-i="ceo.tag1">I live in Panama City</span></div>
+        <div class="tagf tagf2"><img src="/img/e/coin.webp" alt=""><span data-i="ceo.tag2">From crypto since 2017</span></div>
       </div>
       <div class="ceo-copy">
         <span class="eyebrow" data-i="ceo.eb">Founder &amp; CEO</span>
@@ -771,9 +775,9 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
         <div class="contact-line"><span>WhatsApp: <a class="js-wa" href="#" target="_blank" rel="noopener">+507 6456 6336</a></span><span>Telegram: <a href="https://t.me/artofwar" target="_blank" rel="noopener">@artofwar</a></span></div>
       </div>
       <div class="emos" aria-hidden="true">
-        <img class="fl" src="img/e/key.webp" alt="" style="left:6%;top:2%">
-        <img class="fl d1" src="img/e/house.webp" alt="" style="right:0;top:24%">
-        <img class="fl d2" src="img/e/gem.webp" alt="" style="left:22%;bottom:0;width:34%">
+        <img class="fl" src="/img/e/key.webp" alt="" style="left:6%;top:2%">
+        <img class="fl d1" src="/img/e/house.webp" alt="" style="right:0;top:24%">
+        <img class="fl d2" src="/img/e/gem.webp" alt="" style="left:22%;bottom:0;width:34%">
       </div>
     </div>
   </div>
@@ -819,7 +823,7 @@ function coinSVG(c){
   const bg=c==="SOL"?'url(#solg)':col;
   return `<svg viewBox="0 0 32 32" aria-hidden="true">${c==="SOL"?'<defs><linearGradient id="solg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9945FF"/><stop offset="1" stop-color="#14F195"/></linearGradient></defs>':''}<circle cx="16" cy="16" r="16" fill="${bg}"/>${g}</svg>`;
 }
-const E=n=>`img/e/${n}.webp`;
+const E=n=>`/img/e/${n}.webp`;
 const T=(en,es,ru)=>({en,es,ru});
 
 /* ---------- static strings ---------- */
@@ -964,7 +968,7 @@ const HOMES=[
   d:T("New project in Punta Pacífica: furnished studios and 1-bedroom units with views of the ocean and the skyline. Pool, rooftop restaurant, spa and yoga deck. Prices from $150,000 to $440,000.","Proyecto nuevo en Punta Pacífica: estudios y apartamentos de 1 habitación amueblados, con vista al mar y a la ciudad. Piscina, restaurante en la azotea, spa y deck de yoga. Precios de $150,000 a $440,000.","Новый проект в Punta Pacífica: студии и квартиры с 1 спальней, с мебелью и видом на океан и город. Бассейн, ресторан на крыше, спа и площадка для йоги. Цены от $150,000 до $440,000."),
   am:[T("Pool","Piscina","Бассейн"),T("Rooftop restaurant","Restaurante en azotea","Ресторан на крыше"),T("Wellness spa","Spa","Спа"),T("Yoga deck","Deck de yoga","Площадка для йоги"),T("Gym","Gimnasio","Спортзал")]},
 ].sort((x,y)=>x.p-y.p);
-const PH=(h,n)=>`img/homes/${h.k}-${n}.webp`,NPH=5;
+const PH=(h,n)=>`/img/homes/${h.k}-${n}.webp`,NPH=5;
 const PK=[
  {e:"video",name:T("Online consultation","Consulta online","Онлайн-консультация"),badge:T("Start here","Empieza aquí","Начать отсюда"),desc:T("Get a clear plan without flying in.","Un plan claro sin viajar.","Понятный план без перелёта."),amt:"$1,000",per:T("one time","pago único","разово"),
   li:[T("2-hour video call with me","Videollamada de 2 horas conmigo","2 часа видеозвонка со мной"),T("Shortlist of 10 homes for your budget","10 propiedades para tu presupuesto","Подборка из 10 объектов под ваш бюджет"),T("Call with a Panama lawyer","Llamada con un abogado panameño","Созвон с юристом из Панамы"),T("Residency and tax plan","Plan de residencia e impuestos","План по ВНЖ и налогам"),T("How to pay with your coins","Cómo pagar con tus monedas","Как заплатить вашей криптой")],
@@ -1059,7 +1063,7 @@ function applyStatic(){
   document.documentElement.lang=lang;
   document.querySelectorAll("[data-i]").forEach(el=>{const v=S[el.dataset.i];if(v)el.textContent=tr(v)});
   document.querySelectorAll("[data-ih]").forEach(el=>{const v=S[el.dataset.ih];if(v)el.innerHTML=tr(v)});
-  document.querySelectorAll(".langs button").forEach(b=>b.classList.toggle("on",b.dataset.l===lang));
+  document.querySelectorAll(".langs a").forEach(b=>b.classList.toggle("on",b.dataset.l===lang));document.documentElement.lang=lang;
   document.querySelectorAll(".js-wa").forEach(a=>a.href=waURL());
   document.querySelectorAll(".js-cal").forEach(a=>a.href=CONFIG.calendly);
 }
@@ -1186,7 +1190,7 @@ function renderCEO(){
   $("team").innerHTML=TEAM.map(([e,n,r,p])=>`<div class="tm"><div class="av"><img src="${E(e)}" alt=""></div><b>${n}</b><small>${tr(r)}</small><p>${tr(p)}</p></div>`).join("");
 }
 function renderRevs(){
-  $("revs").innerHTML=REVS.map(([a,q,n,w,c])=>`<figure class="rv" style="margin:0"><span class="stars" aria-label="5 out of 5">★★★★★</span><q>${tr(q)}</q><span class="paid">${coinSVG(c)}${tr(T("Paid in","Pagó en","Оплата в"))} ${c}</span><figcaption class="who2"><img src="img/${a}.webp" alt=""><div><b>${n}</b><small>${tr(w)}</small></div></figcaption></figure>`).join("");
+  $("revs").innerHTML=REVS.map(([a,q,n,w,c])=>`<figure class="rv" style="margin:0"><span class="stars" aria-label="5 out of 5">★★★★★</span><q>${tr(q)}</q><span class="paid">${coinSVG(c)}${tr(T("Paid in","Pagó en","Оплата в"))} ${c}</span><figcaption class="who2"><img src="/img/${a}.webp" alt=""><div><b>${n}</b><small>${tr(w)}</small></div></figcaption></figure>`).join("");
 }
 function renderFAQ(){
   $("faqs").innerHTML=FAQ.map(([q,a],i)=>`<details${i===0?" open":""}><summary>${tr(q)}</summary><p>${tr(a)}</p></details>`).join("");
@@ -1267,13 +1271,15 @@ function setLang(l){
 /* ---------- boot ---------- */
 (function(){
   let l=null;
-  try{l=new URLSearchParams(location.search).get("lang")}catch(e){}
+  l=(location.pathname.match(/^\/(en|es|ru)(\/|$)/)||[])[1]||null;
+  if(!l){try{l=new URLSearchParams(location.search).get("lang")}catch(e){}}
   if(!l){try{l=localStorage.getItem("kp-lang")}catch(e){}}
   if(!l){const n=(navigator.language||"en").slice(0,2);l=n==="es"||n==="ru"?n:"en"}
   lang=l;
   renderTick();renderTwist();renderPartners();renderHeroCoins();setLang(l);
   if(!matchMedia("(prefers-reduced-motion: reduce)").matches)setInterval(stepTick,2200);
-  document.querySelectorAll(".langs button").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+  /* language links open /en/ /es/ /ru/ (own title and meta), keeping utm params and the current section */
+  document.querySelectorAll(".langs a").forEach(b=>b.onclick=e=>{e.preventDefault();try{localStorage.setItem("kp-lang",b.dataset.l)}catch(_){}location.href="/"+b.dataset.l+"/"+location.search+location.hash});
   $("hmX").onclick=closeHome;$("hm").addEventListener("click",e=>{if(e.target.id==="hm")closeHome()});
   document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("hm").hidden)closeHome()});
   document.addEventListener("click",e=>{
