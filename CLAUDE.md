@@ -22,4 +22,5 @@ These come from the site owner (Artem Voinov) and apply to every page.
 
 ## Deploy
 - Site source: real-estate-developers/ on branch dental-clinics-site.
+- Language pages /en/ /es/ /ru/ are copies of real-estate-developers/index.html with their own head tags. After every edit of index.html run `python3 scripts/build_restate_lang.py` and deploy the en/ es/ ru/ folders too. Never edit those copies by hand.
 - restate.deals deploys from branch restate-site (site files at the branch root) through Cloudflare Pages. Never force-push it.

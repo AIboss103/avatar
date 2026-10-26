@@ -10,9 +10,9 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#0a0b0d">
 <link rel="canonical" href="https://restate.deals/">
-<link rel="alternate" hreflang="en" href="https://restate.deals/?lang=en">
-<link rel="alternate" hreflang="es" href="https://restate.deals/?lang=es">
-<link rel="alternate" hreflang="ru" href="https://restate.deals/?lang=ru">
+<link rel="alternate" hreflang="en" href="https://restate.deals/en/">
+<link rel="alternate" hreflang="es" href="https://restate.deals/es/">
+<link rel="alternate" hreflang="ru" href="https://restate.deals/ru/">
 <link rel="alternate" hreflang="x-default" href="https://restate.deals/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Restate Deals">
@@ -93,8 +93,8 @@ header.scrolled{background:rgba(10,11,13,.8);backdrop-filter:blur(16px);-webkit-
 .nav-links a:hover{color:var(--text)}
 .nav-right{display:flex;align-items:center;gap:10px}
 .lang{display:flex;border:1px solid var(--line2);border-radius:10px;padding:3px}
-.lang button{padding:6px 10px;border-radius:7px;font-family:var(--display);font-size:12.5px;font-weight:700;color:var(--muted)}
-.lang button.on{background:var(--gold);color:#17120a}
+.lang a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:6px 10px;border-radius:7px;font-family:var(--display);font-size:12.5px;font-weight:700;color:var(--muted)}
+.lang a.on{background:var(--gold);color:#17120a}
 .nav .btn{padding:11px 18px;font-size:14px;border-radius:10px}
 .burger{display:none;width:44px;height:44px;border-radius:10px;border:1px solid var(--line2);align-items:center;justify-content:center}
 .burger span,.burger span::before,.burger span::after{display:block;width:18px;height:1.6px;background:var(--text);transition:.3s;position:relative}
@@ -418,13 +418,13 @@ footer{border-top:1px solid var(--line);padding-block:30px calc(30px + env(safe-
 .founder>*,.f-side>*,.calc>*,.book-grid>*{min-width:0}
 .f-big{grid-template-columns:repeat(3,minmax(0,1fr))}
 .f-card h3{overflow-wrap:anywhere}
-@media (pointer:coarse){.lang button{min-height:38px;min-width:38px}input[type=range]{height:40px}}
+@media (pointer:coarse){.lang a{min-height:38px;min-width:38px}input[type=range]{height:40px}}
 @media (max-width:360px){.f-big b{font-size:24px}.f-photo{width:120px;height:120px}}
 .logo{min-height:44px}
 @media (max-width:400px){.founder .f-big{grid-template-columns:1fr;gap:12px}.founder .f-big div{flex-direction:row;align-items:baseline;gap:12px}.founder .f-big b{font-size:28px;min-width:96px}}
 .pkg-grid>*{min-width:0}
 @media (max-width:360px){.pkg .price b{font-size:38px}.pkg h3{font-size:26px}}
-@media (max-width:420px){.logo small{display:none}.nav-right{gap:6px}.lang button{padding:6px 8px}.hero-cta{flex-wrap:wrap}.hero-cta .btn{flex:1 1 100%}}
+@media (max-width:420px){.logo small{display:none}.nav-right{gap:6px}.lang a{padding:6px 8px}.hero-cta{flex-wrap:wrap}.hero-cta .btn{flex:1 1 100%}}
 @media (min-width:1061px){.pkg-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .price{flex-wrap:wrap}
 .pkg h3 .promo{margin-left:10px}
@@ -629,7 +629,7 @@ section[id]{scroll-margin-top:80px}
 
 <header id="hdr">
   <div class="wrap nav">
-    <a href="#top" class="logo" aria-label="Restate Deals"><img src="img/brand/logo-horizontal-dark.svg" alt="Restate Deals" width="168" height="28" style="height:28px;width:auto"></a>
+    <a href="#top" class="logo" aria-label="Restate Deals"><img src="/img/brand/logo-horizontal-dark.svg" alt="Restate Deals" width="168" height="28" style="height:28px;width:auto"></a>
     <nav class="nav-links">
       <a href="#team" data-i18n="nav.team">Team</a>
       <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
@@ -638,7 +638,7 @@ section[id]{scroll-margin-top:80px}
       <a href="#book" data-i18n="nav.book">Contact</a>
     </nav>
     <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language"><button data-lang="en" class="on">EN</button><button data-lang="es">ES</button><button data-lang="ru">RU</button></div>
+      <div class="lang" role="group" aria-label="Language"><a href="/en/" hreflang="en" data-lang="en" class="on">EN</a><a href="/es/" hreflang="es" data-lang="es">ES</a><a href="/ru/" hreflang="ru" data-lang="ru">RU</a></div>
       <a href="#book" class="btn btn-gold js-cal" data-place="nav" data-i18n="cta.book">Book a Call</a>
       <button class="burger" aria-label="Menu"><span></span></button>
     </div>
@@ -656,7 +656,7 @@ section[id]{scroll-margin-top:80px}
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="badge-row"><span class="avs"><img src="img/p1.webp" alt=""><img src="img/p2.webp" alt=""><img src="img/p3.webp" alt=""><img src="img/pa.webp" alt=""></span><span><span class="stars" aria-label="5 out of 5">★★★★★</span> <b data-i18n="hero.tag">Trusted by Panama</b></span></div>
+      <div class="badge-row"><span class="avs"><img src="/img/p1.webp" alt=""><img src="/img/p2.webp" alt=""><img src="/img/p3.webp" alt=""><img src="/img/pa.webp" alt=""></span><span><span class="stars" aria-label="5 out of 5">★★★★★</span> <b data-i18n="hero.tag">Trusted by Panama</b></span></div>
       <h1 data-i18n-html="hero.title">We help Panama developers sell apartments to crypto &amp; US buyers <span class="gtxt">in 90 days.</span></h1>
       <p class="lead" data-i18n="hero.lead">Get verified buyers with $300,000+ for the Panama Investor Visa. Direct USDT / crypto payment to bank.</p>
       <div class="hero-cta">
@@ -678,9 +678,9 @@ section[id]{scroll-margin-top:80px}
       <canvas id="city"></canvas>
       <svg class="fallback" viewBox="0 0 600 612" fill="none" stroke="#d6b073" stroke-opacity=".7" stroke-width="1.4"><path d="M40 520h520M80 520V330h60v190M150 520V230h70v290M232 520V140l40-30 40 30v380M324 520V260h56v260M392 520V200h64v320M468 520V310h52v210"/></svg>
       <div class="sold"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="19" stroke="rgba(255,255,255,.1)" stroke-width="4" fill="none"/><circle cx="23" cy="23" r="19" stroke="#d6b073" stroke-width="4" fill="none" stroke-dasharray="119.4" stroke-dashoffset="26" stroke-linecap="round" transform="rotate(-90 23 23)"/></svg><div><b>78%</b><span data-i18n="vis.sold">of the building sold</span></div></div>
-      <div class="chip ch1"><img src="img/us.webp" alt=""><div><b data-i18n="vis.c1">Buyer · Miami</b><span data-i18n="vis.c1s">$650k apartment</span><br><span class="tag" data-i18n="vis.c1t">Paid in USDT</span></div></div>
-      <div class="chip ch2"><img src="img/ch.webp" alt=""><div><b data-i18n="vis.c2">Viewing trip booked</b><span data-i18n="vis.c2s">Zurich → Panama City</span></div></div>
-      <div class="chip ch3"><img src="img/pa.webp" alt=""><div><b data-i18n="vis.c3">Investor Visa buyer</b><span data-i18n="vis.c3s">$300k+ verified</span></div></div>
+      <div class="chip ch1"><img src="/img/us.webp" alt=""><div><b data-i18n="vis.c1">Buyer · Miami</b><span data-i18n="vis.c1s">$650k apartment</span><br><span class="tag" data-i18n="vis.c1t">Paid in USDT</span></div></div>
+      <div class="chip ch2"><img src="/img/ch.webp" alt=""><div><b data-i18n="vis.c2">Viewing trip booked</b><span data-i18n="vis.c2s">Zurich → Panama City</span></div></div>
+      <div class="chip ch3"><img src="/img/pa.webp" alt=""><div><b data-i18n="vis.c3">Investor Visa buyer</b><span data-i18n="vis.c3s">$300k+ verified</span></div></div>
       <span class="coord">8.98° N · 79.52° W</span>
     </div>
   </div>
@@ -848,7 +848,7 @@ section[id]{scroll-margin-top:80px}
         </form>
         <div class="ct-or"><span data-i18n="bk.or">or</span></div>
         <a class="btn btn-wa js-wa ct-wa" data-place="footer" hidden target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg><span data-i18n="wa.btn">Message Artem on WhatsApp</span></a>
-        <div class="ct-me"><img src="img/artem.webp" alt="Artem Voinov" width="56" height="56" loading="lazy"><div><b data-i18n="tm.name">Artem Voinov</b><span><span data-i18n="tm.role">Founder &amp; CEO</span> · <span data-i18n="ft.city">Panama City</span></span></div></div>
+        <div class="ct-me"><img src="/img/artem.webp" alt="Artem Voinov" width="56" height="56" loading="lazy"><div><b data-i18n="tm.name">Artem Voinov</b><span><span data-i18n="tm.role">Founder &amp; CEO</span> · <span data-i18n="ft.city">Panama City</span></span></div></div>
       </div>
       <div class="card ct-cal rv d1">
         <div class="ct-h"><span class="ct-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4"/></svg></span><div><h3 data-i18n="bk.ch">Pick a time</h3><p data-i18n="bk.cs">Choose a free slot in the calendar.</p></div></div>
@@ -890,13 +890,13 @@ section[id]{scroll-margin-top:80px}
   <a href="#pricing" class="btn btn-line" data-i18n="cta.pricing">See Pricing</a>
 </div>
 
-<script src="vendor/three.min.js"></script>
+<script src="/vendor/three.min.js"></script>
 <script>
 /* ====== CONFIG: replace with real links ====== */
 const CONFIG={
   stripe:{starter:"",growth:""},   // Stripe Payment Links (Apple Pay enabled)
   crypto:"",                       // USDT checkout link
-  founderPhoto:"img/artem.webp",
+  founderPhoto:"/img/artem.webp",
   whatsapp:"50764566336",
   calendly:"https://calendly.com/voinov-agency/real-estate-deals-ceo",
   leadsUrl:"",                     // Google Apps Script web app URL: form leads go to the CRM sheet
@@ -1217,10 +1217,11 @@ function applyLang(l){
   lang=l;document.documentElement.lang=l;const D=I18N[l];
   $$('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(D[k]!=null)el.textContent=D[k];});
   $$('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml;if(D[k]!=null)el.innerHTML=D[k];});
-  $$('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  $$('.lang a').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
   render();bindWA();bindCal();renderCap();$$('.js-partners').forEach(a=>a.href='/partners/?lang='+(l==='es'?'es':'en'));try{localStorage.setItem('lang',l)}catch(e){}
 }
-$$('.lang button').forEach(b=>b.onclick=()=>applyLang(b.dataset.lang));
+/* language links open /en/ /es/ /ru/ (own title and meta) and keep utm params and the current section */
+$$('.lang a').forEach(b=>b.onclick=e=>{e.preventDefault();const l=b.dataset.lang;try{localStorage.setItem('lang',l)}catch(_){}location.href='/'+l+'/'+location.search+location.hash;});
 
 const hdr=$('#hdr'),mcta=$('#mcta');
 addEventListener('scroll',()=>{const y=scrollY;hdr.classList.toggle('scrolled',y>10);mcta.classList.toggle('show',y>innerHeight*.7&&y<document.body.scrollHeight-innerHeight*1.6);},{passive:true});
@@ -1303,7 +1304,8 @@ setTimeout(()=>$$('.rv:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top
 
 
 $('#yr').textContent=new Date().getFullYear();
-let init='en';try{init=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')||((navigator.language||'').slice(0,2));}catch(e){}
+const PATH_LANG=(location.pathname.match(/^\/(en|es|ru)(\/|$)/)||[])[1];
+let init='en';try{init=PATH_LANG||new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')||((navigator.language||'').slice(0,2));}catch(e){}
 applyLang(['en','es','ru'].includes(init)?init:'en');
 </script>
 </body>
