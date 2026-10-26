@@ -16,7 +16,7 @@ SITE = "https://restate.deals"
 
 META = {
     "en": dict(
-        locale="en_US",
+        locale="en_US", image="og.jpg",
         title="Restate Deals | Sell Panama Apartments to Crypto &amp; US Buyers",
         desc="Sell Panama apartments to verified crypto and US buyers with $300k+ for the Investor Visa. AI outreach, ads, PR and VIP tours. USDT payments, no hidden margin.",
         og_title="Restate Deals: sell Panama apartments to crypto &amp; US buyers in 90 days",
@@ -24,7 +24,7 @@ META = {
         tw_desc="Verified $300k+ buyers for the Panama Investor Visa. USDT payment to bank. No hidden margin.",
     ),
     "es": dict(
-        locale="es_PA",
+        locale="es_PA", image="og-es.jpg",
         title="Restate Deals | Venda apartamentos en Panamá a compradores crypto y de EE.UU.",
         desc="Venda apartamentos en Panamá a compradores verificados del mundo crypto y de EE.UU. con $300k+ para la Visa de Inversionista. Outreach con IA, anuncios, PR y tours VIP. Pagos en USDT, sin márgenes ocultos.",
         og_title="Restate Deals: venda apartamentos en Panamá a compradores crypto y de EE.UU. en 90 días",
@@ -32,7 +32,7 @@ META = {
         tw_desc="Compradores verificados con $300k+ para la Visa de Inversionista de Panamá. Pago en USDT a su banco. Sin márgenes ocultos.",
     ),
     "ru": dict(
-        locale="ru_RU",
+        locale="ru_RU", image="og-ru.jpg",
         title="Restate Deals | Продажа квартир в Панаме крипто-покупателям и клиентам из США",
         desc="Продаём квартиры застройщиков Панамы проверенным покупателям из крипты и США с $300k+ под инвесторскую визу. AI-аутрич, реклама, PR и VIP-туры. Оплата в USDT, без скрытой маржи.",
         og_title="Restate Deals: продаём квартиры в Панаме крипто-покупателям и клиентам из США за 90 дней",
@@ -59,6 +59,8 @@ def build(src, lang):
     s = sub1(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="{url}">', s)
     s = sub1(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{m["og_title"]}">', s)
     s = sub1(r'<meta property="og:description" content="[^"]*">', f'<meta property="og:description" content="{m["og_desc"]}">', s)
+    s = sub1(r'<meta property="og:image" content="[^"]*">', f'<meta property="og:image" content="{SITE}/{m["image"]}">', s)
+    s = sub1(r'<meta name="twitter:image" content="[^"]*">', f'<meta name="twitter:image" content="{SITE}/{m["image"]}">', s)
     s = sub1(r'<meta property="og:image:alt" content="[^"]*">', f'<meta property="og:image:alt" content="{m["og_title"]}">', s)
     s = sub1(r'<meta name="twitter:title" content="[^"]*">', f'<meta name="twitter:title" content="{m["og_title"]}">', s)
     s = sub1(r'<meta name="twitter:description" content="[^"]*">', f'<meta name="twitter:description" content="{m["tw_desc"]}">', s)
