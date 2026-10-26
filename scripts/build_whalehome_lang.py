@@ -9,7 +9,7 @@ from the path, so the copies need no other changes.
 Run after every edit of panama-crypto-homes/index.html:
     python3 scripts/build_whalehome_lang.py
 """
-import pathlib, re, sys
+import pathlib, re, subprocess, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent / "panama-crypto-homes"
 SITE = "https://whalehome.io"
@@ -74,3 +74,6 @@ for lang in META:
     d.mkdir(exist_ok=True)
     (d / "index.html").write_text(build(src, lang))
     print("built", d / "index.html")
+
+# listings for the Telegram bot (homes.json + JPG covers)
+subprocess.run(["node", str(pathlib.Path(__file__).with_name("build_whalehome_homes.js"))], check=True)
