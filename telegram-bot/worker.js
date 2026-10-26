@@ -23,6 +23,7 @@ const TX = {
     es: "<b>WhaleHome</b> · propiedades en Panamá para la gente crypto.\n\nSoy Artem Voinov. Te ayudo a comprar una propiedad en Panamá y pagar en USDT, USDC, BTC, ETH o SOL.\n\n<b>Qué hago</b>\n• Elijo propiedades para tu presupuesto, de $150k a $7M\n• Residencia en Panamá con una propiedad desde $300k\n• Consulta online · $1,000\n• Tour VIP por Panamá, 3 días · $10,000\n• Todo el trato: abogado, escrow, papeles de residencia\n\nElige lo que necesitas abajo.",
     ru: "<b>WhaleHome</b> · недвижимость в Панаме для людей из крипты.\n\nЯ Артём Войнов. Помогаю купить недвижимость в Панаме и заплатить в USDT, USDC, BTC, ETH или SOL.\n\n<b>Что я делаю</b>\n• Подбираю объекты под ваш бюджет, от $150k до $7M\n• ВНЖ Панамы при покупке от $300k\n• Онлайн-консультация · $1,000\n• VIP-тур по Панаме, 3 дня · $10,000\n• Веду всю сделку: юрист, эскроу, документы на ВНЖ\n\nВыберите, что вам нужно.",
   },
+  bApp: { en: "🐋 Open WhaleHome", es: "🐋 Abrir WhaleHome", ru: "🐋 Открыть WhaleHome" },
   bHomes: { en: "🏠 Pick a home", es: "🏠 Elegir propiedad", ru: "🏠 Подобрать объект" },
   bRoi: { en: "📈 Calculate ROI", es: "📈 Calcular ROI", ru: "📈 Рассчитать доход" },
   bConsult: { en: "📞 Consultation · $1,000", es: "📞 Consulta · $1,000", ru: "📞 Консультация · $1,000" },
@@ -86,6 +87,8 @@ const short = n => (n >= 1e6 ? "$" + n / 1e6 + "M" : "$" + n / 1e3 + "k");
 const esc = s => String(s || "").replace(/[<&>]/g, c => ({ "<": "&lt;", "&": "&amp;", ">": "&gt;" }[c]));
 
 const siteUrl = (l, hash = "", camp = "bot") => `${SITE}/${l}/?utm_source=telegram&utm_medium=bot&utm_campaign=${camp}${hash}`;
+// whalehome.io opened inside Telegram as a Mini App
+const appUrl = (l, hash = "") => `${SITE}/${l}/?utm_source=telegram&utm_medium=miniapp&utm_campaign=bot${hash}`;
 const calUrl = (camp, note) => `${CALENDLY}?utm_source=telegram&utm_medium=bot&utm_campaign=${camp}&a1=${encodeURIComponent(note)}`;
 const waUrl = l => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent({
   en: "Hi Artem. I am interested in buying property in Panama with crypto.",
@@ -96,6 +99,7 @@ const waUrl = l => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent({
 /* ---------- keyboards ---------- */
 const kbMenu = l => ({
   inline_keyboard: [
+    [{ text: t("bApp", l), web_app: { url: appUrl(l) } }],
     [{ text: t("bHomes", l), callback_data: "homes" }, { text: t("bRoi", l), callback_data: "roi" }],
     [{ text: t("bConsult", l), callback_data: "consult" }],
     [{ text: t("bTour", l), callback_data: "tour" }],
@@ -192,7 +196,7 @@ async function showHomes(env, chat, l, b) {
     const caption = `<b>${esc(h.t[l] || h.t.en)}</b>\n${esc(h.a)} · ${esc((h.s[l] || h.s.en).join(" · "))}\n` +
       `${h.from ? t("from", l) + " " : ""}<b>${usd(h.p)}</b>${h.p >= 300000 ? " · " + t("residency", l) + " ✓" : ""}`;
     const kb = { inline_keyboard: [[
-      { text: t("bDetails", l), url: siteUrl(l, "#homes", "home_" + h.k) },
+      { text: t("bDetails", l), web_app: { url: appUrl(l, "#homes") } },
       { text: t("bCall", l), url: calUrl("home_" + h.k, `Home: ${h.t.en} (${h.a})`) },
     ]] };
     const r = await tg(env, "sendPhoto", { chat_id: chat, photo: `${SITE}/img/bot/${h.k}.jpg`, caption, parse_mode: "HTML", reply_markup: kb });
@@ -204,7 +208,7 @@ async function showHomes(env, chat, l, b) {
 function showRoi(env, chat, l, p) {
   const yr = p * 0.08, mo = yr / 12, total = yr * 5 + (p * Math.pow(1.04, 5) - p);
   return send(env, chat, TX.roiRes[l](usd(p), usd(mo), usd(yr), usd(total)), kbBack(l, [
-    [{ text: t("bRoiSite", l), url: siteUrl(l, "#calc", "roi") }],
+    [{ text: t("bRoiSite", l), web_app: { url: appUrl(l, "#calc") } }],
     [{ text: t("bCall", l), url: calUrl("roi", `ROI: home ${usd(p)}`) }],
   ]));
 }
@@ -340,6 +344,7 @@ async function setup(env, origin) {
     out["desc_" + l] = (await tg(env, "setMyDescription", { description: DESC[l][0], ...lc })).ok;
     out["short_" + l] = (await tg(env, "setMyShortDescription", { short_description: DESC[l][1], ...lc })).ok;
   }
+  out.menu_button = (await tg(env, "setChatMenuButton", { menu_button: { type: "web_app", text: "WhaleHome", web_app: { url: appUrl("en") } } })).ok;
   out.name = (await tg(env, "setMyName", { name: "WhaleHome · Panama homes for crypto" })).ok;
   out.me = (await tg(env, "getMe", {})).result;
   return out;
