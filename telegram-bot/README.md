@@ -32,7 +32,8 @@ The bot token is a secret. Never put it in this repository (it is public).
 
 - Each new lead comes as a message with name, @username, phone, interest, budget and language.
 - To answer, reply to that message in Telegram: the bot sends your text to the client.
-- Deep links for ads: `t.me/<bot>?start=es` (Spanish), `?start=homes`, `?start=tour`, `?start=consult`.
+- Bot: https://t.me/whale_home_estate_bot
+- Links for ads: `https://t.me/whale_home_estate_bot?start=en` / `?start=es` / `?start=ru` (language), `?start=homes`, `?start=tour`, `?start=consult` (opens that section).
 
 ## Updating
 
