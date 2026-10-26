@@ -761,6 +761,7 @@ const CONFIG={
   whatsapp:"50764566336",
   calendly:"https://calendly.com/voinov-agency/real-estate-deals-ceo",
   telegram:"https://t.me/artofwar",
+  leadsUrl:"", // Google Apps Script web app URL: quiz leads go to the CRM sheet
   // Illustrative USD rates for the coin switcher and calculator
   rates:{USDT:1,USDC:1,BTC:110000,ETH:4000,SOL:200},
 };
@@ -1091,6 +1092,15 @@ function calc(){
   $("chart").innerHTML=h;
 }
 
+/* ---------- ad and outreach source (utm_* / ref) for this visit ---------- */
+const SRC=(()=>{let v="";try{const q=new URLSearchParams(location.search);v=["utm_source","utm_campaign","utm_medium","ref"].map(k=>q.get(k)).filter(Boolean).join(" / ");
+  if(v)sessionStorage.setItem("src",v);else v=sessionStorage.getItem("src")||"";}catch(e){}return v;})();
+function sendLead(name,contact,notes){
+  if(!CONFIG.leadsUrl)return;
+  const body=new URLSearchParams({site:"demo.restate.deals",type:"Buyer (investor)",name,whatsapp:contact,notes,src:SRC,lang,page:location.href.split("#")[0]});
+  fetch(CONFIG.leadsUrl,{method:"POST",mode:"no-cors",keepalive:true,body}).catch(()=>{});
+}
+
 /* ---------- quiz ---------- */
 let qi=0;const qa=[];
 function qOpt(e,label,i,sel){
@@ -1110,10 +1120,10 @@ function renderQuiz(){
     <form class="qform" id="qf" novalidate><input id="qn" autocomplete="name" placeholder="${tr(QS.name)}" aria-label="${tr(QS.name)}"><input id="qc" autocomplete="tel" placeholder="${tr(QS.contact)}" aria-label="${tr(QS.contact)}"></form>
     <p id="qerr" style="color:var(--red);font-size:14px;margin-top:10px" hidden>${tr(QS.err)}</p>
     <div class="qnav"><button class="btn btn-ghost" id="qback">← ${tr(QS.back)}</button><button class="btn btn-blue" id="qsend">${tr(QS.send)} →</button></div>`;
-    const go=e=>{e&&e.preventDefault();const n=$("qn").value.trim(),c=$("qc").value.trim();if(!n||!c){$("qerr").hidden=false;return}qa.name=n;qa.contact=c;qi++;renderQuiz()};
+    const go=e=>{e&&e.preventDefault();const n=$("qn").value.trim(),c=$("qc").value.trim();if(!n||!c){$("qerr").hidden=false;return}qa.name=n;qa.contact=c;sendLead(n,c,QUIZ.map((q,i)=>QUIZ[i].o[qa[i]]?tr(QUIZ[i].o[qa[i]][1]):"").join(" · "));qi++;renderQuiz()};
     $("qsend").onclick=go;$("qf").onsubmit=go;
   }else{
-    const sum=QUIZ.map((q,i)=>`• ${tr(q.q)} ${tr(q.o[qa[i]]?.[1])}`).join("\n")+`\n• ${tr(QS.name)}: ${qa.name}\n• ${tr(QS.contact)}: ${qa.contact}`;
+    const sum=QUIZ.map((q,i)=>`• ${tr(q.q)} ${tr(q.o[qa[i]]?.[1])}`).join("\n")+`\n• ${tr(QS.name)}: ${qa.name}\n• ${tr(QS.contact)}: ${qa.contact}`+(SRC?`\n(${SRC})`:"");
     b.innerHTML=`<div class="qdone"><img src="${E("party")}" alt=""><h3 style="margin:16px 0 0">${tr(QS.doneH)}</h3><p>${tr(QS.doneP)}</p>
     <div class="ctas"><a class="btn btn-wa" target="_blank" rel="noopener" href="${waURL(sum)}">WhatsApp</a><a class="btn btn-tg" target="_blank" rel="noopener" href="${CONFIG.telegram}">Telegram</a><button class="btn btn-ghost" id="qre">${tr(QS.again)}</button></div></div>`;
     $("qre").onclick=()=>{qi=0;qa.length=0;renderQuiz()};
