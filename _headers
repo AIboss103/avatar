@@ -1,4 +1,4 @@
 /*
-  Cache-Control: public, max-age=600
+  Cache-Control: public, max-age=0, must-revalidate
 /img/*
   Cache-Control: public, max-age=604800
