@@ -6,8 +6,10 @@
 //   LEADS_URL   text    Apps Script web app URL of the WhaleHome CRM (optional; without it leads only go to Telegram)
 //   STATE       KV namespace binding: user language, interest, budget and the admin chat
 //
-// After deploy: open https://<worker-url>/setup?key=<SETUP_KEY> once, then send "/admin <SETUP_KEY>"
-// to the bot from Artem's Telegram account. Leads arrive in that chat; reply to a lead message to answer the user.
+// Custom domain: bot.whalehome.io (the site sends quiz leads to /lead; "/" redirects to t.me/<bot>).
+// After deploy open https://bot.whalehome.io/setup?key=<SETUP_KEY> once. If Artem pressed Start before that,
+// his chat becomes the admin chat by itself; otherwise send "/admin <SETUP_KEY>" from his account.
+// Leads arrive in that chat; reply to a lead message to answer the user.
 
 const SITE = "https://whalehome.io";
 const CALENDLY = "https://calendly.com/voinov-agency/real-estate-deals-ceo";
@@ -154,6 +156,26 @@ async function saveLead(env, from, u, contact, note) {
   u.lead = 1;
 }
 
+/* ---------- leads from the whalehome.io quiz: to the CRM and to Artem ---------- */
+async function siteLead(req, env, ctx) {
+  const cors = { "access-control-allow-origin": "*" };
+  let p;
+  try { p = Object.fromEntries(new URLSearchParams(await req.text())); } catch { return new Response("bad", { status: 400, headers: cors }); }
+  if (p.hp || (!p.name && !p.whatsapp)) return new Response("ok", { headers: cors });
+  const f = k => String(p[k] || "").slice(0, 300);
+  ctx.waitUntil((async () => {
+    if (env.LEADS_URL) {
+      const body = new URLSearchParams({ source: "Website quiz", name: f("name"), whatsapp: f("whatsapp"), interest: "Buy a home",
+        lang: f("lang"), notes: f("notes"), src: f("src"), page: f("page") });
+      try { await fetch(env.LEADS_URL, { method: "POST", body }); } catch {}
+    }
+    const admin = await adminId(env);
+    if (admin) await send(env, admin, `🐋 <b>New lead</b> · whalehome.io quiz\n${esc(f("name"))} · ${esc(f("whatsapp"))}\nLanguage: ${esc(f("lang").toUpperCase())}` +
+      (p.notes ? `\n\n${esc(f("notes"))}` : "") + (p.src ? `\nSource: ${esc(f("src"))}` : ""));
+  })());
+  return new Response("ok", { headers: cors });
+}
+
 /* ---------- screens ---------- */
 async function showMenu(env, chat, l) {
   const photo = `${SITE}/${l === "en" ? "og.jpg" : "og-" + l + ".jpg"}`;
@@ -287,6 +309,18 @@ const pickLang = c => (c === "es" || c === "ru" ? c : (c || "").startsWith("es")
 /* ---------- setup: webhook, commands, name and description ---------- */
 async function setup(env, origin) {
   const out = {};
+  // Before the webhook exists, Telegram keeps the messages people sent the bot.
+  // If exactly one person pressed Start (the owner), that chat becomes the admin chat.
+  if (!(await adminId(env))) {
+    await tg(env, "deleteWebhook", {});
+    const ups = (await tg(env, "getUpdates", { limit: 100 })).result || [];
+    const ids = [...new Set(ups.map(u => u.message).filter(m => m && m.chat.type === "private" && /^\/start/.test(m.text || "")).map(m => String(m.chat.id)))];
+    if (ids.length === 1) {
+      await env.STATE.put("admin", ids[0]);
+      await send(env, ids[0], "✅ This chat now gets WhaleHome leads. Reply to a lead message to answer the client.");
+    }
+    out.admin = ids.length === 1 ? "set to chat " + ids[0] : `not set (${ids.length} chats pressed Start; send /admin <SETUP_KEY> from Artem's account)`;
+  } else out.admin = "already set";
   out.webhook = await tg(env, "setWebhook", {
     url: origin + "/tg", secret_token: env.SETUP_KEY, allowed_updates: ["message", "callback_query"], drop_pending_updates: true,
   });
@@ -328,6 +362,13 @@ export default {
         } catch (e) { console.log("update error", e && e.stack); }
       })());
       return new Response("ok");
+    }
+    if (url.pathname === "/lead" && req.method === "POST") return siteLead(req, env, ctx);
+    if (url.pathname === "/") {                          // bot.whalehome.io -> t.me/<bot>, keeps ?start=
+      let user = await env.STATE.get("me");
+      if (!user) { user = ((await tg(env, "getMe", {})).result || {}).username; if (user) await env.STATE.put("me", user); }
+      const start = (url.searchParams.get("start") || "").replace(/[^\w-]/g, "").slice(0, 60);
+      if (user) return Response.redirect(`https://t.me/${user}${start ? "?start=" + start : ""}`, 302);
     }
     return Response.redirect(SITE, 302);
   },

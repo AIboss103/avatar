@@ -811,8 +811,8 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
 const CONFIG={
   whatsapp:"50764566336",
   calendly:"https://calendly.com/voinov-agency/real-estate-deals-ceo",
-  telegram:"https://t.me/artofwar",
-  leadsUrl:"", // Google Apps Script web app URL: quiz leads go to the CRM sheet
+  telegram:"https://bot.whalehome.io/", // WhaleHome bot (Cloudflare Worker), redirects to t.me/<bot>
+  leadsUrl:"https://bot.whalehome.io/lead", // the bot sends quiz leads to the CRM sheet and to Artem in Telegram
   // Illustrative USD rates for the coin switcher and calculator
   rates:{USDT:1,USDC:1,BTC:110000,ETH:4000,SOL:200},
 };
@@ -1253,7 +1253,7 @@ function renderQuiz(){
   }else{
     const sum=QUIZ.map((q,i)=>`• ${tr(q.q)} ${tr(q.o[qa[i]]?.[1])}`).join("\n")+`\n• ${tr(QS.name)}: ${qa.name}\n• ${tr(QS.contact)}: ${qa.contact}`+(SRC?`\n(${SRC})`:"");
     b.innerHTML=`<div class="qdone"><img src="${E("party")}" alt=""><h3 style="margin:16px 0 0">${tr(QS.doneH)}</h3><p>${tr(QS.doneP)}</p>
-    <div class="ctas"><a class="btn btn-wa" target="_blank" rel="noopener" href="${waURL(sum)}">WhatsApp</a><a class="btn btn-tg" target="_blank" rel="noopener" href="${CONFIG.telegram}">Telegram</a><button class="btn btn-ghost" id="qre">${tr(QS.again)}</button></div></div>`;
+    <div class="ctas"><a class="btn btn-wa" target="_blank" rel="noopener" href="${waURL(sum)}">WhatsApp</a><a class="btn btn-tg" target="_blank" rel="noopener" href="${CONFIG.telegram}?start=${lang}">Telegram</a><button class="btn btn-ghost" id="qre">${tr(QS.again)}</button></div></div>`;
     $("qre").onclick=()=>{qi=0;qa.length=0;renderQuiz()};
   }
   const bk=$("qback");if(bk)bk.onclick=()=>{qi--;renderQuiz()};
