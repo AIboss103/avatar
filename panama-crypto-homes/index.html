@@ -191,6 +191,9 @@ section{padding-block:96px}
 .price b{font:800 24px/1 var(--display);letter-spacing:-.03em;display:flex;align-items:center;gap:8px}
 .price b svg{width:22px;height:22px}
 .price span{color:var(--muted);font-size:14px}
+.price .from{font:600 13px/1 var(--body);color:var(--muted);letter-spacing:0}
+.home-art img{transition:transform .5s}
+.home:hover .home-art img{transform:scale(1.04)}
 .note{color:var(--muted);font-size:13px;margin-top:18px}
 
 /* PACKAGES */
@@ -745,7 +748,7 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
   <div class="wrap">
     <a href="#top" class="logo"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#1D4DFF"/><circle cx="15" cy="20" r="6.5" fill="none" stroke="#fff" stroke-width="3.2"/><path d="M21 20h11M27.5 20v5M31.5 20v3.5" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg><span>Crypto<i>Home</i></span></a>
     <span data-i="ft.c">© 2026 CryptoHome · Panama City · Luxury homes for crypto people</span>
-    <span class="demo" data-i="ft.demo">Demo funnel by Restate Deals. Partner names, team members (except Artem Voinov), reviews and prices are examples.</span>
+    <span class="demo" data-i="ft.demo">Demo funnel by Restate Deals. Partner names, team members (except Artem Voinov) and reviews are examples. Property listings and photos: CPanama, used with permission.</span>
   </div>
 </footer>
 
@@ -815,7 +818,7 @@ const S={
  "cm.btn":T("Join my Telegram","Únete a mi Telegram","Мой Telegram-канал"),
  "h.eb":T("Featured homes","Propiedades destacadas","Избранные объекты"),
  "h.h":T("See the price in your coin","Mira el precio en tu moneda","Цена в вашей монете"),
- "h.note":T("Coin prices are approximate and fixed on the day of payment. All homes qualify for Panama residency.","Los precios en crypto son aproximados y se fijan el día del pago. Todas califican para la residencia.","Цены в крипте примерные и фиксируются в день оплаты. Все объекты подходят под ВНЖ Панамы."),
+ "h.note":T("Coin prices are approximate and fixed on the day of payment. Homes from $300,000 qualify for Panama residency. Photos: CPanama.","Los precios en crypto son aproximados y se fijan el día del pago. Las propiedades desde $300,000 califican para la residencia. Fotos: CPanama.","Цены в крипте примерные и фиксируются в день оплаты. Объекты от $300,000 подходят под ВНЖ Панамы. Фото: CPanama."),
  "pk.eb":T("How to start","Cómo empezar","С чего начать"),
  "pk.h":T("Three ways to buy","Tres formas de comprar","Три способа купить"),
  "pk.lead":T("Start with a call, fly in for a VIP tour, or buy right away. Pay in crypto at every step.","Empieza con una llamada, vuela a un tour VIP o compra directo. Paga en crypto en cada paso.","Начните со звонка, прилетите на VIP-тур или покупайте сразу. Оплата криптой на каждом шаге."),
@@ -853,7 +856,7 @@ const S={
  "fn.h":T("Your keys in Panama are one call away","Tus llaves en Panamá a una llamada","Ключи в Панаме — в одном звонке от вас"),
  "fn.p":T("Book a free 20-minute call with me. No pressure, just answers.","Agenda una llamada gratis de 20 minutos conmigo. Sin presión, solo respuestas.","Бесплатный 20-минутный звонок со мной. Без давления, только ответы."),
  "ft.c":T("© 2026 CryptoHome · Panama City · Luxury homes for crypto people","© 2026 CryptoHome · Ciudad de Panamá · Casas de lujo para gente crypto","© 2026 CryptoHome · Панама-Сити · Люкс-недвижимость для людей из крипты"),
- "ft.demo":T("Demo funnel by Restate Deals. Partner names, team members (except Artem Voinov), reviews and prices are examples.","Embudo demo de Restate Deals. Socios, equipo (excepto Artem Voinov), opiniones y precios son ejemplos.","Демо-воронка от Restate Deals. Партнёры, команда (кроме Артёма Войнова), отзывы и цены указаны для примера."),
+ "ft.demo":T("Demo funnel by Restate Deals. Partner names, team members (except Artem Voinov) and reviews are examples. Property listings and photos: CPanama, used with permission.","Embudo demo de Restate Deals. Socios, equipo (excepto Artem Voinov) y opiniones son ejemplos. Propiedades y fotos: CPanama, con autorización.","Демо-воронка от Restate Deals. Партнёры, команда (кроме Артёма Войнова) и отзывы указаны для примера. Объекты и фото: CPanama, с разрешения."),
 };
 
 /* ---------- data ---------- */
@@ -885,10 +888,14 @@ const COMM=[
  ["gem",T("iGaming circle","Círculo iGaming","iGaming-круг"),T("Operators, affiliates and payment teams in one city.","Operadores, afiliados y pagos en una ciudad.","Операторы, аффилиаты и платёжки в одном городе.")],
  ["speech",T("7,000+ in my Telegram","7,000+ en mi Telegram","7,000+ в моём Telegram"),T("Business, crypto and life in Panama.","Negocios, crypto y vida en Panamá.","Бизнес, крипта и жизнь в Панаме.")],
 ];
+// Listings and photos: CPanama (cpanama.com), used with permission
 const HOMES=[
- {e:["wave","city"],bg:["#5B86FF","#1D4DFF"],t:T("Ocean-view apartment","Apartamento con vista al mar","Квартира с видом на океан"),a:"Costa del Este",s:T(["2 bd","140 m²","Pool"],["2 hab","140 m²","Piscina"],["2 спальни","140 м²","Бассейн"]),p:420000,y:8},
- {e:["crown","city"],bg:["#0E1D52","#2F4FD6"],t:T("Sky penthouse","Penthouse en el cielo","Пентхаус в небе"),a:"Punta Pacífica",s:T(["4 bd","380 m²","Terrace"],["4 hab","380 m²","Terraza"],["4 спальни","380 м²","Терраса"]),p:1350000,y:7},
- {e:["palm","island"],bg:["#28C2A0","#1A7FD6"],t:T("Beach villa","Villa de playa","Вилла на пляже"),a:"Playa Bonita",s:T(["5 bd","420 m²","Private pool"],["5 hab","420 m²","Piscina privada"],["5 спален","420 м²","Свой бассейн"]),p:890000,y:10},
+ {img:"img/homes/clayton-villa.webp",t:T("Rainforest villa with infinity pool","Villa en la selva con piscina infinita","Вилла у джунглей с бассейном-инфинити"),a:"Clayton",s:T(["5 bd","931 m²","Home cinema"],["5 hab","931 m²","Cine en casa"],["5 спален","931 м²","Домашний кинотеатр"]),p:7000000},
+ {img:"img/homes/venetian-penthouse.webp",t:T("Two-floor penthouse with rooftop pool","Penthouse de dos pisos con piscina en la azotea","Двухэтажный пентхаус с бассейном на крыше"),a:"Punta Pacífica",s:T(["5 bd","2,200 m²","Ocean view"],["5 hab","2,200 m²","Vista al mar"],["5 спален","2,200 м²","Вид на океан"]),p:4100000},
+ {img:"img/homes/punta-pacifica-penthouse.webp",t:T("Furnished penthouse with private pool and cinema","Penthouse amueblado con piscina y cine privados","Пентхаус с мебелью, своим бассейном и кинотеатром"),a:"Punta Pacífica",s:T(["4 bd","985 m²","Turnkey"],["4 hab","985 m²","Llave en mano"],["4 спальни","985 м²","Под ключ"]),p:2200000},
+ {img:"img/homes/fendi-casa.webp",t:T("La Maison by Fendi Casa","La Maison by Fendi Casa","La Maison by Fendi Casa"),a:"Santa María",s:T(["3–4 bd","345–851 m²","Golf view"],["3–4 hab","345–851 m²","Vista al golf"],["3–4 спальни","345–851 м²","Вид на гольф"]),p:1283486,from:1},
+ {img:"img/homes/ocean-reef.webp",t:T("Island living with private beach and marina","Vida en isla con playa privada y marina","Жизнь на острове: свой пляж и марина"),a:"Ocean Reef · Punta Pacífica",s:T(["2 bd","117–240 m²","Marina"],["2 hab","117–240 m²","Marina"],["2 спальни","117–240 м²","Марина"]),p:790000,from:1},
+ {img:"img/homes/the-regent.webp",t:T("Ocean-view tower with 8,000 m² clubhouse","Torre con vista al mar y club de 8,000 m²","Башня с видом на океан и клубом 8,000 м²"),a:"Costa del Este",s:T(["2–3 bd","95–202 m²","Clubhouse"],["2–3 hab","95–202 m²","Club"],["2–3 спальни","95–202 м²","Клуб"]),p:410000,from:1},
 ];
 const PK=[
  {e:"video",name:T("Online consultation","Consulta online","Онлайн-консультация"),badge:T("Start here","Empieza aquí","Начать отсюда"),desc:T("Get a clear plan without flying in.","Un plan claro sin viajar.","Понятный план без перелёта."),amt:"$1,000",per:T("one time","pago único","разово"),
@@ -1041,9 +1048,9 @@ function homeArt(h,i){
   <img src="${E(h.e[1])}" alt="" style="position:absolute;width:44%;left:12%;bottom:8%" class="fl"><img src="${E(h.e[0])}" alt="" style="position:absolute;width:34%;right:10%;top:22%" class="fl d2">`;
 }
 function renderHomes(){
-  $("homesg").innerHTML=HOMES.map((h,i)=>`<article class="home"><div class="home-art">${homeArt(h,i)}<span class="tag"><img src="${E("passport")}" alt="">${tr(T("Residency","Residencia","ВНЖ"))}</span><span class="yl">${tr(T("up to","hasta","до"))} ${h.y}%</span></div>
+  $("homesg").innerHTML=HOMES.map((h,i)=>`<article class="home"><div class="home-art">${homeArt(h,i)}<span class="tag"><img src="${E("passport")}" alt="">${tr(T("Residency","Residencia","ВНЖ"))}</span>${h.y?`<span class="yl">${tr(T("up to","hasta","до"))} ${h.y}%</span>`:""}</div>
    <div class="home-b"><small>${h.a}</small><h3>${tr(h.t)}</h3><div class="specs">${tr(h.s).map(x=>`<span>${x}</span>`).join("<span>·</span>")}</div>
-   <div class="price"><b class="tabnum">${coinSVG(coin)}${fmtCoin(h.p,coin)} ${coin}</b><span class="tabnum">≈ ${usd(h.p)}</span></div></div></article>`).join("");
+   <div class="price"><b class="tabnum">${h.from?`<small class="from">${tr(T("from","desde","от"))}</small>`:""}${coinSVG(coin)}${fmtCoin(h.p,coin)} ${coin}</b><span class="tabnum">≈ ${usd(h.p)}</span></div></div></article>`).join("");
 }
 function renderPK(){
   $("pkg").innerHTML=PK.map(p=>`<div class="pk${p.pop?" pop":""}"><div class="pk-top"><img class="emo" src="${E(p.e)}" alt=""><span class="badge">${tr(p.badge)}</span></div>
