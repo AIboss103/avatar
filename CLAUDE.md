@@ -2,6 +2,11 @@
 
 These come from the site owner (Artem Voinov) and apply to every page.
 
+## Working with the owner
+- The owner does not want to do anything by hand. Do every step yourself (code, deploys, data, Google files, GitHub Actions) and find a workaround before asking.
+- Ask the owner only for what is truly impossible from here (for example a password or a secret typed into a third-party dashboard), and then give one short message with exact clicks, nothing else.
+- Files the owner mentions on their computer are not visible here: fetch them yourself from a shared link (Google Drive folder via the GitHub Actions workflow .github/workflows/import-cpanama.yml pattern) instead of asking for uploads.
+
 ## Writing
 - Use simple, plain words. Short sentences. Say concretely what the client gets.
 - No jargon headlines ("distribution hub", "infrastructure") as the main message; if used, explain in plain words next to it.
