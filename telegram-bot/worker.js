@@ -47,6 +47,7 @@ const TX = {
   homesNone: { en: "No listed homes in this range right now. I can find one for you: leave your contact.", es: "Ahora no hay propiedades publicadas en este rango. Puedo buscar una para ti: deja tu contacto.", ru: "Сейчас нет объектов в этом диапазоне на сайте. Могу подобрать: оставьте контакт." },
   homesAfter: { en: "Want me to make a personal shortlist? Leave your contact and I'll send it here.", es: "¿Quieres una selección personal? Deja tu contacto y te la envío aquí.", ru: "Сделать персональную подборку? Оставьте контакт, и я пришлю её сюда." },
   residency: { en: "Residency", es: "Residencia", ru: "ВНЖ" },
+  vipFree: { en: "VIP tour included free", es: "Tour VIP gratis incluido", ru: "VIP-тур в подарок" },
   from: { en: "from", es: "desde", ru: "от" },
   roiQ: { en: "What price of home are you looking at?", es: "¿Qué precio de propiedad te interesa?", ru: "Какая цена объекта вас интересует?" },
   roiRes: {
@@ -60,9 +61,9 @@ const TX = {
     ru: "<b>Онлайн-консультация · $1,000</b>\n\n• 2 часа видеозвонка со мной\n• Подборка из 10 объектов под ваш бюджет\n• Созвон с юристом из Панамы\n• План по ВНЖ и налогам\n• Как заплатить вашей криптой\n\n100% засчитывается в VIP-тур.",
   },
   tour: {
-    en: "<b>VIP Panama tour · $10,000</b>\n3 days. See it, feel it, choose.\n\n• Helicopter flight over the city and islands\n• VIP transfers with a private driver\n• 5-star hotel, best restaurants, yacht day\n• Private viewings of 8–10 homes\n• Meetings with a lawyer and a bank\n• Dinner with the Panama crypto community\n\n100% credited to your purchase.",
-    es: "<b>Tour VIP Panamá · $10,000</b>\n3 días. Velo, siéntelo, elige.\n\n• Vuelo en helicóptero sobre la ciudad e islas\n• Traslados VIP con chofer privado\n• Hotel 5 estrellas, mejores restaurantes, día en yate\n• Visitas privadas a 8–10 propiedades\n• Reuniones con abogado y banco\n• Cena con la comunidad crypto de Panamá\n\n100% se descuenta de tu compra.",
-    ru: "<b>VIP-тур по Панаме · $10,000</b>\n3 дня. Увидеть, почувствовать, выбрать.\n\n• Полёт на вертолёте над городом и островами\n• VIP-трансферы с личным водителем\n• Отель 5*, лучшие рестораны, день на яхте\n• Частные показы 8–10 объектов\n• Встречи с юристом и банком\n• Ужин с крипто-комьюнити Панамы\n\n100% засчитывается в покупку.",
+    en: "<b>VIP Panama tour · $10,000</b>\n3 days. See it, feel it, choose.\n\n• Helicopter flight over the city and islands\n• VIP transfers with a private driver\n• 5-star hotel, best restaurants, yacht day\n• Private viewings of 8–10 homes\n• Meetings with a lawyer and a bank\n• Dinner with the Panama crypto community\n\n100% credited to your purchase. Free when you buy a home from $1M.",
+    es: "<b>Tour VIP Panamá · $10,000</b>\n3 días. Velo, siéntelo, elige.\n\n• Vuelo en helicóptero sobre la ciudad e islas\n• Traslados VIP con chofer privado\n• Hotel 5 estrellas, mejores restaurantes, día en yate\n• Visitas privadas a 8–10 propiedades\n• Reuniones con abogado y banco\n• Cena con la comunidad crypto de Panamá\n\n100% se descuenta de tu compra. Gratis si compras desde $1M.",
+    ru: "<b>VIP-тур по Панаме · $10,000</b>\n3 дня. Увидеть, почувствовать, выбрать.\n\n• Полёт на вертолёте над городом и островами\n• VIP-трансферы с личным водителем\n• Отель 5*, лучшие рестораны, день на яхте\n• Частные показы 8–10 объектов\n• Встречи с юристом и банком\n• Ужин с крипто-комьюнити Панамы\n\n100% засчитывается в покупку. Бесплатно при покупке от $1M.",
   },
   askContact: {
     en: "Send your phone with the button below, or just type your WhatsApp, email or a question.",
@@ -194,7 +195,8 @@ async function showHomes(env, chat, l, b) {
   await send(env, chat, t("homesFound", l));
   for (const h of list) {
     const caption = `<b>${esc(h.t[l] || h.t.en)}</b>\n${esc(h.a)} · ${esc((h.s[l] || h.s.en).join(" · "))}\n` +
-      `${h.from ? t("from", l) + " " : ""}<b>${usd(h.p)}</b>${h.p >= 300000 ? " · " + t("residency", l) + " ✓" : ""}`;
+      `${h.from ? t("from", l) + " " : ""}<b>${usd(h.p)}</b>${h.p >= 300000 ? " · " + t("residency", l) + " ✓" : ""}` +
+      (h.p >= 1000000 ? `\n🚁 ${t("vipFree", l)}` : "");
     const kb = { inline_keyboard: [[
       { text: t("bDetails", l), web_app: { url: appUrl(l, "#homes") } },
       { text: t("bCall", l), url: calUrl("home_" + h.k, `Home: ${h.t.en} (${h.a})`) },
