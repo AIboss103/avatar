@@ -133,6 +133,10 @@ def main(argv):
             if not h["p"]:
                 print("skip (no price)", h["t"])
                 continue
+            if h["p"] < 50000 or re.search(r"\b(rent|rental|office)\b", (h["t"] + " " + h["status"]).lower()) and h["p"] < 50000 \
+                    or re.search(r"\bfor rent\b|\boffice\b", (h["t"] + " " + h["status"]).lower()):
+                print("skip (rent or office)", h["t"])
+                continue
             h["n"] = save_photos(h["k"], photos)
             if not h["n"]:
                 print("skip (no photos)", h["t"])

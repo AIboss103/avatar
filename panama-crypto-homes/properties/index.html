@@ -251,6 +251,12 @@ function fromFeatured(h){
   return {k:h.k,t:h.t,a:h.a,p:h.p,from:h.from,beds:b?[b[0],b[b.length-1]]:null,m2:m?num(m)[0]:null,
     type:/penthouse/.test(tl)?"penthouse":/villa|house/.test(tl)?"house":/new|tower|project/.test(tl)?"new":"apartment",d:h.d,n:5,feat:1};
 }
+// one name per area for the filter: CPanama spells areas in many ways
+const ZONES=[["punta pacifica","Punta Pacífica"],["ocean reef","Punta Pacífica"],["paitilla","Punta Paitilla"],["costa del este","Costa del Este"],
+  ["venao","Playa Venao · Pedasí"],["pedasi","Playa Venao · Pedasí"],["avenida balboa","Avenida Balboa"],["av. balboa","Avenida Balboa"],["calle uruguay","Avenida Balboa"],["bella vista","Avenida Balboa"],
+  ["casco","Casco Viejo"],["amador","Amador"],["perico","Amador"],["san francisco","San Francisco"],["coco del mar","San Francisco"],
+  ["santa maria","Santa María"],["clayton","Clayton"],["buenaventura","Buenaventura"],["rio hato","Buenaventura"],["playa bonita","Playa Bonita"],["altos del maria","Altos del María"]];
+const zone=a=>{const n=norm(a);const z=ZONES.find(([k])=>n.includes(k));return z?z[1]:String(a||"").replace(/[.,\s]+$/,"").split(",")[0]};
 const sameHome=(a,b)=>a.p===b.p&&norm(a.a).split(/[^a-z]+/).some(w=>w.length>3&&norm(b.a).includes(w));
 const calURL=h=>CONFIG.calendly+"?utm_source=whalehome.io&utm_medium=site&utm_campaign=catalog&utm_content="+encodeURIComponent(h.k)+"&a1="+encodeURIComponent(`Home: ${h.feat?h.t.en:h.t} (${h.a}, ${usd(h.p)})`);
 const waURL=h=>"https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(h?`${tr(S.wa)} ${TT(h)} · ${h.a} · ${usd(h.p)}\nhttps://whalehome.io/properties/#${h.k}`:tr(S.waGen));
@@ -282,7 +288,7 @@ function bindGal(root){
 function filtered(){
   const b=BUD.find(x=>x[0]===F.b)||BUD[0],q=F.q.trim().toLowerCase();
   let r=DATA.filter(h=>h.p>=b[1]&&h.p<=b[2]
-    &&(!F.a||h.a===F.a)
+    &&(!F.a||zone(h.a)===F.a)
     &&(!F.t||h.type===F.t)
     &&(!F.v||h.p>=300000)
     &&(!F.r||(h.beds&&(F.r==="4"?h.beds[1]>=4:F.r==="1"?h.beds[0]<=1:h.beds[0]<=+F.r&&h.beds[1]>=+F.r)))
@@ -326,7 +332,7 @@ function closeHome(){$("hm").hidden=true;document.body.style.overflow="";history
 function renderFilters(){
   $("fb").innerHTML=BUD.map(b=>`<button class="chip ${F.b===b[0]?"on":""}" type="button" data-b="${b[0]}">${b[0]==="all"?tr(S.all):b[3]}</button>`).join("");
   $("fb").querySelectorAll(".chip").forEach(c=>c.onclick=()=>{F.b=c.dataset.b;shown=CONFIG.page;renderFilters();renderList();});
-  const areas=[...new Set(DATA.map(h=>h.a).filter(Boolean))].sort();
+  const areas=[...new Set(DATA.map(h=>zone(h.a)).filter(Boolean))].sort();
   const opt=(v,l,cur)=>`<option value="${esc(v)}" ${cur===v?"selected":""}>${esc(l)}</option>`;
   $("fa").innerHTML=opt("",tr(S.anyArea),F.a)+areas.map(a=>opt(a,a,F.a)).join("");
   $("fr").innerHTML=opt("",tr(S.anyBeds),F.r)+[["1",S.bd1],["2",S.bd2],["3",S.bd3],["4",S.bd4]].map(([v,l])=>opt(v,tr(l),F.r)).join("");
