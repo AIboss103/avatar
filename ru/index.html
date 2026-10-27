@@ -996,7 +996,7 @@ const HOMES=[
 const HBUD=[["all",0,1e12],["b0",0,299999,"< $300k"],["b1",300000,500000,"$300k–500k"],["b2",500001,1000000,"$500k–1M"],["b3",1000001,1e12,"$1M+"]];
 let hb="all";
 // VIP tour ($10,000) is free with a purchase from $1M: badge on cards and a line in the details
-const VIP_FREE=1000000,VIP_TXT=T("VIP tour included free","Tour VIP gratis incluido","VIP-тур в подарок");
+const VIP_FREE=1000000,VIP_TXT=T("VIP Tour Included","Tour VIP incluido","VIP-тур включён");
 const vipTag=h=>h.p>=VIP_FREE?`<span class="tag vip"><img src="${E("heli")}" alt="">${tr(VIP_TXT)}</span>`:"";
 const PH=(h,n)=>`/img/homes/${h.k}-${n}.webp`,NPH=5;
 const PK=[
