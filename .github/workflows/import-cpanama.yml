@@ -25,6 +25,7 @@ jobs:
           gdown --folder "https://drive.google.com/drive/folders/10StA3DCPNv8dhcGQu6TQESMJ4HiJokCp" -O "$RUNNER_TEMP/in" --remaining-ok
           find "$RUNNER_TEMP/in" -maxdepth 2 | head -50
           du -sh "$RUNNER_TEMP/in"
+          for z in "$RUNNER_TEMP"/in/*.zip; do echo "== $z"; unzip -l "$z" | head -25; done
       - name: Build the catalog
         run: python3 scripts/build_properties.py "$RUNNER_TEMP/in"
       - name: Push the result to branch cpanama-import
