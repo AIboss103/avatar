@@ -47,7 +47,7 @@ const TX = {
   homesNone: { en: "No listed homes in this range right now. I can find one for you: leave your contact.", es: "Ahora no hay propiedades publicadas en este rango. Puedo buscar una para ti: deja tu contacto.", ru: "Сейчас нет объектов в этом диапазоне на сайте. Могу подобрать: оставьте контакт." },
   homesAfter: { en: "Want me to make a personal shortlist? Leave your contact and I'll send it here.", es: "¿Quieres una selección personal? Deja tu contacto y te la envío aquí.", ru: "Сделать персональную подборку? Оставьте контакт, и я пришлю её сюда." },
   residency: { en: "Residency", es: "Residencia", ru: "ВНЖ" },
-  vipFree: { en: "VIP tour included free", es: "Tour VIP gratis incluido", ru: "VIP-тур в подарок" },
+  vipFree: { en: "VIP Tour Included", es: "Tour VIP incluido", ru: "VIP-тур включён" },
   from: { en: "from", es: "desde", ru: "от" },
   roiQ: { en: "What price of home are you looking at?", es: "¿Qué precio de propiedad te interesa?", ru: "Какая цена объекта вас интересует?" },
   roiRes: {

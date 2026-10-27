@@ -103,7 +103,7 @@ p{margin:0}
 .tag{background:rgba(255,255,255,.94);border-radius:999px;padding:6px 11px 6px 7px;font:700 12px/1 var(--display);display:flex;align-items:center;gap:6px}
 .tag img{width:16px;height:16px}
 .tag.vip{background:#FFD43B;color:#3A2600}
-.vipline{display:flex;gap:10px;align-items:center;background:#FFD43B;color:#3A2600;border-radius:16px;padding:10px 14px;font:600 14px/1.35 var(--body);margin-top:12px}
+.vipline{display:inline-flex;gap:10px;align-items:center;background:#FFD43B;color:#3A2600;border-radius:16px;padding:10px 14px;font:600 14px/1.35 var(--body);margin-top:12px}
 .vipline img{width:28px;height:28px;flex:none}
 .vipline b{font-family:var(--display);font-weight:800}
 .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
@@ -266,7 +266,7 @@ const S={
   ty_apartment:T("Apartment","Apartamento","Квартира"),ty_penthouse:T("Penthouse","Penthouse","Пентхаус"),ty_house:T("House or villa","Casa o villa","Дом или вилла"),ty_new:T("New project","Proyecto nuevo","Новостройка"),ty_land:T("Land","Terreno","Участок"),
   s_pa:T("Price: low to high","Precio: de menor a mayor","Цена: по возрастанию"),s_pd:T("Price: high to low","Precio: de mayor a menor","Цена: по убыванию"),s_m2:T("Size: largest first","Tamaño: más grande primero","Площадь: сначала большие"),
   bd:T("bd","hab","сп."),ba:T("ba","baños","санузл."),from:T("from","desde","от"),resTag:T("Residency","Residencia","ВНЖ"),
-  details:T("Details","Detalles","Подробнее"),vip:T("VIP tour included free","Tour VIP gratis incluido","VIP-тур в подарок"),vipS:T("3 days in Panama with helicopter, yacht and private viewings ($10,000 value)","3 días en Panamá con helicóptero, yate y visitas privadas (valor $10,000)","3 дня в Панаме с вертолётом, яхтой и частными показами (стоимость $10,000)"),callS:T("Call","Llamada","Звонок"),call:T("Discuss on a call","Hablar en una llamada","Обсудить на звонке"),
+  details:T("Details","Detalles","Подробнее"),vip:T("VIP Tour Included","Tour VIP incluido","VIP-тур включён"),vipS:T("3 days in Panama with helicopter, yacht and private viewings ($10,000 value)","3 días en Panamá con helicóptero, yate y visitas privadas (valor $10,000)","3 дня в Панаме с вертолётом, яхтой и частными показами (стоимость $10,000)"),callS:T("Call","Llamada","Звонок"),call:T("Discuss on a call","Hablar en una llamada","Обсудить на звонке"),
   emptyH:T("Nothing found with these filters","Nada con estos filtros","По этим фильтрам ничего нет"),
   emptyP:T("Tell me your budget and area. I'll find homes that are not on the site.","Dime tu presupuesto y zona. Buscaré propiedades que no están en el sitio.","Напишите бюджет и район. Я найду объекты, которых нет на сайте."),
   ctaH:T("Not sure which one?","¿No sabes cuál elegir?","Не знаете, что выбрать?"),
@@ -361,7 +361,7 @@ function openHome(k){
   const h=DATA.find(x=>x.k===k);if(!h)return;
   $("hmC").innerHTML=`${gallery(h,true)}<div class="hm-b"><small style="color:var(--muted)">${esc(h.a)}</small><h2 id="hmT">${esc(TT(h))}</h2>
     <div class="specs">${specs(h)}</div><div class="price">${priceHTML(h)}</div>
-    ${h.p>=1000000?`<p class="vipline"><img src="${E("heli")}" alt=""><span><b>${tr(S.vip)}</b> · ${tr(S.vipS)}</span></p>`:""}
+    ${h.p>=1000000?`<p class="vipline"><img src="${E("heli")}" alt=""><b>${tr(S.vip)}</b></p>`:""}
     ${DD(h)?`<p class="desc">${esc(DD(h))}</p>${!h.feat&&tr(S.descNote)?`<p class="note">${tr(S.descNote)}</p>`:""}`:""}
     <div class="hm-acts"><a class="btn btn-blue" target="_blank" rel="noopener" href="${calURL(h)}">${tr(S.call)}</a><a class="btn btn-wa" target="_blank" rel="noopener" href="${waURL(h)}">WhatsApp</a><a class="btn btn-tg" target="_blank" rel="noopener" href="${CONFIG.bot}?start=homes">Telegram</a></div></div>`;
   $("hm").hidden=false;document.body.style.overflow="hidden";bindGal($("hmC"));
