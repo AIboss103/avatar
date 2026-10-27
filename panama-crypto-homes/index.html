@@ -377,6 +377,15 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
 @media (max-width:1180px){.nav .btn-blue{display:none}}
 /* homes carousel + photo galleries + details modal */
 .homes-wrap{position:relative}
+.hchips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:-24px 0 22px;padding-bottom:2px}
+.hchips::-webkit-scrollbar{display:none}
+.hchips button{flex:none;min-height:42px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font:700 14px/1 var(--display);color:var(--muted)}
+.hchips button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.home-all{background:linear-gradient(160deg,var(--blue),var(--blue2));color:#fff;border:0;justify-content:center;align-items:flex-start;gap:12px;padding:32px 28px;min-height:420px}
+.home-all .ha-ic{font-size:44px;line-height:1}
+.home-all b{font:800 26px/1.1 var(--display);letter-spacing:-.02em}
+.home-all span{opacity:.85}
+.home-all i{font-style:normal;font:800 28px/1 var(--display);margin-top:6px;width:52px;height:52px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center}
 .homes{display:grid!important;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px)/3);grid-template-columns:none!important;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 14px;max-width:none!important;margin-inline:0!important}
 .homes::-webkit-scrollbar{display:none}
 .home{scroll-snap-align:start}
@@ -656,6 +665,7 @@ footer .demo{width:100%;font-size:12px;color:#97A0B8;border-top:1px solid var(--
 <section id="homes">
   <div class="wrap">
     <div class="head"><div><span class="eyebrow" data-i="h.eb">Featured homes</span><h2 class="h2" data-i="h.h">See the price in your coin</h2></div><div class="coins" id="coins" role="group" aria-label="Currency"></div></div>
+    <div class="hchips" id="hchips" role="group" aria-label="Budget"></div>
     <div class="homes-wrap"><button class="hs-b" id="hsPrev" type="button" aria-label="Previous homes">‹</button><div class="homes" id="homesg"></div><button class="hs-b" id="hsNext" type="button" aria-label="Next homes">›</button></div>
     <p class="note" data-i="h.note">Coin prices are approximate and fixed on the day of payment. All homes qualify for Panama residency.</p>
   </div>
@@ -975,6 +985,9 @@ const HOMES=[
   d:T("New project in Punta Pacífica: furnished studios and 1-bedroom units with views of the ocean and the skyline. Pool, rooftop restaurant, spa and yoga deck. Prices from $150,000 to $440,000.","Proyecto nuevo en Punta Pacífica: estudios y apartamentos de 1 habitación amueblados, con vista al mar y a la ciudad. Piscina, restaurante en la azotea, spa y deck de yoga. Precios de $150,000 a $440,000.","Новый проект в Punta Pacífica: студии и квартиры с 1 спальней, с мебелью и видом на океан и город. Бассейн, ресторан на крыше, спа и площадка для йоги. Цены от $150,000 до $440,000."),
   am:[T("Pool","Piscina","Бассейн"),T("Rooftop restaurant","Restaurante en azotea","Ресторан на крыше"),T("Wellness spa","Spa","Спа"),T("Yoga deck","Deck de yoga","Площадка для йоги"),T("Gym","Gimnasio","Спортзал")]},
 ].sort((x,y)=>x.p-y.p);
+// budget chips over the featured carousel; the same ranges as /properties/
+const HBUD=[["all",0,1e12],["b0",0,299999,"< $300k"],["b1",300000,500000,"$300k–500k"],["b2",500001,1000000,"$500k–1M"],["b3",1000001,1e12,"$1M+"]];
+let hb="all";
 const PH=(h,n)=>`/img/homes/${h.k}-${n}.webp`,NPH=5;
 const PK=[
  {e:"video",name:T("Online consultation","Consulta online","Онлайн-консультация"),badge:T("Start here","Empieza aquí","Начать отсюда"),desc:T("Get a clear plan without flying in.","Un plan claro sin viajar.","Понятный план без перелёта."),amt:"$1,000",per:T("one time","pago único","разово"),
@@ -1133,10 +1146,14 @@ function gal(h,cls){
 }
 const priceHTML=h=>`<b class="tabnum">${h.from?`<small class="from">${tr(T("from","desde","от"))}</small>`:""}${coinSVG(coin)}${fmtCoin(h.p,coin)} ${coin}</b><span class="tabnum">≈ ${usd(h.p)}</span>`;
 function renderHomes(){
-  $("homesg").innerHTML=HOMES.map((h,i)=>`<article class="home"><div class="home-art">${gal(h,"")}${h.p>=300000?`<span class="tag"><img src="${E("passport")}" alt="">${tr(T("Residency","Residencia","ВНЖ"))}</span>`:""}</div>
+  $("hchips").innerHTML=HBUD.map(b=>`<button type="button" class="${hb===b[0]?"on":""}" data-b="${b[0]}">${b[0]==="all"?tr(T("All","Todos","Все")):b[3]}</button>`).join("");
+  $("hchips").querySelectorAll("button").forEach(c=>c.onclick=()=>{hb=c.dataset.b;renderHomes();$("homesg").scrollLeft=0;});
+  const B=HBUD.find(b=>b[0]===hb);
+  $("homesg").innerHTML=HOMES.map((h,i)=>[h,i]).filter(([h])=>h.p>=B[1]&&h.p<=B[2]).map(([h,i])=>`<article class="home"><div class="home-art">${gal(h,"")}${h.p>=300000?`<span class="tag"><img src="${E("passport")}" alt="">${tr(T("Residency","Residencia","ВНЖ"))}</span>`:""}</div>
    <div class="home-b"><small>${h.a}</small><h3>${tr(h.t)}</h3><div class="specs">${tr(h.s).map(x=>`<span>${x}</span>`).join("<span>·</span>")}</div>
    <div class="price">${priceHTML(h)}</div>
-   <div class="home-cta"><button class="btn btn-ghost js-home" data-h="${i}" type="button">${tr(T("Details","Detalles","Подробнее"))}</button><a class="btn btn-blue" target="_blank" rel="noopener" href="${calHome(h)}">${tr(T("Discuss on a call","Hablar en una llamada","Обсудить на звонке"))}</a></div></div></article>`).join("");
+   <div class="home-cta"><button class="btn btn-ghost js-home" data-h="${i}" type="button">${tr(T("Details","Detalles","Подробнее"))}</button><a class="btn btn-blue" target="_blank" rel="noopener" href="${calHome(h)}">${tr(T("Discuss on a call","Hablar en una llamada","Обсудить на звонке"))}</a></div></div></article>`).join("")+
+   `<a class="home home-all" href="/properties/?lang=${lang}${hb==="all"?"":"&b="+hb}"><span class="ha-ic">🏙️</span><b>${tr(T("See all homes","Ver todas las propiedades","Смотреть все объекты"))}</b><span>${tr(T("Filters by budget, area, bedrooms and type","Filtros por presupuesto, zona, habitaciones y tipo","Фильтры по бюджету, району, спальням и типу"))}</span><i>→</i></a>`;
   bindGal($("homesg"));
   $$(".js-home").forEach(b=>b.onclick=()=>openHome(+b.dataset.h));
   if(hmCur!=null)openHome(hmCur);

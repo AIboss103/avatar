@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>All homes in Panama · WhaleHome</title>
+<meta name="description" content="All homes in Panama for crypto buyers: filter by budget, area, bedrooms and type. Pay in USDT, USDC, BTC, ETH or SOL. Residency from $300k.">
+<link rel="canonical" href="https://whalehome.io/properties/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WhaleHome">
+<meta property="og:title" content="All homes in Panama · WhaleHome">
+<meta property="og:description" content="Filter by budget, area and size. Pay in crypto. Residency from $300k.">
+<meta property="og:url" content="https://whalehome.io/properties/">
+<meta property="og:image" content="https://whalehome.io/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1D4DFF">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Onest:wght@400;500;600&display=swap">
+<style>
+/* Same look as the main page: white, one brand blue, Manrope for headings and prices */
+:root{
+  --bg:#FFFFFF; --bg2:#F4F7FD; --sky:#E7EEFF; --line:#E2E8F4;
+  --ink:#0B1633; --muted:#5A6684; --blue:#1D4DFF; --blue2:#0B33C9; --green:#0E9F6E;
+  --display:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --body:"Onest",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg2);color:var(--ink);font:400 16px/1.55 var(--body);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:10px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.03em;line-height:1.05;margin:0}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.tabnum{font-variant-numeric:tabular-nums}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font:800 21px/1 var(--display);letter-spacing:-.03em}
+.logo i{font-style:normal;color:var(--blue)}
+.logo svg{width:34px;height:34px}
+.back{margin-left:8px;color:var(--muted);font:600 15px/1 var(--display);display:flex;align-items:center;gap:6px;min-height:44px}
+.back:hover{color:var(--blue)}
+.sp{flex:1}
+.langs{display:flex;background:var(--bg2);border-radius:999px;padding:4px;gap:2px}
+.langs a{display:inline-flex;align-items:center;justify-content:center;min-width:38px;min-height:36px;font:700 12px/1 var(--display);padding:8px 10px;border-radius:999px;color:var(--muted)}
+.langs a.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(10,22,64,.1)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:999px;font:700 15px/1 var(--display);white-space:nowrap;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue2)}
+.btn-ghost{background:#fff;border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+.btn-wa{background:#25D366;color:#06301A}
+.btn-tg{background:#2AABEE;color:#fff}
+
+.top{padding:40px 0 18px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:700 12px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.eyebrow::before{content:"";width:18px;height:2px;background:currentColor;border-radius:2px}
+.top h1{font-size:clamp(30px,4.4vw,52px);font-weight:800;margin-top:12px}
+.top p{color:var(--muted);margin-top:10px;max-width:640px}
+
+.filters{position:sticky;top:68px;z-index:40;background:rgba(244,247,253,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px 0;border-bottom:1px solid var(--line)}
+.f-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.f-row+.f-row{margin-top:10px}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;max-width:100%}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:40px;padding:0 14px;border-radius:999px;background:#fff;border:1.5px solid var(--line);font:700 14px/1 var(--display);color:var(--muted)}
+.chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.inp,.sel{min-height:42px;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:0 12px;font-size:15px}
+.inp{flex:1 1 220px;min-width:0}
+.sel{flex:0 1 auto;max-width:100%;cursor:pointer}
+.chk{display:flex;align-items:center;gap:8px;min-height:42px;padding:0 12px;border-radius:12px;background:#fff;border:1.5px solid var(--line);font-size:15px;cursor:pointer;user-select:none}
+.chk input{width:18px;height:18px;accent-color:var(--blue)}
+.count{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0 4px;color:var(--muted);font-size:15px}
+.count b{color:var(--ink);font-family:var(--display)}
+.reset{color:var(--blue);font-weight:600;min-height:40px}
+
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding:14px 0 30px}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:box-shadow .25s,transform .25s}
+.card:hover{box-shadow:0 18px 50px -20px rgba(16,40,120,.25);transform:translateY(-2px)}
+.art{position:relative;aspect-ratio:3/2;background:var(--sky)}
+.strip{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.strip img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start}
+.pb{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);font:700 20px/1 var(--display);display:grid;place-items:center;opacity:0;transition:opacity .2s}
+.art:hover .pb{opacity:1}
+.pb.p{left:10px}.pb.n{right:10px}
+@media (hover:none){.pb{opacity:1;width:34px;height:34px}}
+.dots{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:5px;pointer-events:none}
+.dots i{width:6px;height:6px;border-radius:99px;background:rgba(255,255,255,.6)}
+.dots i.on{width:16px;background:#fff}
+.tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.94);border-radius:999px;padding:7px 11px;font:700 12px/1 var(--display);color:var(--green)}
+.body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.body small{color:var(--muted);font-size:13.5px}
+.body h3{font-size:19px;font-weight:800;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.specs{display:flex;gap:8px 12px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+.price{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font:800 22px/1.1 var(--display)}
+.price small{font:600 13px var(--body);color:var(--muted);margin-right:4px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.acts .btn{height:44px;padding:0 10px;font-size:14px}
+.more{display:flex;justify-content:center;padding-bottom:40px}
+.empty{grid-column:1/-1;background:#fff;border:1px solid var(--line);border-radius:22px;padding:36px 24px;text-align:center}
+.empty h3{font-size:24px}
+.empty p{color:var(--muted);margin:10px auto 18px;max-width:480px}
+.empty .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+.cta{background:var(--blue);color:#fff;border-radius:26px;padding:34px 28px;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:50px}
+.cta h2{font-size:clamp(24px,3vw,32px)}
+.cta p{opacity:.85;margin-top:6px}
+.cta .row{display:flex;gap:10px;flex-wrap:wrap}
+.cta .btn-ghost{border-color:#fff;color:var(--blue2)}
+[hidden]{display:none!important}
+footer{padding:24px 0 40px;color:var(--muted);font-size:13.5px;text-align:center}
+
+.hm{position:fixed;inset:0;z-index:80;background:rgba(10,22,64,.55);display:grid;place-items:center;padding:20px}
+.hm[hidden]{display:none!important}
+.hm-p{background:#fff;border-radius:24px;width:min(860px,100%);max-height:calc(100vh - 40px);overflow:auto;position:relative}
+.hm-p .art{aspect-ratio:16/9}
+.hm-x{position:absolute;top:12px;right:12px;z-index:2;width:44px;height:44px;border-radius:50%;background:#fff;font:700 22px/1 var(--display);box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.hm-b{padding:22px 24px 26px}
+.hm-b h2{font-size:clamp(22px,3vw,30px);margin:6px 0 10px}
+.hm-b .price{border:0;padding:6px 0 0}
+.desc{white-space:pre-line;color:var(--muted);margin-top:14px;font-size:15px}
+.note{font-size:12.5px;color:var(--muted);margin-top:10px;font-style:italic}
+.hm-acts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+
+@media (max-width:1020px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .back span,.nav .btn{display:none}
+  .filters{position:static}
+  .f-row{gap:8px}
+  .inp{flex:1 1 100%}
+  .sel{flex:0 0 calc(50% - 4px);width:calc(50% - 4px);min-width:0;font-size:14px;padding:0 8px}
+  .chk{flex:0 0 calc(50% - 4px);font-size:14px;padding:0 8px;min-width:0}
+  .hm{padding:0;place-items:end center}
+  .hm-p{border-radius:22px 22px 0 0;max-height:94vh}
+  .hm-p .art{aspect-ratio:4/3}
+  .hm-acts{grid-template-columns:1fr}
+}
+@media (max-width:380px){.logo span{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a href="/" class="logo js-home" aria-label="WhaleHome">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#1D4DFF"/><path d="M6 22.5c0-4.6 3.9-7.5 9.4-7.5h5.2c4.6 0 8 2.3 9.3 5.6l2.6-3.4c.4-.5 1.2-.2 1.1.4l-.7 4.4.7 4.4c.1.6-.7.9-1.1.4l-2.6-3.4c-1.3 4.6-5.5 7.6-11 7.6h-3.6C10 31 6 27.6 6 22.5z" fill="#fff"/><circle cx="12.4" cy="21.2" r="1.5" fill="#1D4DFF"/><path d="M9.5 25.5c2.5 1.6 6.2 2.1 9.4 1.1" fill="none" stroke="#1D4DFF" stroke-width="1.6" stroke-linecap="round" opacity=".55"/><path d="M17.5 13c0-2.2 1-3.6 2.4-4.6M17.5 13c-.3-1.9-1.4-3.1-2.9-3.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span>Whale<i>Home</i></span>
+    </a>
+    <a class="back js-home" href="/">←<span data-i="back">Top picks</span></a>
+    <div class="sp"></div>
+    <div class="langs" role="group" aria-label="Language"><a href="?lang=en" data-l="en">EN</a><a href="?lang=es" data-l="es">ES</a><a href="?lang=ru" data-l="ru">RU</a></div>
+    <a class="btn btn-blue js-tg" target="_blank" rel="noopener" href="https://t.me/whale_home_estate_bot" data-i="pick">Pick for me</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap top">
+    <span class="eyebrow" data-i="eb">All homes</span>
+    <h1 data-i="h1">All homes in Panama</h1>
+    <p data-i="lead">Filter by budget, area and size. Prices in US dollars, you pay in USDT, USDC, BTC, ETH or SOL.</p>
+  </div>
+
+  <div class="filters">
+    <div class="wrap">
+      <div class="f-row"><div class="chips" id="fb" role="group" aria-label="Budget"></div></div>
+      <div class="f-row">
+        <input class="inp" id="fq" type="search" autocomplete="off" aria-label="Search" data-ph="q" placeholder="Search by name or area">
+        <select class="sel" id="fa" aria-label="Area"></select>
+        <select class="sel" id="fr" aria-label="Bedrooms"></select>
+        <select class="sel" id="ft" aria-label="Type"></select>
+        <select class="sel" id="fs" aria-label="Sort"></select>
+        <label class="chk"><input type="checkbox" id="fv"><span data-i="res">Residency ($300k+)</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="count"><span id="cnt"></span><button class="reset" id="reset" type="button" data-i="reset" hidden>Reset filters</button></div>
+    <div class="grid" id="grid" aria-live="polite"></div>
+    <div class="more"><button class="btn btn-ghost" id="more" type="button" data-i="more" hidden>Show more</button></div>
+    <div class="cta">
+      <div><h2 data-i="ctaH">Not sure which one?</h2><p data-i="ctaP">Tell me your budget and goal. I'll send a short list in a day.</p></div>
+      <div class="row"><a class="btn btn-ghost js-tg" target="_blank" rel="noopener" href="https://t.me/whale_home_estate_bot">Telegram</a><a class="btn btn-wa js-wa" target="_blank" rel="noopener" href="#">WhatsApp</a></div>
+    </div>
+  </div>
+</main>
+<footer><div class="wrap" data-i="foot">Listings and photos: CPanama, used with permission. Prices are approximate, rounded to $10,000.</div></footer>
+
+<div class="hm" id="hm" role="dialog" aria-modal="true" aria-labelledby="hmT" hidden>
+  <div class="hm-p"><button class="hm-x" id="hmX" type="button" aria-label="Close">×</button><div id="hmC"></div></div>
+</div>
+
+<script>
+const CONFIG={
+  calendly:"https://calendly.com/voinov-agency/real-estate-deals-ceo",
+  whatsapp:"50764566336",
+  bot:"https://t.me/whale_home_estate_bot",
+  data:"/properties.json",
+  page:24,
+};
+const T=(en,es,ru)=>({en,es,ru});
+const S={
+  back:T("Top picks","Selección","Лучшие"),pick:T("Pick for me","Elige por mí","Подберите мне"),
+  eb:T("All homes","Todas las propiedades","Все объекты"),h1:T("All homes in Panama","Todas las propiedades en Panamá","Все объекты в Панаме"),
+  lead:T("Filter by budget, area and size. Prices in US dollars, you pay in USDT, USDC, BTC, ETH or SOL.","Filtra por presupuesto, zona y tamaño. Precios en dólares, pagas en USDT, USDC, BTC, ETH o SOL.","Фильтруйте по бюджету, району и площади. Цены в долларах, оплата в USDT, USDC, BTC, ETH или SOL."),
+  q:T("Search by name or area","Buscar por nombre o zona","Поиск по названию или району"),
+  res:T("Residency ($300k+)","Residencia ($300k+)","ВНЖ ($300k+)"),reset:T("Reset filters","Quitar filtros","Сбросить фильтры"),
+  more:T("Show more","Ver más","Показать ещё"),
+  found:T("Found","Encontradas","Найдено"),homes:T("homes","propiedades","объектов"),
+  all:T("All","Todos","Все"),anyArea:T("Any area","Cualquier zona","Любой район"),anyBeds:T("Any bedrooms","Cualquier nº de hab.","Любое число спален"),anyType:T("Any type","Cualquier tipo","Любой тип"),
+  bd1:T("Studio or 1 bedroom","Estudio o 1 hab.","Студия или 1 спальня"),bd2:T("2 bedrooms","2 hab.","2 спальни"),bd3:T("3 bedrooms","3 hab.","3 спальни"),bd4:T("4+ bedrooms","4+ hab.","4+ спальни"),
+  ty_apartment:T("Apartment","Apartamento","Квартира"),ty_penthouse:T("Penthouse","Penthouse","Пентхаус"),ty_house:T("House or villa","Casa o villa","Дом или вилла"),ty_new:T("New project","Proyecto nuevo","Новостройка"),ty_land:T("Land","Terreno","Участок"),
+  s_pa:T("Price: low to high","Precio: de menor a mayor","Цена: по возрастанию"),s_pd:T("Price: high to low","Precio: de mayor a menor","Цена: по убыванию"),s_m2:T("Size: largest first","Tamaño: más grande primero","Площадь: сначала большие"),
+  bd:T("bd","hab","сп."),ba:T("ba","baños","санузл."),from:T("from","desde","от"),resTag:T("Residency","Residencia","ВНЖ"),
+  details:T("Details","Detalles","Подробнее"),callS:T("Call","Llamada","Звонок"),call:T("Discuss on a call","Hablar en una llamada","Обсудить на звонке"),
+  emptyH:T("Nothing found with these filters","Nada con estos filtros","По этим фильтрам ничего нет"),
+  emptyP:T("Tell me your budget and area. I'll find homes that are not on the site.","Dime tu presupuesto y zona. Buscaré propiedades que no están en el sitio.","Напишите бюджет и район. Я найду объекты, которых нет на сайте."),
+  ctaH:T("Not sure which one?","¿No sabes cuál elegir?","Не знаете, что выбрать?"),
+  ctaP:T("Tell me your budget and goal. I'll send a short list in a day.","Dime tu presupuesto y objetivo. Te envío una selección en un día.","Напишите бюджет и цель. Пришлю короткую подборку за день."),
+  foot:T("Listings and photos: CPanama, used with permission. Prices are approximate, rounded to $10,000.","Propiedades y fotos: CPanama, con permiso. Precios aproximados, redondeados a $10,000.","Объекты и фото: CPanama, с разрешения. Цены примерные, округлены до $10,000."),
+  descNote:T("","Descripción del promotor en inglés.","Описание от застройщика на английском."),
+  wa:T("Hi Artem. I am interested in this home:","Hola Artem. Me interesa esta propiedad:","Здравствуйте, Артём. Интересует этот объект:"),
+  waGen:T("Hi Artem. I am interested in buying property in Panama with crypto.","Hola Artem. Me interesa comprar una propiedad en Panamá con crypto.","Здравствуйте, Артём. Интересует покупка недвижимости в Панаме за крипту."),
+};
+const BUD=[["all",0,1e12],["b0",0,299999,"< $300k"],["b1",300000,500000,"$300k–500k"],["b2",500001,1000000,"$500k–1M"],["b3",1000001,3000000,"$1M–3M"],["b4",3000001,1e12,"$3M+"]];
+let lang="en",DATA=[],shown=CONFIG.page,F={b:"all",q:"",a:"",r:"",t:"",s:"pa",v:false};
+const $=id=>document.getElementById(id),tr=o=>o[lang]??o.en,usd=n=>"$"+Math.round(n).toLocaleString("en-US");
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const img=(h,n)=>`/img/props/${h.k}-${n}.webp`;
+const calURL=h=>CONFIG.calendly+"?utm_source=whalehome.io&utm_medium=site&utm_campaign=catalog&utm_content="+encodeURIComponent(h.k)+"&a1="+encodeURIComponent(`Home: ${h.t} (${h.a}, ${usd(h.p)})`);
+const waURL=h=>"https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(h?`${tr(S.wa)} ${h.t} · ${h.a} · ${usd(h.p)}\nhttps://whalehome.io/properties/#${h.k}`:tr(S.waGen));
+
+function specs(h){
+  const o=[];
+  if(h.beds)o.push(h.beds[0]===h.beds[1]?`${h.beds[0]} ${tr(S.bd)}`:`${h.beds[0]}–${h.beds[1]} ${tr(S.bd)}`);
+  if(h.baths)o.push(`${h.baths} ${tr(S.ba)}`);
+  if(h.m2)o.push(`${h.m2} m²`);
+  return o.map(x=>`<span>${esc(x)}</span>`).join("");
+}
+const priceHTML=h=>`${h.from?`<small>${tr(S.from)}</small>`:""}<span class="tabnum">${usd(h.p)}</span>`;
+function gallery(h,eager){
+  const n=h.n||1;
+  return `<div class="art"><div class="strip">${Array.from({length:n},(_,i)=>`<img src="${img(h,i+1)}" alt="${esc(h.t)}" ${eager&&!i?"":'loading="lazy"'} decoding="async" draggable="false">`).join("")}</div>
+   ${n>1?`<button class="pb p" type="button" aria-label="Previous photo">‹</button><button class="pb n" type="button" aria-label="Next photo">›</button><div class="dots">${Array.from({length:n},(_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</div>`:""}
+   ${h.p>=300000?`<span class="tag">✓ ${tr(S.resTag)}</span>`:""}</div>`;
+}
+function bindGal(root){
+  root.querySelectorAll(".art").forEach(g=>{
+    if(g.dataset.b)return;g.dataset.b=1;
+    const st=g.querySelector(".strip"),dots=[...g.querySelectorAll(".dots i")],go=d=>st.scrollBy({left:d*st.clientWidth,behavior:"smooth"});
+    const p=g.querySelector(".pb.p"),n=g.querySelector(".pb.n");
+    if(p)p.onclick=e=>{e.stopPropagation();go(-1)};if(n)n.onclick=e=>{e.stopPropagation();go(1)};
+    st.addEventListener("scroll",()=>{const k=Math.round(st.scrollLeft/st.clientWidth);dots.forEach((x,i)=>x.classList.toggle("on",i===k))},{passive:true});
+  });
+}
+
+function filtered(){
+  const b=BUD.find(x=>x[0]===F.b)||BUD[0],q=F.q.trim().toLowerCase();
+  let r=DATA.filter(h=>h.p>=b[1]&&h.p<=b[2]
+    &&(!F.a||h.a===F.a)
+    &&(!F.t||h.type===F.t)
+    &&(!F.v||h.p>=300000)
+    &&(!F.r||(h.beds&&(F.r==="4"?h.beds[1]>=4:F.r==="1"?h.beds[0]<=1:h.beds[0]<=+F.r&&h.beds[1]>=+F.r)))
+    &&(!q||(h.t+" "+h.a).toLowerCase().includes(q)));
+  if(F.s==="pd")r=r.slice().sort((x,y)=>y.p-x.p);
+  else if(F.s==="m2")r=r.slice().sort((x,y)=>(y.m2||0)-(x.m2||0));
+  return r;
+}
+function homesWord(n){
+  if(lang!=="ru")return n===1?tr(T("home","propiedad","")):tr(S.homes);
+  const a=n%10,b=n%100;return a===1&&b!==11?"объект":a>=2&&a<=4&&(b<12||b>14)?"объекта":"объектов";
+}
+function renderList(){
+  const r=filtered(),g=$("grid");
+  $("cnt").innerHTML=`${tr(S.found)}: <b class="tabnum">${r.length}</b> ${homesWord(r.length)}`;
+  $("reset").hidden=F.b==="all"&&!F.q&&!F.a&&!F.r&&!F.t&&!F.v;
+  if(!r.length){
+    g.innerHTML=`<div class="empty"><h3>${tr(S.emptyH)}</h3><p>${tr(S.emptyP)}</p><div class="row"><a class="btn btn-tg" target="_blank" rel="noopener" href="${CONFIG.bot}?start=homes">Telegram</a><a class="btn btn-wa" target="_blank" rel="noopener" href="${waURL()}">WhatsApp</a></div></div>`;
+    $("more").hidden=true;return;
+  }
+  g.innerHTML=r.slice(0,shown).map((h,i)=>`<article class="card" id="${esc(h.k)}">${gallery(h,i<3)}
+    <div class="body"><small>${esc(h.a)}</small><h3>${esc(h.t)}</h3><div class="specs">${specs(h)}</div>
+    <div class="price">${priceHTML(h)}</div>
+    <div class="acts"><button class="btn btn-ghost js-d" type="button" data-k="${esc(h.k)}">${tr(S.details)}</button><a class="btn btn-blue" target="_blank" rel="noopener" href="${calURL(h)}">📞 ${tr(S.callS)}</a></div></div></article>`).join("");
+  $("more").hidden=r.length<=shown;
+  bindGal(g);
+  g.querySelectorAll(".js-d").forEach(b=>b.onclick=()=>openHome(b.dataset.k));
+}
+function openHome(k){
+  const h=DATA.find(x=>x.k===k);if(!h)return;
+  $("hmC").innerHTML=`${gallery(h,true)}<div class="hm-b"><small style="color:var(--muted)">${esc(h.a)}</small><h2 id="hmT">${esc(h.t)}</h2>
+    <div class="specs">${specs(h)}</div><div class="price">${priceHTML(h)}</div>
+    ${h.d?`<p class="desc">${esc(h.d)}</p>${tr(S.descNote)?`<p class="note">${tr(S.descNote)}</p>`:""}`:""}
+    <div class="hm-acts"><a class="btn btn-blue" target="_blank" rel="noopener" href="${calURL(h)}">${tr(S.call)}</a><a class="btn btn-wa" target="_blank" rel="noopener" href="${waURL(h)}">WhatsApp</a><a class="btn btn-tg" target="_blank" rel="noopener" href="${CONFIG.bot}?start=homes">Telegram</a></div></div>`;
+  $("hm").hidden=false;document.body.style.overflow="hidden";bindGal($("hmC"));
+  history.replaceState(null,"","#"+k);$("hmX").focus();
+}
+function closeHome(){$("hm").hidden=true;document.body.style.overflow="";history.replaceState(null,"",location.pathname+location.search);}
+
+function renderFilters(){
+  $("fb").innerHTML=BUD.map(b=>`<button class="chip ${F.b===b[0]?"on":""}" type="button" data-b="${b[0]}">${b[0]==="all"?tr(S.all):b[3]}</button>`).join("");
+  $("fb").querySelectorAll(".chip").forEach(c=>c.onclick=()=>{F.b=c.dataset.b;shown=CONFIG.page;renderFilters();renderList();});
+  const areas=[...new Set(DATA.map(h=>h.a).filter(Boolean))].sort();
+  const opt=(v,l,cur)=>`<option value="${esc(v)}" ${cur===v?"selected":""}>${esc(l)}</option>`;
+  $("fa").innerHTML=opt("",tr(S.anyArea),F.a)+areas.map(a=>opt(a,a,F.a)).join("");
+  $("fr").innerHTML=opt("",tr(S.anyBeds),F.r)+[["1",S.bd1],["2",S.bd2],["3",S.bd3],["4",S.bd4]].map(([v,l])=>opt(v,tr(l),F.r)).join("");
+  const types=[...new Set(DATA.map(h=>h.type))];
+  $("ft").innerHTML=opt("",tr(S.anyType),F.t)+["apartment","penthouse","house","new","land"].filter(t=>types.includes(t)).map(t=>opt(t,tr(S["ty_"+t]),F.t)).join("");
+  $("fs").innerHTML=[["pa",S.s_pa],["pd",S.s_pd],["m2",S.s_m2]].map(([v,l])=>opt(v,tr(l),F.s)).join("");
+  $("fv").checked=F.v;$("fq").value=F.q;
+}
+function applyLang(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-i]").forEach(el=>{const v=S[el.dataset.i];if(v)el.textContent=tr(v)});
+  document.querySelectorAll("[data-ph]").forEach(el=>el.placeholder=tr(S[el.dataset.ph]));
+  document.querySelectorAll(".langs a").forEach(a=>a.classList.toggle("on",a.dataset.l===lang));
+  document.querySelectorAll(".js-home").forEach(a=>a.href=`/${lang}/#homes`);
+  document.querySelectorAll(".js-tg").forEach(a=>a.href=`${CONFIG.bot}?start=${lang}`);
+  document.querySelectorAll(".js-wa").forEach(a=>a.href=waURL());
+  renderFilters();renderList();
+}
+
+(async function(){
+  const q=new URLSearchParams(location.search);
+  let l=q.get("lang");if(!l){try{l=localStorage.getItem("kp-lang")}catch(e){}}
+  if(!l){const n=(navigator.language||"en").slice(0,2);l=n==="es"||n==="ru"?n:"en"}
+  lang=["en","es","ru"].includes(l)?l:"en";
+  if(BUD.some(b=>b[0]===q.get("b")))F.b=q.get("b");
+  document.querySelectorAll(".langs a").forEach(a=>a.onclick=e=>{e.preventDefault();lang=a.dataset.l;try{localStorage.setItem("kp-lang",lang)}catch(_){}
+    const u=new URLSearchParams(location.search);u.set("lang",lang);history.replaceState(null,"","?"+u+location.hash);applyLang();});
+  $("fq").addEventListener("input",e=>{F.q=e.target.value;shown=CONFIG.page;renderList()});
+  $("fa").onchange=e=>{F.a=e.target.value;shown=CONFIG.page;renderList()};
+  $("fr").onchange=e=>{F.r=e.target.value;shown=CONFIG.page;renderList()};
+  $("ft").onchange=e=>{F.t=e.target.value;shown=CONFIG.page;renderList()};
+  $("fs").onchange=e=>{F.s=e.target.value;renderList()};
+  $("fv").onchange=e=>{F.v=e.target.checked;shown=CONFIG.page;renderList()};
+  $("reset").onclick=()=>{F={b:"all",q:"",a:"",r:"",t:"",s:F.s,v:false};shown=CONFIG.page;renderFilters();renderList()};
+  $("more").onclick=()=>{shown+=CONFIG.page;renderList()};
+  $("hmX").onclick=closeHome;$("hm").addEventListener("click",e=>{if(e.target.id==="hm")closeHome()});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("hm").hidden)closeHome()});
+  try{DATA=await (await fetch(CONFIG.data,{cache:"no-cache"})).json()}catch(e){DATA=[]}
+  applyLang();
+  const k=location.hash.slice(1);if(k&&DATA.some(h=>h.k===k))openHome(k);
+})();
+</script>
+</body>
+</html>
