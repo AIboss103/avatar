@@ -99,17 +99,21 @@ def save_photos(slug, photos):
     return n
 
 
+def unzip(p, tmp):
+    d = pathlib.Path(tempfile.mkdtemp(dir=tmp))
+    with zipfile.ZipFile(p) as z:
+        for m in z.namelist():  # keep extraction inside d
+            if ".." not in pathlib.PurePosixPath(m).parts and not m.startswith("/"):
+                z.extract(m, d)
+    return d
+
+
 def folders(paths, tmp):
     for p in map(pathlib.Path, paths):
-        if p.suffix == ".zip":
-            d = pathlib.Path(tempfile.mkdtemp(dir=tmp))
-            with zipfile.ZipFile(p) as z:
-                for m in z.namelist():  # keep extraction inside d
-                    if ".." not in pathlib.PurePosixPath(m).parts and not m.startswith("/"):
-                        z.extract(m, d)
-            p = d
-        for md in p.rglob("listing.md"):
-            yield md.parent
+        roots = [unzip(p, tmp)] if p.suffix == ".zip" else [p] + [unzip(z, tmp) for z in sorted(p.rglob("*.zip"))]
+        for r in roots:
+            for md in r.rglob("listing.md"):
+                yield md.parent
 
 
 def main(argv):
