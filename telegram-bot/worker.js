@@ -12,7 +12,7 @@
 // Leads arrive in that chat; reply to a lead message to answer the user.
 
 const SITE = "https://whalehome.io";
-const CALENDLY = "https://calendly.com/voinov-agency/real-estate-deals-ceo";
+const CALENDLY = "https://calendly.com/voinov-agency/whalehome-ceo-meeting";
 const WHATSAPP = "50764566336";
 const LANGS = ["en", "es", "ru"];
 
