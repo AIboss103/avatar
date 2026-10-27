@@ -226,6 +226,10 @@ section{padding-block:96px}
 .pk li img{width:22px;height:22px;flex:none;margin-top:-1px}
 .pk .perk{background:var(--sky);color:var(--blue2);border-radius:14px;padding:12px 14px;font:700 14px/1.35 var(--display)}
 .pk.pop .perk{background:rgba(255,255,255,.1);color:#fff}
+.pk .guar{display:flex;gap:12px;align-items:center;background:#E7F8F0;border:1px solid #A8E4C8;border-radius:14px;padding:12px 14px;color:#0B5E3F}
+.pk .guar img{width:40px;height:40px;flex:none}
+.pk .guar b{display:block;font:800 15px/1.2 var(--display)}
+.pk .guar span{font-size:13.5px;line-height:1.35}
 .pk .btn{margin-top:auto;width:100%}
 .pk.pop .btn-ghost{background:#fff;border-color:#fff;color:var(--navy)}
 
@@ -999,7 +1003,7 @@ const VIP_FREE=1000000,VIP_TXT=T("VIP Tour Included","Tour VIP incluido","VIP-т
 const vipTag=h=>h.p>=VIP_FREE?`<span class="tag vip"><img src="${E("heli")}" alt="">${tr(VIP_TXT)}</span>`:"";
 const PH=(h,n)=>`/img/homes/${h.k}-${n}.webp`,NPH=5;
 const PK=[
- {e:"video",name:T("Online consultation","Consulta online","Онлайн-консультация"),badge:T("Start here","Empieza aquí","Начать отсюда"),desc:T("Get a clear plan without flying in.","Un plan claro sin viajar.","Понятный план без перелёта."),amt:"$1,000",per:T("one time","pago único","разово"),
+ {e:"video",guar:[T("100% Satisfaction Guarantee","Garantía de satisfacción 100%","Гарантия 100%"),T("Not satisfied? I refund the full $1,000 within 7 days.","¿No quedas satisfecho? Te devuelvo los $1,000 completos en 7 días.","Не устроило? Верну все $1,000 в течение 7 дней.")],name:T("Online consultation","Consulta online","Онлайн-консультация"),badge:T("Start here","Empieza aquí","Начать отсюда"),desc:T("Get a clear plan without flying in.","Un plan claro sin viajar.","Понятный план без перелёта."),amt:"$1,000",per:T("one time","pago único","разово"),
   li:[T("2-hour video call with me","Videollamada de 2 horas conmigo","2 часа видеозвонка со мной"),T("Shortlist of 10 homes for your budget","10 propiedades para tu presupuesto","Подборка из 10 объектов под ваш бюджет"),T("Call with a Panama lawyer","Llamada con un abogado panameño","Созвон с юристом из Панамы"),T("Residency and tax plan","Plan de residencia e impuestos","План по ВНЖ и налогам"),T("How to pay with your coins","Cómo pagar con tus monedas","Как заплатить вашей криптой")],
   perk:T("100% credited if you book the VIP tour","100% se descuenta si reservas el tour VIP","100% засчитывается в VIP-тур"),cta:T("Book consultation","Reservar consulta","Записаться"),k:"consult"},
  {e:"heli",pop:1,name:T("VIP Panama tour","Tour VIP Panamá","VIP-тур по Панаме"),badge:T("Most popular","El más elegido","Популярный"),desc:T("3 days. See it, feel it, choose.","3 días. Velo, siéntelo, elige.","3 дня. Увидеть, почувствовать, выбрать."),amt:"$10,000",per:T("all inclusive","todo incluido","всё включено"),
@@ -1076,7 +1080,8 @@ const FAQ=[
  [T("How do I get residency?","¿Cómo obtengo la residencia?","Как получить ВНЖ?"),T("Buy a home for $300,000 or more and apply for the Qualified Investor visa. It gives permanent residency. My lawyer files everything.","Compra una propiedad de $300,000 o más y aplica a la visa de Inversionista Calificado. Da residencia permanente. Mi abogado lo tramita todo.","Покупаете объект от $300,000 и подаёте на визу квалифицированного инвестора. Она даёт ПМЖ. Мой юрист оформляет всё сам.")],
  [T("Do I have to live in Panama?","¿Tengo que vivir en Panamá?","Нужно ли жить в Панаме?"),T("No. Many buyers rent the home out and visit a few times a year. I manage the rental for you.","No. Muchos compradores alquilan y vienen unas veces al año. Yo gestiono el alquiler.","Нет. Многие сдают жильё и приезжают пару раз в год. Аренду веду я.")],
  [T("What about taxes?","¿Y los impuestos?","Что с налогами?"),T("Panama does not tax income earned outside Panama. Rent from a Panama home is taxed locally at low rates. My lawyer gives you the exact numbers.","Panamá no grava ingresos generados fuera del país. La renta de una propiedad en Panamá paga impuestos locales bajos. Mi abogado te da los números exactos.","Панама не облагает доход, заработанный за её пределами. Аренда здесь облагается местным налогом по низкой ставке. Точные цифры даст мой юрист.")],
- [T("What does it cost me as a buyer?","¿Cuánto me cuesta como comprador?","Сколько это стоит покупателю?"),T("The consultation ($1,000) and VIP tour ($10,000) are credited if you buy. The VIP tour is free with a home from $1M. I explain the full cost of the deal on the call.","La consulta ($1,000) y el tour VIP ($10,000) se descuentan si compras. El tour VIP es gratis con una propiedad desde $1M. El costo total del trato lo explico en la llamada.","Консультация ($1,000) и VIP-тур ($10,000) засчитываются при покупке. VIP-тур бесплатный при покупке от $1M. Полную стоимость сделки объясняю на звонке.")],
+ [T("What if the consultation doesn't help me?","¿Y si la consulta no me sirve?","А если консультация мне не поможет?"),T("The consultation has a 100% satisfaction guarantee. If you are not satisfied, tell me within 7 days and I refund the full $1,000.","La consulta tiene garantía de satisfacción 100%. Si no quedas satisfecho, avísame en 7 días y te devuelvo los $1,000 completos.","На консультацию гарантия 100%. Если не устроило, напишите мне в течение 7 дней, и я верну все $1,000.")],
+  [T("What does it cost me as a buyer?","¿Cuánto me cuesta como comprador?","Сколько это стоит покупателю?"),T("The consultation ($1,000) and VIP tour ($10,000) are credited if you buy. The VIP tour is free with a home from $1M. I explain the full cost of the deal on the call.","La consulta ($1,000) y el tour VIP ($10,000) se descuentan si compras. El tour VIP es gratis con una propiedad desde $1M. El costo total del trato lo explico en la llamada.","Консультация ($1,000) и VIP-тур ($10,000) засчитываются при покупке. VIP-тур бесплатный при покупке от $1M. Полную стоимость сделки объясняю на звонке.")],
  [T("Which coins do you accept?","¿Qué monedas aceptan?","Какую крипту вы принимаете?"),T("USDT, USDC, BTC, ETH and SOL. Bank transfer in USD works too.","USDT, USDC, BTC, ETH y SOL. También transferencia bancaria en USD.","USDT, USDC, BTC, ETH и SOL. Также можно банковским переводом в USD.")],
 ];
 
@@ -1200,7 +1205,7 @@ function closeHome(){$("hm").hidden=true;hmCur=null;document.body.style.overflow
 function renderPK(){
   $("pkg").innerHTML=PK.map(p=>`<div class="pk${p.pop?" pop":""}"><div class="pk-top"><img class="emo" src="${E(p.e)}" alt=""><span class="badge">${tr(p.badge)}</span></div>
   <div><h3>${tr(p.name)}</h3><p class="desc">${tr(p.desc)}</p></div><div class="amt">${p.amt}<small>${tr(p.per)}</small></div>
-  <ul>${p.li.map(l=>`<li><img src="${E("check")}" alt="">${tr(l)}</li>`).join("")}</ul>${p.perk?`<div class="perk">${tr(p.perk)}</div>`:""}
+  <ul>${p.li.map(l=>`<li><img src="${E("check")}" alt="">${tr(l)}</li>`).join("")}</ul>${p.guar?`<div class="guar"><img src="${E("shield")}" alt=""><div><b>${tr(p.guar[0])}</b><span>${tr(p.guar[1])}</span></div></div>`:""}${p.perk?`<div class="perk">${tr(p.perk)}</div>`:""}
   <a class="btn ${p.pop?"btn-ghost":"btn-blue"} js-wa-pk" data-k="${p.k}" href="#" target="_blank" rel="noopener">${tr(p.cta)}</a></div>`).join("");
   document.querySelectorAll(".js-wa-pk").forEach(a=>{const p=PK.find(x=>x.k===a.dataset.k);a.href=waURL(tr(T("I'm interested in: ","Me interesa: ","Интересует: "))+tr(p.name)+" ("+p.amt+")")});
 }
