@@ -19,9 +19,9 @@ const LANGS = ["en", "es", "ru"];
 /* ---------- texts ---------- */
 const TX = {
   start: {
-    en: "<b>WhaleHome</b> · homes in Panama for crypto people.\n\nI'm Artem Voinov. I help you buy a home in Panama and pay in USDT, USDC, BTC, ETH or SOL.\n\n<b>What I do</b>\n• Pick homes for your budget, from $150k to $7M\n• Panama residency with a home from $300k\n• Online consultation · $1,000\n• VIP tour of Panama, 3 days · $10,000\n• The whole deal: lawyer, escrow, residency papers\n\nPick what you need below.",
-    es: "<b>WhaleHome</b> · propiedades en Panamá para la gente crypto.\n\nSoy Artem Voinov. Te ayudo a comprar una propiedad en Panamá y pagar en USDT, USDC, BTC, ETH o SOL.\n\n<b>Qué hago</b>\n• Elijo propiedades para tu presupuesto, de $150k a $7M\n• Residencia en Panamá con una propiedad desde $300k\n• Consulta online · $1,000\n• Tour VIP por Panamá, 3 días · $10,000\n• Todo el trato: abogado, escrow, papeles de residencia\n\nElige lo que necesitas abajo.",
-    ru: "<b>WhaleHome</b> · недвижимость в Панаме для людей из крипты.\n\nЯ Артём Войнов. Помогаю купить недвижимость в Панаме и заплатить в USDT, USDC, BTC, ETH или SOL.\n\n<b>Что я делаю</b>\n• Подбираю объекты под ваш бюджет, от $150k до $7M\n• ВНЖ Панамы при покупке от $300k\n• Онлайн-консультация · $1,000\n• VIP-тур по Панаме, 3 дня · $10,000\n• Веду всю сделку: юрист, эскроу, документы на ВНЖ\n\nВыберите, что вам нужно.",
+    en: "<b>WhaleHome</b> · homes in Panama for crypto people.\n\nI'm Artem Voinov. I help you buy a home in Panama and pay in USDT, USDC, BTC, ETH or SOL.\n\n<b>What I do</b>\n• Pick homes for your budget, from $150k to $7M\n• Panama residency with a home from $300k\n• Online consultation · $1,000\n• VIP tour of Panama, 3 days · $10,000\n• The whole deal: lawyer, escrow, residency papers\n\nCEO: Artem Voinov · @artofwar\nWrite to me directly: @avicoda\n\nPick what you need below.",
+    es: "<b>WhaleHome</b> · propiedades en Panamá para la gente crypto.\n\nSoy Artem Voinov. Te ayudo a comprar una propiedad en Panamá y pagar en USDT, USDC, BTC, ETH o SOL.\n\n<b>Qué hago</b>\n• Elijo propiedades para tu presupuesto, de $150k a $7M\n• Residencia en Panamá con una propiedad desde $300k\n• Consulta online · $1,000\n• Tour VIP por Panamá, 3 días · $10,000\n• Todo el trato: abogado, escrow, papeles de residencia\n\nCEO: Artem Voinov · @artofwar\nEscríbeme directo: @avicoda\n\nElige lo que necesitas abajo.",
+    ru: "<b>WhaleHome</b> · недвижимость в Панаме для людей из крипты.\n\nЯ Артём Войнов. Помогаю купить недвижимость в Панаме и заплатить в USDT, USDC, BTC, ETH или SOL.\n\n<b>Что я делаю</b>\n• Подбираю объекты под ваш бюджет, от $150k до $7M\n• ВНЖ Панамы при покупке от $300k\n• Онлайн-консультация · $1,000\n• VIP-тур по Панаме, 3 дня · $10,000\n• Веду всю сделку: юрист, эскроу, документы на ВНЖ\n\nCEO: Артём Войнов · @artofwar\nНаписать мне лично: @avicoda\n\nВыберите, что вам нужно.",
   },
   bApp: { en: "🐋 Open WhaleHome", es: "🐋 Abrir WhaleHome", ru: "🐋 Открыть WhaleHome" },
   bHomes: { en: "🏠 Pick a home", es: "🏠 Elegir propiedad", ru: "🏠 Подобрать объект" },
@@ -289,6 +289,7 @@ async function onMessage(env, m) {
   if (text.startsWith("/start")) {
     const p = text.split(/\s+/)[1] || "";               // deep link: t.me/<bot>?start=es or ?start=homes
     if (LANGS.includes(p)) u.lang = p;
+    u.seen = 1;
     await putUser(env, from.id, u);
     if (["homes", "roi", "consult", "tour", "contact"].includes(p)) return onCallback(env, { id: "", from, data: p, message: m });
     return showMenu(env, chat, u.lang);
@@ -297,6 +298,9 @@ async function onMessage(env, m) {
   if (cmd) return onCallback(env, { id: "", from, data: cmd, message: m });
   if (text.startsWith("/lang")) return send(env, chat, t("langQ", l), { inline_keyboard: [LANGS.map(x => ({ text: x.toUpperCase(), callback_data: "lang:" + x }))] });
   if (text.startsWith("/")) return showMenu(env, chat, l);
+
+  // first message from someone new (not /start): show the welcome picture and menu first
+  if (!u.seen) { u.seen = 1; await putUser(env, from.id, u); await showMenu(env, chat, l); }
 
   // a contact or any other message: goes to Artem (and to the CRM the first time)
   const contact = m.contact ? "+" + String(m.contact.phone_number).replace(/^\+/, "") : u.await === "contact" ? text : "";
@@ -334,9 +338,9 @@ async function setup(env, origin) {
     ru: [["start", "Меню"], ["homes", "Подобрать объект"], ["roi", "Рассчитать доход"], ["consult", "Консультация · $1,000"], ["tour", "VIP-тур · $10,000"], ["contact", "Оставить контакт"], ["lang", "Язык"]],
   };
   const DESC = {
-    en: ["Homes in Panama for crypto people. Pay in USDT, USDC, BTC, ETH or SOL. Residency from $300k. I pick homes, calculate the return, book a consultation or a VIP tour. Press Start.", "Panama homes for crypto people · whalehome.io"],
-    es: ["Propiedades en Panamá para la gente crypto. Paga en USDT, USDC, BTC, ETH o SOL. Residencia desde $300k. Elijo propiedades, calculo la rentabilidad, reservo consulta o tour VIP. Pulsa Iniciar.", "Propiedades en Panamá para gente crypto · whalehome.io"],
-    ru: ["Недвижимость в Панаме для людей из крипты. Оплата в USDT, USDC, BTC, ETH или SOL. ВНЖ от $300k. Подберу объект, посчитаю доход, запишу на консультацию или VIP-тур. Нажмите Старт.", "Недвижимость в Панаме за крипту · whalehome.io"],
+    en: ["Homes in Panama for crypto people. Pay in USDT, USDC, BTC, ETH or SOL. Residency from $300k. I pick homes, calculate the return, book a consultation or a VIP tour.\n\nCEO: Artem Voinov · @artofwar\nPersonal contact: @avicoda\n\nPress Start.", "Panama homes for crypto people · whalehome.io\nCEO Artem Voinov @artofwar · Contact: @avicoda"],
+    es: ["Propiedades en Panamá para la gente crypto. Paga en USDT, USDC, BTC, ETH o SOL. Residencia desde $300k. Elijo propiedades, calculo la rentabilidad, reservo consulta o tour VIP.\n\nCEO: Artem Voinov · @artofwar\nContacto personal: @avicoda\n\nPulsa Iniciar.", "Propiedades en Panamá para gente crypto · whalehome.io\nCEO Artem Voinov @artofwar · Contacto: @avicoda"],
+    ru: ["Недвижимость в Панаме для людей из крипты. Оплата в USDT, USDC, BTC, ETH или SOL. ВНЖ от $300k. Подберу объект, посчитаю доход, запишу на консультацию или VIP-тур.\n\nCEO: Артём Войнов · @artofwar\nЛичный контакт: @avicoda\n\nНажмите Старт.", "Недвижимость в Панаме за крипту · whalehome.io\nCEO Артём Войнов @artofwar · Связь: @avicoda"],
   };
   for (const l of LANGS) {
     const lc = l === "en" ? {} : { language_code: l };

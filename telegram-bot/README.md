@@ -25,6 +25,8 @@ The bot token is a secret. Never put it in this repository (it is public).
    `"webhook":{"ok":true,...}`, commands and descriptions `true`, and `"admin":"set to chat ..."`.
    The admin is set by itself from Artem's Start press. If it says "not set", Artem sends the bot `/admin <SETUP_KEY>`.
 8. **Avatar:** web.telegram.org → @BotFather → /setuserpic → choose the bot → send `avatar.png`.
+   **Description picture** (shown above the description before Start): @BotFather → /mybots → the bot →
+   Edit Bot → Edit Description Picture → send `description.png` (640×360).
 9. Test: `/start` → "Pick a home" → "Leave my contact" → share the phone. The lead must appear in
    Artem's Telegram chat with the bot and in the CRM "Leads" tab.
 
