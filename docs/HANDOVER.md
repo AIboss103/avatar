@@ -85,3 +85,66 @@ GitHub → Actions → «Import CPanama catalog» → Run workflow (ветка `
 - CEO: Artem Voinov · Telegram-канал @artofwar · личный @avicoda
 - Почта: ceo@restate.deals
 - WhatsApp: +507 6456 6336
+
+## 9. Текущие цены и условия (на 30.10.2026)
+
+**restate.deals** (всё в `CONFIG.pricing` в `real-estate-developers/index.html`):
+
+| План | Цена в месяц | Часы команды | Бюджет на рекламу и фрилансеров (платит клиент) | Цель продаж в месяц | За каждого квалифицированного покупателя | Гарантия |
+|---|---|---|---|---|---|---|
+| Starter | $3,000 (зачёркнуто $5,000) | 30 | около $5,000 | 1 | $250 | 5+ встреч с покупателями или +1 месяц бесплатно |
+| Growth | $6,500 | 70 | около $10,000 | 2–3 | $200 | 10+ встреч или +1 месяц бесплатно |
+| Enterprise | $12,000 | 140 | около $20,000 | 4+ | $150 | 25+ встреч или +1 месяц бесплатно |
+
+- Оплаты за показы сейчас нет (убрана). Процента с прибыли нет.
+- Блок «Берём только 3 проекта в месяц, 2 заняты» — `CONFIG.capacity`.
+- Калькулятор: прибыль застройщика = 5% от цены каждой продажи (`CONFIG.roi.profit`), минус план, бюджет и оплата за квалифицированных покупателей. План ограничивает число продаж своей целью.
+- Квалифицированный покупатель (значок ⓘ в карточках планов): 1) имя и рабочий контакт, отвечает в WhatsApp или по почте; 2) подтверждённый бюджет от $300k и понятно, откуда деньги; 3) готов купить в течение 6 месяцев; 4) всерьёз хочет жить в Панаме или переехать; 5) согласился на звонок или показ с отделом продаж девелопера и не был у девелопера в базе.
+
+**whalehome.io**:
+- Онлайн-консультация $1,000: гарантия 100% (не устроило — возврат всех $1,000 в течение 7 дней), включает финансовый расчёт и примерный ROI по каждому объекту, засчитывается в VIP-тур.
+- VIP-тур $10,000, 3 дня: засчитывается в покупку, бесплатный при покупке от $1M (плашка «VIP Tour Included»).
+- Прямая покупка от $300k. Плашка «Residency» у объектов от $300k. Цены объектов округлены до $10,000, в крипте считаются по `CONFIG.rates`.
+- Обещания «0% комиссии для покупателя» на сайте нет (убрано).
+
+## 10. Как выложить изменения (команды)
+
+```
+git clone https://github.com/aiboss103/avatar.git && cd avatar
+git checkout dental-clinics-site
+# правки в real-estate-developers/ или panama-crypto-homes/, затем:
+python3 scripts/build_restate_lang.py
+python3 scripts/build_whalehome_lang.py
+git commit -am "..." && git push origin dental-clinics-site
+
+# restate.deals
+git worktree add ../site restate-site
+cp -r real-estate-developers/* ../site/ && cd ../site && git add -A && git commit -m "..." && git push origin restate-site && cd -
+
+# whalehome.io
+git worktree add ../demo demo-site
+cp -r panama-crypto-homes/* ../demo/ && cd ../demo && git add -A && git commit -m "..." && git push origin demo-site && cd -
+```
+
+Через 1–2 минуты Cloudflare Pages публикует сайт. Статус: GitHub → коммит → галочка «Cloudflare Pages».
+
+## 11. Аккаунты: что где и чьё
+
+| Сервис | Что там | Владелец / как найти |
+|---|---|---|
+| GitHub | репозиторий `aiboss103/avatar` (публичный) | аккаунт AIboss103 |
+| Cloudflare | зоны restate.deals и whalehome.io, Pages `restate-deals` и `cryptohome-demo`, Worker и KV `whalehome-bot`, Redirect Rules | аккаунт, где сейчас эти зоны; почту проверить в Cloudflare → профиль |
+| Hostinger | регистратор whalehome.io | аккаунт Артёма |
+| Регистратор restate.deals | домен restate.deals | проверить в Cloudflare → Registrar или по WHOIS |
+| Google (av@icoda.io) | Restate Deals CRM, WhaleHome CRM, Apps Script WhaleHome, этот документ | доступ к CRM есть у ceo@restate.deals, к документу у artvoinv@gmail.com |
+| Google (artvoinv@gmail.com) | папка CPanama_all_50_listings | |
+| Calendly | `voinov-agency/real-estate-deals-ceo` (оба сайта), запасная `whalehome-ceo-meeting` | аккаунт Артёма |
+| Plausible | аналитика restate.deals | аккаунт, где добавлен сайт restate.deals |
+| Telegram | бот @whale_home_estate_bot (создан в @BotFather), канал @artofwar, личный @avicoda | аккаунт Артёма |
+
+## 12. Что не доделано (на 30.10.2026)
+
+- **Квиз whalehome.io не доставляет лиды.** Сайт отправляет их на `https://bot.whalehome.io/lead`, а домен `bot.whalehome.io` к Worker не привязан. Решение: Cloudflare → Workers & Pages → whalehome-bot → Settings → Domains & Routes → Add → Custom domain `bot.whalehome.io`. Или заменить `CONFIG.leadsUrl` на адрес Worker `….workers.dev/lead`.
+- **Код бота в Cloudflare может быть старее, чем `telegram-bot/worker.js` в репозитории.** Последние изменения (About с @artofwar и @avicoda, VIP Tour Included, гарантия и ROI в консультации, ссылка Calendly, картинка на первое сообщение) появятся после замены кода: Edit code → вставить `worker.js` → Deploy → открыть `…/setup?key=<SETUP_KEY>`.
+- **Форма на restate.deals не пишет в CRM**: `CONFIG.leadsUrl` пустой, заявка уходит в WhatsApp. Чтобы писать в «Restate Deals CRM», развернуть `crm/leads-apps-script.gs` как Web app и вставить URL в `CONFIG.leadsUrl`.
+- **На whalehome.io нет аналитики** (Plausible только на restate.deals).
