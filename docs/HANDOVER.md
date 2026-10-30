@@ -28,7 +28,7 @@
 | `real-estate-developers/` | restate.deals: `index.html` (весь сайт, тексты EN/ES/RU в `I18N`, цены в `CONFIG.pricing`), `partners/`, `legal/`, `img/`, `vendor/three.min.js`, `_headers`, `_redirects` |
 | `panama-crypto-homes/` | whalehome.io: `index.html` (тексты в `S`, объекты в `HOMES`, настройки в `CONFIG`), `properties/` (каталог), `properties.json`, `homes.json`, `img/` |
 | `telegram-bot/` | `worker.js` (весь бот), `README.md` (установка), `avatar.png`, `description.png` |
-| `crm/` | Apps Script для CRM: `whalehome-leads-apps-script.gs`, `leads-apps-script.gs` (Restate, не подключён) |
+| `crm/` | Apps Script для CRM: `whalehome-leads-apps-script.gs`, `leads-apps-script.gs` (Restate Deals CRM) |
 | `scripts/` | сборка языковых страниц, `homes.json`, каталога из выгрузки CPanama |
 | `.github/workflows/import-cpanama.yml` (ветка `cpanama-import-run`) | GitHub Action: качает объекты CPanama из Google Drive и собирает каталог |
 | `CLAUDE.md` | правила проекта для Claude |
