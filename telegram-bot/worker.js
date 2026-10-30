@@ -4,9 +4,11 @@
 //   BOT_TOKEN   secret  token from @BotFather
 //   SETUP_KEY   secret  random string (letters, digits, - and _). Protects /setup, /admin and the webhook.
 //   LEADS_URL   text    Apps Script web app URL of the WhaleHome CRM (optional; without it leads only go to Telegram)
+//   RESTATE_LEADS_URL text  Apps Script web app URL of the Restate Deals CRM (restate.deals form; optional)
 //   STATE       KV namespace binding: user language, interest, budget and the admin chat
 //
-// Custom domain: bot.whalehome.io (the site sends quiz leads to /lead; "/" redirects to t.me/<bot>).
+// Reachable as whalehome.io/api/* (Worker route on the whalehome.io zone) or bot.whalehome.io (custom domain).
+// /api/lead takes form leads from whalehome.io (quiz) and restate.deals (developer form).
 // After deploy open https://bot.whalehome.io/setup?key=<SETUP_KEY> once. If Artem pressed Start before that,
 // his chat becomes the admin chat by itself; otherwise send "/admin <SETUP_KEY>" from his account.
 // Leads arrive in that chat; reply to a lead message to answer the user.
@@ -168,6 +170,18 @@ async function siteLead(req, env, ctx) {
   try { p = Object.fromEntries(new URLSearchParams(await req.text())); } catch { return new Response("bad", { status: 400, headers: cors }); }
   if (p.hp || (!p.name && !p.whatsapp)) return new Response("ok", { headers: cors });
   const f = k => String(p[k] || "").slice(0, 300);
+  if (p.site === "restate.deals") {
+    ctx.waitUntil((async () => {
+      if (env.RESTATE_LEADS_URL) {
+        const body = new URLSearchParams(["name", "company", "whatsapp", "email", "type", "site", "src", "lang", "notes"].map(k => [k, f(k)]));
+        try { await fetch(env.RESTATE_LEADS_URL, { method: "POST", body }); } catch {}
+      }
+      const admin = await adminId(env);
+      if (admin) await send(env, admin, `🏢 <b>New developer lead</b> · restate.deals\n${esc(f("name"))} · ${esc(f("company"))}\n` +
+        `WhatsApp: ${esc(f("whatsapp"))}\nEmail: ${esc(f("email"))}\nLanguage: ${esc(f("lang").toUpperCase())}` + (p.src ? `\nSource: ${esc(f("src"))}` : ""));
+    })());
+    return new Response("ok", { headers: cors });
+  }
   ctx.waitUntil((async () => {
     if (env.LEADS_URL) {
       const body = new URLSearchParams({ source: "Website quiz", name: f("name"), whatsapp: f("whatsapp"), interest: "Buy a home",
@@ -359,11 +373,13 @@ async function setup(env, origin) {
 export default {
   async fetch(req, env, ctx) {
     const url = new URL(req.url);
-    if (url.pathname === "/setup") {
+    // the same paths work under the whalehome.io/api/* route and on bot.whalehome.io / workers.dev
+    const pre = url.pathname.startsWith("/api/") ? "/api" : "", path = url.pathname.slice(pre.length) || "/";
+    if (path === "/setup") {
       if (!env.SETUP_KEY || url.searchParams.get("key") !== env.SETUP_KEY) return new Response("Forbidden", { status: 403 });
-      return Response.json(await setup(env, url.origin));
+      return Response.json(await setup(env, url.origin + pre));
     }
-    if (url.pathname === "/tg" && req.method === "POST") {
+    if (path === "/tg" && req.method === "POST") {
       if (req.headers.get("X-Telegram-Bot-Api-Secret-Token") !== env.SETUP_KEY) return new Response("Forbidden", { status: 403 });
       const upd = await req.json();
       ctx.waitUntil((async () => {
@@ -374,8 +390,9 @@ export default {
       })());
       return new Response("ok");
     }
-    if (url.pathname === "/lead" && req.method === "POST") return siteLead(req, env, ctx);
-    if (url.pathname === "/") {                          // bot.whalehome.io -> t.me/<bot>, keeps ?start=
+    if (path === "/lead" && req.method === "POST") return siteLead(req, env, ctx);
+    if (path === "/lead" && req.method === "OPTIONS") return new Response(null, { headers: { "access-control-allow-origin": "*", "access-control-allow-methods": "POST" } });
+    if (path === "/" || path === "/bot") {                          // bot.whalehome.io -> t.me/<bot>, keeps ?start=
       let user = await env.STATE.get("me");
       if (!user) { user = ((await tg(env, "getMe", {})).result || {}).username; if (user) await env.STATE.put("me", user); }
       const start = (url.searchParams.get("start") || "").replace(/[^\w-]/g, "").slice(0, 60);

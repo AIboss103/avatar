@@ -39,13 +39,13 @@
 - `pricing` — планы и цены (только здесь), `capacity` — «берём 3 проекта, 2 занято»
 - `calendly` — `https://calendly.com/voinov-agency/real-estate-deals-ceo`
 - `whatsapp` — `50764566336`
-- `leadsUrl` — пусто (форма открывает WhatsApp); можно вставить URL Apps Script из `crm/leads-apps-script.gs`
+- `leadsUrl` — `https://whalehome.io/api/lead`: бот пишет заявку в «Restate Deals CRM» (переменная Worker `RESTATE_LEADS_URL`) и шлёт её Артёму в Telegram; форма ещё и открывает WhatsApp
 - Аналитика: Plausible, домен `restate.deals` (скрипт в `<head>`)
 
 **whalehome.io** — `panama-crypto-homes/index.html`, объект `CONFIG`:
 - `calendly` — `https://calendly.com/voinov-agency/real-estate-deals-ceo` (запасная: `.../whalehome-ceo-meeting`)
 - `whatsapp` — `50764566336`, `telegram` — `https://t.me/whale_home_estate_bot`
-- `leadsUrl` — `https://bot.whalehome.io/lead` (квиз → бот → CRM и Telegram Артёма)
+- `leadsUrl` — `https://whalehome.io/api/lead` (квиз → бот → «WhaleHome CRM» и Telegram Артёма)
 - `rates` — курсы монет для пересчёта цен
 - Каталог `/properties/`: те же ссылки в `panama-crypto-homes/properties/index.html` (`CONFIG`)
 
@@ -69,8 +69,8 @@ Cloudflare Pages сам публикует сайт при пуше в ветк�
 2. **Cloudflare Pages, restate.deals.** Workers & Pages → Create → Pages → Connect to Git → репозиторий → Production branch `restate-site`, Framework: None, Build command: пусто, Output directory: `/` → Deploy. Custom domains → `restate.deals`.
 3. **Cloudflare Pages, whalehome.io.** То же, Production branch `demo-site`. Custom domains → `whalehome.io` и `www.whalehome.io`.
 4. **Домены.** whalehome.io куплен в Hostinger, NS указывают на Cloudflare (`clyde.ns.cloudflare.com`, `rita.ns.cloudflare.com`). В новом аккаунте Cloudflare добавить зону и поменять NS в Hostinger на новые. Redirect Rules: `www.whalehome.io` → `https://whalehome.io` (301, путь и query сохраняются); `demo.restate.deals` → `https://whalehome.io` (301).
-5. **CRM.** Открыть каждую таблицу → Файл → Создать копию. В копии WhaleHome CRM: Extensions → Apps Script → вставить `crm/whalehome-leads-apps-script.gs` → Deploy → Web app (Execute as: Me, Access: Anyone) → скопировать `/exec` URL.
-6. **Бот.** По `telegram-bot/README.md`: KV `whalehome-bot`, Worker `whalehome-bot` с кодом `worker.js`, binding `STATE`, секреты `BOT_TOKEN` и `SETUP_KEY`, переменная `LEADS_URL` (URL из шага 5), домен `bot.whalehome.io`, затем открыть `https://bot.whalehome.io/setup?key=<SETUP_KEY>`. Аватар и картинка описания — через @BotFather.
+5. **CRM.** Открыть каждую таблицу → Файл → Создать копию. В копии WhaleHome CRM: Extensions → Apps Script → вставить `crm/whalehome-leads-apps-script.gs` → Deploy → Web app (Execute as: Me, Access: Anyone) → скопировать `/exec` URL. То же в копии Restate Deals CRM со скриптом `crm/leads-apps-script.gs`.
+6. **Бот.** По `telegram-bot/README.md`: KV `whalehome-bot`, Worker `whalehome-bot` с кодом `worker.js`, binding `STATE`, секреты `BOT_TOKEN` и `SETUP_KEY`, переменные `LEADS_URL` и `RESTATE_LEADS_URL` (URL Apps Script обеих CRM из шага 5), Route `whalehome.io/api/*` на Worker, затем открыть `https://whalehome.io/api/setup?key=<SETUP_KEY>`. Аватар и картинка описания — через @BotFather.
 7. **Calendly / WhatsApp / Plausible.** Если меняются, поправить `CONFIG` (раздел 4), пересобрать языковые страницы и выложить.
 
 ## 7. Каталог CPanama
@@ -142,9 +142,15 @@ cp -r panama-crypto-homes/* ../demo/ && cd ../demo && git add -A && git commit -
 | Plausible | аналитика restate.deals | аккаунт, где добавлен сайт restate.deals |
 | Telegram | бот @whale_home_estate_bot (создан в @BotFather), канал @artofwar, личный @avicoda | аккаунт Артёма |
 
-## 12. Что не доделано (на 30.10.2026)
+## 12. Приём заявок и что осталось включить (на 30.10.2026)
 
-- **Квиз whalehome.io не доставляет лиды.** Сайт отправляет их на `https://bot.whalehome.io/lead`, а домен `bot.whalehome.io` к Worker не привязан. Решение: Cloudflare → Workers & Pages → whalehome-bot → Settings → Domains & Routes → Add → Custom domain `bot.whalehome.io`. Или заменить `CONFIG.leadsUrl` на адрес Worker `….workers.dev/lead`.
-- **Код бота в Cloudflare может быть старее, чем `telegram-bot/worker.js` в репозитории.** Последние изменения (About с @artofwar и @avicoda, VIP Tour Included, гарантия и ROI в консультации, ссылка Calendly, картинка на первое сообщение) появятся после замены кода: Edit code → вставить `worker.js` → Deploy → открыть `…/setup?key=<SETUP_KEY>`.
-- **Форма на restate.deals не пишет в CRM**: `CONFIG.leadsUrl` пустой, заявка уходит в WhatsApp. Чтобы писать в «Restate Deals CRM», развернуть `crm/leads-apps-script.gs` как Web app и вставить URL в `CONFIG.leadsUrl`.
-- **На whalehome.io нет аналитики** (Plausible только на restate.deals).
+Код готов и выложен: квиз whalehome.io и форма restate.deals отправляют заявки на `https://whalehome.io/api/lead`. Это Telegram-бот (Worker `whalehome-bot`): он пишет заявку в нужную CRM и присылает её Артёму в Telegram (🐋 покупатель, 🏢 застройщик).
+
+Чтобы заявки начали приходить, в панелях нужно один раз сделать (секреты не нужны):
+1. Cloudflare → Workers & Pages → whalehome-bot → Edit code → заменить код на `telegram-bot/worker.js` → Deploy. Это же обновит бота до последней версии.
+2. Там же Settings → Domains & Routes → Add → Route: зона `whalehome.io`, маршрут `whalehome.io/api/*`.
+3. Таблица «Restate Deals CRM» → Extensions → Apps Script → вставить `crm/leads-apps-script.gs` → Deploy → Web app (Execute as: Me, Access: Anyone) → скопировать `/exec` URL → Worker → Settings → Variables and secrets → Add, тип Text, имя `RESTATE_LEADS_URL`, значение URL → Deploy.
+4. Открыть `https://whalehome.io/api/setup?key=<SETUP_KEY>` и проверить `"webhook":{"ok":true`.
+5. Проверить: отправить квиз на whalehome.io и форму на restate.deals; в Telegram приходят 🐋 и 🏢, в таблицах появляются строки.
+
+Ещё не сделано: на whalehome.io нет аналитики (Plausible только на restate.deals).

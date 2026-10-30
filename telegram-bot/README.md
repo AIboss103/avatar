@@ -19,16 +19,20 @@ The bot token is a secret. Never put it in this repository (it is public).
    - `BOT_TOKEN`, type Secret: the token from @BotFather
    - `SETUP_KEY`, type Secret: a random string of 24+ letters and digits
    - `LEADS_URL`, type Text: the `/exec` URL from step 1
-6. **Settings → Domains & Routes → Add → Custom domain:** `bot.whalehome.io`. The site already
-   sends quiz leads to `https://bot.whalehome.io/lead`, and its Telegram button opens `https://bot.whalehome.io/`.
-7. Open `https://bot.whalehome.io/setup?key=<SETUP_KEY>` once. Check the answer:
+   - `RESTATE_LEADS_URL`, type Text: the `/exec` URL of `crm/leads-apps-script.gs` deployed the same way from the
+     "Restate Deals CRM" sheet (restate.deals form leads)
+6. **Settings → Domains & Routes → Add → Route:** zone `whalehome.io`, route `whalehome.io/api/*`, Worker `whalehome-bot`.
+   Both sites send form leads to `https://whalehome.io/api/lead`. (A custom domain `bot.whalehome.io` works too.)
+7. Open `https://whalehome.io/api/setup?key=<SETUP_KEY>` once. Check the answer:
    `"webhook":{"ok":true,...}`, commands and descriptions `true`, and `"admin":"set to chat ..."`.
    The admin is set by itself from Artem's Start press. If it says "not set", Artem sends the bot `/admin <SETUP_KEY>`.
 8. **Avatar:** web.telegram.org → @BotFather → /setuserpic → choose the bot → send `avatar.png`.
    **Description picture** (shown above the description before Start): @BotFather → /mybots → the bot →
    Edit Bot → Edit Description Picture → send `description.png` (640×360).
 9. Test: `/start` → "Pick a home" → "Leave my contact" → share the phone. The lead must appear in
-   Artem's Telegram chat with the bot and in the CRM "Leads" tab.
+   Artem's Telegram chat with the bot and in the CRM "Leads" tab. Then send the whalehome.io quiz and the
+   restate.deals form: 🐋 and 🏢 messages arrive in Telegram, rows appear in "WhaleHome CRM" → Leads and
+   "Restate Deals CRM" → Deals.
 
 ## How Artem works with it
 
