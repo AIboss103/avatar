@@ -22,7 +22,7 @@ META = {
         desc="Sell Panama apartments to verified crypto and US buyers with $300k+ for the Investor Visa. AI outreach, ads, PR and VIP tours. USDT payments, no hidden margin.",
         og_title="Restate Deals: sell Panama apartments to crypto &amp; US buyers in 90 days",
         og_desc="Verified $300k+ buyers for the Panama Investor Visa. USDT payment to bank. 10+ qualified buyers in 60 days, or +1 month free.",
-        og_desc_b="Verified $300k+ buyers for the Panama Investor Visa. USDT payment to bank. 10 qualified clients in 30 days, guaranteed.",
+        og_desc_b="Verified $300k+ buyers for the Panama Investor Visa. USDT payment to bank. 10 qualified clients in 60 days, guaranteed.",
         tw_desc="Verified $300k+ buyers for the Panama Investor Visa. USDT payment to bank. No hidden margin.",
     ),
     "es": dict(
@@ -31,7 +31,7 @@ META = {
         desc="Venda apartamentos en Panamá a compradores verificados del mundo crypto y de EE.UU. con $300k+ para la Visa de Inversionista. Outreach con IA, anuncios, PR y tours VIP. Pagos en USDT, sin márgenes ocultos.",
         og_title="Restate Deals: venda apartamentos en Panamá a compradores crypto y de EE.UU. en 90 días",
         og_desc="Compradores verificados con $300k+ para la Visa de Inversionista de Panamá. Pago en USDT a su banco. 10+ compradores calificados en 60 días, o +1 mes gratis.",
-        og_desc_b="Compradores verificados con $300k+ para la Visa de Inversionista de Panamá. Pago en USDT a su banco. 10 clientes calificados en 30 días, con garantía.",
+        og_desc_b="Compradores verificados con $300k+ para la Visa de Inversionista de Panamá. Pago en USDT a su banco. 10 clientes calificados en 60 días, con garantía.",
         tw_desc="Compradores verificados con $300k+ para la Visa de Inversionista de Panamá. Pago en USDT a su banco. Sin márgenes ocultos.",
     ),
     "ru": dict(
@@ -40,7 +40,7 @@ META = {
         desc="Продаём квартиры застройщиков Панамы проверенным покупателям из крипты и США с $300k+ под инвесторскую визу. AI-аутрич, реклама, PR и VIP-туры. Оплата в USDT, без скрытой маржи.",
         og_title="Restate Deals: продаём квартиры в Панаме крипто-покупателям и клиентам из США за 90 дней",
         og_desc="Проверенные покупатели с $300k+ под инвесторскую визу Панамы. Оплата в USDT на банковский счёт. 10+ квалифицированных покупателей за 60 дней, или +1 месяц бесплатно.",
-        og_desc_b="Проверенные покупатели с $300k+ под инвесторскую визу Панамы. Оплата в USDT на банковский счёт. 10 квалифицированных клиентов за 30 дней с гарантией.",
+        og_desc_b="Проверенные покупатели с $300k+ под инвесторскую визу Панамы. Оплата в USDT на банковский счёт. 10 квалифицированных клиентов за 60 дней с гарантией.",
         tw_desc="Проверенные покупатели с $300k+ под инвесторскую визу Панамы. Оплата в USDT на банковский счёт. Без скрытой маржи.",
     ),
 }
