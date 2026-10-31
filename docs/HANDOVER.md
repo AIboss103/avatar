@@ -107,6 +107,13 @@ GitHub → Actions → «Import CPanama catalog» → Run workflow (ветка `
 - Прямая покупка от $300k. Плашка «Residency» у объектов от $300k. Цены объектов округлены до $10,000, в крипте считаются по `CONFIG.rates`.
 - Обещания «0% комиссии для покупателя» на сайте нет (убрано).
 
+## 9a. A/B-тест restate.deals
+
+- **B, без цен** — главная restate.deals (и /en/ /es/ /ru/): кнопки «Получить 10 клиентов за 30 дней» и «Узнать цену», блок с формой на 10 клиентов, форма-калькулятор «Цена за клиента» (ответ приходит в WhatsApp), калькулятор без наших цен.
+- **A, с ценами** — restate.deals/price/ (и /en/price/ …): планы, оплата за квалифицированного покупателя, полный калькулятор. Закрыта от поисковиков (noindex), ссылку дают только в рекламе.
+- Один исходный файл `real-estate-developers/index.html`, версию включает `<html data-variant="a|b">`; элементы только для A помечены `class="va"`, только для B — `class="vb"`.
+- Каждая заявка приходит с пометкой «variant A/B» в заметках, события Plausible несут свойство `variant`, ссылки Calendly — `utm_term=variant-a|b`.
+
 ## 10. Как выложить изменения (команды)
 
 ```
@@ -119,7 +126,7 @@ git commit -am "..." && git push origin dental-clinics-site
 
 # restate.deals
 git worktree add ../site restate-site
-cp -r real-estate-developers/* ../site/ && cd ../site && git add -A && git commit -m "..." && git push origin restate-site && cd -
+cp -r real-estate-developers/* ../site/   # включая price/ && cd ../site && git add -A && git commit -m "..." && git push origin restate-site && cd -
 
 # whalehome.io
 git worktree add ../demo demo-site
