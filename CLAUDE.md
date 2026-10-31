@@ -30,4 +30,5 @@ These come from the site owner (Artem Voinov) and apply to every page.
 - Language pages /en/ /es/ /ru/ are copies of real-estate-developers/index.html with their own head tags. After every edit of index.html run `python3 scripts/build_restate_lang.py` and deploy the en/ es/ ru/ and price/ folders too. Never edit those copies by hand.
 - A/B test on restate.deals: the main page is variant B (no prices; `class="vb"` elements), /price/ and /{lang}/price/ are variant A (with prices; `class="va"`, noindex). One source file; `<html data-variant>` switches. Leads and Plausible events carry the variant.
 - WhaleHome (panama-crypto-homes/, branch demo-site, whalehome.io): same pattern, run `python3 scripts/build_whalehome_lang.py` after editing its index.html and deploy en/ es/ ru/.
+- Dental clinics site (dental-clinics/, SmileScale): same A/B pattern, run `python3 scripts/build_dental_ab.py` after editing its index.html (builds dental-clinics/price/).
 - restate.deals deploys from branch restate-site (site files at the branch root) through Cloudflare Pages. Never force-push it.

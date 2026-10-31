@@ -161,3 +161,11 @@ cp -r panama-crypto-homes/* ../demo/ && cd ../demo && git add -A && git commit -
 5. Проверить: отправить квиз на whalehome.io и форму на restate.deals; в Telegram приходят 🐋 и 🏢, в таблицах появляются строки.
 
 Ещё не сделано: на whalehome.io нет аналитики (Plausible только на restate.deals).
+
+## 15. Сайт для стоматологий (SmileScale)
+
+- Адрес: https://dental-clinics-site.restate-deals.pages.dev/dental-clinics/ (B, без цен) и …/dental-clinics/price/ (A, с ценами, noindex). Это превью-ссылка Cloudflare Pages на ветку `dental-clinics-site`; обновляется при каждом пуше в неё. Свой домен — подключить Custom domain к ветке или вынести в отдельный проект Pages.
+- Исходник один: `dental-clinics/index.html` (B). После правки: `python3 scripts/build_dental_ab.py` (собирает `dental-clinics/price/index.html`).
+- B: «10 пациентов за 30 дней» с гарантией, форма «Цена за пациента» (ответ в WhatsApp), простой калькулятор. A: пакеты с ценами, калькулятор с планом и ROI.
+- Заявки уходят в WhatsApp (+507 6456 6336) и в Telegram Артёму через бота (`site=smilescale`, 🦷), отдельной CRM пока нет.
+- Calendly временно `voinov-agency/real-estate-deals-ceo` — заменить в `CONFIG.booking` на свою ссылку.

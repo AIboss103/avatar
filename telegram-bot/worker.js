@@ -170,6 +170,14 @@ async function siteLead(req, env, ctx) {
   try { p = Object.fromEntries(new URLSearchParams(await req.text())); } catch { return new Response("bad", { status: 400, headers: cors }); }
   if (p.hp || (!p.name && !p.whatsapp)) return new Response("ok", { headers: cors });
   const f = k => String(p[k] || "").slice(0, 300);
+  if (p.site === "smilescale") {                       // dental clinics site: Telegram only, no CRM yet
+    ctx.waitUntil((async () => {
+      const admin = await adminId(env);
+      if (admin) await send(env, admin, `🦷 <b>New dental clinic lead</b> · SmileScale\n${esc(f("name"))} · ${esc(f("company"))}\n` +
+        `WhatsApp: ${esc(f("whatsapp"))}\nLanguage: ${esc(f("lang").toUpperCase())}` + (p.notes ? `\n\n${esc(f("notes"))}` : ""));
+    })());
+    return new Response("ok", { headers: cors });
+  }
   if (p.site === "restate.deals") {
     ctx.waitUntil((async () => {
       if (env.RESTATE_LEADS_URL) {
