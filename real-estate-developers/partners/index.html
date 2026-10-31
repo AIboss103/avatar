@@ -398,7 +398,7 @@ fbq('init','913718525040508');fbq('track','PageView');
     </div>
     <div class="legal">
       <span>© 2026 Restate Deals Inc. · restate.deals</span>
-      <nav aria-label="Legal"><a href="/legal/#privacy" data-i="l.1">Política de Privacidad</a><a href="/legal/#terms" data-i="l.2">Términos de Colocación</a><a href="/legal/#disclaimer" data-i="l.3">Aviso de Cumplimiento</a></nav>
+      <nav aria-label="Legal"><a class="js-priv" href="/es/privacidad/" data-i="l.1">Política de Privacidad</a><a href="/legal/#terms" data-i="l.2">Términos de Colocación</a><a href="/legal/#disclaimer" data-i="l.3">Aviso de Cumplimiento</a></nav>
     </div>
   </div>
 </section>
@@ -515,6 +515,7 @@ function render(){
   document.querySelectorAll("[data-ih]").forEach(el=>{const v=S[el.dataset.ih];if(v)el.innerHTML=tr(v)});
   document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===lang));
   document.querySelectorAll(".js-book").forEach(a=>a.href=CONFIG.booking);
+  document.querySelectorAll(".js-priv").forEach(a=>a.href=lang==="en"?"/privacy/":"/es/privacidad/");
   document.querySelectorAll(".js-pdf").forEach(a=>a.href=`Restate-Deals-One-Pager-${lang.toUpperCase()}.pdf`);
   $("vs").innerHTML=VS.map(l=>`<div class="lane ${l.cls}"><div class="lane-h"><span class="tag ${l.cls==="bad"?"bad":"ok"}">${tr(l.tag)}</span><b>${tr(l.h)}</b></div>
     <div class="steps">${l.steps.map(([k,t,end])=>`<div class="st"><div class="box${end?" end":""}"><span class="lbl">${tr(k)}</span>${tr(t)}</div><span class="ar" aria-hidden="true">${arrowSVG}</span></div>`).join("")}</div></div>`).join("");
