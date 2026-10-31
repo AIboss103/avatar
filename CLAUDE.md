@@ -11,7 +11,7 @@ These come from the site owner (Artem Voinov) and apply to every page.
 - Use simple, plain words. Short sentences. Say concretely what the client gets.
 - No jargon headlines ("distribution hub", "infrastructure") as the main message; if used, explain in plain words next to it.
 - No exclamation marks. No made-up cases or numbers. Keep copy short: less text, more pictures.
-- Owner-approved on restate.deals: Starter promo (struck $5,000 -> $3,000), "we take only 3 projects, 2 taken" block, the "+1 month free" guarantee, calculator showing sales per month (no profit line), cost and sales per $1 on /price/; guarantee 10 qualified clients in 60 days.
+- Owner-approved on restate.deals: Starter promo (struck $5,000 -> $3,000), "we take only 3 projects, 2 taken" block, the "+1 month free" guarantee, calculator showing net profit as 5% of extra sales in green.
 - Speak in the first person ("I") on the personal funnel demo; restate.deals uses "we".
 - Every text exists in EN, ES and RU through the I18N dictionaries.
 - Booking: Calendly inline widget in the dark theme (contact section), loaded lazily.
