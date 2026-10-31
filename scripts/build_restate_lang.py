@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Build the language pages of restate.deals: /en/, /es/, /ru/.
+"""Build the language pages of restate.deals and the A/B test pages.
 
-real-estate-developers/index.html stays the only source. This script copies it to
-real-estate-developers/{en,es,ru}/index.html and only swaps the <head> tags
-(lang, title, description, canonical, Open Graph, Twitter). The page picks its
-language from the path, so the copies need no other changes.
+real-estate-developers/index.html stays the only source. This script copies it and only swaps
+the <head> tags (lang, title, description, canonical, Open Graph, Twitter, A/B variant):
+  /en/ /es/ /ru/                       variant B: no prices (the main page)
+  /price/ /en/price/ /es/price/ /ru/price/   variant A: with prices, noindex (same content, ads only)
+The page picks its language from the path and its variant from <html data-variant>.
 
 Run after every edit of real-estate-developers/index.html:
     python3 scripts/build_restate_lang.py
@@ -21,6 +22,7 @@ META = {
         desc="Sell Panama apartments to verified crypto and US buyers with $300k+ for the Investor Visa. AI outreach, ads, PR and VIP tours. USDT payments, no hidden margin.",
         og_title="Restate Deals: sell Panama apartments to crypto &amp; US buyers in 90 days",
         og_desc="Verified $300k+ buyers for the Panama Investor Visa. USDT payment to bank. 10+ qualified buyers in 60 days, or +1 month free.",
+        og_desc_b="Verified $300k+ buyers for the Panama Investor Visa. USDT payment to bank. 10 qualified clients in 30 days, guaranteed.",
         tw_desc="Verified $300k+ buyers for the Panama Investor Visa. USDT payment to bank. No hidden margin.",
     ),
     "es": dict(
@@ -29,6 +31,7 @@ META = {
         desc="Venda apartamentos en Panamá a compradores verificados del mundo crypto y de EE.UU. con $300k+ para la Visa de Inversionista. Outreach con IA, anuncios, PR y tours VIP. Pagos en USDT, sin márgenes ocultos.",
         og_title="Restate Deals: venda apartamentos en Panamá a compradores crypto y de EE.UU. en 90 días",
         og_desc="Compradores verificados con $300k+ para la Visa de Inversionista de Panamá. Pago en USDT a su banco. 10+ compradores calificados en 60 días, o +1 mes gratis.",
+        og_desc_b="Compradores verificados con $300k+ para la Visa de Inversionista de Panamá. Pago en USDT a su banco. 10 clientes calificados en 30 días, con garantía.",
         tw_desc="Compradores verificados con $300k+ para la Visa de Inversionista de Panamá. Pago en USDT a su banco. Sin márgenes ocultos.",
     ),
     "ru": dict(
@@ -37,6 +40,7 @@ META = {
         desc="Продаём квартиры застройщиков Панамы проверенным покупателям из крипты и США с $300k+ под инвесторскую визу. AI-аутрич, реклама, PR и VIP-туры. Оплата в USDT, без скрытой маржи.",
         og_title="Restate Deals: продаём квартиры в Панаме крипто-покупателям и клиентам из США за 90 дней",
         og_desc="Проверенные покупатели с $300k+ под инвесторскую визу Панамы. Оплата в USDT на банковский счёт. 10+ квалифицированных покупателей за 60 дней, или +1 месяц бесплатно.",
+        og_desc_b="Проверенные покупатели с $300k+ под инвесторскую визу Панамы. Оплата в USDT на банковский счёт. 10 квалифицированных клиентов за 30 дней с гарантией.",
         tw_desc="Проверенные покупатели с $300k+ под инвесторскую визу Панамы. Оплата в USDT на банковский счёт. Без скрытой маржи.",
     ),
 }
@@ -49,16 +53,20 @@ def sub1(pattern, repl, s):
     return out
 
 
-def build(src, lang):
-    m, url = META[lang], f"{SITE}/{lang}/"
+def build(src, lang, variant="b", path=None):
+    m = META[lang]
+    url = f"{SITE}/{path if path is not None else lang + '/'}"
+    og_desc = m["og_desc"] if variant == "a" else m["og_desc_b"]
     s = src
-    s = sub1(r'<html lang="[a-z]+">', f'<html lang="{lang}">', s)
+    s = sub1(r'<html lang="[a-z]+" data-variant="[ab]">', f'<html lang="{lang}" data-variant="{variant}">', s)
+    if variant == "a":
+        s = sub1(r'<meta name="robots" content="[^"]*">', '<meta name="robots" content="noindex, follow">', s)
     s = sub1(r"<title>.*?</title>", f"<title>{m['title']}</title>", s)
     s = sub1(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{m["desc"]}">', s)
     s = sub1(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{url}">', s)
     s = sub1(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="{url}">', s)
     s = sub1(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{m["og_title"]}">', s)
-    s = sub1(r'<meta property="og:description" content="[^"]*">', f'<meta property="og:description" content="{m["og_desc"]}">', s)
+    s = sub1(r'<meta property="og:description" content="[^"]*">', f'<meta property="og:description" content="{og_desc}">', s)
     s = sub1(r'<meta property="og:image" content="[^"]*">', f'<meta property="og:image" content="{SITE}/{m["image"]}">', s)
     s = sub1(r'<meta name="twitter:image" content="[^"]*">', f'<meta name="twitter:image" content="{SITE}/{m["image"]}">', s)
     s = sub1(r'<meta property="og:image:alt" content="[^"]*">', f'<meta property="og:image:alt" content="{m["og_title"]}">', s)
@@ -68,13 +76,19 @@ def build(src, lang):
     others = [META[o]["locale"] for o in META if o != lang]
     s = sub1(r'<meta property="og:locale" content="[^"]*">\s*<meta property="og:locale:alternate" content="[^"]*">\s*<meta property="og:locale:alternate" content="[^"]*">',
              f'<meta property="og:locale" content="{m["locale"]}">\n<meta property="og:locale:alternate" content="{others[0]}">\n<meta property="og:locale:alternate" content="{others[1]}">', s)
-    s = s.replace("<!doctype html>", "<!doctype html>\n<!-- Generated by scripts/build_restate_lang.py from ../index.html. Do not edit. -->", 1)
+    s = s.replace("<!doctype html>", "<!doctype html>\n<!-- Generated by scripts/build_restate_lang.py from real-estate-developers/index.html. Do not edit. -->", 1)
     return s
+
+
+def write(rel, html):
+    f = ROOT / rel / "index.html"
+    f.parent.mkdir(parents=True, exist_ok=True)
+    f.write_text(html)
+    print("built", f)
 
 
 src = (ROOT / "index.html").read_text()
 for lang in META:
-    d = ROOT / lang
-    d.mkdir(exist_ok=True)
-    (d / "index.html").write_text(build(src, lang))
-    print("built", d / "index.html")
+    write(lang, build(src, lang))                                   # B: /en/ /es/ /ru/
+    write(f"{lang}/price", build(src, lang, "a", f"{lang}/price/"))  # A: /en/price/ ...
+write("price", build(src, "en", "a", "price/"))                     # A: /price/ (language picked in the browser)
