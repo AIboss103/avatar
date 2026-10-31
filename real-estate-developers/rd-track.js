@@ -1,11 +1,9 @@
-/* Restate Deals: Meta Pixel + ad attribution (UTM, fbclid). Invisible: no markup, no styles.
-   Loaded with <script defer src="/rd-track.js"> in the <head> of every page (main page and its language/price copies, /partners/, /legal/).
-
-   META_PIXEL_ID: put the dataset ID from Meta Events Manager here. This is the only place it lives.
-   Empty string = the pixel is off: nothing loads from Facebook, the site and forms work as before. */
+/* Restate Deals: ad attribution (UTM, fbclid) + outbound click events. Invisible: no markup, no styles.
+   Loaded with <script defer src="/rd-track.js"> in the <head> of every page (main page and its language/price copies,
+   /partners/, /legal/). The GA4 tag (G-K8FTGB7RF5) and the Meta Pixel (913718525040508) are inline in each page's <head>;
+   this file only sends events to them (window.gtag / window.fbq) and works fine when they are blocked. */
 (function () {
   "use strict";
-  var PIXEL_ID = ""; // META_PIXEL_ID (public, not a secret)
 
   var W = window, D = document, now = Date.now();
   var KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"];
@@ -39,22 +37,12 @@
     try { D.cookie = "_fbc=" + encodeURIComponent("fb.1." + now + "." + hit.fbclid) + "; max-age=7776000; path=/" + dom + "; SameSite=Lax" + (location.protocol === "https:" ? "; Secure" : ""); } catch (e) {}
   }
 
-  /* 3. Meta Pixel base code (standard snippet), only when PIXEL_ID is set */
-  var on = !!PIXEL_ID;
-  if (on) {
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
-      t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
-    }(W, D, "script", "https://connect.facebook.net/en_US/fbevents.js");
-    W.fbq("init", PIXEL_ID);
-    W.fbq("track", "PageView");
-  }
-
   function meta(type, name, params, eventID) {
-    if (!on || !W.fbq) return;
+    if (!W.fbq) return;
     try { if (eventID) W.fbq(type, name, params || {}, { eventID: eventID }); else W.fbq(type, name, params || {}); } catch (e) {}
   }
+
+  function ga(name, params) { try { if (W.gtag) W.gtag("event", name, params || {}); } catch (e) {} }
 
   /* Fields added to every lead POST: dedup id, Meta cookies, UTM (last + first touch), pages, browser */
   function leadFields(eventId) {
@@ -67,23 +55,28 @@
     return o;
   }
 
-  /* 4. Outbound clicks on every page: WhatsApp / Telegram -> Contact, Calendly -> Schedule */
+  /* 3. Outbound clicks the page itself doesn't track: WhatsApp / Telegram -> Contact, Calendly -> ScheduleClick.
+     Links with .js-wa .js-calc-wa .js-cal .js-calc-book already go through the main page's track(). */
   D.addEventListener("click", function (e) {
-    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null; if (!a || a.hasAttribute("data-rd-skip")) return; // data-rd-skip: WhatsApp opened by a form submit (already a Lead)
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null; if (!a || a.hasAttribute("data-rd-skip") || a.matches(".js-wa,.js-calc-wa,.js-cal,.js-calc-book")) return; // data-rd-skip: WhatsApp opened by a form submit (already a Lead)
     var h = a.href || "", place = (a.dataset && a.dataset.place) || "other";
     if (a.classList.contains("js-calc-wa")) place = "roi";
-    if (/^https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\//.test(h)) meta("track", "Contact", { method: "whatsapp", placement: place });
-    else if (/^https?:\/\/(t\.me|telegram\.me)\//.test(h)) meta("track", "Contact", { method: "telegram", placement: place });
-    else if (/^https?:\/\/([a-z0-9-]+\.)?calendly\.com\//.test(h)) meta("track", "Schedule", { method: "calendly", placement: place });
+    var p = { method: "", place: place, page: location.pathname };
+    if (/^https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\//.test(h)) { p.method = "whatsapp"; meta("track", "Contact", p); ga("whatsapp_click", p); }
+    else if (/^https?:\/\/(t\.me|telegram\.me)\//.test(h)) { p.method = "telegram"; meta("track", "Contact", p); ga("telegram_click", p); }
+    else if (/^https?:\/\/([a-z0-9-]+\.)?calendly\.com\//.test(h)) { p.method = "calendly"; meta("trackCustom", "ScheduleClick", p); ga("book_call_click", p); }
   }, true);
 
   /* Calendly inline widget: a booked slot */
   W.addEventListener("message", function (e) {
     try {
       if (!/calendly\.com$/.test(new URL(e.origin).hostname)) return;
-      if (e.data && e.data.event === "calendly.event_scheduled") meta("track", "Schedule", { method: "calendly", placement: "embed" });
+      if (!(e.data && e.data.event === "calendly.event_scheduled")) return;
+      store("rd_booked", Date.now());   // the ?booked=1 redirect skips its own count for 15 min
+      if (typeof W.track === "function") W.track("Call Booked", { method: "calendly_embed" });
+      else { meta("track", "Schedule", { method: "calendly", place: "embed" }); ga("book_call", { method: "calendly_embed" }); }
     } catch (x) {}
   });
 
-  W.rdTrack = { meta: meta, uuid: uuid, leadFields: leadFields, pixelOn: on };
+  W.rdTrack = { meta: meta, ga: ga, uuid: uuid, leadFields: leadFields };
 })();

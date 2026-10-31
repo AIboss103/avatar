@@ -162,28 +162,37 @@ cp -r panama-crypto-homes/* ../demo/ && cd ../demo && git add -A && git commit -
 
 Ещё не сделано: на whalehome.io нет аналитики (Plausible только на restate.deals).
 
-## 13a. Реклама Meta: пиксель, Conversions API, UTM (restate.deals)
+## 13a. Аналитика и реклама: GA4, Meta Pixel, Conversions API, UTM (restate.deals)
 
 Всё невидимое, внешний вид сайта не меняется.
-- `real-estate-developers/rd-track.js` (на сайте `/rd-track.js`) подключён в `<head>` всех страниц: главная и её копии /en/ /es/ /ru/ /price/, /partners/, /partners/onepager.html, /legal/. В нём:
-  - `PIXEL_ID` (единственное место, где лежит ID пикселя; пусто = пиксель выключен, к Facebook нет запросов);
-  - первый и последний источник визита (utm_*, fbclid, страница входа) в localStorage;
-  - запасная cookie `_fbc` из fbclid;
-  - события: WhatsApp и Telegram → Contact, Calendly → Schedule (клик или запись в виджете).
-- В `index.html`:
-  - `track()` шлёт событие и в Plausible, и в Meta;
-  - отправка формы (#quoteF или #form) → Lead с уникальным `event_id`, тот же id уходит в Worker;
-  - первое касание калькулятора → CalculatorUsed;
-  - блок цен (A) или формы (B) на экране → ViewContent.
-- Заявка уходит в Worker с полями event_id, fbp, fbc, utm_* (последний источник), ft_utm_* (первый), landing_page, page_url, referrer, user_agent.
-- Worker (`telegram-bot/worker.js`):
-  - пишет в Telegram и в CRM строку «Source: facebook / cpc / кампания / объявление»;
-  - отправляет Lead в Meta Conversions API с тем же event_id (Meta склеивает браузер и сервер), с хешированными SHA-256 телефоном, email, именем и страной, IP и браузером.
-  - Переменные: META_PIXEL_ID, META_CAPI_TOKEN (секрет), META_TEST_EVENT_CODE (только на время проверки), META_GRAPH_VERSION (необязательно, по умолчанию v25.0).
-- Включить:
-  1. вписать ID в `rd-track.js` и код проверки домена в `<meta name="facebook-domain-verification">` в `index.html`, собрать языки, выложить;
-  2. в Worker обновить код и добавить переменные (см. `telegram-bot/README.md`);
-  3. проверить в Events Manager → Test events, затем удалить META_TEST_EVENT_CODE.
+- **Счётчики на всех страницах.** GA4 `G-K8FTGB7RF5` и Meta Pixel `913718525040508` стоят прямо в `<head>`: исходник `index.html` (из него собираются /en/ /es/ /ru/ /price/), `/partners/`, `/partners/onepager.html`, `/legal/`. Plausible и Cloudflare Web Analytics остались как были.
+- **`track()` в `index.html`.** Один вызов отправляет событие в Plausible, GA4 и Meta (таблица `EV`):
+
+  | Событие на сайте | GA4 | Meta |
+  |---|---|---|
+  | Click WhatsApp | whatsapp_click | Contact |
+  | Click Book | book_call_click | ScheduleClick (своё событие) |
+  | Call Booked | book_call | Schedule |
+  | Lead | generate_lead | Lead |
+  | Calculator Use | calculator_use | CalculatorUse (своё событие) |
+  | CTA | cta_click | — |
+
+- **Запись на звонок.** Calendly после записи перенаправляет на `https://restate.deals/?booked=1`. Сайт засчитывает Call Booked и убирает параметр из адреса. Запись во встроенном виджете тоже засчитывается, без двойного счёта.
+- **Lead и Conversions API.** У Lead уникальный `event_id`. Тот же id уходит в Worker, чтобы Meta склеила событие из браузера и с сервера. ViewContent отправляется, когда на экране блок цен (A) или формы (B).
+- **`real-estate-developers/rd-track.js`** (на сайте `/rd-track.js`):
+  - первый и последний источник визита (utm_*, fbclid, страница входа);
+  - запасная cookie `_fbc`;
+  - клики по WhatsApp, Telegram и Calendly там, где их не считает `track()` (например, /partners/).
+- **Поля заявки, которые уходят в Worker:** event_id, fbp, fbc, utm_* (последний источник), ft_utm_* (первый), landing_page, page_url, referrer, user_agent.
+- **Worker (`telegram-bot/worker.js`):**
+  - пишет в Telegram и в CRM «Source: facebook / cpc / кампания / объявление»;
+  - отправляет Lead в Meta Conversions API (телефон, email, имя и страна в виде SHA-256, плюс IP и браузер) с тем же event_id.
+  - Переменные: `META_PIXEL_ID=913718525040508` (Text), `META_CAPI_TOKEN` (Secret), `META_TEST_EVENT_CODE` (только на время проверки), `META_GRAPH_VERSION` (по умолчанию v25.0). См. `telegram-bot/README.md`.
+- **Ещё сделать в панелях:**
+  1. Calendly → событие real-estate-deals-ceo → Booking page → Confirmation page → Redirect на `https://restate.deals/?booked=1`;
+  2. GA4: отметить ключевыми событиями whatsapp_click, book_call, generate_lead;
+  3. Meta: подтвердить домен (код вставить в `<meta name="facebook-domain-verification">` в `index.html`), проверить Test Events;
+  4. Worker: обновить код и добавить переменные META_*.
 
 ## 15. Сайт для стоматологий (SmileScale)
 
