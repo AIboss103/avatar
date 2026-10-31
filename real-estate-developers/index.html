@@ -37,6 +37,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Restate Deals","url":"https://restate.deals/","logo":"https://restate.deals/icon-512.png","image":"https://restate.deals/og.jpg","description":"International and crypto buyer acquisition for real estate developers in Panama.","areaServed":"Panama","address":{"@type":"PostalAddress","addressLocality":"Panama City","addressCountry":"PA"},"telephone":"+50764566336","founder":{"@type":"Person","name":"Artem Voinov","url":"https://voinov.io"},"sameAs":["https://t.me/artofwar","https://voinov.io"],"paymentAccepted":"USDT, USDC"}</script>
+<meta name="facebook-domain-verification" content=""><!-- META_DOMAIN_VERIFICATION: paste the code from Meta Business Manager into content -->
+<script defer src="/rd-track.js"></script>
 <script defer data-domain="restate.deals" src="https://plausible.io/js/script.js"></script>
 <script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1188,7 +1190,11 @@ const PR=id=>CONFIG.pricing[id];
 
 /* analytics: Plausible, never breaks the page; only bands, no exact sums */
 const VARIANT=document.documentElement.dataset.variant==='a'?'a':'b';
-function track(n,props){try{window.plausible&&window.plausible(n,{props:Object.assign({variant:VARIANT},props||{})})}catch(e){}}
+function track(n,props,m){try{window.plausible&&window.plausible(n,{props:Object.assign({variant:VARIANT},props||{})})}catch(e){}
+  if(m&&window.rdTrack)rdTrack.meta(m.custom?'trackCustom':'track',m.ev,Object.assign({variant:VARIANT},m.p||{}),m.id);}
+// Meta Lead dedup: the same event_id goes to the pixel and to the Worker (Conversions API)
+const newEventId=()=>window.rdTrack?rdTrack.uuid():'e'+Date.now().toString(36)+Math.random().toString(36).slice(2,10);
+const leadExtra=id=>Object.assign(window.rdTrack?rdTrack.leadFields(id):{event_id:id,page_url:location.href.split('#')[0]},{variant:VARIANT});
 const priceBand=v=>v<500000?'<500k':v<1000000?'500k-1M':v<2000000?'1M-2M':'2M+';
 const UTM=['utm_source','utm_medium','utm_campaign','utm_content'];
 const pageQ=(()=>{try{return new URLSearchParams(location.search)}catch(e){return new URLSearchParams()}})();
@@ -1238,7 +1244,7 @@ function calc(){
 function roiInput(e){
   if(e&&e.target.id==='rPR')$('#rP').value=(+e.target.value).toLocaleString('en-US');
   calc();
-  if(!used&&R){used=true;let seen=false;try{seen=sessionStorage.getItem('rd-calc')}catch(x){}
+  if(!used&&R){used=true;window.rdTrack&&rdTrack.meta('trackCustom','CalculatorUsed',{apartment_price:R.price,expected_sales:R.exp,variant:VARIANT});let seen=false;try{seen=sessionStorage.getItem('rd-calc')}catch(x){}
     if(!seen){try{sessionStorage.setItem('rd-calc','1')}catch(x){}
       track('Calculator Use',{plan:R.plan,lang,price_band:priceBand(R.price),outcome:R.E?'profit':'no_extra'});}}
 }
@@ -1272,7 +1278,7 @@ function closeLM(){$('#lm').hidden=true;document.body.style.overflow='';lmLast&&
 $('#lmX').onclick=closeLM;$('#lm').addEventListener('click',e=>{if(e.target.id==='lm')closeLM();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#lm').hidden)closeLM();});
 
-function go(url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();}
+function go(url){const a=document.createElement('a');a.href=url;a.dataset.rdSkip='1';a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();}
 
 /* ad and outreach source: remember utm_* / ref from the landing URL for this visit */
 const SRC=(()=>{let v='';try{const q=new URLSearchParams(location.search);v=['utm_source','utm_campaign','utm_medium','ref'].map(k=>q.get(k)).filter(Boolean).join(' / ');
@@ -1282,13 +1288,14 @@ const SRC=(()=>{let v='';try{const q=new URLSearchParams(location.search);v=['ut
 $('#form').addEventListener('submit',e=>{
   e.preventDefault();const f=e.target,ok=$('#formOk'),d=new FormData(f);
   if(d.get('hp'))return;
+  const eid=newEventId();
   if(CONFIG.leadsUrl){
-    const body=new URLSearchParams({site:'restate.deals',type:'Developer (client)',name:d.get('name'),company:d.get('company'),whatsapp:d.get('whatsapp'),email:d.get('email'),src:SRC,lang:lang,page:location.href.split('#')[0],notes:'Contact form · variant '+VARIANT.toUpperCase()});
+    const body=new URLSearchParams(Object.assign(leadExtra(eid),{site:'restate.deals',type:'Developer (client)',form:'contact_form',name:d.get('name'),company:d.get('company'),whatsapp:d.get('whatsapp'),email:d.get('email'),src:SRC,lang:lang,page:location.href.split('#')[0],notes:'Contact form · variant '+VARIANT.toUpperCase()}));
     fetch(CONFIG.leadsUrl,{method:'POST',mode:'no-cors',keepalive:true,body}).catch(()=>{});
   }
   const msg=`${I18N[lang]['wa.msg']}\n\n${d.get('name')} · ${d.get('company')}\n${d.get('email')} · ${d.get('whatsapp')}`+(SRC?`\n(${SRC})`:'');
   if(CONFIG.whatsapp)go('https://wa.me/'+CONFIG.whatsapp.replace(/\D/g,'')+'?text='+encodeURIComponent(msg));
-  ok.textContent=I18N[lang]['bk.ok'];ok.hidden=false;f.reset();track('Lead',{form:'contact'});
+  ok.textContent=I18N[lang]['bk.ok'];ok.hidden=false;f.reset();track('Lead',{form:'contact'},{ev:'Lead',id:eid,p:{content_name:'contact_form',value:0,currency:'USD',lang}});
 });
 /* B: "10 clients in 30 days" and "price per client" forms. Goal: the developer's WhatsApp number */
 function sendLead(fields,waText){
@@ -1299,15 +1306,17 @@ function sendLead(fields,waText){
   if(CONFIG.whatsapp)go('https://wa.me/'+CONFIG.whatsapp.replace(/\D/g,'')+'?text='+encodeURIComponent(waText));
 }
 $('#quoteF').addEventListener('submit',e=>{
-  e.preventDefault();const f=e.target,d=new FormData(f),D=I18N[lang];if(d.get('hp'))return;
+  e.preventDefault();const f=e.target,d=new FormData(f),D=I18N[lang];if(d.get('hp'))return;const eid=newEventId();
   const det=`${D['qt.price']}: ${d.get('price')} · ${D['qt.units']}: ${d.get('units')} · ${D['qt.need']}: ${d.get('need')}`;
-  sendLead({name:d.get('name'),company:d.get('company'),whatsapp:d.get('whatsapp'),notes:'Price request · '+det+' · variant '+VARIANT.toUpperCase()},
+  sendLead({...leadExtra(eid),form:'quote_form',price_range:d.get('price'),units:d.get('units'),need:d.get('need'),name:d.get('name'),company:d.get('company'),whatsapp:d.get('whatsapp'),notes:'Price request · '+det+' · variant '+VARIANT.toUpperCase()},
     `${D['qt.wamsg']}\n\n${d.get('name')} · ${d.get('company')}\n${det}\n${d.get('whatsapp')}`);
-  const ok=$('#quoteOk');ok.textContent=D['qt.ok'];ok.hidden=false;f.reset();track('Lead',{form:'price'});
+  const ok=$('#quoteOk');ok.textContent=D['qt.ok'];ok.hidden=false;f.reset();track('Lead',{form:'price'},{ev:'Lead',id:eid,p:{content_name:'quote_form',value:0,currency:'USD',lang,price_range:d.get('price'),units:d.get('units'),need:d.get('need')}});
 });
 // the calculator's apartment price preselects the price band in the price form
 $$('.js-go').forEach(a=>a.addEventListener('click',()=>{track('CTA',{to:a.getAttribute('href'),place:a.dataset.place||''});
   const v=rd('rP');if(a.getAttribute('href')==='#quote'&&v){$('#qPrice').value=v<500000?'$300k–$500k':v<=1000000?'$500k–$1M':v<=2000000?'$1M–$2M':'$2M+';}}));
+(()=>{const t=VARIANT==='a'?$('#pricing'):$('#quote');if(!t||!('IntersectionObserver' in window))return;
+  const ob=new IntersectionObserver(es=>{if(es.some(x=>x.isIntersecting)){ob.disconnect();window.rdTrack&&rdTrack.meta('track','ViewContent',{content_name:'quote_section',section:t.id,variant:VARIANT});}},{threshold:.25});ob.observe(t);})();
 function bindWA(){
   if(!CONFIG.whatsapp)return;
   const url='https://wa.me/'+CONFIG.whatsapp.replace(/\D/g,'')+'?text='+encodeURIComponent(I18N[lang]['wa.msg']);

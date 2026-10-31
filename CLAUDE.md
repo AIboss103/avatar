@@ -25,6 +25,10 @@ These come from the site owner (Artem Voinov) and apply to every page.
 ## Prices
 - All prices live only in CONFIG.pricing in real-estate-developers/index.html.
 
+## Changes the visitor can see
+- On restate.deals any visible change (new pages, links, text, styles, images, layout) needs the owner's explicit OK first: build it on a preview branch, send screenshots and the diff, wait for "OK". Invisible changes (scripts, meta tags, Worker) can ship right away; prove them with before/after screenshots that are pixel-identical.
+- Meta Pixel ID lives only in real-estate-developers/rd-track.js (deploy it to the site root with the pages).
+
 ## Deploy
 - Site source: real-estate-developers/ on branch dental-clinics-site.
 - Language pages /en/ /es/ /ru/ are copies of real-estate-developers/index.html with their own head tags. After every edit of index.html run `python3 scripts/build_restate_lang.py` and deploy the en/ es/ ru/ and price/ folders too. Never edit those copies by hand.

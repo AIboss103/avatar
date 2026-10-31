@@ -162,6 +162,29 @@ cp -r panama-crypto-homes/* ../demo/ && cd ../demo && git add -A && git commit -
 
 Ещё не сделано: на whalehome.io нет аналитики (Plausible только на restate.deals).
 
+## 13a. Реклама Meta: пиксель, Conversions API, UTM (restate.deals)
+
+Всё невидимое, внешний вид сайта не меняется.
+- `real-estate-developers/rd-track.js` (на сайте `/rd-track.js`) подключён в `<head>` всех страниц: главная и её копии /en/ /es/ /ru/ /price/, /partners/, /partners/onepager.html, /legal/. В нём:
+  - `PIXEL_ID` (единственное место, где лежит ID пикселя; пусто = пиксель выключен, к Facebook нет запросов);
+  - первый и последний источник визита (utm_*, fbclid, страница входа) в localStorage;
+  - запасная cookie `_fbc` из fbclid;
+  - события: WhatsApp и Telegram → Contact, Calendly → Schedule (клик или запись в виджете).
+- В `index.html`:
+  - `track()` шлёт событие и в Plausible, и в Meta;
+  - отправка формы (#quoteF или #form) → Lead с уникальным `event_id`, тот же id уходит в Worker;
+  - первое касание калькулятора → CalculatorUsed;
+  - блок цен (A) или формы (B) на экране → ViewContent.
+- Заявка уходит в Worker с полями event_id, fbp, fbc, utm_* (последний источник), ft_utm_* (первый), landing_page, page_url, referrer, user_agent.
+- Worker (`telegram-bot/worker.js`):
+  - пишет в Telegram и в CRM строку «Source: facebook / cpc / кампания / объявление»;
+  - отправляет Lead в Meta Conversions API с тем же event_id (Meta склеивает браузер и сервер), с хешированными SHA-256 телефоном, email, именем и страной, IP и браузером.
+  - Переменные: META_PIXEL_ID, META_CAPI_TOKEN (секрет), META_TEST_EVENT_CODE (только на время проверки), META_GRAPH_VERSION (необязательно, по умолчанию v25.0).
+- Включить:
+  1. вписать ID в `rd-track.js` и код проверки домена в `<meta name="facebook-domain-verification">` в `index.html`, собрать языки, выложить;
+  2. в Worker обновить код и добавить переменные (см. `telegram-bot/README.md`);
+  3. проверить в Events Manager → Test events, затем удалить META_TEST_EVENT_CODE.
+
 ## 15. Сайт для стоматологий (SmileScale)
 
 - Адрес: https://dental-clinics-site.restate-deals.pages.dev/dental-clinics/ (B, без цен) и …/dental-clinics/price/ (A, с ценами, noindex). Это превью-ссылка Cloudflare Pages на ветку `dental-clinics-site`; обновляется при каждом пуше в неё. Свой домен — подключить Custom domain к ветке или вынести в отдельный проект Pages.

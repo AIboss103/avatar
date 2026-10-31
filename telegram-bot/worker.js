@@ -6,6 +6,10 @@
 //   LEADS_URL   text    Apps Script web app URL of the WhaleHome CRM (optional; without it leads only go to Telegram)
 //   RESTATE_LEADS_URL text  Apps Script web app URL of the Restate Deals CRM (restate.deals form; optional)
 //   STATE       KV namespace binding: user language, interest, budget and the admin chat
+//   META_PIXEL_ID        text    Meta dataset (pixel) ID for restate.deals: Conversions API (optional)
+//   META_CAPI_TOKEN      secret  Conversions API access token (Events Manager -> Settings). Never in this file.
+//   META_TEST_EVENT_CODE text    optional, only while testing in Events Manager -> Test events; delete after QA
+//   META_GRAPH_VERSION   text    optional, default v25.0
 //
 // Reachable as whalehome.io/api/* (Worker route on the whalehome.io zone) or bot.whalehome.io (custom domain).
 // /api/lead takes form leads from whalehome.io (quiz) and restate.deals (developer form).
@@ -163,6 +167,55 @@ async function saveLead(env, from, u, contact, note) {
   u.lead = 1;
 }
 
+/* ---------- Meta Conversions API (restate.deals leads) ---------- */
+async function sha256(v) {
+  const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(v));
+  return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join("");
+}
+// digits only, with country code; 8 digits starting with 6 = Panama mobile without +507
+function normPhone(v) {
+  let d = String(v || "").replace(/\D/g, "");
+  if (d.startsWith("00")) d = d.slice(2);
+  if (d.length === 8 && d[0] === "6") d = "507" + d;
+  return d.length >= 8 ? d : "";
+}
+const CC = [["507","pa"],["506","cr"],["502","gt"],["503","sv"],["504","hn"],["505","ni"],["593","ec"],["598","uy"],["595","py"],["591","bo"],["380","ua"],["375","by"],["971","ae"],["972","il"],["351","pt"],["1","us"],["7","ru"],["34","es"],["52","mx"],["57","co"],["58","ve"],["51","pe"],["56","cl"],["54","ar"],["55","br"],["44","gb"],["49","de"],["33","fr"],["39","it"],["31","nl"],["41","ch"],["43","at"],["32","be"],["48","pl"],["90","tr"],["91","in"],["86","cn"],["81","jp"],["82","kr"],["65","sg"],["61","au"],["66","th"],["63","ph"]];
+const country = ph => (CC.find(([c]) => ph.startsWith(c)) || [0, "pa"])[1];
+// "facebook / cpc / campaign / content" from the last-touch UTM, else the old src field
+function sourceLine(p) {
+  const s = ["utm_source", "utm_medium", "utm_campaign", "utm_content"].map(k => String(p[k] || "").slice(0, 120)).filter(Boolean).join(" / ");
+  return s || String(p.src || "").slice(0, 300);
+}
+async function metaLead(req, env, p) {
+  if (!env.META_PIXEL_ID || !env.META_CAPI_TOKEN || !p.event_id) return;
+  const ph = normPhone(p.whatsapp), em = String(p.email || "").trim().toLowerCase();
+  const parts = String(p.name || "").trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const ud = {
+    client_ip_address: req.headers.get("cf-connecting-ip") || undefined,
+    client_user_agent: req.headers.get("user-agent") || String(p.user_agent || "") || undefined,
+    country: [await sha256(ph ? country(ph) : "pa")],
+  };
+  if (ph) ud.ph = [await sha256(ph)];
+  if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) ud.em = [await sha256(em)];
+  if (parts[0]) ud.fn = [await sha256(parts[0])];
+  if (parts.length > 1) ud.ln = [await sha256(parts[parts.length - 1])];
+  if (p.fbp) ud.fbp = String(p.fbp).slice(0, 200);
+  if (p.fbc) ud.fbc = String(p.fbc).slice(0, 400);
+  const cd = { content_name: p.form || "lead_form", lang: p.lang || "", variant: p.variant || "", currency: "USD", value: 0 };
+  for (const k of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "price_range", "units", "need"]) if (p[k]) cd[k] = String(p[k]).slice(0, 200);
+  const body = {
+    data: [{ event_name: "Lead", event_time: Math.floor(Date.now() / 1000), event_id: String(p.event_id).slice(0, 100),
+      action_source: "website", event_source_url: String(p.page_url || p.page || "https://restate.deals/").slice(0, 500), user_data: ud, custom_data: cd }],
+  };
+  if (env.META_TEST_EVENT_CODE) body.test_event_code = env.META_TEST_EVENT_CODE;
+  const v = env.META_GRAPH_VERSION || "v25.0";
+  try {
+    const r = await fetch(`https://graph.facebook.com/${v}/${env.META_PIXEL_ID}/events?access_token=${encodeURIComponent(env.META_CAPI_TOKEN)}`,
+      { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+    console.log("meta capi", r.status);                   // status only: no PII, no token
+  } catch { console.log("meta capi failed"); }
+}
+
 /* ---------- leads from the whalehome.io quiz: to the CRM and to Artem ---------- */
 async function siteLead(req, env, ctx) {
   const cors = { "access-control-allow-origin": "*" };
@@ -180,14 +233,20 @@ async function siteLead(req, env, ctx) {
   }
   if (p.site === "restate.deals") {
     ctx.waitUntil((async () => {
+      const srcLine = sourceLine(p), extra = [p.utm_term && "term: " + f("utm_term"), p.fbclid && "fbclid", p.ft_utm_source && "first: " + sourceLine({
+        utm_source: p.ft_utm_source, utm_medium: p.ft_utm_medium, utm_campaign: p.ft_utm_campaign, utm_content: p.ft_utm_content }),
+        p.landing_page && "landing: " + f("landing_page")].filter(Boolean).join(" · ");
       if (env.RESTATE_LEADS_URL) {
-        const body = new URLSearchParams(["name", "company", "whatsapp", "email", "type", "site", "src", "lang", "notes"].map(k => [k, f(k)]));
+        const body = new URLSearchParams(["name", "company", "whatsapp", "email", "type", "site", "lang"].map(k => [k, f(k)]));
+        body.set("src", srcLine.slice(0, 300));
+        body.set("notes", [f("notes"), extra].filter(Boolean).join(" · ").slice(0, 490));
         try { await fetch(env.RESTATE_LEADS_URL, { method: "POST", body }); } catch {}
       }
       const admin = await adminId(env);
       if (admin) await send(env, admin, `🏢 <b>New developer lead</b> · restate.deals\n${esc(f("name"))} · ${esc(f("company"))}\n` +
-        `WhatsApp: ${esc(f("whatsapp"))}\nEmail: ${esc(f("email"))}\nLanguage: ${esc(f("lang").toUpperCase())}` + (p.src ? `\nSource: ${esc(f("src"))}` : ""));
+        `WhatsApp: ${esc(f("whatsapp"))}\nEmail: ${esc(f("email"))}\nLanguage: ${esc(f("lang").toUpperCase())}` + (srcLine ? `\nSource: ${esc(srcLine)}` : "") + (extra ? `\n${esc(extra)}` : "") + (p.fbc ? "\nfbc: yes" : ""));
     })());
+    ctx.waitUntil(metaLead(req, env, p));
     return new Response("ok", { headers: cors });
   }
   ctx.waitUntil((async () => {

@@ -21,6 +21,11 @@ The bot token is a secret. Never put it in this repository (it is public).
    - `LEADS_URL`, type Text: the `/exec` URL from step 1
    - `RESTATE_LEADS_URL`, type Text: the `/exec` URL of `crm/leads-apps-script.gs` deployed the same way from the
      "Restate Deals CRM" sheet (restate.deals form leads)
+   - Meta Conversions API for restate.deals leads (optional; without them nothing is sent to Meta):
+     `META_PIXEL_ID`, type Text: the dataset ID from Meta Events Manager;
+     `META_CAPI_TOKEN`, type Secret: Events Manager → the dataset → Settings → Conversions API → Generate access token;
+     `META_TEST_EVENT_CODE`, type Text: only while checking in Events Manager → Test events, then delete it;
+     `META_GRAPH_VERSION`, type Text, optional (default `v25.0`).
 6. **Settings → Domains & Routes → Add → Route:** zone `whalehome.io`, route `whalehome.io/api/*`, Worker `whalehome-bot`.
    Both sites send form leads to `https://whalehome.io/api/lead`. (A custom domain `bot.whalehome.io` works too.)
 7. Open `https://whalehome.io/api/setup?key=<SETUP_KEY>` once. Check the answer:
