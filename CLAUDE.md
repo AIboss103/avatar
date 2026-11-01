@@ -27,7 +27,7 @@ These come from the site owner (Artem Voinov) and apply to every page.
 
 ## Changes the visitor can see
 - On restate.deals any visible change (new pages, links, text, styles, images, layout) needs the owner's explicit OK first: build it on a preview branch, send screenshots and the diff, wait for "OK". Invisible changes (scripts, meta tags, Worker) can ship right away; prove them with before/after screenshots that are pixel-identical.
-- Analytics on restate.deals: Plausible + Cloudflare Web Analytics + GA4 (G-K8FTGB7RF5) + Meta Pixel (913718525040508). GA4 and Pixel tags are inline in every page <head> (index.html source, partners/, legal/). One `track()` call sends to Plausible, GA4 and Meta (map in `EV`). real-estate-developers/rd-track.js (deploy to the site root): UTM/fbclid attribution for leads and clicks the page does not track itself.
+- Analytics on restate.deals: Plausible + Cloudflare Web Analytics + GA4 (G-K8FTGB7RF5) + Meta Pixel (1704556277678666). GA4 and Pixel tags are inline in every page <head> (index.html source, partners/, legal/). One `track()` call sends to Plausible, GA4 and Meta (map in `EV`). real-estate-developers/rd-track.js (deploy to the site root): UTM/fbclid attribution for leads and clicks the page does not track itself.
 
 ## Deploy
 - Site source: real-estate-developers/ on branch dental-clinics-site.

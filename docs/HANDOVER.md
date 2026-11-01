@@ -165,7 +165,7 @@ cp -r panama-crypto-homes/* ../demo/ && cd ../demo && git add -A && git commit -
 ## 13a. Аналитика и реклама: GA4, Meta Pixel, Conversions API, UTM (restate.deals)
 
 Всё невидимое, внешний вид сайта не меняется.
-- **Счётчики на всех страницах.** GA4 `G-K8FTGB7RF5` и Meta Pixel `913718525040508` стоят прямо в `<head>`: исходник `index.html` (из него собираются /en/ /es/ /ru/ /price/), `/partners/`, `/partners/onepager.html`, `/legal/`. Plausible и Cloudflare Web Analytics остались как были.
+- **Счётчики на всех страницах.** GA4 `G-K8FTGB7RF5` и Meta Pixel `1704556277678666` стоят прямо в `<head>`: исходник `index.html` (из него собираются /en/ /es/ /ru/ /price/), `/partners/`, `/partners/onepager.html`, `/legal/`. Plausible и Cloudflare Web Analytics остались как были.
 - **`track()` в `index.html`.** Один вызов отправляет событие в Plausible, GA4 и Meta (таблица `EV`):
 
   | Событие на сайте | GA4 | Meta |
@@ -187,7 +187,7 @@ cp -r panama-crypto-homes/* ../demo/ && cd ../demo && git add -A && git commit -
 - **Worker (`telegram-bot/worker.js`):**
   - пишет в Telegram и в CRM «Source: facebook / cpc / кампания / объявление»;
   - отправляет Lead в Meta Conversions API (телефон, email, имя и страна в виде SHA-256, плюс IP и браузер) с тем же event_id.
-  - Переменные: `META_PIXEL_ID=913718525040508` (Text), `META_CAPI_TOKEN` (Secret), `META_TEST_EVENT_CODE` (только на время проверки), `META_GRAPH_VERSION` (по умолчанию v25.0). См. `telegram-bot/README.md`.
+  - Переменные: `META_PIXEL_ID=1704556277678666` (Text), `META_CAPI_TOKEN` (Secret), `META_TEST_EVENT_CODE` (только на время проверки), `META_GRAPH_VERSION` (по умолчанию v25.0). См. `telegram-bot/README.md`.
 - **Ещё сделать в панелях:**
   1. Calendly → событие real-estate-deals-ceo → Booking page → Confirmation page → Redirect на `https://restate.deals/?booked=1`;
   2. GA4: отметить ключевыми событиями whatsapp_click, book_call, generate_lead;

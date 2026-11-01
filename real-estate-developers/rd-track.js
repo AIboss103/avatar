@@ -1,6 +1,6 @@
 /* Restate Deals: ad attribution (UTM, fbclid) + outbound click events. Invisible: no markup, no styles.
    Loaded with <script defer src="/rd-track.js"> in the <head> of every page (main page and its language/price copies,
-   /partners/, /legal/). The GA4 tag (G-K8FTGB7RF5) and the Meta Pixel (913718525040508) are inline in each page's <head>;
+   /partners/, /legal/). The GA4 tag (G-K8FTGB7RF5) and the Meta Pixel (1704556277678666) are inline in each page's <head>;
    this file only sends events to them (window.gtag / window.fbq) and works fine when they are blocked. */
 (function () {
   "use strict";
