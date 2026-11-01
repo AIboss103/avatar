@@ -32,4 +32,6 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://restate.deals/ru/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://restate.deals/"/>
   </url>
+  <url><loc>https://restate.deals/privacy/</loc></url>
+  <url><loc>https://restate.deals/es/privacidad/</loc></url>
 </urlset>

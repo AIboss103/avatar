@@ -314,7 +314,7 @@ fbq('init','1704556277678666');fbq('track','PageView');
   <div class="wrap">
     <div class="hero-top">
       <div>
-        <span class="kicker" data-i="h.eb">Para promotores, agencias y socios</span>
+        <span class="kicker" data-i="h.eb">Le ayudamos a vender su inmueble en Panamá</span>
         <h1 data-i="h.t">El Hub de Distribución para el Capital Web3 e Internacional en Panamá</h1>
         <p class="sub" data-i="h.s">Canalizamos compradores directos para unidades residenciales de $500k+ bajo la Visa de Inversionista Calificado. Cero costo operativo para su equipo, liquidación 100% bancarizada en USD.</p>
         <div class="ctas">
@@ -398,7 +398,7 @@ fbq('init','1704556277678666');fbq('track','PageView');
     </div>
     <div class="legal">
       <span>© 2026 Restate Deals Inc. · restate.deals</span>
-      <nav aria-label="Legal"><a href="/legal/#privacy" data-i="l.1">Política de Privacidad</a><a href="/legal/#terms" data-i="l.2">Términos de Colocación</a><a href="/legal/#disclaimer" data-i="l.3">Aviso de Cumplimiento</a></nav>
+      <nav aria-label="Legal"><a class="js-priv" href="/es/privacidad/" data-i="l.1">Política de Privacidad</a><a href="/legal/#terms" data-i="l.2">Términos de Colocación</a><a href="/legal/#disclaimer" data-i="l.3">Aviso de Cumplimiento</a></nav>
     </div>
   </div>
 </section>
@@ -414,7 +414,7 @@ const BENIL=["<svg viewBox=\"0 0 280 170\" aria-hidden=\"true\"><defs><linearGra
 const S={
  "nav.1":T("Para quién","Who it's for"),"nav.2":T("60 días","60 days"),"nav.3":T("Pago","Payment"),"nav.4":T("Contacto","Contact"),
  "nav.cta":T("Agendar llamada","Book a call"),
- "h.eb":T("Para promotores, agencias y socios","For developers, agencies and partners"),
+ "h.eb":T("Le ayudamos a vender su inmueble en Panamá","We help you sell real estate in Panama"),
  "h.t":T("Traemos compradores con $500k+ a sus proyectos en Panamá","We bring buyers with $500k+ to your projects in Panama"),
  "h.s":T("Compradores de EE.UU. y del mundo crypto. Pagan en dólares a su banco. Su equipo no hace trabajo extra.","Buyers from the US and the crypto world. They pay in US dollars to your bank. Your team does no extra work."),
  "cta.book":T("Agendar llamada de 15 minutos","Book a 15-minute call"),
@@ -515,6 +515,7 @@ function render(){
   document.querySelectorAll("[data-ih]").forEach(el=>{const v=S[el.dataset.ih];if(v)el.innerHTML=tr(v)});
   document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===lang));
   document.querySelectorAll(".js-book").forEach(a=>a.href=CONFIG.booking);
+  document.querySelectorAll(".js-priv").forEach(a=>a.href=lang==="en"?"/privacy/":"/es/privacidad/");
   document.querySelectorAll(".js-pdf").forEach(a=>a.href=`Restate-Deals-One-Pager-${lang.toUpperCase()}.pdf`);
   $("vs").innerHTML=VS.map(l=>`<div class="lane ${l.cls}"><div class="lane-h"><span class="tag ${l.cls==="bad"?"bad":"ok"}">${tr(l.tag)}</span><b>${tr(l.h)}</b></div>
     <div class="steps">${l.steps.map(([k,t,end])=>`<div class="st"><div class="box${end?" end":""}"><span class="lbl">${tr(k)}</span>${tr(t)}</div><span class="ar" aria-hidden="true">${arrowSVG}</span></div>`).join("")}</div></div>`).join("");
