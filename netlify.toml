@@ -1,0 +1,32 @@
+# Netlify deploys the stem cell clinic landing page from /stem-cell-landing.
+# Connect the GitHub repo in Netlify (Add new site → Import from Git) for CI/CD:
+# every push to the production branch auto-deploys, PRs get Deploy Previews.
+# HTTPS (Let's Encrypt) is provisioned automatically for netlify.app and custom domains.
+
+[build]
+  publish = "stem-cell-landing"
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[redirects]]
+  from = "/es"
+  to = "/?lang=es"
+  status = 302
