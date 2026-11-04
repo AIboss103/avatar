@@ -11,7 +11,8 @@ These come from the site owner (Artem Voinov) and apply to every page.
 - Use simple, plain words. Short sentences. Say concretely what the client gets.
 - No jargon headlines ("distribution hub", "infrastructure") as the main message; if used, explain in plain words next to it.
 - No exclamation marks. No made-up cases or numbers. Keep copy short: less text, more pictures.
-- Owner-approved on restate.deals: Starter promo (struck $5,000 -> $3,000), "we take only 3 projects, 2 taken" block, the "+1 month free" guarantee, calculator showing net profit as 5% of extra sales in green.
+- Owner-approved on restate.deals: Starter promo (struck $5,000 -> $3,000), "we take only 3 projects, 2 taken" block, the "+1 month free" guarantee. No profit calculator on the main page any more.
+- No "commission", "%", "5%" on restate.deals pages; the only exception is /owners, which compares us with a broker's 5% + 7% ITBMS.
 - Speak in the first person ("I") on the personal funnel demo; restate.deals uses "we".
 - Every text exists in EN, ES and RU through the I18N dictionaries.
 - Booking: Calendly inline widget in the dark theme (contact section), loaded lazily.
@@ -24,6 +25,7 @@ These come from the site owner (Artem Voinov) and apply to every page.
 
 ## Prices
 - All prices live only in CONFIG.pricing in real-estate-developers/index.html.
+- /owners (private owners) has its own prices: CONFIG.plans in real-estate-developers/owners/index.html (45-day sprints Small / Mid / Premium). One page for ES/EN/RU, no build script; deploy owners/ and img/og-owners.jpg.
 
 ## Changes the visitor can see
 - On restate.deals any visible change (new pages, links, text, styles, images, layout) needs the owner's explicit OK first: build it on a preview branch, send screenshots and the diff, wait for "OK". Invisible changes (scripts, meta tags, Worker) can ship right away; prove them with before/after screenshots that are pixel-identical.

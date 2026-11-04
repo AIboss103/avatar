@@ -7,8 +7,9 @@
 
 | Что | Адрес | Где живёт |
 |---|---|---|
-| Сайт для застройщиков | https://restate.deals (+ /en/ /es/ /ru/, /partners/, /legal/) | Cloudflare Pages, проект `restate-deals`, ветка `restate-site` |
+| Сайт для застройщиков | https://restate.deals (+ /en/ /es/ /ru/, /price/, /partners/, /legal/, /privacy/, /es/privacidad/) | Cloudflare Pages, проект `restate-deals`, ветка `restate-site` |
 | Сайт для покупателей WhaleHome | https://whalehome.io (+ /en/ /es/ /ru/, /properties/) | Cloudflare Pages, проект `cryptohome-demo`, ветка `demo-site` |
+| Страница для собственников | https://restate.deals/owners/ (ES, переключатель EN/RU) | там же, `real-estate-developers/owners/index.html` |
 | Старый адрес демо | demo.restate.deals → редирект 301 на whalehome.io | Cloudflare, зона restate.deals → Rules → Redirect Rules |
 | Telegram-бот | https://t.me/whale_home_estate_bot | Cloudflare Worker `whalehome-bot` + KV `whalehome-bot` |
 | CRM застройщиков | Google Sheet «Restate Deals CRM» (av@icoda.io, доступ ceo@restate.deals) | Google Drive |
@@ -25,10 +26,10 @@
 
 | Папка | Что внутри |
 |---|---|
-| `real-estate-developers/` | restate.deals: `index.html` (весь сайт, тексты EN/ES/RU в `I18N`, цены в `CONFIG.pricing`), `partners/`, `legal/`, `img/`, `vendor/three.min.js`, `_headers`, `_redirects` |
+| `real-estate-developers/` | restate.deals: `index.html` (весь сайт, тексты EN/ES/RU в `I18N`, цены в `CONFIG.pricing`), `owners/index.html` (страница для собственников, свои цены в `CONFIG.plans`), `partners/`, `legal/`, `privacy/`, `es/privacidad/`, `rd-track.js`, `img/`, `vendor/three.min.js`, `_headers`, `_redirects` |
 | `panama-crypto-homes/` | whalehome.io: `index.html` (тексты в `S`, объекты в `HOMES`, настройки в `CONFIG`), `properties/` (каталог), `properties.json`, `homes.json`, `img/` |
 | `telegram-bot/` | `worker.js` (весь бот), `README.md` (установка), `avatar.png`, `description.png` |
-| `crm/` | Apps Script для CRM: `whalehome-leads-apps-script.gs`, `leads-apps-script.gs` (Restate Deals CRM) |
+| `crm/` | Apps Script: `whalehome-leads-apps-script.gs`, `leads-apps-script.gs` (Restate Deals CRM), `meta-ads-stats-apps-script.gs` (статистика Meta Ads в таблицу раз в 3 дня, пока не установлен) |
 | `scripts/` | сборка языковых страниц, `homes.json`, каталога из выгрузки CPanama |
 | `.github/workflows/import-cpanama.yml` (ветка `cpanama-import-run`) | GitHub Action: качает объекты CPanama из Google Drive и собирает каталог |
 | `CLAUDE.md` | правила проекта для Claude |
@@ -40,7 +41,13 @@
 - `calendly` — `https://calendly.com/voinov-agency/real-estate-deals-ceo`
 - `whatsapp` — `50764566336`
 - `leadsUrl` — `https://whalehome.io/api/lead`: бот пишет заявку в «Restate Deals CRM» (переменная Worker `RESTATE_LEADS_URL`) и шлёт её Артёму в Telegram; форма ещё и открывает WhatsApp
-- Аналитика: Plausible, домен `restate.deals` (скрипт в `<head>`)
+- Аналитика: Plausible, GA4 `G-K8FTGB7RF5`, Meta Pixel `1704556277678666` (подробно в разделе 13a)
+
+**restate.deals/owners** — `real-estate-developers/owners/index.html`, объект `CONFIG`:
+- `plans` — три спринта (работа, реклама, гарантия, цена покупателя сверх гарантии, продление), только здесь
+- `brokerRate` 5% и `itbms` 7% — для сравнения с брокером; `closeDiscount` 6% — средняя скидка при сделке (ACOBIR MLS)
+- `whatsapp`, `googleAds` (`id` и `label` конверсии Google Ads; пусто = выключено)
+- Страница одна на три языка, сборщик не нужен: после правки выложить `owners/index.html` и `img/og-owners.jpg`
 
 **whalehome.io** — `panama-crypto-homes/index.html`, объект `CONFIG`:
 - `calendly` — `https://calendly.com/voinov-agency/real-estate-deals-ceo` (запасная: `.../whalehome-ceo-meeting`)
@@ -86,7 +93,7 @@ GitHub → Actions → «Import CPanama catalog» → Run workflow (ветка `
 - Почта: ceo@restate.deals
 - WhatsApp: +507 6456 6336
 
-## 9. Текущие цены и условия (на 30.10.2026)
+## 9. Текущие цены и условия (на 04.11.2026)
 
 **restate.deals** (всё в `CONFIG.pricing` в `real-estate-developers/index.html`):
 
@@ -96,10 +103,24 @@ GitHub → Actions → «Import CPanama catalog» → Run workflow (ветка `
 | Growth | $6,500 | 70 | около $10,000 | 2–3 | $200 | 20+ квалифицированных покупателей за 60 дней или +1 месяц бесплатно |
 | Enterprise | $12,000 | 140 | около $20,000 | 4+ | $150 | 30+ квалифицированных покупателей за 60 дней или +1 месяц бесплатно |
 
-- Оплаты за показы сейчас нет (убрана). Процента с прибыли нет.
+- Оплаты за показы нет. Процента с прибыли или с продажи нет. На страницах restate.deals (кроме /owners, где идёт сравнение с брокером) не пишем «комиссия» и проценты.
 - Блок «Берём только 3 проекта в месяц, 2 заняты» — `CONFIG.capacity`.
-- Калькулятор: прибыль застройщика = 5% от цены каждой продажи (`CONFIG.roi.profit`), минус план, бюджет и оплата за квалифицированных покупателей. План ограничивает число продаж своей целью.
+- Калькулятора прибыли на главной больше нет (убран по просьбе владельца вместе со всеми «5%»).
 - Квалифицированный покупатель (значок ⓘ в карточках планов): 1) имя и рабочий контакт, отвечает в WhatsApp или по почте; 2) подтверждённый бюджет от $500k и понятно, откуда деньги; 3) готов купить в течение 6 месяцев; 4) всерьёз хочет жить в Панаме или переехать; 5) согласился на звонок или показ с отделом продаж девелопера и не был у девелопера в базе.
+
+**restate.deals/owners** (собственники; спринт 45 дней, работа оплачивается вперёд, реклама напрямую в Meta и Google, без комиссии и без эксклюзива):
+
+| План | Объекты | Работа | Реклама | Гарантия | Сверх гарантии | Бонус | Продление |
+|---|---|---|---|---|---|---|---|
+| Small | до $250,000 | $900 | $900 | 10 квалифицированных | $40 за каждого, лимит задаёт владелец | остальные заявки (ожидаемо 60–80) бесплатно | $750 |
+| Mid | $250,000–$600,000 | $1,500 | $1,800 | 12 квалифицированных | $70 | 80–100 бесплатно | $1,250 |
+| Premium | от $600,000 | $2,500 | $3,000 | 8 квалифицированных с подтверждёнными средствами | $150 | 70–90 бесплатно | $2,100 |
+
+- Premium: реклама на Панаму, США, Канаду и Европу на двух языках.
+- Квалифицированный покупатель (подсказка ⓘ на странице): оставил имя и рабочий WhatsApp; ответил на контакт; подтвердил интерес к объекту; бюджет и сроки подходят под цену. Каждый — в отчёте с именем и номером.
+- Гарантия: если привели меньше — на выбор бесплатное продление спринта до нужного числа или возврат оплаты за работу пропорционально недобору (обещали 12, привели 8 — возврат трети). Рекламный бюджет не возвращается, отчёт из кабинета владелец получает. Условия: цена не выше рынка больше чем на 10%, ответ покупателям в течение 24 часов, доступ к показам. Продан раньше конца спринта — это результат, возврата нет.
+- Сравнение с брокером на странице: 5% + 7% ITBMS (дом за $400,000: $21,400 против $3,300 в Mid). Статистика: 224 дня на продажу и −6% к цене объявления (ACOBIR MLS, первое полугодие 2026).
+- Сообщение в WhatsApp: «Hola Artem, quiero vender mi propiedad y estoy listo para pagar por tus servicios. ¿Cómo empezamos?» (+ план, если нажата кнопка плана; EN и RU переведены).
 
 **whalehome.io**:
 - Онлайн-консультация $1,000: гарантия 100% (не устроило — возврат всех $1,000 в течение 7 дней), включает финансовый расчёт и примерный ROI по каждому объекту, засчитывается в VIP-тур.
@@ -109,8 +130,8 @@ GitHub → Actions → «Import CPanama catalog» → Run workflow (ветка `
 
 ## 9a. A/B-тест restate.deals
 
-- **B, без цен** — главная restate.deals (и /en/ /es/ /ru/): кнопки «Получить 10 клиентов за 60 дней» и «Узнать цену», блок с формой на 10 клиентов, форма-калькулятор «Цена за клиента» (ответ приходит в WhatsApp), калькулятор без наших цен.
-- **A, с ценами** — restate.deals/price/ (и /en/price/ …): планы, оплата за квалифицированного покупателя, полный калькулятор. Закрыта от поисковиков (noindex), ссылку дают только в рекламе.
+- **B, без цен** — главная restate.deals (и /en/ /es/ /ru/): первый экран «Помогаем продать недвижимость в Панаме за 60 дней», блоки «Для кого», «Наши покупатели» и «Панама — крипто-столица Америки», «Живая воронка» (whalehome.io), одна форма «10 клиентов за 60 дней / узнать цену» (ответ в WhatsApp). Калькулятора нет.
+- **A, с ценами** — restate.deals/price/ (и /en/price/ …): планы, оплата за квалифицированного покупателя, форма с Calendly. Калькулятора нет. Закрыта от поисковиков (noindex), ссылку дают только в рекламе.
 - Один исходный файл `real-estate-developers/index.html`, версию включает `<html data-variant="a|b">`; элементы только для A помечены `class="va"`, только для B — `class="vb"`.
 - Каждая заявка приходит с пометкой «variant A/B» в заметках, события Plausible несут свойство `variant`, ссылки Calendly — `utm_term=variant-a|b`.
 
@@ -191,8 +212,15 @@ cp -r panama-crypto-homes/* ../demo/ && cd ../demo && git add -A && git commit -
 - **Ещё сделать в панелях:**
   1. Calendly → событие real-estate-deals-ceo → Booking page → Confirmation page → Redirect на `https://restate.deals/?booked=1`;
   2. GA4: отметить ключевыми событиями whatsapp_click, book_call, generate_lead;
-  3. Meta: подтвердить домен (код вставить в `<meta name="facebook-domain-verification">` в `index.html`), проверить Test Events;
-  4. Worker: обновить код и добавить переменные META_*.
+  3. Meta: код подтверждения домена уже стоит на сайте (`xbhgtd4uaqn0vniq3z5ot189g5r1u1`), осталось нажать Verify в Business Manager и проверить Test Events;
+  4. Worker: обновить код и добавить переменные META_*;
+  5. Google Ads: прислать ID и метку конверсии — вписать в `CONFIG.googleAds` на /owners (клик по WhatsApp станет конверсией).
+- **/owners:** PageView, ViewContent при первом использовании калькулятора, Lead (с eventID) и GA4 `generate_lead` на каждый клик по WhatsApp, Plausible `Calculator Use` и `Lead`.
+- **Статистика Meta Ads в таблицу** (`crm/meta-ads-stats-apps-script.gs`): Google Sheet + Apps Script, раз в 3 дня тянет расходы, показы, клики и лиды по каждому объявлению. Нужен токен Meta с правом ads_read и ID рекламного кабинета; установка описана в начале файла. Пока не установлен.
+
+## 14. Превью-ветки (что можно удалить)
+
+Ветки `restate-privacy-src`, `restate-privacy-preview`, `restate-buyers-src`, `restate-buyers-preview`, `restate-owners-src`, `restate-owners-preview` — превью для согласования. Всё из них уже на сайте; ветки можно удалить в GitHub. Новые видимые изменения restate.deals сначала выкладываются в такую ветку (адрес вида `https://<ветка>.restate-deals.pages.dev`), после «ОК» владельца — в `restate-site`.
 
 ## 15. Сайт для стоматологий (SmileScale)
 
