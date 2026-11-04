@@ -126,6 +126,9 @@ async function tg(env, method, body) {
 }
 const send = (env, chat_id, text, reply_markup) =>
   tg(env, "sendMessage", { chat_id, text, parse_mode: "HTML", disable_web_page_preview: true, reply_markup });
+// Site-form leads go to Artem through a separate bot (LEADS_BOT_TOKEN); falls back to the main bot if it is not set.
+const sendLead = (env, chat_id, text) =>
+  tg({ BOT_TOKEN: env.LEADS_BOT_TOKEN || env.BOT_TOKEN }, "sendMessage", { chat_id, text, parse_mode: "HTML", disable_web_page_preview: true });
 
 /* ---------- state (KV) ---------- */
 async function getUser(env, id) {
@@ -226,7 +229,7 @@ async function siteLead(req, env, ctx) {
   if (p.site === "smilescale") {                       // dental clinics site: Telegram only, no CRM yet
     ctx.waitUntil((async () => {
       const admin = await adminId(env);
-      if (admin) await send(env, admin, `🦷 <b>New dental clinic lead</b> · SmileScale\n${esc(f("name"))} · ${esc(f("company"))}\n` +
+      if (admin) await sendLead(env, admin, `🦷 <b>New dental clinic lead</b> · SmileScale\n${esc(f("name"))} · ${esc(f("company"))}\n` +
         `WhatsApp: ${esc(f("whatsapp"))}\nLanguage: ${esc(f("lang").toUpperCase())}` + (p.notes ? `\n\n${esc(f("notes"))}` : ""));
     })());
     return new Response("ok", { headers: cors });
@@ -245,7 +248,7 @@ async function siteLead(req, env, ctx) {
         try { await fetch(env.RESTATE_LEADS_URL, { method: "POST", body }); } catch {}
       }
       const admin = await adminId(env);
-      if (admin) await send(env, admin, `🏢 <b>New developer lead</b> · restate.deals\n${esc(f("name"))} · ${esc(f("company"))}\n` +
+      if (admin) await sendLead(env, admin, `🏢 <b>New developer lead</b> · restate.deals\n${esc(f("name"))} · ${esc(f("company"))}\n` +
         `WhatsApp: ${esc(f("whatsapp"))}\nEmail: ${esc(f("email"))}\nLanguage: ${esc(f("lang").toUpperCase())}` + (srcLine ? `\nSource: ${esc(srcLine)}` : "") + (p.utm_content || p.utm_term ? `\nAd: ${esc(f("utm_term"))} / ${esc(f("utm_content"))}` : "") +
         (p.fbclid ? "\nClick: Meta ad" : "") + (extra ? `\n${esc(extra)}` : ""));
     })());
@@ -259,7 +262,7 @@ async function siteLead(req, env, ctx) {
       try { await fetch(env.LEADS_URL, { method: "POST", body }); } catch {}
     }
     const admin = await adminId(env);
-    if (admin) await send(env, admin, `🐋 <b>New lead</b> · whalehome.io quiz\n${esc(f("name"))} · ${esc(f("whatsapp"))}\nLanguage: ${esc(f("lang").toUpperCase())}` +
+    if (admin) await sendLead(env, admin, `🐋 <b>New lead</b> · whalehome.io quiz\n${esc(f("name"))} · ${esc(f("whatsapp"))}\nLanguage: ${esc(f("lang").toUpperCase())}` +
       (p.notes ? `\n\n${esc(f("notes"))}` : "") + (p.src ? `\nSource: ${esc(f("src"))}` : ""));
   })());
   return new Response("ok", { headers: cors });
