@@ -9,7 +9,7 @@
 |---|---|---|
 | Сайт для застройщиков | https://restate.deals (+ /en/ /es/ /ru/, /price/, /partners/, /legal/, /privacy/, /es/privacidad/) | Cloudflare Pages, проект `restate-deals`, ветка `restate-site` |
 | Сайт для покупателей WhaleHome | https://whalehome.io (+ /en/ /es/ /ru/, /properties/) | Cloudflare Pages, проект `cryptohome-demo`, ветка `demo-site` |
-| Страница для собственников | https://restate.deals/owners/ (ES, переключатель EN/RU) | там же, `real-estate-developers/owners/index.html` |
+| Страница для собственников | https://restate.deals/owners/ (ES), /owners/en/, /owners/ru/ | там же, `real-estate-developers/owners/index.html` |
 | Старый адрес демо | demo.restate.deals → редирект 301 на whalehome.io | Cloudflare, зона restate.deals → Rules → Redirect Rules |
 | Telegram-бот | https://t.me/whale_home_estate_bot | Cloudflare Worker `whalehome-bot` + KV `whalehome-bot` |
 | CRM застройщиков | Google Sheet «Restate Deals CRM» (av@icoda.io, доступ ceo@restate.deals) | Google Drive |
@@ -47,7 +47,7 @@
 - `plans` — три спринта (работа, реклама, гарантия, цена покупателя сверх гарантии, продление), только здесь
 - `brokerRate` 5% и `itbms` 7% — для сравнения с брокером; `closeDiscount` 6% — средняя скидка при сделке (ACOBIR MLS)
 - `whatsapp`, `googleAds` (`id` и `label` конверсии Google Ads; пусто = выключено)
-- Страница одна на три языка, сборщик не нужен: после правки выложить `owners/index.html` и `img/og-owners.jpg`
+- Три адреса: `/owners/` (ES, исходник), `/owners/en/`, `/owners/ru/`. После правки `owners/index.html` запустить `python3 scripts/build_owners_lang.py` (собирает en/ и ru/ со своими title, описанием, превью-картинкой `img/og-owners-en.jpg` / `-ru.jpg` и уже переведённым текстом) и выложить папку `owners/` и картинки
 
 **whalehome.io** — `panama-crypto-homes/index.html`, объект `CONFIG`:
 - `calendly` — `https://calendly.com/voinov-agency/real-estate-deals-ceo` (запасная: `.../whalehome-ceo-meeting`)

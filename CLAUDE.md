@@ -25,7 +25,7 @@ These come from the site owner (Artem Voinov) and apply to every page.
 
 ## Prices
 - All prices live only in CONFIG.pricing in real-estate-developers/index.html.
-- /owners (private owners) has its own prices: CONFIG.plans in real-estate-developers/owners/index.html (45-day sprints Small / Mid / Premium). One page for ES/EN/RU, no build script; deploy owners/ and img/og-owners.jpg.
+- /owners (private owners) has its own prices: CONFIG.plans in real-estate-developers/owners/index.html (45-day sprints Small / Mid / Premium). Source is the Spanish page owners/index.html; after every edit run `python3 scripts/build_owners_lang.py` (builds owners/en/ and owners/ru/ with their own head tags and translated HTML) and deploy owners/ (all three) and img/og-owners*.jpg.
 
 ## Changes the visitor can see
 - On restate.deals any visible change (new pages, links, text, styles, images, layout) needs the owner's explicit OK first: build it on a preview branch, send screenshots and the diff, wait for "OK". Invisible changes (scripts, meta tags, Worker) can ship right away; prove them with before/after screenshots that are pixel-identical.

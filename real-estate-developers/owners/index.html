@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -7,6 +7,10 @@
 <meta name="description" content="Sprints de 45 días de marketing para UNA propiedad en Panamá: Meta Ads, Google Ads, creativos y landing. Desde $900 por sprint, sin comisión, con compradores calificados garantizados.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://restate.deals/owners/">
+<link rel="alternate" hreflang="es" href="https://restate.deals/owners/">
+<link rel="alternate" hreflang="en" href="https://restate.deals/owners/en/">
+<link rel="alternate" hreflang="ru" href="https://restate.deals/owners/ru/">
+<link rel="alternate" hreflang="x-default" href="https://restate.deals/owners/">
 <meta name="theme-color" content="#0a0b0d">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Restate Deals">
@@ -18,6 +22,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_PA">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vende tu propiedad en Panamá sin pagar 5% de comisión">
+<meta name="twitter:description" content="Meta Ads + Google Ads para UNA propiedad. Desde $900 por sprint, sin comisión. Compradores calificados garantizados.">
 <meta name="twitter:image" content="https://restate.deals/img/og-owners.jpg">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -94,8 +100,8 @@ header{position:sticky;top:0;z-index:40;background:rgba(10,11,13,.86);backdrop-f
 .logo{display:inline-flex;align-items:center;min-height:44px}
 .logo img{height:24px;width:auto}
 .lang{display:flex;border:1px solid var(--line2);border-radius:12px;padding:3px;gap:2px}
-.lang button{all:unset;cursor:pointer;min-width:44px;min-height:44px;display:grid;place-items:center;border-radius:9px;font:600 13px/1 var(--display);color:var(--muted)}
-.lang button[aria-pressed="true"]{background:var(--gold);color:#1a1206}
+.lang a{text-decoration:none;cursor:pointer;min-width:44px;min-height:44px;display:grid;place-items:center;border-radius:9px;font:600 13px/1 var(--display);color:var(--muted)}
+.lang a[aria-current="page"]{background:var(--gold);color:#1a1206}
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 22px;border-radius:14px;font:700 16px/1.2 var(--display);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s;text-align:center}
 .btn:hover{transform:translateY(-1px)}
@@ -346,7 +352,7 @@ footer .wrap{align-items:center}
   <div class="wrap nav">
     <a class="logo" href="/" aria-label="Restate Deals"><img src="/img/brand/logo-horizontal-dark.svg" alt="Restate Deals" width="144" height="24"></a>
     <div class="lang" role="group" aria-label="Idioma / Language">
-      <button type="button" data-l="es" aria-pressed="true">ES</button><button type="button" data-l="en" aria-pressed="false">EN</button><button type="button" data-l="ru" aria-pressed="false">RU</button>
+      <a href="/owners/" hreflang="es" lang="es" data-l="es" aria-current="page">ES</a><a href="/owners/en/" hreflang="en" lang="en" data-l="en">EN</a><a href="/owners/ru/" hreflang="ru" lang="ru" data-l="ru">RU</a>
     </div>
   </div>
 </header>
@@ -669,8 +675,9 @@ ru:{"f.a8":"Да. Все остальные заявки за спринт пе�
 };
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
-let lang='es';
-try{const q=new URLSearchParams(location.search).get('lang');const s=localStorage.getItem('rd-owners-lang');lang=(q&&I18N[q])?q:(s&&I18N[s])?s:'es';}catch(e){}
+/* the language comes from the page: /owners/ ES, /owners/en/ EN, /owners/ru/ RU (built by scripts/build_owners_lang.py); ?lang= still works */
+let lang=I18N[document.documentElement.dataset.lang]?document.documentElement.dataset.lang:'es';
+try{const q=new URLSearchParams(location.search).get('lang');if(q&&I18N[q])lang=q;}catch(e){}
 
 /* analytics: Plausible + GA4 + Meta Pixel (+ Google Ads conversion on WhatsApp). Never breaks the page */
 function track(name,props){try{window.plausible&&plausible(name,{props:Object.assign({page:'owners',lang},props||{})})}catch(e){}}
@@ -709,7 +716,7 @@ function applyLang(){
   $$('[data-i]').forEach(el=>{const v=D[el.dataset.i];if(v!=null)el.textContent=v;});
   $$('[data-ih]').forEach(el=>{const v=D[el.dataset.ih];if(v!=null)el.innerHTML=v;});
   $$('[data-ia]').forEach(el=>{const v=D[el.dataset.ia];if(v!=null)el.setAttribute('aria-label',v);});
-  $$('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===lang));
+  $$('.lang a').forEach(b=>{if(b.dataset.l===lang)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   $('.lang').setAttribute('aria-label',D.lname);
   const wa='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(D.wa);
   $$('.js-wa').forEach(a=>a.href=a.dataset.plan?'https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(D.wa+' ('+D['wa.plan']+' '+D[a.dataset.plan+'.n']+')'):wa);
@@ -718,7 +725,6 @@ function applyLang(){
   $('#proLink').href=lang==='en'?'/en/':'/'+lang+'/';
   render();
 }
-$$('.lang button').forEach(b=>b.addEventListener('click',()=>{lang=b.dataset.l;try{localStorage.setItem('rd-owners-lang',lang)}catch(e){}applyLang();}));
 
 /* WhatsApp click = Lead (Meta), generate_lead (GA4), Google Ads conversion */
 $$('.js-wa').forEach(a=>a.addEventListener('click',()=>{
