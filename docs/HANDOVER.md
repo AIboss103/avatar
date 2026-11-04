@@ -164,7 +164,7 @@ cp -r panama-crypto-homes/* ../demo/ && cd ../demo && git add -A && git commit -
 | Cloudflare | зоны restate.deals и whalehome.io, Pages `restate-deals` и `cryptohome-demo`, Worker и KV `whalehome-bot`, Redirect Rules | аккаунт, где сейчас эти зоны; почту проверить в Cloudflare → профиль |
 | Hostinger | регистратор whalehome.io | аккаунт Артёма |
 | Регистратор restate.deals | домен restate.deals | проверить в Cloudflare → Registrar или по WHOIS |
-| Google (av@icoda.io) | Restate Deals CRM, WhaleHome CRM, Apps Script WhaleHome, этот документ | доступ к CRM есть у ceo@restate.deals, к документу у artvoinv@gmail.com |
+| Google (av@icoda.io) | Restate Deals CRM, WhaleHome CRM, Apps Script WhaleHome, этот документ | доступ к CRM есть у ceo@restate.deals, к документу у artvoinv@gmail.com, artvoinv1@gmail.com, artemvoinovspb@gmail.com |
 | Google (artvoinv@gmail.com) | папка CPanama_all_50_listings | |
 | Calendly | `voinov-agency/real-estate-deals-ceo` (оба сайта), запасная `whalehome-ceo-meeting` | аккаунт Артёма |
 | Plausible | аналитика restate.deals | аккаунт, где добавлен сайт restate.deals |
