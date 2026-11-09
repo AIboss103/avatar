@@ -248,7 +248,7 @@ async function siteLead(req, env, ctx) {
         try { await fetch(env.RESTATE_LEADS_URL, { method: "POST", body }); } catch {}
       }
       const admin = await adminId(env);
-      if (admin) await sendLead(env, admin, `🏢 <b>New developer lead</b> · restate.deals\n${esc(f("name"))} · ${esc(f("company"))}\n` +
+      if (admin) await sendLead(env, admin, `${p.type === "Owner" ? "🏠 <b>New owner lead</b> · checklist (restate.deals/owners)" : "🏢 <b>New developer lead</b> · restate.deals"}\n${esc(f("name"))} · ${esc(f("company"))}\n` +
         `WhatsApp: ${esc(f("whatsapp"))}\nEmail: ${esc(f("email"))}\nLanguage: ${esc(f("lang").toUpperCase())}` + (srcLine ? `\nSource: ${esc(srcLine)}` : "") + (p.utm_content || p.utm_term ? `\nAd: ${esc(f("utm_term"))} / ${esc(f("utm_content"))}` : "") +
         (p.fbclid ? "\nClick: Meta ad" : "") + (extra ? `\n${esc(extra)}` : ""));
     })());
