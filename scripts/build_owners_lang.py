@@ -21,9 +21,9 @@ META = {
     "en": dict(
         url=f"{SITE}/owners/en/", locale="en_US", image=f"{SITE}/img/og-owners-en.jpg",
         title="Sell your property in Panama without paying a 5% commission | Restate Deals",
-        desc="45-day marketing sprints for ONE property in Panama: Meta Ads, Google Ads, creatives and a landing page. From $900 per sprint, no commission, WhatsApp chats guaranteed.",
+        desc="Sell your house, apartment or land in Panama without paying commission. We advertise your property for 45 days on Facebook, Instagram and Google and interested people message you on WhatsApp. From $900.",
         og_title="Sell your property in Panama without paying a 5% commission",
-        og_desc="Meta Ads + Google Ads for ONE property. From $900 per sprint, no commission. Started WhatsApp chats guaranteed.",
+        og_desc="Sell your house, apartment or land without paying commission. Interested people message you on WhatsApp. From $900.",
     ),
 }
 
