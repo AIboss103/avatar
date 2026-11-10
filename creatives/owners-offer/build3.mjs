@@ -103,7 +103,16 @@ const receipt = (x, y, title, val, sub, col, ok) => `<g transform="translate(${x
   <text x="180" y="170" text-anchor="middle" font-size="68" font-weight="800" fill="${col}" ${F}>${esc(val)}</text>
   <text x="180" y="226" text-anchor="middle" font-size="24" fill="${C.muted}" font-family="Inter">${esc(sub)}</text>${mark(180, 276, ok, .9)}</g>`;
 function phone(x, y, t, show = 4, s = 1) {
-  const bub = t.msgs.slice(0, show).map((m, i) => `<g transform="translate(22 ${140 + i * 92})"><rect width="${Math.min(316, 36 + m.length * 12.4)}" height="70" rx="18" fill="#232a31"/><text x="20" y="44" font-size="23" fill="${C.text}" font-family="Inter">${esc(m)}</text></g>`).join('');
+  // bubbles: width from the text, long lines wrap to two lines, never wider than the screen
+  const MAXW = 326, CW = 11.2, PADX = 18;
+  const lines = m => { const one = PADX * 2 + m.length * CW; if (one <= MAXW) return [m];
+    const words = m.split(' '); let a = ''; const out = [];
+    for (const w of words) { const tryA = a ? a + ' ' + w : w; if (PADX * 2 + tryA.length * CW > MAXW && a) { out.push(a); a = w; } else a = tryA; }
+    out.push(a); return out; };
+  let yy = 128;
+  const bub = t.msgs.slice(0, show).map(m => { const L = lines(m), w = Math.min(MAXW, PADX * 2 + Math.max(...L.map(l => l.length)) * CW), h = 26 + L.length * 30;
+    const g = `<g transform="translate(26 ${yy})"><rect width="${w}" height="${h}" rx="18" fill="#232a31"/>${L.map((l, i) => `<text x="${PADX}" y="${40 + i * 30}" font-size="21" fill="${C.text}" font-family="Inter">${esc(l)}</text>`).join('')}</g>`;
+    yy += h + 16; return g; }).join('');
   return `<g transform="translate(${x} ${y}) scale(${s})"><rect width="380" height="560" rx="50" fill="#0f1215" stroke="#343941" stroke-width="7"/><rect x="14" y="14" width="352" height="532" rx="38" fill="#0b141a"/>
     <path d="M14 52 a38 38 0 0 1 38 -38 H328 a38 38 0 0 1 38 38 V106 H14Z" fill="#1c2a31"/>
     <circle cx="64" cy="62" r="24" fill="${C.gold}"/>${house(64, 66, .17)}
