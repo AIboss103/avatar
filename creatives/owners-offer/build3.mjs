@@ -203,7 +203,7 @@ function reel(t, kind) {
   } else {
     body = sc(0, 3, it(0, box(`${house(470, 330, 1.7)}`)) + it(0.4, big(R.q)))
       + sc(3, 6, it(0, big(R.ads, C.text, 88)) + it(0.4, box(platforms(65, 190), 600)))
-      + sc(6, 11, it(0, big(R.write, C.gold, 84)) + [1, 2, 3, 4].map(k => it(0.4 + k * 0.7, box(phone(280, 20, t, k), 600), `data-out="${0.4 + (k + 1) * 0.7}"`)).join(''))
+      + sc(6, 11, it(0, big(R.write, C.gold, 84)) + [1, 2, 3, 4].map(k => it(0.4 + k * 0.7, box(phone(280, 20, t, k), 600), k < 4 ? `data-out="${0.4 + (k + 1) * 0.7}"` : '')).join(''))
       + end;
   }
   const extra = `.sc{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:40px;padding:180px 70px 120px}.a{opacity:0}`;
