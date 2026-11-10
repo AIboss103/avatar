@@ -31,15 +31,15 @@ const T = {
     house: 'Casa', apt: 'Apartamento', land: 'Terreno', sign: 'SE VENDE', priceFrom: 'desde', noComm: 'Sin comisión', keepGoing: 'Si te escriben menos, seguimos gratis',
     c: {
       '01_sin_comision': [['Vende tu casa', 'sin pagar comisión'], 'El dinero de la venta llega completo a ti. Pagas un precio fijo desde $900.'],
-      '02_cuanto_pierdes': [['Casa de $400,000:', '¿cuánto pierdes?'], 'Con agencia pagas $21,400. Con nosotros $3,300. Te quedan $18,100 más.'],
-      '03_te_escriben': [['Los compradores', 'te escriben a ti'], 'Anunciamos tu casa en Facebook, Instagram y Google. Los interesados te escriben por WhatsApp.'],
-      '04_meses': [['No esperes', '7 u 8 meses'], 'Con agencia la venta tarda 224 días en promedio. Nosotros anunciamos desde la primera semana.'],
+      '02_cuanto_pierdes': [['¿Vendes casa de $400k?', 'La agencia se queda $21,400'], 'Con agencia pagas $21,400. Con nosotros $3,300. Te quedan $18,100 más.'],
+      '03_te_escriben': [['¿Vendes tu casa?', 'Te escriben compradores'], 'Anunciamos tu casa en Facebook, Instagram y Google. Los interesados te escriben por WhatsApp.'],
+      '04_meses': [['¿Vendes tu casa?', 'No esperes 7 u 8 meses'], 'Con agencia la venta tarda 224 días en promedio. Nosotros anunciamos desde la primera semana.'],
       '05_terreno': [['¿Vendes un terreno?', 'Sin pagar comisión'], 'Lotes en la playa, la montaña o la ciudad. Desde $900, sin agente.'],
-      '06_tajada': [['La agencia se lleva', 'una parte de tu casa'], 'Con nosotros pagas un precio fijo desde $900. Nada sale del precio de tu casa.'],
-      '07_sin_exclusividad': [['Sin contrato', 'de exclusividad'], 'Sigue con tu agente si quieres. Nosotros te traemos más compradores.'],
-      '08_garantia': [['¿Pocos mensajes?', 'Seguimos gratis'], 'Te garantizamos 80, 150 o 200 personas que te escriben, según tu plan.'],
+      '06_tajada': [['¿Vendes tu casa?', 'La agencia se lleva parte'], 'Con nosotros pagas un precio fijo desde $900. Nada sale del precio de tu casa.'],
+      '07_sin_exclusividad': [['Vende tu casa', 'sin exclusividad'], 'Sigue con tu agente si quieres. Nosotros te traemos más compradores.'],
+      '08_garantia': [['¿Vendes tu casa?', 'Te escriben, garantizado'], 'Te garantizamos 80, 150 o 200 personas que te escriben, según tu plan.'],
       '09_dinero_completo': [['Vende tu casa', 'y cobra todo'], 'Sin comisión de agente. Pagas solo un precio fijo por los anuncios.'],
-      '10_checklist': [['Gratis: 15 pasos', 'para vender más rápido'], 'Precio, fotos, documentos y cómo atender a los compradores. Escríbenos y te lo enviamos.'],
+      '10_checklist': [['Gratis: 15 pasos para', 'vender tu casa rápido'], 'Precio, fotos, documentos y cómo atender a los compradores. Escríbenos y te lo enviamos.'],
     },
     car: [
       [['¿Vendes tu casa', 'o terreno?'], 'Casa, apartamento o lote: todo sirve.'],
@@ -61,15 +61,15 @@ const T = {
     house: 'House', apt: 'Apartment', land: 'Land', sign: 'FOR SALE', priceFrom: 'from', noComm: 'No commission', keepGoing: 'Too few messages? We keep going free',
     c: {
       '01_sin_comision': [['Sell your house', 'without commission'], 'The money from the sale comes to you in full. You pay a fixed price from $900.'],
-      '02_cuanto_pierdes': [['$400,000 house:', 'how much do you lose?'], 'With an agency you pay $21,400. With us $3,300. You keep $18,100 more.'],
-      '03_te_escriben': [['Buyers', 'message you directly'], 'We advertise your house on Facebook, Instagram and Google. Interested people message you on WhatsApp.'],
-      '04_meses': [["Don't wait", '7 or 8 months'], 'With an agency a sale takes 224 days on average. We start advertising in week one.'],
+      '02_cuanto_pierdes': [['Selling a $400k house?', 'Agency keeps $21,400'], 'With an agency you pay $21,400. With us $3,300. You keep $18,100 more.'],
+      '03_te_escriben': [['Selling your house?', 'Buyers message you'], 'We advertise your house on Facebook, Instagram and Google. Interested people message you on WhatsApp.'],
+      '04_meses': [['Selling your house?', "Don't wait 7–8 months"], 'With an agency a sale takes 224 days on average. We start advertising in week one.'],
       '05_terreno': [['Selling land?', 'Without commission'], 'Lots by the beach, in the mountains or in the city. From $900, no agent.'],
-      '06_tajada': [['The agency takes', 'a piece of your house'], 'With us you pay a fixed price from $900. Nothing comes out of your sale price.'],
-      '07_sin_exclusividad': [['No exclusive', 'contract'], 'Keep your agent if you want. We bring you more buyers.'],
-      '08_garantia': [['Too few messages?', 'We keep going free'], 'We guarantee 80, 150 or 200 people messaging you, depending on your plan.'],
+      '06_tajada': [['Selling your house?', 'The agency takes a cut'], 'With us you pay a fixed price from $900. Nothing comes out of your sale price.'],
+      '07_sin_exclusividad': [['Sell your house', 'with no exclusivity'], 'Keep your agent if you want. We bring you more buyers.'],
+      '08_garantia': [['Selling your house?', 'Buyers write. Guaranteed.'], 'We guarantee 80, 150 or 200 people messaging you, depending on your plan.'],
       '09_dinero_completo': [['Sell your house', 'and keep it all'], 'No agent commission. You only pay a fixed price for the ads.'],
-      '10_checklist': [['Free: 15 steps', 'to sell faster'], 'Price, photos, papers and how to handle buyers. Message us and we send it to you.'],
+      '10_checklist': [['Free: 15 steps to', 'sell your house faster'], 'Price, photos, papers and how to handle buyers. Message us and we send it to you.'],
     },
     car: [
       [['Selling your house', 'or land?'], 'House, apartment or lot: all work.'],
@@ -179,7 +179,7 @@ function layout(t, h1, sub, ill, { H = 1350, foot = 'cta', page = '' } = {}) {
   return `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}body{width:1080px;height:${H}px}</style></head><body>
   <div class="cv" style="width:1080px;height:${H}px;padding:${story ? '120px' : `${pad}px`} ${pad}px ${story ? '110px' : `${pad}px`};gap:${story ? 44 : 30}px">
     <div class="top"><div class="badge">${houseBadge}${esc(t.badge)}</div>${page ? `<div class="brand" style="color:${C.muted}">${page}</div>` : ''}</div>
-    <h1 style="font-size:${story ? 104 : 88}px">${esc(h1[0])}<br><span>${esc(h1[1])}</span></h1>
+    <h1 style="font-size:${Math.min(story ? 104 : 88, Math.floor((story ? 940 : 960) / (Math.max(h1[0].length, h1[1].length) * 0.54)))}px;white-space:nowrap">${esc(h1[0])}<br><span>${esc(h1[1])}</span></h1>
     <div class="panel" style="height:${panelH}px;flex:none"><svg viewBox="0 0 940 600" width="${story ? 940 : 960}" height="${panelH}" preserveAspectRatio="xMidYMid meet">${ill}</svg></div>
     ${sub ? `<p class="sub" style="font-size:${story ? 36 : 31}px">${esc(sub)}</p>` : '<div style="flex:1"></div>'}
     <div style="margin-top:auto">${footer}</div>
