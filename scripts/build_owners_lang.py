@@ -94,6 +94,8 @@ def build(src, lang):
     s = s.replace(f'data-l="{lang}">', f'data-l="{lang}" aria-current="page">', 1)
     # WhatsApp links in the HTML carry this language's message (the script sets the same on load)
     s = s.replace(urllib.parse.quote(es["wa"], safe=""), urllib.parse.quote(D["wa"], safe=""))
+    if "ck.wa" in D:
+        s = s.replace(urllib.parse.quote(es["ck.wa"], safe=""), urllib.parse.quote(D["ck.wa"], safe=""))
     # privacy link: Spanish policy only on the Spanish page
     s = s.replace('<a id="priv" href="/es/privacidad/"', '<a id="priv" href="/privacy/"', 1)
     s = translate(s, D)

@@ -118,7 +118,7 @@ The brand guidelines page (`brand/index.html`) shows: logo variants with clear s
 ## 8. Content for templates
 
 - Founder: **Artem Voinov**, Founder & CEO, CBDO at ICODA.io and STIVE.ai. Telegram blog with 7,000+ professionals: t.me/artofwar. Site: voinov.io.
-- WhatsApp: +507 6456 6336
+- WhatsApp: +507 6718 5938
 - Calendly: https://calendly.com/voinov-agency/real-estate-deals-ceo
 - Plans: Starter $3,000/mo (promo, was $5,000), Growth $6,500/mo, Enterprise $12,000/mo. Success fee 2% on sales + 30% of net profit from VIP tours. Goals 5+ / 10+ / 25+ verified buyer meetings per month. Guarantee: we hit it or +1 month free. Budgets for ads, services and freelancers are paid separately. Payment in crypto only (USDT / USDC).
 - Capacity: only 3 developers per month.

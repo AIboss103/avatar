@@ -19,7 +19,7 @@
 
 const SITE = "https://whalehome.io";
 const CALENDLY = "https://calendly.com/voinov-agency/real-estate-deals-ceo";
-const WHATSAPP = "50764566336";
+const WHATSAPP = "50767185938";
 const LANGS = ["en", "es", "ru"];
 
 /* ---------- texts ---------- */

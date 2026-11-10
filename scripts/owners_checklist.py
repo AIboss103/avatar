@@ -10,17 +10,18 @@ The Spanish page (owners/index.html) is the source; the section sits between the
 <!-- CHECKLIST START --> and <!-- CHECKLIST END -->, its CSS between /* ck:start */ and /* ck:end */, its script
 between /* ck-js:start */ and /* ck-js:end */. Dictionary keys are "ck.*".
 """
-import html, json, pathlib, re, subprocess, sys, tempfile
+import html, json, pathlib, re, subprocess, sys, tempfile, urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent / "real-estate-developers"
 PAGE = ROOT / "owners" / "index.html"
 CHROME = pathlib.Path.home() / "Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell"
-WHATSAPP_TXT = "+507 6456 6336"
+WHATSAPP_TXT = "+507 6718 5938"
 LEADS_URL = "https://whalehome.io/api/lead"
 
 # item 14 is the "work with Restate Deals" step; its reasons are listed under it
 DATA = {
 "es": {
+  "wamsg": "Hola Artem, descargué el checklist y quiero vender mi propiedad. ¿Me ayudas?",
   "k": "Checklist gratis",
   "t": "15 pasos para vender tu propiedad en 60–90 días",
   "l": "Una lista práctica para preparar, publicar y cerrar. Déjanos tu WhatsApp y la recibes al instante, en pantalla y en PDF.",
@@ -56,6 +57,7 @@ DATA = {
   ],
 },
 "en": {
+  "wamsg": "Hi Artem, I downloaded the checklist and I want to sell my property. Can you help?",
   "k": "Free checklist",
   "t": "15 steps to sell your property in 60–90 days",
   "l": "A practical list to prepare, list and close. Leave your WhatsApp and you get it right away, on screen and as a PDF.",
@@ -91,6 +93,7 @@ DATA = {
   ],
 },
 "ru": {
+  "wamsg": "Здравствуйте! Я скачал чек-лист и хочу продать свою недвижимость. Поможете?",
   "k": "Бесплатный чек-лист",
   "t": "15 шагов, чтобы продать недвижимость за 60–90 дней",
   "l": "Практический список: подготовить, опубликовать и закрыть сделку. Оставьте WhatsApp, и он сразу откроется на экране и скачается в PDF.",
@@ -138,7 +141,7 @@ def dict_keys(lang):
     d = DATA[lang]
     out = {"ck.k": d["k"], "ck.t": d["t"], "ck.l": d["l"], "ck.name": d["name"], "ck.wa": d["wa"], "ck.btn": d["btn"],
            "ck.consent": d["consent"], "ck.privacy": d["privacy"], "ck.err": d["err"], "ck.ok": d["ok"], "ck.pdf": d["pdf"],
-           "ck.okn": d["okn"], "ck.okb": d["okb"], "ck.whyh": d["whyh"]}
+           "ck.okn": d["okn"], "ck.okb": d["okb"], "ck.whyh": d["whyh"], "ck.wa": d["wamsg"]}
     for i, (t, x) in enumerate(d["items"], 1):
         out[f"ck.i{i}t"] = t
         out[f"ck.i{i}d"] = x
@@ -180,7 +183,7 @@ def section_html():
           <b data-i="ck.ok">{html.escape(es["ok"])}</b>
           <a class="btn btn-gold" id="ckPdf" href="/owners/checklist-es.pdf" download><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg><span data-i="ck.pdf">{html.escape(es["pdf"])}</span></a>
           <p class="ck-note" data-i="ck.okn">{html.escape(es["okn"])}</p>
-          <a class="btn btn-wa js-wa" data-place="checklist" href="https://wa.me/50764566336" target="_blank" rel="noopener"><span data-i="ck.okb">{html.escape(es["okb"])}</span></a>
+          <a class="btn btn-wa js-wa" data-place="checklist" data-msg="ck.wa" href="https://wa.me/50767185938?text={urllib.parse.quote(es["wamsg"], safe="")}" target="_blank" rel="noopener"><span data-i="ck.okb">{html.escape(es["okb"])}</span></a>
         </div>
       </div>
     </div>
@@ -262,7 +265,7 @@ def inject():
     s = s.replace("</style>", CSS + "\n</style>", 1)
     # 4. config + script
     if "leadsUrl:" not in s:
-        s = s.replace('whatsapp:"50764566336",', f'whatsapp:"50764566336",\n  leadsUrl:"{LEADS_URL}",  // the WhaleHome bot Worker: leads go to the Restate Deals CRM and to Artem in Telegram', 1)
+        s = s.replace('whatsapp:"50767185938",', f'whatsapp:"50767185938",\n  leadsUrl:"{LEADS_URL}",  // the WhaleHome bot Worker: leads go to the Restate Deals CRM and to Artem in Telegram', 1)
     s = re.sub(r"/\* ck-js:start \*/.*?/\* ck-js:end \*/\n?", "", s, flags=re.S)
     anchor = "$('#yr').textContent"
     assert anchor in s
@@ -298,12 +301,12 @@ h3{{margin:0;font-size:11.5pt}}p{{margin:2pt 0 0;color:#44464c;font-size:10pt}}
 li.us{{background:#fbf5e9;border:1px solid #d6b073;border-radius:8pt;padding:10pt;margin:6pt 0}}
 li.us ul{{margin:6pt 0 0;padding-left:14pt;font-size:10pt;color:#2a2b2f}}li.us li{{display:list-item;border:0;padding:1.5pt 0}}
 footer{{margin-top:14pt;padding-top:8pt;border-top:2px solid #d6b073;display:flex;justify-content:space-between;font-size:9.5pt;color:#55575d}}
-footer b{{color:#17181b}}
+footer b,footer a{{color:#17181b;text-decoration:none}}
 </style>
 <header><div class=logo>Restate<i> Deals</i></div><div class=tag>{html.escape(d["k"])}</div></header>
 <h1>{html.escape(d["t"])}</h1><p class=lead>{html.escape(d["l"].split(".")[0])}.</p>
 <ol>{"".join(rows)}</ol>
-<footer><span>{html.escape(d["pdf_foot"])}</span><span><b>WhatsApp {WHATSAPP_TXT}</b></span></footer></html>'''
+<footer><span>{html.escape(d["pdf_foot"])}</span><span><a href="https://wa.me/50767185938?text={urllib.parse.quote(d["wamsg"], safe="")}"><b>WhatsApp {WHATSAPP_TXT}</b></a></span></footer></html>'''
 
 
 def make_pdfs():

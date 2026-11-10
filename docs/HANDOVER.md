@@ -39,7 +39,7 @@
 **restate.deals** — `real-estate-developers/index.html`, объект `CONFIG`:
 - `pricing` — планы и цены (только здесь), `capacity` — «берём 3 проекта, 2 занято»
 - `calendly` — `https://calendly.com/voinov-agency/real-estate-deals-ceo`
-- `whatsapp` — `50764566336`
+- `whatsapp` — `50767185938`
 - `leadsUrl` — `https://whalehome.io/api/lead`: бот пишет заявку в «Restate Deals CRM» (переменная Worker `RESTATE_LEADS_URL`) и шлёт её Артёму в Telegram; форма ещё и открывает WhatsApp
 - Аналитика: Plausible, GA4 `G-K8FTGB7RF5`, Meta Pixel `1704556277678666` (подробно в разделе 13a)
 
@@ -51,7 +51,7 @@
 
 **whalehome.io** — `panama-crypto-homes/index.html`, объект `CONFIG`:
 - `calendly` — `https://calendly.com/voinov-agency/real-estate-deals-ceo` (запасная: `.../whalehome-ceo-meeting`)
-- `whatsapp` — `50764566336`, `telegram` — `https://t.me/whale_home_estate_bot`
+- `whatsapp` — `50767185938`, `telegram` — `https://t.me/whale_home_estate_bot`
 - `leadsUrl` — `https://whalehome.io/api/lead` (квиз → бот → «WhaleHome CRM» и Telegram Артёма)
 - `rates` — курсы монет для пересчёта цен
 - Каталог `/properties/`: те же ссылки в `panama-crypto-homes/properties/index.html` (`CONFIG`)
@@ -91,7 +91,7 @@ GitHub → Actions → «Import CPanama catalog» → Run workflow (ветка `
 
 - CEO: Artem Voinov · Telegram-канал @artofwar · личный @avicoda
 - Почта: ceo@restate.deals
-- WhatsApp: +507 6456 6336
+- WhatsApp: +507 6718 5938
 
 ## 9. Текущие цены и условия (на 04.11.2026)
 
@@ -227,5 +227,5 @@ cp -r panama-crypto-homes/* ../demo/ && cd ../demo && git add -A && git commit -
 - Адрес: https://dental-clinics-site.restate-deals.pages.dev/dental-clinics/ (B, без цен) и …/dental-clinics/price/ (A, с ценами, noindex). Это превью-ссылка Cloudflare Pages на ветку `dental-clinics-site`; обновляется при каждом пуше в неё. Свой домен — подключить Custom domain к ветке или вынести в отдельный проект Pages.
 - Исходник один: `dental-clinics/index.html` (B). После правки: `python3 scripts/build_dental_ab.py` (собирает `dental-clinics/price/index.html`).
 - B: «10 пациентов за 60 дней» с гарантией, форма «Цена за пациента» (ответ в WhatsApp), простой калькулятор. A: пакеты с ценами, калькулятор с планом и ROI.
-- Заявки уходят в WhatsApp (+507 6456 6336) и в Telegram Артёму через бота (`site=smilescale`, 🦷), отдельной CRM пока нет.
+- Заявки уходят в WhatsApp (+507 6718 5938) и в Telegram Артёму через бота (`site=smilescale`, 🦷), отдельной CRM пока нет.
 - Calendly временно `voinov-agency/real-estate-deals-ceo` — заменить в `CONFIG.booking` на свою ссылку.
