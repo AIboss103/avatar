@@ -156,20 +156,20 @@ const CAR_ILL = [
   t => `<circle cx="470" cy="250" r="140" fill="${C.wa}"/>${logo('whatsapp', 170, '#fff', 470, 250)}<text x="470" y="490" text-anchor="middle" font-size="58" font-weight="800" fill="${C.text}" ${F}>${PHONE}</text>`,
 ];
 
-// ------------------------------------------------------------------ speed set (facts from /owners: 224 days, −6%, start 1 week after photos, 45 days of ads, 2–3 months)
+// ------------------------------------------------------------------ speed set, only time, in months (facts from /owners: agency 224 days ≈ 7–8 months, with us 2–3 months)
 const SPEED = {
   es: { dir: '06_Velocidad', c: {
-      '11_anuncios_1_semana': [['¿Vendes tu casa?', 'Anuncios en 1 semana'], 'Nos mandas fotos y precio. Una semana después tu casa ya está en Facebook, Instagram y Google.'],
-      '12_carrera': [['¿Vendes tu casa?', 'En 2–3 meses, no en 8'], 'Con agencia la venta tarda 224 días en promedio. Con nosotros, 45 días de anuncios.'],
-      '13_esperar_cuesta': [['¿Vendes tu casa?', 'Esperar te cuesta 6%'], 'Tras 224 días, el precio baja 6% en promedio al cerrar. En una casa de $400k son $24,000.'],
-      '14_45_dias': [['¿Vendes tu casa?', '45 días de compradores'], '45 días de anuncios. Los interesados te escriben directo por WhatsApp.'] },
-    w: { photos: 'Fotos y precio', day1: 'Día 1', week1: 'Semana 1', live: 'Anuncios activos', days45: 'Días 1–45', write: 'Te escriben', agency: 'Agencia', us: 'Nosotros', d224: '224 días', m23: '2–3 meses', start: 'Hoy', price: 'Precio', after: 'Después de 224 días', days: 'días' } },
+      '11_venta_2_3_meses': [['¿Vendes tu casa?', 'Véndela en 2–3 meses'], 'Anunciamos tu casa desde el primer mes. Los interesados te escriben por WhatsApp.'],
+      '12_carrera': [['¿Vendes tu casa?', 'En 2–3 meses, no en 8'], 'Con agencia la venta tarda 7 a 8 meses en promedio. Con nosotros, 2 a 3 meses.'],
+      '13_ahorra_5_meses': [['¿Vendes tu casa?', 'Gana 5 meses'], 'Con agencia esperas 7 a 8 meses. Con nosotros vendes en 2 a 3. Son 5 meses menos.'],
+      '14_reloj': [['¿Vendes tu casa?', '7–8 meses es mucho'], 'Ese es el promedio con agencia en Panamá. Con nosotros, 2 a 3 meses.'] },
+    w: { m1: 'Mes 1', m2: 'Mes 2', m3: 'Mes 3', s1: 'Anuncios', s2: 'Te escriben', s3: 'Vendes', agency: 'Agencia', us: 'Nosotros', a: '7–8 meses', u: '2–3 meses', start: 'Hoy', saved: '5 meses menos', months: 'meses', mo: ['E', 'F', 'M', 'A', 'M', 'J', 'J', 'A'] } },
   en: { dir: '06_Speed', c: {
-      '11_anuncios_1_semana': [['Selling your house?', 'Ads live in 1 week'], 'Send us photos and the price. One week later your house is on Facebook, Instagram and Google.'],
-      '12_carrera': [['Selling your house?', 'In 2–3 months, not 8'], 'With an agency a sale takes 224 days on average. With us, 45 days of ads.'],
-      '13_esperar_cuesta': [['Selling your house?', 'Waiting costs you 6%'], 'After 224 days the price drops 6% on average at closing. On a $400k house that is $24,000.'],
-      '14_45_dias': [['Selling your house?', '45 days of buyers'], '45 days of ads. Interested people message you directly on WhatsApp.'] },
-    w: { photos: 'Photos + price', day1: 'Day 1', week1: 'Week 1', live: 'Ads go live', days45: 'Days 1–45', write: 'Buyers write', agency: 'Agency', us: 'Us', d224: '224 days', m23: '2–3 months', start: 'Today', price: 'Price', after: 'After 224 days', days: 'days' } },
+      '11_venta_2_3_meses': [['Selling your house?', 'Sell it in 2–3 months'], 'We advertise your house from month one. Interested people message you on WhatsApp.'],
+      '12_carrera': [['Selling your house?', 'In 2–3 months, not 8'], 'With an agency a sale takes 7 to 8 months on average. With us, 2 to 3 months.'],
+      '13_ahorra_5_meses': [['Selling your house?', 'Save 5 months'], 'With an agency you wait 7 to 8 months. With us you sell in 2 to 3. That is 5 months less.'],
+      '14_reloj': [['Selling your house?', '7–8 months is too long'], 'That is the agency average in Panama. With us, 2 to 3 months.'] },
+    w: { m1: 'Month 1', m2: 'Month 2', m3: 'Month 3', s1: 'Ads go live', s2: 'Buyers write', s3: 'You sell', agency: 'Agency', us: 'Us', a: '7–8 months', u: '2–3 months', start: 'Today', saved: '5 months less', months: 'months', mo: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A'] } },
 };
 const txt = (x, y, s, size, col, w = 800, anchor = 'middle') => `<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="${size}" font-weight="${w}" fill="${col}" ${F}>${esc(s)}</text>`;
 const watch = (x, y, r, frac, col, label, sub) => `<g transform="translate(${x} ${y})"><rect x="-22" y="${-r - 46}" width="44" height="30" rx="8" fill="${col}"/><rect x="-8" y="${-r - 20}" width="16" height="22" fill="${col}"/>
@@ -177,26 +177,26 @@ const watch = (x, y, r, frac, col, label, sub) => `<g transform="translate(${x} 
   <path d="M0 0 L0 ${-r + 14} A${r - 14} ${r - 14} 0 ${frac > .5 ? 1 : 0} 1 ${((r - 14) * Math.sin(frac * 2 * Math.PI)).toFixed(1)} ${(-(r - 14) * Math.cos(frac * 2 * Math.PI)).toFixed(1)}Z" fill="${col}" opacity=".22"/>
   ${txt(0, r * .18, label, r * .52, col)}${sub ? txt(0, r * .5, sub, r * .17, C.text, 600) : ''}</g>`;
 const SPEED_ILL = {
-  '11_anuncios_1_semana': w => { const step = (x, top, title, big, col, inner) => `<g transform="translate(${x} 150)"><rect x="-130" width="260" height="300" rx="28" fill="#20242a" stroke="${col}" stroke-opacity=".6" stroke-width="3"/>${txt(0, -24, top, 30, col)}${inner}${txt(0, 262, title, 27, C.text, 700)}</g>`;
-    return `${step(160, w.day1, w.photos, '', C.gold, `<g transform="translate(0 120)"><rect x="-70" y="-56" width="140" height="104" rx="16" fill="${C.gold}"/><circle r="32" fill="#20242a"/><circle r="18" fill="${C.gold}"/><rect x="-30" y="-74" width="50" height="22" rx="6" fill="${C.gold}"/></g>`)}
-      ${step(470, w.week1, w.live, '', C.gold, `<g transform="translate(0 116)">${logo('facebook', 62, C.gold, -70, 0)}${logo('instagram', 62, C.gold, 0, 0)}${logo('google', 62, C.green, 70, 0)}</g>`)}
-      ${step(780, w.days45, w.write, '', C.green, `<g transform="translate(0 116)"><circle r="62" fill="${C.wa}"/>${logo('whatsapp', 74, '#fff', 0, 0)}</g>`)}
-      <path d="M160 520 H780" stroke="#2c3138" stroke-width="10" stroke-linecap="round"/><path d="M160 520 H470" stroke="${C.gold}" stroke-width="10" stroke-linecap="round"/>${[160, 470, 780].map((x, i) => `<circle cx="${x}" cy="520" r="16" fill="${i < 2 ? C.gold : C.green}"/>`).join('')}`; },
+  '11_venta_2_3_meses': w => { const step = (x, top, title, col, inner) => `<g transform="translate(${x} 150)"><rect x="-130" width="260" height="300" rx="28" fill="#20242a" stroke="${col}" stroke-opacity=".6" stroke-width="3"/>${txt(0, -24, top, 32, col)}${inner}${txt(0, 262, title, 28, C.text, 700)}</g>`;
+    return `${step(160, w.m1, w.s1, C.gold, `<g transform="translate(0 116)">${logo('facebook', 62, C.gold, -70, 0)}${logo('instagram', 62, C.gold, 0, 0)}${logo('google', 62, C.green, 70, 0)}</g>`)}
+      ${step(470, w.m2, w.s2, C.gold, `<g transform="translate(0 116)"><circle r="62" fill="${C.wa}"/>${logo('whatsapp', 74, '#fff', 0, 0)}</g>`)}
+      ${step(780, w.m3, w.s3, C.green, `<g transform="translate(0 116)">${house(0, 10, .62)}<g transform="translate(58 -50)"><circle r="30" fill="${C.green}"/><path d="M-13 0 L-3 11 L14 -11" fill="none" stroke="#0b2417" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g></g>`)}
+      <path d="M160 520 H780" stroke="${C.gold}" stroke-width="10" stroke-linecap="round"/>${[160, 470, 780].map((x, i) => `<circle cx="${x}" cy="520" r="16" fill="${i < 2 ? C.gold : C.green}"/>`).join('')}`; },
   '12_carrera': w => { const lane = (y, label, len, col, val, ok) => `<g transform="translate(0 ${y})">${txt(70, 16, label, 32, C.text, 800, 'start')}
       <rect x="250" y="-26" width="620" height="52" rx="26" fill="#2c3138"/><rect x="250" y="-26" width="${len}" height="52" rx="26" fill="${col}"/>
       ${txt(250 + len + (ok ? 24 : -24), 16, val, 36, ok ? col : '#1a0b0b', 800, ok ? 'start' : 'end')}</g>`;
     return `${txt(250, 120, w.start, 26, C.muted, 600, 'start')}<path d="M250 140 V470" stroke="${C.muted}" stroke-width="3" stroke-dasharray="8 8"/>
-      ${lane(230, w.agency, 620, C.red, w.d224, false)}${lane(380, w.us, 200, C.green, w.m23, true)}
+      ${lane(230, w.agency, 620, C.red, w.a, false)}${lane(380, w.us, 220, C.green, w.u, true)}
       <g transform="translate(870 150)"><rect x="-4" width="8" height="330" fill="${C.text}"/>${[0, 1, 2, 3, 4, 5].map(i => `<rect x="4" y="${i * 24}" width="20" height="24" fill="${i % 2 ? C.text : '#20242a'}"/><rect x="24" y="${i * 24}" width="20" height="24" fill="${i % 2 ? '#20242a' : C.text}"/>`).join('')}</g>`; },
-  '13_esperar_cuesta': w => `<g transform="translate(250 300)"><path d="M-110 -210 H110 M-110 210 H110" stroke="${C.gold}" stroke-width="14" stroke-linecap="round"/>
+  '13_ahorra_5_meses': w => { const row = (y, label, n, col) => `<g transform="translate(0 ${y})">${txt(60, 52, label, 30, C.text, 800, 'start')}${w.mo.map((m, i) => `<g transform="translate(${250 + i * 82} 0)"><rect width="70" height="80" rx="14" fill="${i < n ? col : '#2c3138'}"/>${txt(35, 52, m, 28, i < n ? '#16120a' : C.muted)}</g>`).join('')}</g>`;
+    return `${row(120, w.agency, 8, C.red)}${row(260, w.us, 3, C.green)}
+      <path d="M496 380 V400 H900 V380" fill="none" stroke="${C.gold}" stroke-width="5"/>
+      <g transform="translate(698 470)"><rect x="-200" y="-46" width="400" height="92" rx="46" fill="${C.gold}"/>${txt(0, 16, w.saved, 40, '#1a1307')}</g>`; },
+  '14_reloj': w => `<g transform="translate(260 300)"><path d="M-110 -210 H110 M-110 210 H110" stroke="${C.red}" stroke-width="14" stroke-linecap="round"/>
       <path d="M-90 -200 C-90 -80 -14 -40 -14 0 C-14 40 -90 80 -90 200 H90 C90 80 14 40 14 0 C14 -40 90 -80 90 -200Z" fill="#20242a" stroke="${C.text}" stroke-opacity=".4" stroke-width="5"/>
-      <path d="M-60 -150 H60 C50 -90 10 -60 0 -30 C-10 -60 -50 -90 -60 -150Z" fill="${C.gold}"/><path d="M0 -20 V150" stroke="${C.gold}" stroke-width="5" stroke-dasharray="6 10"/><path d="M-80 196 C-50 120 50 120 80 196Z" fill="${C.gold}"/>
-      ${txt(0, 270, w.d224, 34, C.red)}</g>
-    <g transform="translate(470 120)"><rect width="400" height="360" rx="30" fill="#20242a"/>${txt(200, 64, w.price, 30, C.muted, 700)}
-      <text x="200" y="146" text-anchor="middle" font-size="64" font-weight="800" fill="${C.muted}" ${F} text-decoration="line-through">$400,000</text>
-      ${txt(200, 206, w.after, 24, C.muted, 600)}${txt(200, 280, '$376,000', 70, C.text)}<rect x="130" y="304" width="140" height="44" rx="22" fill="${C.red}"/>${txt(200, 336, '−6%', 30, '#1a0b0b')}</g>`,
-  '14_45_dias': w => `${watch(300, 330, 200, 45 / 60, C.green, '45', w.days)}
-    ${[0, 1, 2, 3].map(i => `<g transform="translate(560 ${110 + i * 100})"><rect width="${300 - (i % 2) * 50}" height="72" rx="20" fill="#232a31"/>${logo('whatsapp', 34, C.wa, 40, 36)}<rect x="74" y="22" width="${170 - (i % 2) * 50}" height="12" rx="6" fill="${C.muted}"/><rect x="74" y="44" width="${110 - (i % 2) * 30}" height="10" rx="5" fill="#3a4048"/></g>`).join('')}`,
+      <path d="M-60 -150 H60 C50 -90 10 -60 0 -30 C-10 -60 -50 -90 -60 -150Z" fill="${C.red}"/><path d="M0 -20 V150" stroke="${C.red}" stroke-width="5" stroke-dasharray="6 10"/><path d="M-80 196 C-50 120 50 120 80 196Z" fill="${C.red}"/></g>
+    <g transform="translate(480 130)"><rect width="400" height="150" rx="28" fill="#20242a"/>${txt(200, 52, w.agency, 28, C.muted, 700)}${txt(200, 118, w.a, 52, C.red)}</g>
+    <g transform="translate(480 320)"><rect width="400" height="150" rx="28" fill="#14301f" stroke="${C.green}" stroke-width="4"/>${txt(200, 52, w.us, 28, C.muted, 700)}${txt(200, 118, w.u, 52, C.green)}</g>`,
 };
 
 // ------------------------------------------------------------------ the fixed layout
