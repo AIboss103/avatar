@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the EN and RU copies of restate.deals/owners.
+"""Build the EN copy of restate.deals/owners (RU is paused).
 
 real-estate-developers/owners/index.html (Spanish) stays the only source. This script writes
   real-estate-developers/owners/en/index.html  (English)
@@ -21,16 +21,9 @@ META = {
     "en": dict(
         url=f"{SITE}/owners/en/", locale="en_US", image=f"{SITE}/img/og-owners-en.jpg",
         title="Sell your property in Panama without paying a 5% commission | Restate Deals",
-        desc="45-day marketing sprints for ONE property in Panama: Meta Ads, Google Ads, creatives and a landing page. From $900 per sprint, no commission, qualified buyers guaranteed.",
+        desc="45-day marketing sprints for ONE property in Panama: Meta Ads, Google Ads, creatives and a landing page. From $900 per sprint, no commission, WhatsApp chats guaranteed.",
         og_title="Sell your property in Panama without paying a 5% commission",
-        og_desc="Meta Ads + Google Ads for ONE property. From $900 per sprint, no commission. Qualified buyers guaranteed.",
-    ),
-    "ru": dict(
-        url=f"{SITE}/owners/ru/", locale="ru_RU", image=f"{SITE}/img/og-owners-ru.jpg",
-        title="Продайте недвижимость в Панаме без комиссии 5% | Restate Deals",
-        desc="Спринты по 45 дней маркетинга для ОДНОГО объекта в Панаме: Meta Ads, Google Ads, креативы и лендинг. От $900 за спринт, без комиссии, квалифицированные покупатели с гарантией.",
-        og_title="Продайте недвижимость в Панаме без комиссии 5%",
-        og_desc="Meta Ads + Google Ads для ОДНОГО объекта. От $900 за спринт, без комиссии. Квалифицированные покупатели с гарантией.",
+        og_desc="Meta Ads + Google Ads for ONE property. From $900 per sprint, no commission. Started WhatsApp chats guaranteed.",
     ),
 }
 

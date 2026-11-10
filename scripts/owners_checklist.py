@@ -50,8 +50,8 @@ DATA = {
   ],
   "why": [
     "Sin comisión: con corredor pagas 5% + 7% de ITBMS sobre la comisión. Aquí pagas el trabajo por sprint de 45 días y la publicidad directo a Meta y Google.",
-    "Ves a cada comprador: recibes el nombre y el número de cada uno en el reporte, no solo “hubo interés”.",
-    "Garantía: si traemos menos compradores calificados que los garantizados, extendemos el sprint gratis o te devolvemos el trabajo en proporción.",
+    "Ves los números: recibes un reporte semanal de Ads Manager con impresiones, clics y chats iniciados.",
+    "Garantía: chats iniciados en WhatsApp. Si en 45 días no llegamos al número, seguimos pauta gratis hasta alcanzarlo.",
     "Sin exclusividad: puedes seguir con tu corredor.",
     "Más rápido: un sprint son 45 días. Con corredor, el promedio es de 224 días (ACOBIR MLS, primer semestre de 2026).",
   ],
@@ -86,8 +86,8 @@ DATA = {
   ],
   "why": [
     "No commission: with a broker you pay 5% + 7% ITBMS on the commission. Here you pay for the work per 45-day sprint and for the ads directly to Meta and Google.",
-    "You see every buyer: you get each buyer's name and number in the report, not just “there was interest”.",
-    "Guarantee: if we bring fewer qualified buyers than guaranteed, we extend the sprint for free or refund the work fee in proportion.",
+    "You see the numbers: a weekly Ads Manager report with impressions, clicks and started chats.",
+    "Guarantee: started WhatsApp chats. If we don't hit the number in 45 days, we keep the ads running for free until we do.",
     "No exclusivity: you can keep your broker.",
     "Faster: a sprint is 45 days. With a broker the average is 224 days (ACOBIR MLS, first half of 2026).",
   ],
@@ -122,14 +122,14 @@ DATA = {
   ],
   "why": [
     "Без комиссии: с брокером вы платите 5% + 7% ITBMS на комиссию. Здесь вы платите за работу за спринт 45 дней, а рекламу оплачиваете напрямую Meta и Google.",
-    "Вы видите каждого покупателя: в отчёте имя и номер каждого, а не просто «был интерес».",
-    "Гарантия: если приведём меньше квалифицированных покупателей, чем гарантировали, бесплатно продлим спринт или вернём оплату за работу пропорционально.",
+    "Вы видите цифры: еженедельный отчёт из Ads Manager с показами, кликами и начатыми чатами.",
+    "Гарантия: начатые чаты в WhatsApp. Если за 45 дней не дойдём до числа, продолжаем рекламу бесплатно, пока не дойдём.",
     "Без эксклюзива: можно продолжать работать со своим брокером.",
     "Быстрее: спринт длится 45 дней. С брокером в среднем 224 дня (ACOBIR MLS, первое полугодие 2026).",
   ],
 },
 }
-LANGS = ["es", "en", "ru"]
+LANGS = ["es", "en"]  # RU is paused
 US = 13  # index of the "work with us" step
 
 
